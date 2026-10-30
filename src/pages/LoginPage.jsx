@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, Sparkles, Check, AlertCircle, ShieldCheck, User, Users, Play, ArrowRight, Loader2, Rocket } from 'lucide-react';
+import { Mail, Lock, ShieldCheck, User, Users, Check, AlertCircle, Compass, ArrowRight, Loader2 } from 'lucide-react';
 import { AuthLayout } from '../components/common/AuthLayout';
 import { FormInput } from '../components/common/FormInput';
 import { PrimaryButton } from '../components/common/PrimaryButton';
 import { useOnboarding } from '../context/OnboardingContext';
-import loginCleanFull from '../assets/login_clean_full.jpg';
-import avatarSparkyImg from '../assets/avatar_sparky.png';
 
 export const LoginPage = () => {
   const navigate = useNavigate();
-  const { loginParent, loginChild, childrenList, switchRole } = useOnboarding();
+  const { loginParent, loginChild, childrenList } = useOnboarding();
 
-  // Active Role Tab: 'PARENT' | 'CHILD'
+  // Active Role Tab: 'PARENT' | 'STUDENT'
   const [activeTab, setActiveTab] = useState('PARENT');
 
   // Parent Login Form State
   const [formData, setFormData] = useState({
-    email: 'sparkymcwonder@gmail.com',
+    email: 'sarah.guardian@highorbit.com',
     password: '',
     rememberMe: true,
   });
@@ -27,10 +25,10 @@ export const LoginPage = () => {
   const [successMsg, setSuccessMsg] = useState('');
   const [generalError, setGeneralError] = useState('');
 
-  // Child Access State
-  const [selectedChildId, setSelectedChildId] = useState(childrenList[0]?.id || 'child_1');
-  const [childPin, setChildPin] = useState('');
-  const [childPinError, setChildPinError] = useState('');
+  // Student Access State
+  const [selectedStudentId, setSelectedStudentId] = useState(childrenList[0]?.id || 'child_1');
+  const [studentPin, setStudentPin] = useState('');
+  const [studentPinError, setStudentPinError] = useState('');
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -69,57 +67,55 @@ export const LoginPage = () => {
     setIsLoading(true);
     setGeneralError('');
 
-    // Simulate authentication verification
     setTimeout(() => {
       setIsLoading(false);
       loginParent(formData.email);
-      setSuccessMsg('Welcome back, Parent Guardian! Launching family dashboard...');
+      setSuccessMsg('Welcome back! Launching Parent Portal...');
 
       setTimeout(() => {
         navigate('/parent/dashboard');
-      }, 900);
-    }, 700);
+      }, 800);
+    }, 600);
   };
 
-  const handleChildAccess = (e) => {
+  const handleStudentAccess = (e) => {
     e.preventDefault();
-    if (!childPin || childPin.length < 4) {
-      setChildPinError('Please enter your 4-digit secret PIN (Demo: 1234)');
+    if (!studentPin || studentPin.length < 4) {
+      setStudentPinError('Please enter your 4-digit Student PIN (Demo: 1234)');
       return;
     }
 
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      const success = loginChild(selectedChildId, childPin);
+      const success = loginChild(selectedStudentId, studentPin);
       if (success) {
-        setSuccessMsg("PIN Verified! Blasting off to Child Universe! 🚀");
+        setSuccessMsg("PIN Verified! Entering your Student Sanctuary...");
         setTimeout(() => {
           navigate('/child/dashboard');
-        }, 800);
+        }, 700);
       } else {
-        setChildPinError('Invalid Child PIN. Please check with your parent.');
+        setStudentPinError('Invalid Student PIN. Demo PIN is 1234.');
       }
-    }, 600);
+    }, 500);
   };
-
-  const activeSelectedChild =
-    childrenList.find((c) => c.id === selectedChildId) || childrenList[0];
 
   return (
     <AuthLayout
-      heading="Login"
-      subheading="Sign in to continue"
-      description="Sign in to your LifeVerse AI account to manage your family, monitor educational progress, or launch child learning quests."
-      bottomNote="Open the doors to LifeVerse AI and let the magic of learning begin!"
-      bgImage={loginCleanFull}
-      characterAlt="Curious boy with glasses gazing at wonder"
+      heading={
+        <>
+          Welcome back to <span className="italic font-serif text-[#234A36]">HighOrbit.</span>
+        </>
+      }
+      subheading="Sign in to continue your personal development journey."
+      description="Access your student growth tracking, habit reflections, or parent oversight portal."
+      bottomNote="Encrypted with zero third-party tracking. Your reflections remain private."
       cardTitle="Sign In"
     >
       <div className="flex flex-col gap-4">
         
         {/* Role Selection Tabs */}
-        <div className="p-1 rounded-2xl bg-white/10 border border-white/20 flex items-center gap-1 backdrop-blur-md">
+        <div className="p-1 rounded-2xl bg-[#F0ECE1] border border-[#E0DACE] flex items-center gap-1">
           <button
             type="button"
             onClick={() => {
@@ -127,10 +123,10 @@ export const LoginPage = () => {
               setErrors({});
               setSuccessMsg('');
             }}
-            className={`flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+            className={`flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
               activeTab === 'PARENT'
-                ? 'bg-[#F45124] text-white shadow-md shadow-orange-600/30 ring-1 ring-[#F45124]'
-                : 'text-white/70 hover:text-white hover:bg-white/5'
+                ? 'bg-[#183B2B] text-white shadow-xs'
+                : 'text-[#4B554E] hover:text-[#18221D] hover:bg-white/40'
             }`}
           >
             <ShieldCheck className="w-4 h-4" />
@@ -140,48 +136,48 @@ export const LoginPage = () => {
           <button
             type="button"
             onClick={() => {
-              setActiveTab('CHILD');
+              setActiveTab('STUDENT');
               setErrors({});
               setSuccessMsg('');
             }}
-            className={`flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-              activeTab === 'CHILD'
-                ? 'bg-[#65BDEB] text-[#081325] shadow-md shadow-sky-600/30 ring-1 ring-[#65BDEB]'
-                : 'text-white/70 hover:text-white hover:bg-white/5'
+            className={`flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+              activeTab === 'STUDENT'
+                ? 'bg-[#183B2B] text-white shadow-xs'
+                : 'text-[#4B554E] hover:text-[#18221D] hover:bg-white/40'
             }`}
           >
-            <Sparkles className="w-4 h-4" />
-            <span>Child Access</span>
+            <User className="w-4 h-4" />
+            <span>Student Access</span>
           </button>
         </div>
 
         {/* Global Feedback Banners */}
         {successMsg && (
-          <div className="p-3 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-200 text-xs sm:text-sm font-semibold flex items-center gap-2 animate-fadeIn">
-            <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+          <div className="p-3 rounded-2xl bg-[#E2EBE5] border border-[#183B2B]/20 text-[#183B2B] text-xs sm:text-sm font-semibold flex items-center gap-2 animate-fadeIn">
+            <Check className="w-4 h-4 text-[#183B2B] shrink-0" />
             <span>{successMsg}</span>
           </div>
         )}
 
         {generalError && (
-          <div className="p-3 rounded-2xl bg-red-500/20 border border-red-400/40 text-red-200 text-xs sm:text-sm font-semibold flex items-center gap-2 animate-fadeIn">
-            <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+          <div className="p-3 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs sm:text-sm font-semibold flex items-center gap-2 animate-fadeIn">
+            <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
             <span>{generalError}</span>
           </div>
         )}
 
         {/* TAB 1: PARENT LOGIN */}
         {activeTab === 'PARENT' && (
-          <form onSubmit={handleParentSubmit} className="flex flex-col gap-4">
+          <form onSubmit={handleParentSubmit} className="flex flex-col gap-3.5">
             
             {/* Email Address */}
             <FormInput
-              label="Parent Email Address"
+              label="Parent / Guardian Email"
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="sparkymcwonder@gmail.com"
+              placeholder="e.g. sarah.guardian@highorbit.com"
               error={errors.email}
               required
               autoComplete="email"
@@ -189,7 +185,7 @@ export const LoginPage = () => {
 
             {/* Password */}
             <FormInput
-              label="Parent Password"
+              label="Password"
               type="password"
               name="password"
               value={formData.password}
@@ -201,21 +197,21 @@ export const LoginPage = () => {
             />
 
             {/* Remember Me & Forgot Password */}
-            <div className="flex items-center justify-between text-xs sm:text-sm text-white/80 pt-1">
+            <div className="flex items-center justify-between text-xs sm:text-sm text-[#4B554E] pt-0.5">
               <label className="flex items-center gap-2 cursor-pointer select-none">
                 <input
                   type="checkbox"
                   name="rememberMe"
                   checked={formData.rememberMe}
                   onChange={handleChange}
-                  className="w-4 h-4 rounded text-[#F45124] bg-white/20 border-white/40 focus:ring-0 focus:ring-offset-0 cursor-pointer accent-[#F45124]"
+                  className="w-4 h-4 rounded text-[#183B2B] border-[#DCD6C8] focus:ring-0 cursor-pointer accent-[#183B2B]"
                 />
-                <span>Keep me logged in</span>
+                <span>Keep me signed in</span>
               </label>
 
               <Link
                 to="/forgot-password"
-                className="text-white/85 hover:text-[#65BDEB] transition-colors font-medium hover:underline"
+                className="text-[#183B2B] hover:underline font-semibold transition-colors"
               >
                 Forgot password?
               </Link>
@@ -228,66 +224,62 @@ export const LoginPage = () => {
                 disabled={isLoading}
                 className="w-full"
               >
-                {isLoading ? "Signing In..." : "Sign In as Parent"}
+                {isLoading ? "Signing in..." : "Sign In to Parent Portal"}
               </PrimaryButton>
             </div>
 
             {/* Bottom Registration Link */}
-            <div className="pt-1 text-center text-xs sm:text-sm text-white/80">
-              <span>Ready to Join the Fun? </span>
+            <div className="pt-1 text-center text-xs sm:text-sm text-[#5C665F]">
+              <span>New to HighOrbit? </span>
               <Link
                 to="/register"
-                className="font-bold text-[#65BDEB] hover:text-[#9375E8] hover:underline transition-colors"
+                className="font-bold text-[#183B2B] hover:underline transition-colors"
               >
-                Create Parent Account
+                Create Family Account
               </Link>
             </div>
           </form>
         )}
 
-        {/* TAB 2: CHILD ACCESS */}
-        {activeTab === 'CHILD' && (
-          <form onSubmit={handleChildAccess} className="flex flex-col gap-4">
+        {/* TAB 2: STUDENT ACCESS */}
+        {activeTab === 'STUDENT' && (
+          <form onSubmit={handleStudentAccess} className="flex flex-col gap-3.5">
             
-            <div className="text-xs text-white/80 leading-relaxed bg-white/5 p-3 rounded-2xl border border-white/10">
-              Select your explorer avatar and enter your secret 4-digit Child PIN to begin today's learning quest!
+            <div className="text-xs text-[#4B554E] leading-relaxed bg-[#F5F2EB] p-3 rounded-2xl border border-[#E8E4DA]">
+              Welcome back, Explorer. Select your profile and enter your 4-digit PIN to access your personal sanctuary.
             </div>
 
-            {/* Avatar Selector for Children */}
+            {/* Student Selector */}
             <div>
-              <label className="text-white text-xs font-semibold tracking-wide pl-1 mb-2 block">
-                Choose Your Explorer Profile
+              <label className="text-[#18221D] text-xs font-semibold tracking-wide pl-1 mb-2 block">
+                Select Your Profile
               </label>
 
               <div className="grid grid-cols-2 gap-2.5">
-                {childrenList.map((child) => {
-                  const isSelected = child.id === selectedChildId;
+                {childrenList.map((student) => {
+                  const isSelected = student.id === selectedStudentId;
                   return (
                     <div
-                      key={child.id}
+                      key={student.id}
                       onClick={() => {
-                        setSelectedChildId(child.id);
-                        setChildPinError('');
+                        setSelectedStudentId(student.id);
+                        setStudentPinError('');
                       }}
-                      className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center gap-3 ${
+                      className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center gap-2.5 ${
                         isSelected
-                          ? 'border-[#65BDEB] bg-[#65BDEB]/25 ring-2 ring-[#65BDEB]/60 shadow-lg'
-                          : 'border-white/15 bg-white/5 hover:bg-white/10'
+                          ? 'border-[#183B2B] bg-[#E2EBE5] ring-2 ring-[#183B2B]/20 shadow-xs'
+                          : 'border-[#E8E4DA] bg-white hover:bg-[#F8F6F0]'
                       }`}
                     >
-                      <div className="w-10 h-10 rounded-xl overflow-hidden border border-white/30 bg-[#0c1b2d] shrink-0">
-                        <img
-                          src={child.avatar?.avatarImg || avatarSparkyImg}
-                          alt={child.name}
-                          className="w-full h-full object-cover"
-                        />
+                      <div className="w-9 h-9 rounded-full bg-[#183B2B] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                        {student.name.charAt(0)}
                       </div>
                       <div className="flex flex-col text-left overflow-hidden">
-                        <span className="text-xs font-bold text-white truncate">
-                          {child.nickname || child.name}
+                        <span className="text-xs font-bold text-[#18221D] truncate">
+                          {student.nickname || student.name}
                         </span>
-                        <span className="text-[10px] text-white/60 truncate">
-                          {child.ageGroup}
+                        <span className="text-[10px] text-[#5C665F] truncate">
+                          Student · Age 17
                         </span>
                       </div>
                     </div>
@@ -296,58 +288,45 @@ export const LoginPage = () => {
               </div>
             </div>
 
-            {/* 4-Digit Child PIN Input */}
+            {/* 4-Digit Student PIN Input */}
             <div className="flex flex-col gap-1.5 w-full">
-              <label className="text-white text-xs md:text-sm font-semibold tracking-wide pl-1 flex items-center justify-between">
-                <span>Secret Child PIN (4 Digits)</span>
-                <span className="text-[11px] text-[#FFD66B]">Demo PIN: {activeSelectedChild?.pin || '1234'}</span>
+              <label className="text-[#18221D] text-xs sm:text-sm font-semibold tracking-wide pl-1 flex items-center justify-between">
+                <span>Student Access PIN</span>
+                <span className="text-[11px] text-[#4B735F] font-bold">Demo: 1234</span>
               </label>
 
-              <div className="relative">
-                <input
-                  type="password"
-                  maxLength={4}
-                  value={childPin}
-                  onChange={(e) => {
-                    setChildPin(e.target.value);
-                    if (childPinError) setChildPinError('');
-                  }}
-                  placeholder="••••"
-                  className="w-full py-3 px-5 text-center text-xl font-black tracking-widest rounded-full text-white placeholder-white/40 bg-[#65BDEB]/30 border border-white/40 focus:outline-none focus:ring-2 focus:ring-[#65BDEB]/60 backdrop-blur-md"
-                />
-              </div>
+              <input
+                type="password"
+                maxLength={4}
+                value={studentPin}
+                onChange={(e) => {
+                  setStudentPin(e.target.value);
+                  if (studentPinError) setStudentPinError('');
+                }}
+                placeholder="••••"
+                className="w-full py-2.5 px-4 text-center text-xl font-bold tracking-widest rounded-full text-[#18221D] placeholder-[#9CA3AF] bg-white border border-[#DCD6C8] focus:outline-none focus:border-[#183B2B] focus:ring-2 focus:ring-[#183B2B]/20 transition-all shadow-xs"
+              />
 
-              {childPinError && (
-                <span className="text-red-300 text-xs pl-3 font-medium animate-fadeIn">
-                  {childPinError}
+              {studentPinError && (
+                <span className="text-red-600 text-xs pl-3 font-medium animate-fadeIn">
+                  {studentPinError}
                 </span>
               )}
             </div>
 
-            {/* Child Enter Button */}
-            <div className="pt-2">
-              <button
+            {/* Student Enter Button */}
+            <div className="pt-1.5">
+              <PrimaryButton
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3.5 px-6 rounded-full text-sm sm:text-base font-extrabold text-white bg-gradient-to-r from-[#65BDEB] via-[#9375E8] to-[#F45124] hover:scale-[1.02] shadow-lg shadow-sky-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full"
               >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Launching Universe...</span>
-                  </>
-                ) : (
-                  <>
-                    <Rocket className="w-4 h-4" />
-                    <span>Enter Child Universe</span>
-                  </>
-                )}
-              </button>
+                {isLoading ? "Entering Sanctuary..." : "Enter Student Sanctuary"}
+              </PrimaryButton>
             </div>
 
-            {/* Need Parent Help */}
-            <div className="text-center text-xs text-white/60 pt-1">
-              Forgot PIN? Ask your parent to view your PIN in the Parent Dashboard.
+            <div className="text-center text-xs text-[#5C665F] pt-0.5">
+              Need assistance? Check with your parent or reset PIN via Parent Portal.
             </div>
           </form>
         )}
