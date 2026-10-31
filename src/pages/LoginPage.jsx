@@ -287,35 +287,28 @@ export const LoginPage = () => {
               </div>
             </div>
 
-            {/* Sibling / Student Selector - Glassy Tiles */}
+            {/* Single Unified Student Profile */}
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-semibold text-[#18221D] pl-1">
-                Select Your Profile
+                Student Profile
               </label>
-              <div className="grid grid-cols-2 gap-2">
-                {[
-                  { id: 'child_1', name: 'Leo Jenkins', age: '17 yrs', initials: 'LJ' },
-                  { id: 'child_2', name: 'Maya Jenkins', age: '19 yrs', initials: 'MJ' },
-                ].map((std) => (
-                  <button
-                    key={std.id}
-                    type="button"
-                    onClick={() => setSelectedStudentId(std.id)}
-                    className={`p-2.5 rounded-2xl text-left flex items-center gap-2.5 transition-all cursor-pointer ${
-                      selectedStudentId === std.id
-                        ? 'border-1.5 border-[#194333] bg-white/80 backdrop-blur-md shadow-sm ring-1 ring-[#194333]/25'
-                        : 'border border-white/80 bg-white/45 backdrop-blur-md hover:bg-white/65 shadow-2xs'
-                    }`}
-                  >
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#194333] to-[#123024] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs border border-white/20">
-                      {std.initials}
+              <div className="p-3 rounded-2xl border-1.5 border-[#194333] bg-white/80 backdrop-blur-md shadow-sm ring-1 ring-[#194333]/25 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#194333] to-[#123024] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs border border-white/20">
+                    {childrenList[0]?.name ? childrenList[0].name.charAt(0) : 'S'}
+                  </div>
+                  <div className="text-left">
+                    <div className="text-xs sm:text-sm font-bold text-[#18221D]">
+                      {childrenList[0]?.name || 'Student Profile'}
                     </div>
-                    <div>
-                      <div className="text-xs font-bold text-[#18221D]">{std.name}</div>
-                      <div className="text-[10px] text-[#53675D]">{std.age}</div>
+                    <div className="text-[10px] sm:text-[11px] text-[#53675D] font-medium">
+                      HighOrbit Student · Age {childrenList[0]?.age || 17} · Grade 11
                     </div>
-                  </button>
-                ))}
+                  </div>
+                </div>
+                <span className="text-[10px] font-bold text-[#194333] bg-[#E8F2EC] px-2.5 py-1 rounded-full border border-[#194333]/20">
+                  Student Sanctuary
+                </span>
               </div>
             </div>
 
