@@ -1,9 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Sparkles, Users, Compass, ShieldCheck, ArrowRight, Star, Heart } from 'lucide-react';
+import { Sparkles, Users, Compass, ShieldCheck, ArrowRight, Star, Heart, Award } from 'lucide-react';
 import { OnboardingLayout } from '../../components/common/OnboardingLayout';
 import { useOnboarding } from '../../context/OnboardingContext';
-import kidsHeroImg from '../../assets/kids_hero.png';
 
 export const WelcomePage = () => {
   const navigate = useNavigate();
@@ -62,15 +61,15 @@ export const WelcomePage = () => {
           <div className="absolute -right-16 -top-16 w-48 h-48 bg-[#65BDEB]/20 rounded-full blur-2xl pointer-events-none" />
           <div className="absolute -left-16 -bottom-16 w-48 h-48 bg-[#F45124]/20 rounded-full blur-2xl pointer-events-none" />
 
-          {/* Left: Illustration */}
-          <div className="relative w-44 h-44 sm:w-52 sm:h-52 shrink-0 rounded-2xl overflow-hidden border-2 border-white/20 shadow-xl bg-[#0c1b2d]/70 flex items-center justify-center p-2">
-            <img
-              src={kidsHeroImg}
-              alt="Happy children exploring"
-              className="w-full h-full object-cover rounded-xl"
-            />
-            <div className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#F45124] text-[10px] font-black uppercase tracking-wider text-white shadow-md">
-              Safe & Ad-Free
+          {/* Left: Premium Modern Graphic */}
+          <div className="relative w-44 h-44 sm:w-52 sm:h-52 shrink-0 rounded-2xl overflow-hidden border-2 border-white/20 shadow-xl bg-gradient-to-br from-[#194333] to-[#0d221a] flex flex-col items-center justify-center p-4 text-center">
+            <div className="w-16 h-16 rounded-full bg-white/10 border border-white/20 flex items-center justify-center mb-3 text-[#A7D4B5] shadow-inner">
+              <Compass className="w-8 h-8 text-[#A7D4B5]" />
+            </div>
+            <span className="font-serif text-lg font-bold text-white tracking-wide">HighOrbit</span>
+            <span className="text-[11px] text-[#A7D4B5] font-medium mt-0.5">Family Sanctuary</span>
+            <div className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#194333] border border-white/20 text-[10px] font-bold uppercase tracking-wider text-[#A7D4B5] shadow-md">
+              Safe & Private
             </div>
           </div>
 

@@ -550,3 +550,4 @@ export const sampleActivitiesCatalog = [
     learningOutcome: 'Cures analysis paralysis with objective values weighting.'
   }
 ];
+
