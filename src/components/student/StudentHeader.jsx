@@ -10,7 +10,8 @@ import {
   LogOut,
   Sparkles,
   Check,
-  ChevronRight
+  ChevronRight,
+  Trash2
 } from 'lucide-react';
 import { useOnboarding } from '../../context/OnboardingContext';
 import { useStudent } from '../../context/StudentContext';
@@ -35,7 +36,7 @@ export const StudentHeader = ({ onToggleSidebar, onOpenExitParent }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { activeChild, logout } = useOnboarding();
-  const { notifications, unreadCount, markAllNotificationsRead, markNotificationRead } = useStudent();
+  const { notifications, unreadCount, markAllNotificationsRead, markNotificationRead, deleteNotification } = useStudent();
 
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [notifDropdownOpen, setNotifDropdownOpen] = useState(false);
@@ -66,7 +67,7 @@ export const StudentHeader = ({ onToggleSidebar, onOpenExitParent }) => {
   };
 
   return (
-    <header className="sticky top-0 z-30 w-full h-16 bg-[#F8F7F2]/95 backdrop-blur-md border-b border-black/40 px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-all">
+    <header className="sticky top-0 z-30 w-full h-16 bg-[#F8F7F2]/95 backdrop-blur-md px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-all">
       {/* Left: Mobile Menu Toggle + Title & Breadcrumbs */}
       <div className="flex items-center gap-3">
         <button
@@ -147,7 +148,21 @@ export const StudentHeader = ({ onToggleSidebar, onOpenExitParent }) => {
                     >
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-bold text-[#202923]">{n.title}</span>
-                        <span className="text-[10px] text-[#737A73]">{n.time}</span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[10px] text-[#737A73]">{n.time}</span>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              deleteNotification(n.id);
+                            }}
+                            className="p-1 rounded text-[#737A73] hover:text-red-600 hover:bg-red-50 transition-colors"
+                            title="Delete notification"
+                            aria-label={`Delete notification ${n.title}`}
+                          >
+                            <Trash2 className="w-3 h-3" />
+                          </button>
+                        </div>
                       </div>
                       <p className="text-xs text-[#737A73] leading-relaxed">{n.message}</p>
                     </div>

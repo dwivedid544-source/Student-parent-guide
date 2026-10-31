@@ -61,7 +61,7 @@ export const StudentSidebar = ({ isOpen, onClose, onOpenExitParent, collapsed = 
         `}
       >
         {/* Top Header / Branding */}
-        <div className="h-16 px-4 sm:px-5 border-b border-black/40 flex items-center justify-between bg-[#F8F7F2]">
+        <div className="h-16 px-4 sm:px-5 flex items-center justify-between bg-[#F8F7F2]">
           <Link
             to="/child/dashboard"
             onClick={onClose}
