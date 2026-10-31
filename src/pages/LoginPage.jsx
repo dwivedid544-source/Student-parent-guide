@@ -279,15 +279,7 @@ export const LoginPage = () => {
         {activeTab === 'STUDENT' && (
           <form onSubmit={handleStudentAccess} className="flex flex-col gap-3.5 py-1">
             
-            <div className="p-3 rounded-2xl bg-gradient-to-r from-[#DCE8DE]/70 via-[#DCE8DE]/45 to-[#E2EBE5]/60 backdrop-blur-md border border-white/90 text-xs text-[#194333] flex items-start gap-2.5 shadow-2xs">
-              <Compass className="w-4 h-4 text-[#194333] shrink-0 mt-0.5" />
-              <div>
-                <strong className="block font-semibold">Student Personal Sanctuary</strong>
-                <span className="text-[#365142]">Enter your assigned 4-digit PIN to access your self-discovery quests and growth log.</span>
-              </div>
-            </div>
-
-            {/* Single Unified Student Profile */}
+            {/* Student Profile */}
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-semibold text-[#18221D] pl-1">
                 Student Profile
@@ -295,19 +287,19 @@ export const LoginPage = () => {
               <div className="p-3 rounded-2xl border-1.5 border-[#194333] bg-white/80 backdrop-blur-md shadow-sm ring-1 ring-[#194333]/25 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#194333] to-[#123024] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs border border-white/20">
-                    {childrenList[0]?.name ? childrenList[0].name.charAt(0) : 'S'}
+                    S
                   </div>
                   <div className="text-left">
                     <div className="text-xs sm:text-sm font-bold text-[#18221D]">
-                      {childrenList[0]?.name || 'Student Profile'}
+                      Student
                     </div>
                     <div className="text-[10px] sm:text-[11px] text-[#53675D] font-medium">
-                      HighOrbit Student · Age {childrenList[0]?.age || 17} · Grade 11
+                      Student Sanctuary
                     </div>
                   </div>
                 </div>
                 <span className="text-[10px] font-bold text-[#194333] bg-[#E8F2EC] px-2.5 py-1 rounded-full border border-[#194333]/20">
-                  Student Sanctuary
+                  Active
                 </span>
               </div>
             </div>
