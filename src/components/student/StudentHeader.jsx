@@ -66,7 +66,7 @@ export const StudentHeader = ({ onToggleSidebar, onOpenExitParent }) => {
   };
 
   return (
-    <header className="sticky top-0 z-30 w-full h-16 bg-[#F8F7F2]/95 backdrop-blur-md border-b border-black/40 px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-all">
+    <header className="sticky top-0 z-30 w-full h-16 bg-[#F8F7F2]/95 backdrop-blur-md px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-all">
       {/* Left: Mobile Menu Toggle + Title & Breadcrumbs */}
       <div className="flex items-center gap-3">
         <button
