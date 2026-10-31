@@ -21,7 +21,8 @@ import {
   BarChart3,
   Feather,
   Smile,
-  ArrowUpRight
+  ArrowUpRight,
+  Check
 } from 'lucide-react';
 
 /* ─────────────────────────────────────────────────────────────
@@ -99,6 +100,7 @@ export const LandingPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState('anxiety');
   const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
+  const [isAnnualPricing, setIsAnnualPricing] = useState(true);
 
   // Categories for "Personalized Support for Real-Life Challenges"
   const categories = [
@@ -919,8 +921,257 @@ export const LandingPage = () => {
 
       </section>
 
-      {/* ────────────────── 9. PRE-FOOTER DARK GREEN BANNER (SECTION 8) ────────────────── */}
-      <section id="pricing" className="py-6 px-4 sm:px-6 lg:px-8">
+      {/* ────────────────── 8. PRICING & MEMBERSHIP PLANS (SECTION 8) ────────────────── */}
+      <section id="pricing" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        
+        {/* Subtle decorative botanical background accent */}
+        <div className="absolute right-0 top-12 pointer-events-none opacity-20">
+          <BotanicalBranchSide className="w-48 h-96 text-[#24503E]" />
+        </div>
+
+        <div className="max-w-6xl mx-auto relative z-10 text-center">
+
+          {/* Section Eyebrow */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E8E4D8]/70 border border-[#DCD6C8] text-[#194333] text-xs font-semibold tracking-wider uppercase mb-4 shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#194333]" />
+            <span>Accessible Plans For Every Stage</span>
+          </div>
+
+          {/* Headline */}
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal leading-tight text-[#19241E] max-w-2xl mx-auto mb-4">
+            Invest in Clarity, Resilience &amp; Growth.
+          </h2>
+
+          <p className="text-sm sm:text-base text-[#4B5850] max-w-xl mx-auto leading-relaxed mb-8">
+            Transparent, youth-friendly pricing designed to support students and families with zero hidden fees. Cancel or switch anytime.
+          </p>
+
+          {/* Monthly / Annual Billing Switcher */}
+          <div className="inline-flex items-center p-1.5 rounded-full bg-[#EAE6DC] border border-[#D8D2C4] shadow-inner mb-12">
+            <button
+              type="button"
+              onClick={() => setIsAnnualPricing(false)}
+              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
+                !isAnnualPricing
+                  ? 'bg-white text-[#194333] shadow-sm'
+                  : 'text-[#5C6B61] hover:text-[#194333]'
+              }`}
+            >
+              Monthly Billing
+            </button>
+            <button
+              type="button"
+              onClick={() => setIsAnnualPricing(true)}
+              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 ${
+                isAnnualPricing
+                  ? 'bg-[#194333] text-white shadow-sm'
+                  : 'text-[#5C6B61] hover:text-[#194333]'
+              }`}
+            >
+              <span>Annual Billing</span>
+              <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
+                isAnnualPricing ? 'bg-[#A7D4B5] text-[#194333]' : 'bg-[#194333] text-white'
+              }`}>
+                Save 20%
+              </span>
+            </button>
+          </div>
+
+          {/* 3 Pricing Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch text-left">
+
+            {/* Plan 1: Explorer (Free Forever) */}
+            <div className="bg-white/80 backdrop-blur-xs rounded-3xl p-7 sm:p-8 border border-[#E3DDD1] hover:border-[#194333]/40 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#4B5850] bg-[#EFECE5] px-3 py-1 rounded-full">
+                    Starter Explorer
+                  </span>
+                </div>
+                <h3 className="font-serif text-2xl font-bold text-[#19241E] mb-2">Free Explorer</h3>
+                <p className="text-xs sm:text-sm text-[#5C6B61] mb-6 min-h-[40px]">
+                  Essential tools for young adults starting their personal reflection and daily habit journey.
+                </p>
+
+                <div className="flex items-baseline gap-1.5 mb-6 pb-6 border-b border-[#EBE6DC]">
+                  <span className="font-serif text-4xl sm:text-5xl font-bold text-[#19241E]">$0</span>
+                  <span className="text-xs sm:text-sm text-[#5C6B61]">/ free forever</span>
+                </div>
+
+                <div className="space-y-3 mb-8">
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#194333]">Included for free:</p>
+                  {[
+                    '3 daily guided journal reflections',
+                    'Core daily habit & routine tracker',
+                    'Access to 10+ wellness soundscapes',
+                    'Basic mood & emotional check-ins',
+                    '100% private & encrypted journal'
+                  ].map((feat, idx) => (
+                    <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-[#3D4A42]">
+                      <div className="w-4 h-4 rounded-full bg-[#E5EFE9] text-[#194333] flex items-center justify-center shrink-0 mt-0.5">
+                        <Check className="w-2.5 h-2.5 stroke-[3]" />
+                      </div>
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <Link
+                to="/register"
+                className="w-full py-3 px-5 rounded-full font-bold text-xs sm:text-sm text-[#194333] border-2 border-[#194333] hover:bg-[#194333] hover:text-white transition-all text-center block shadow-2xs"
+              >
+                Get Started Free
+              </Link>
+            </div>
+
+            {/* Plan 2: Student Pro (Most Popular / Featured) */}
+            <div className="bg-white rounded-3xl p-7 sm:p-8 border-2 border-[#194333] shadow-xl relative flex flex-col justify-between ring-4 ring-[#194333]/5 transform md:-translate-y-2">
+              {/* Highlight Badge */}
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#194333] text-white px-4 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase shadow-md flex items-center gap-1.5">
+                <Sparkles className="w-3 h-3 text-[#A7D4B5]" />
+                <span>Most Popular for Students</span>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-4 mt-1">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#194333] bg-[#E5EFE9] px-3 py-1 rounded-full">
+                    Student Pro
+                  </span>
+                </div>
+                <h3 className="font-serif text-2xl font-bold text-[#19241E] mb-2">Student Growth Pro</h3>
+                <p className="text-xs sm:text-sm text-[#5C6B61] mb-6 min-h-[40px]">
+                  Complete emotional resilience toolkit, audio meditations, and psychologist-backed guidance.
+                </p>
+
+                <div className="mb-6 pb-6 border-b border-[#EBE6DC]">
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="font-serif text-4xl sm:text-5xl font-bold text-[#19241E]">
+                      {isAnnualPricing ? '$9' : '$12'}
+                    </span>
+                    <span className="text-xs sm:text-sm text-[#5C6B61]">/ month</span>
+                  </div>
+                  {isAnnualPricing ? (
+                    <span className="text-[11px] font-semibold text-[#194333] block mt-1">
+                      Billed annually ($108/yr) • Save $36 per year
+                    </span>
+                  ) : (
+                    <span className="text-[11px] text-[#7A877E] block mt-1">
+                      Billed monthly • Cancel anytime
+                    </span>
+                  )}
+                </div>
+
+                <div className="space-y-3 mb-8">
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#194333]">Everything in Explorer, plus:</p>
+                  {[
+                    'Unlimited AI reflections & journal entries',
+                    'Complete mood & focus analytics dashboard',
+                    'Full audio library of guided meditations',
+                    'Exam stress & anxiety action blueprints',
+                    'Personalized weekly growth milestone reports',
+                    'Optional 1-student consensual parent link'
+                  ].map((feat, idx) => (
+                    <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-[#19241E] font-medium">
+                      <div className="w-4 h-4 rounded-full bg-[#194333] text-white flex items-center justify-center shrink-0 mt-0.5">
+                        <Check className="w-2.5 h-2.5 stroke-[3]" />
+                      </div>
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <Link
+                to="/register"
+                className="w-full py-3.5 px-5 rounded-full font-bold text-xs sm:text-sm text-white bg-[#194333] hover:bg-[#123326] shadow-md hover:scale-[1.02] transition-all text-center block"
+              >
+                Start 14-Day Free Trial →
+              </Link>
+            </div>
+
+            {/* Plan 3: Family Circle */}
+            <div className="bg-white/80 backdrop-blur-xs rounded-3xl p-7 sm:p-8 border border-[#E3DDD1] hover:border-[#194333]/40 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#4B5850] bg-[#EFECE5] px-3 py-1 rounded-full">
+                    Family &amp; Parents
+                  </span>
+                </div>
+                <h3 className="font-serif text-2xl font-bold text-[#19241E] mb-2">Family Circle</h3>
+                <p className="text-xs sm:text-sm text-[#5C6B61] mb-6 min-h-[40px]">
+                  Complete cooperative platform for parents supporting multiple teens and emerging adults.
+                </p>
+
+                <div className="mb-6 pb-6 border-b border-[#EBE6DC]">
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="font-serif text-4xl sm:text-5xl font-bold text-[#19241E]">
+                      {isAnnualPricing ? '$19' : '$24'}
+                    </span>
+                    <span className="text-xs sm:text-sm text-[#5C6B61]">/ month</span>
+                  </div>
+                  {isAnnualPricing ? (
+                    <span className="text-[11px] font-semibold text-[#194333] block mt-1">
+                      Billed annually ($228/yr) • Save $60 per year
+                    </span>
+                  ) : (
+                    <span className="text-[11px] text-[#7A877E] block mt-1">
+                      Billed monthly • Cancel anytime
+                    </span>
+                  )}
+                </div>
+
+                <div className="space-y-3 mb-8">
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#194333]">Everything in Pro, plus:</p>
+                  {[
+                    'Up to 3 linked student accounts',
+                    'Full Parent Portal dashboard & trends',
+                    'Age-appropriate data governance matrix',
+                    'Certified parenting guidance articles',
+                    'Joint assignments & growth milestones',
+                    'Priority family support response'
+                  ].map((feat, idx) => (
+                    <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-[#3D4A42]">
+                      <div className="w-4 h-4 rounded-full bg-[#E5EFE9] text-[#194333] flex items-center justify-center shrink-0 mt-0.5">
+                        <Check className="w-2.5 h-2.5 stroke-[3]" />
+                      </div>
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <Link
+                to="/register"
+                className="w-full py-3 px-5 rounded-full font-bold text-xs sm:text-sm text-[#194333] border-2 border-[#194333] hover:bg-[#194333] hover:text-white transition-all text-center block shadow-2xs"
+              >
+                Join Family Circle
+              </Link>
+            </div>
+
+          </div>
+
+          {/* Trust Guarantees Footer */}
+          <div className="mt-12 pt-8 border-t border-[#E3DDD1] flex flex-wrap items-center justify-center gap-6 text-xs text-[#5C6B61]">
+            <div className="flex items-center gap-2">
+              <Shield className="w-4 h-4 text-[#194333]" />
+              <span>14-day free trial on all paid plans</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Lock className="w-4 h-4 text-[#194333]" />
+              <span>Zero-knowledge student journal encryption</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#194333]" />
+              <span>Cancel or pause with one click anytime</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ────────────────── 9. PRE-FOOTER DARK GREEN BANNER (SECTION 9) ────────────────── */}
+      <section className="py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto rounded-[36px] bg-[#194333] text-white overflow-hidden shadow-2xl relative">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
