@@ -1311,7 +1311,7 @@ export const LandingPage = () => {
         </div>
       </footer>
 
-    </div>
+{/*  */}    </div>
   );
 };
 

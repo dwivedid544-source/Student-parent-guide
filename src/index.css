@@ -72,6 +72,52 @@
   animation: pulse-subtle 2.5s ease-in-out infinite;
 }
 
+@keyframes zen-breathe {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 16px 36px rgba(25, 67, 51, 0.22), 0 0 25px rgba(167, 212, 181, 0.35);
+  }
+  50% {
+    transform: scale(1.045);
+    box-shadow: 0 22px 48px rgba(25, 67, 51, 0.28), 0 0 45px rgba(167, 212, 181, 0.55);
+  }
+}
+
+@keyframes zen-ripple {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+@keyframes zen-drift {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(6deg);
+  }
+}
+
+.animate-zen-breathe {
+  animation: zen-breathe 6s ease-in-out infinite;
+}
+
+.animate-zen-ripple {
+  animation: zen-ripple 6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.animate-zen-drift {
+  animation: zen-drift 5s ease-in-out infinite;
+}
+
 @keyframes spin-orbit {
   from {
     transform: rotateX(68deg) rotateY(-18deg) scale(1.35) rotate(0deg);
@@ -91,18 +137,21 @@
 }
 
 .animate-spin-slow {
-  animation: spin-orbit 24s linear infinite;
+  animation: spin-orbit 22s linear infinite;
 }
 
 .animate-reverse-spin-slow {
-  animation: spin-orbit-reverse 28s linear infinite;
+  animation: spin-orbit-reverse 26s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-spin-slow,
   .animate-reverse-spin-slow,
   .animate-float,
-  .animate-sparkle {
+  .animate-sparkle,
+  .animate-zen-breathe,
+  .animate-zen-ripple,
+  .animate-zen-drift {
     animation: none !important;
     transition: none !important;
   }

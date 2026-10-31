@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Compass, ShieldCheck } from 'lucide-react';
-import { GlassOrbitVisual } from './GlassOrbitVisual';
+import { AuthVideoVisual } from './AuthVideoVisual';
 
 export const AuthLayout = ({
   heading,
@@ -75,9 +75,9 @@ export const AuthLayout = ({
               </p>
             )}
 
-            {/* Interactive 3D Glass-Orbit Visual */}
+            {/* Themed Animated Video Visual */}
             <div className="my-2 sm:my-3">
-              <GlassOrbitVisual />
+              <AuthVideoVisual />
             </div>
 
             {/* Editorial Highlight Card (Forest Green Quote Box) */}
