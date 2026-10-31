@@ -22,13 +22,13 @@ export const FormInput = ({
     <div className={`flex flex-col gap-1.5 w-full ${className}`}>
       {label && (
         <label className="text-[#18221D] text-xs sm:text-sm font-semibold tracking-wide pl-1">
-          {label} {required && <span className="text-[#4B735F]">*</span>}
+          {label} {required && <span className="text-[#194333]">*</span>}
         </label>
       )}
 
       <div className="relative flex items-center">
         {Icon && (
-          <div className="absolute left-4 text-[#5C665F] pointer-events-none">
+          <div className="absolute left-4 text-[#53675D] pointer-events-none">
             <Icon className="w-4 h-4" />
           </div>
         )}
@@ -41,11 +41,10 @@ export const FormInput = ({
           placeholder={placeholder}
           required={required}
           autoComplete={autoComplete}
-          className={`w-full py-2.5 px-4 text-sm font-medium rounded-full text-[#18221D] placeholder-[#9CA3AF] 
-            bg-white border border-[#DCD6C8] 
-            hover:border-[#183B2B]/60 
-            focus:outline-none focus:border-[#183B2B] focus:ring-2 focus:ring-[#183B2B]/15
-            transition-all duration-200 shadow-xs
+          className={`w-full py-2.5 px-4 text-sm font-medium rounded-full text-[#18221D] placeholder-[#6E7B74] 
+            highorbit-glass-input
+            focus:outline-none
+            transition-all duration-200
             ${Icon ? 'pl-11' : ''}
             ${isPassword ? 'pr-11' : ''}
             ${error ? 'border-red-500 ring-2 ring-red-500/15 bg-red-50/40' : ''}
@@ -56,7 +55,7 @@ export const FormInput = ({
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-4 text-[#5C665F] hover:text-[#18221D] transition-colors p-1 cursor-pointer"
+            className="absolute right-4 text-[#53675D] hover:text-[#18221D] transition-colors p-1 cursor-pointer"
             tabIndex={-1}
             aria-label={showPassword ? 'Hide password' : 'Show password'}
           >

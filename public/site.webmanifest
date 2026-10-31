@@ -1,0 +1,22 @@
+{
+  "name": "HighOrbit — Personal Development & Family Sanctuary",
+  "short_name": "HighOrbit",
+  "description": "Personal development and self-discovery platform for young adults (15–25) and supportive families.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F5",
+  "theme_color": "#194333",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/highorbit-mark.svg",
+      "sizes": "120x120",
+      "type": "image/svg+xml"
+    }
+  ]
+}
+

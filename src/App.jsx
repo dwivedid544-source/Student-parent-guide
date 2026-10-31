@@ -10,7 +10,6 @@ import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
 import { ParentDashboardHandoff } from './pages/ParentDashboardHandoff';
-
 // Student Sanctuary System
 import { StudentLayout } from './components/student/StudentLayout';
 import { StudentDashboardPage } from './pages/student/StudentDashboardPage';
@@ -28,6 +27,10 @@ import { StudentNotificationsPage } from './pages/student/StudentNotificationsPa
 import { StudentProfilePage } from './pages/student/StudentProfilePage';
 import { StudentSettingsPage } from './pages/student/StudentSettingsPage';
 import { StudentHelpPage } from './pages/student/StudentHelpPage';
+
+// Parent Portal System from remote
+import { ParentDashboardPage } from './pages/parent/ParentDashboardPage';
+import { ChildDashboardHandoff } from './pages/ChildDashboardHandoff';
 
 // Onboarding Pages
 import { WelcomePage } from './pages/onboarding/WelcomePage';
@@ -72,9 +75,9 @@ export function App() {
         <Route path="/onboarding/avatar" element={<AvatarSelectionPage />} />
         <Route path="/onboarding/link" element={<AccountLinkingPage />} />
         <Route path="/onboarding/success" element={<SuccessPage />} />
-
-        {/* C. Parent Portal */}
-        <Route path="/parent/dashboard" element={<ParentDashboardHandoff />} />
+        {/* C. Parent Portal (From remote ParentDashboardPage) */}
+        <Route path="/parent/dashboard" element={<ParentDashboardPage />} />
+        <Route path="/parent/*" element={<ParentDashboardPage />} />
 
         {/* D. HighOrbit Student Sanctuary (All 13 Modules) */}
         <Route path="/child" element={<StudentSanctuaryWrapper />}>

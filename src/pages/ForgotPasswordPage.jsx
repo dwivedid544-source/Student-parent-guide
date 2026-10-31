@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
+import { CheckCircle2, ArrowLeft, ArrowRight, Sparkles, Loader2, ShieldCheck } from 'lucide-react';
 import { AuthLayout } from '../components/common/AuthLayout';
 import { FormInput } from '../components/common/FormInput';
 import { PrimaryButton } from '../components/common/PrimaryButton';
@@ -8,6 +8,7 @@ import { PrimaryButton } from '../components/common/PrimaryButton';
 export const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('sarah.jenkins@gmail.com');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
@@ -22,22 +23,27 @@ export const ForgotPasswordPage = () => {
     }
 
     setError('');
-    setIsSubmitted(true);
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSubmitted(true);
+    }, 600);
   };
 
   return (
     <AuthLayout
       heading={
         <>
-          We'll help you get <span className="italic font-serif text-[#234A36]">back on track.</span>
+          Let's Get You <span className="italic font-serif text-[#194333]">Back In.</span>
         </>
       }
-      subheading="Account access and password recovery."
-      description="Enter the email associated with your HighOrbit family account, and we'll dispatch a secure recovery link immediately."
+      subheading="Enter your registered email address to continue your password recovery."
+      description="We'll dispatch a secure recovery link so you can regain seamless access to your personal development dashboard."
       bottomNote={
-        <span className="block text-xs text-[#5C665F]">
+        <span className="block text-xs text-[#53675D]">
           Remembered your credentials?{' '}
-          <Link to="/login" className="text-[#183B2B] hover:underline font-bold transition-colors">
+          <Link to="/login" className="text-[#194333] hover:underline font-bold transition-colors">
             Return to login.
           </Link>
         </span>
@@ -45,8 +51,8 @@ export const ForgotPasswordPage = () => {
       cardTitle="Reset Password"
     >
       {isSubmitted ? (
-        <div className="flex flex-col items-center text-center py-4 animate-fadeIn">
-          <div className="w-14 h-14 rounded-full bg-[#E2EBE5] border border-[#183B2B]/20 text-[#183B2B] flex items-center justify-center mb-4 shadow-sm">
+        <div className="flex flex-col items-center text-center py-2 animate-fadeIn">
+          <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#DCE8DE] to-[#C9DEC8] border border-white/90 text-[#194333] flex items-center justify-center mb-3.5 shadow-md">
             <CheckCircle2 className="w-8 h-8 stroke-[2.2]" />
           </div>
 
@@ -56,7 +62,7 @@ export const ForgotPasswordPage = () => {
 
           <p className="mt-2 text-xs sm:text-sm text-[#4B554E] leading-relaxed">
             We have sent password reset instructions to{' '}
-            <strong className="text-[#183B2B]">{email}</strong>.
+            <strong className="text-[#194333]">{email}</strong>.
             Please check your inbox or spam folder.
           </p>
 
@@ -64,21 +70,21 @@ export const ForgotPasswordPage = () => {
             <button
               type="button"
               onClick={() => setIsSubmitted(false)}
-              className="w-full py-2.5 rounded-full text-xs font-semibold text-[#4B554E] bg-[#EFECE4] hover:bg-[#E5E0D5] border border-[#D5CFBF]/60 transition-all cursor-pointer"
+              className="w-full py-2.5 rounded-full text-xs font-semibold text-[#4B554E] highorbit-glass-tile hover:bg-white/80 transition-all cursor-pointer"
             >
               Use another email address
             </button>
 
             <Link
               to="/login"
-              className="w-full py-3 rounded-full text-center text-sm font-semibold text-white bg-[#183B2B] hover:bg-[#112D20] shadow-sm transition-all"
+              className="w-full py-3 rounded-full text-center text-sm font-semibold text-white bg-gradient-to-r from-[#194333] to-[#123024] hover:from-[#133528] hover:to-[#0d231a] shadow-md border border-white/20 transition-all"
             >
               Return to Sign In
             </Link>
           </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
           <p className="text-xs sm:text-sm text-[#4B554E] leading-relaxed">
             Enter the email associated with your family account. We'll send you a secure verification link to create a new password.
           </p>
@@ -100,16 +106,24 @@ export const ForgotPasswordPage = () => {
           <div className="pt-2">
             <PrimaryButton
               type="submit"
-              className="w-full"
+              disabled={isLoading}
+              className="w-full py-3"
             >
-              Send Reset Link
+              {isLoading ? (
+                <span className="flex items-center gap-2">
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Sending Link...</span>
+                </span>
+              ) : (
+                <span>Send Reset Link</span>
+              )}
             </PrimaryButton>
           </div>
 
-          <div className="mt-2 text-center">
+          <div className="text-center pt-2 border-t border-white/60">
             <Link
               to="/login"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-[#4B554E] hover:text-[#183B2B] transition-colors font-semibold hover:underline"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#194333] hover:underline transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Login</span>

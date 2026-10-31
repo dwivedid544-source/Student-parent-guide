@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ShieldCheck, Check, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Check, ArrowRight, Loader2 } from 'lucide-react';
 import { AuthLayout } from '../components/common/AuthLayout';
 import { FormInput } from '../components/common/FormInput';
 import { PrimaryButton } from '../components/common/PrimaryButton';
@@ -39,7 +39,7 @@ export const RegisterPage = () => {
       case 3:
         return { score: 3, label: 'Good', color: 'bg-[#4B735F]', textColor: 'text-[#4B735F]' };
       case 4:
-        return { score: 4, label: 'Strong', color: 'bg-[#183B2B]', textColor: 'text-[#183B2B]' };
+        return { score: 4, label: 'Strong', color: 'bg-[#194333]', textColor: 'text-[#194333]' };
       default:
         return { score: 1, label: 'Weak', color: 'bg-red-400', textColor: 'text-red-600' };
     }
@@ -113,33 +113,26 @@ export const RegisterPage = () => {
     <AuthLayout
       heading={
         <>
-          Begin your journey with <span className="italic font-serif text-[#234A36]">HighOrbit.</span>
+          Begin Your <span className="italic font-serif text-[#194333]">HighOrbit Journey.</span>
         </>
       }
-      subheading={
-        <span>
-          Already registered?{' '}
-          <Link to="/login" className="text-[#183B2B] hover:underline font-bold">
-            Sign In
-          </Link>
-        </span>
-      }
-      description="Create a master Family Account to link student self-discovery profiles, track growth milestones, and access supportive guidance."
+      subheading="Create your account and take the first step towards meaningful growth."
+      description="Create a master parent account to guide your students, review permitted development insights, and assign growth challenges."
       bottomNote="By signing up, you agree to our Student Privacy Standard and Terms of Service."
       cardTitle="Create Account"
     >
       <form onSubmit={handleSubmit} className="flex flex-col gap-2.5 sm:gap-3">
         
-        {/* Role Notice Pill */}
-        <div className="flex items-center gap-2 p-2 rounded-xl bg-[#F0ECE1] border border-[#E0DACE] text-xs text-[#18221D]">
-          <ShieldCheck className="w-3.5 h-3.5 text-[#183B2B] shrink-0" />
+        {/* Role Notice Pill - Frosted Glass Tile */}
+        <div className="flex items-center gap-2 p-2 rounded-2xl highorbit-glass-tile text-xs text-[#18221D] shadow-2xs">
+          <ShieldCheck className="w-3.5 h-3.5 text-[#194333] shrink-0" />
           <span>Creates master <strong>Parent/Family</strong> account</span>
         </div>
 
         {/* Success message banner */}
         {successMsg && (
-          <div className="p-2.5 rounded-xl bg-[#E2EBE5] border border-[#183B2B]/20 text-[#183B2B] text-xs sm:text-sm font-semibold flex items-center gap-2 animate-fadeIn">
-            <Check className="w-4 h-4 text-[#183B2B] shrink-0" />
+          <div className="p-2.5 rounded-2xl bg-gradient-to-r from-[#DCE8DE]/80 to-[#DCE8DE]/50 border border-white/80 text-[#194333] text-xs sm:text-sm font-semibold flex items-center gap-2 backdrop-blur-md shadow-2xs animate-fadeIn">
+            <Check className="w-4 h-4 text-[#194333] shrink-0" />
             <span>{successMsg}</span>
           </div>
         )}
@@ -188,10 +181,10 @@ export const RegisterPage = () => {
           {formData.password && (
             <div className="px-1 pt-0.5 flex flex-col gap-1 animate-fadeIn">
               <div className="flex items-center justify-between text-[11px] font-semibold">
-                <span className="text-[#5C665F]">Password Strength:</span>
+                <span className="text-[#53675D]">Password Strength:</span>
                 <span className={strength.textColor}>{strength.label}</span>
               </div>
-              <div className="grid grid-cols-4 gap-1 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden p-0.5">
+              <div className="grid grid-cols-4 gap-1 h-1.5 w-full bg-white/60 backdrop-blur-xs rounded-full overflow-hidden p-0.5 border border-white/70">
                 <div className={`h-full rounded-full transition-all duration-300 ${strength.score >= 1 ? strength.color : 'bg-transparent'}`} />
                 <div className={`h-full rounded-full transition-all duration-300 ${strength.score >= 2 ? strength.color : 'bg-transparent'}`} />
                 <div className={`h-full rounded-full transition-all duration-300 ${strength.score >= 3 ? strength.color : 'bg-transparent'}`} />
@@ -222,7 +215,7 @@ export const RegisterPage = () => {
               name="agreeTerms"
               checked={formData.agreeTerms}
               onChange={handleChange}
-              className="w-4 h-4 mt-0.5 rounded text-[#183B2B] border-[#DCD6C8] focus:ring-0 cursor-pointer accent-[#183B2B] shrink-0"
+              className="w-4 h-4 mt-0.5 rounded text-[#194333] border-[#DCD6C8] focus:ring-0 cursor-pointer accent-[#194333] shrink-0"
             />
             <span>
               I agree to the HighOrbit <span className="underline font-semibold text-[#18221D]">Family Safety Terms</span> and <span className="underline font-semibold text-[#18221D]">Privacy Policy</span>.
@@ -238,16 +231,32 @@ export const RegisterPage = () => {
           <PrimaryButton
             type="submit"
             disabled={isLoading}
-            className="w-full"
+            className="w-full py-3"
           >
-            {isLoading ? "Setting Up Family Account..." : "Create Free Account"}
+            {isLoading ? (
+              <span className="flex items-center gap-2">
+                <Loader2 className="w-4 h-4 animate-spin" />
+                <span>Creating Account...</span>
+              </span>
+            ) : (
+              <span>Create Parent Account</span>
+            )}
           </PrimaryButton>
         </div>
 
-        {/* Student Notice */}
-        <p className="text-[11px] text-[#5C665F] text-center pt-0.5">
-          Student profiles are linked securely inside family setup after registration.
-        </p>
+        {/* Already Registered Navigation */}
+        <div className="text-center pt-2 border-t border-white/60">
+          <span className="text-xs text-[#53675D]">
+            Already Registered?{' '}
+            <Link
+              to="/login"
+              className="font-bold text-[#194333] hover:underline transition-colors"
+            >
+              Sign In
+            </Link>
+          </span>
+        </div>
+
       </form>
     </AuthLayout>
   );
