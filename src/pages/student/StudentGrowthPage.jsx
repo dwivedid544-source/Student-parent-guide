@@ -21,7 +21,8 @@ import {
   ChevronUp,
   HelpCircle,
   FileText,
-  Activity
+  Activity,
+  Check
 } from 'lucide-react';
 import { useOnboarding } from '../../context/OnboardingContext';
 import { useStudent } from '../../context/StudentContext';
@@ -59,7 +60,13 @@ export const StudentGrowthPage = () => {
 
   // 3. Fetch & Filter Student-Scoped Wellness Sessions
   const studentWellnessSessions = useMemo(() => {
-    return getWellnessSessionHistory(currentStudentId);
+    try {
+      const res = getWellnessSessionHistory(currentStudentId);
+      return Array.isArray(res) ? res : [];
+    } catch (err) {
+      console.warn('Could not load wellness sessions:', err);
+      return [];
+    }
   }, [currentStudentId]);
 
   // Date filtering helper
@@ -843,13 +850,13 @@ export const StudentGrowthPage = () => {
               >
                 <div className="flex items-center justify-between text-xs">
                   <span className="font-serif text-sm font-bold text-[#202923]">
-                    {ref.title || 'Journal Reflection'}
+                    {ref.title || ref.prompt || 'Journal Reflection'}
                   </span>
                   <span className="text-[#737A73]">{ref.date || 'Recent Entry'}</span>
                 </div>
                 <div className="text-xs leading-relaxed text-[#333]">
                   {showPrivateReflections ? (
-                    <p className="italic">"{ref.content}"</p>
+                    <p className="italic">"{ref.content || ref.entry || 'Reflection recorded.'}"</p>
                   ) : (
                     <div className="h-6 w-3/4 bg-black/10 rounded-md animate-pulse" />
                   )}
@@ -944,11 +951,11 @@ export const StudentGrowthPage = () => {
                     <div className="p-4 rounded-xl bg-white border border-black/20 space-y-2">
                       <div className="flex items-center gap-2">
                         <span className="w-6 h-6 rounded-full bg-[#193F30] text-white flex items-center justify-center font-bold text-xs">
-                          {fb.author.charAt(0)}
+                          {fb.author ? String(fb.author).charAt(0) : 'M'}
                         </span>
                         <div>
                           <span className="text-xs font-bold text-[#202923] block leading-none">
-                            {fb.author}
+                            {fb.author || 'Mentor'}
                           </span>
                           <span className="text-[10px] text-[#737A73]">{fb.role}</span>
                         </div>
