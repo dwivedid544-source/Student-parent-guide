@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Compass,
@@ -51,6 +51,54 @@ import {
 import { useOnboarding } from '../../context/OnboardingContext';
 import { parentingGuideSituations, sampleActivitiesCatalog } from './parentGuideData';
 
+// Default Fallback Demo Students
+const DEFAULT_STUDENTS = [
+  {
+    id: 'student_1',
+    name: 'Leo Jenkins',
+    email: 'leo.jenkins@gmail.com',
+    initials: 'LJ',
+    age: 17,
+    stage: 'High School Senior · College Prep',
+    archetype: 'Strategic Thinker & Deep Researcher',
+    strengths: [
+      { name: 'Analytical Reasoning', score: 92, status: 'Strength' },
+      { name: 'Focus & Deep Work', score: 88, status: 'Strength' },
+      { name: 'Self-Discipline', score: 85, status: 'High' },
+      { name: 'Empathy & Listening', score: 82, status: 'High' },
+      { name: 'Public Speaking & Self-Advocacy', score: 64, status: 'Growth Focus' }
+    ],
+    interests: ['Environmental Policy', 'Debate & Logic', 'Classical Guitar', 'Chess & Puzzles'],
+    privacyMode: 'Age 17: Collaborative Parental Oversight with Encrypted Student Diary',
+    growthIndex: 88,
+    questsCompleted: 14,
+    totalQuests: 18,
+    streakDays: 7
+  },
+  {
+    id: 'student_2',
+    name: 'Maya Jenkins',
+    email: 'maya.jenkins@gmail.com',
+    initials: 'MJ',
+    age: 19,
+    stage: 'University Sophomore · Liberal Arts',
+    archetype: 'Creative Synthesizer & Empathetic Leader',
+    strengths: [
+      { name: 'Creative Expression', score: 94, status: 'Strength' },
+      { name: 'Interpersonal Empathy', score: 90, status: 'Strength' },
+      { name: 'Written Communication', score: 88, status: 'High' },
+      { name: 'Time Prioritization', score: 68, status: 'Growth Focus' },
+      { name: 'Stress Grounding', score: 65, status: 'Growth Focus' }
+    ],
+    interests: ['Journalism & Media', 'Human Rights', 'Ceramics', 'Trail Running'],
+    privacyMode: 'Age 19: Adult Student Explicit-Consent Protocol Active',
+    growthIndex: 84,
+    questsCompleted: 11,
+    totalQuests: 16,
+    streakDays: 5
+  }
+];
+
 export const ParentDashboardPage = () => {
   const navigate = useNavigate();
   const { parentAccount, logout } = useOnboarding();
@@ -64,68 +112,44 @@ export const ParentDashboardPage = () => {
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
 
-  // Linked Students state
-  const [students, setStudents] = useState([
-    {
-      id: 'student_1',
-      name: 'Leo Jenkins',
-      initials: 'LJ',
-      age: 17,
-      stage: 'High School Senior · College Prep',
-      archetype: 'Strategic Thinker & Deep Researcher',
-      strengths: [
-        { name: 'Analytical Reasoning', score: 92, status: 'Strength' },
-        { name: 'Focus & Deep Work', score: 88, status: 'Strength' },
-        { name: 'Self-Discipline', score: 85, status: 'High' },
-        { name: 'Empathy & Listening', score: 82, status: 'High' },
-        { name: 'Public Speaking & Self-Advocacy', score: 64, status: 'Growth Focus' }
-      ],
-      interests: ['Environmental Policy', 'Debate & Logic', 'Classical Guitar', 'Chess & Puzzles'],
-      privacyMode: 'Age 17: Collaborative Parental Oversight with Encrypted Student Diary',
-      growthIndex: 88,
-      questsCompleted: 14,
-      totalQuests: 18,
-      streakDays: 7
-    },
-    {
-      id: 'student_2',
-      name: 'Maya Jenkins',
-      initials: 'MJ',
-      age: 19,
-      stage: 'University Sophomore · Liberal Arts',
-      archetype: 'Creative Synthesizer & Empathetic Leader',
-      strengths: [
-        { name: 'Creative Expression', score: 94, status: 'Strength' },
-        { name: 'Interpersonal Empathy', score: 90, status: 'Strength' },
-        { name: 'Written Communication', score: 88, status: 'High' },
-        { name: 'Time Prioritization', score: 68, status: 'Growth Focus' },
-        { name: 'Stress Grounding', score: 65, status: 'Growth Focus' }
-      ],
-      interests: ['Journalism & Media', 'Human Rights', 'Ceramics', 'Trail Running'],
-      privacyMode: 'Age 19: Adult Student Explicit-Consent Protocol Active',
-      growthIndex: 84,
-      questsCompleted: 11,
-      totalQuests: 16,
-      streakDays: 5
+  // Linked Students state with localStorage persistence across refreshes
+  const [students, setStudents] = useState(() => {
+    try {
+      const saved = localStorage.getItem('highorbit_linked_students');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      console.error('Failed to load students from localStorage:', e);
     }
-  ]);
+    return DEFAULT_STUDENTS;
+  });
 
-  const [selectedStudentId, setSelectedStudentId] = useState('student_1');
-  const activeStudent = students.find((s) => s.id === selectedStudentId) || students[0] || {
-    id: 'student_1',
-    name: 'Leo Jenkins',
-    initials: 'LJ',
-    age: 17,
-    stage: 'High School Senior · College Prep',
-    archetype: 'Strategic Thinker & Deep Researcher',
-    strengths: [],
-    interests: [],
-    privacyMode: 'Age 17: Collaborative Parental Oversight',
-    growthIndex: 88,
-    questsCompleted: 14,
-    totalQuests: 18,
-    streakDays: 7
-  };
+  const [selectedStudentId, setSelectedStudentId] = useState(() => {
+    try {
+      const savedId = localStorage.getItem('highorbit_selected_student_id');
+      if (savedId) return savedId;
+    } catch (e) {}
+    return 'student_1';
+  });
+
+  // Sync students and selected student ID to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem('highorbit_linked_students', JSON.stringify(students));
+    } catch (e) {}
+  }, [students]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('highorbit_selected_student_id', selectedStudentId);
+    } catch (e) {}
+  }, [selectedStudentId]);
+
+  const activeStudent = students.find((s) => s.id === selectedStudentId) || students[0] || DEFAULT_STUDENTS[0];
 
   // Student Account Management State (Add & Unlink)
   const [isAddStudentModalOpen, setIsAddStudentModalOpen] = useState(false);
@@ -135,6 +159,7 @@ export const ParentDashboardPage = () => {
   // New Student Form State
   const [newStudentForm, setNewStudentForm] = useState({
     name: '',
+    email: '',
     age: '16',
     stage: 'High School Junior · 11th Grade',
     archetype: 'Curious Explorer & Creative Thinker',
@@ -164,6 +189,7 @@ export const ParentDashboardPage = () => {
     const createdStudent = {
       id: newId,
       name: newStudentForm.name.trim(),
+      email: newStudentForm.email.trim() || `${newStudentForm.name.toLowerCase().replace(/\s+/g, '.')}@gmail.com`,
       initials,
       age: parseInt(newStudentForm.age, 10) || 16,
       stage: newStudentForm.stage.trim() || 'High School Junior',
@@ -189,6 +215,7 @@ export const ParentDashboardPage = () => {
     setIsAddStudentModalOpen(false);
     setNewStudentForm({
       name: '',
+      email: '',
       age: '16',
       stage: 'High School Junior · 11th Grade',
       archetype: 'Curious Explorer & Creative Thinker',
@@ -431,14 +458,19 @@ export const ParentDashboardPage = () => {
             <Menu className="w-5 h-5" />
           </button>
 
-          <Link to="/" className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setActiveTab('overview')}
+            className="flex items-center gap-2 text-left cursor-pointer"
+            title="Parent Dashboard Overview"
+          >
             <div className="w-8 h-8 rounded-full bg-[#183B2B] text-white flex items-center justify-center shadow-xs">
               <Compass className="w-4 h-4 text-[#DCE8DE]" />
             </div>
             <span className="font-serif text-xl font-bold tracking-tight text-[#18221D]">
               HighOrbit
             </span>
-          </Link>
+          </button>
         </div>
 
         {/* Mobile Student Switcher Pill */}
@@ -634,7 +666,12 @@ export const ParentDashboardPage = () => {
           
           {/* Brand Header */}
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2.5 group">
+            <button
+              type="button"
+              onClick={() => setActiveTab('overview')}
+              className="flex items-center gap-2.5 group text-left cursor-pointer"
+              title="Parent Dashboard Overview"
+            >
               <div className="w-9 h-9 rounded-full bg-[#183B2B] text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform shrink-0">
                 <Compass className="w-5 h-5 text-[#DCE8DE]" />
               </div>
@@ -649,7 +686,7 @@ export const ParentDashboardPage = () => {
                   </span>
                 </div>
               )}
-            </Link>
+            </button>
 
             {/* Sidebar Collapse Toggle */}
             <button
@@ -2226,6 +2263,11 @@ export const ParentDashboardPage = () => {
                             <p className="text-xs text-[#5C665F]">
                               {std.age} Years Old · {std.stage}
                             </p>
+                            {std.email && (
+                              <p className="text-[11px] text-[#4B735F] mt-0.5 font-medium">
+                                ✉️ {std.email}
+                              </p>
+                            )}
                           </div>
                         </div>
 
@@ -2275,35 +2317,36 @@ export const ParentDashboardPage = () => {
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div className="p-5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA]">
-                  <span className="text-xs font-bold text-[#183B2B] bg-[#E2EBE5] px-2.5 py-0.5 rounded-full">
-                    Ages 15–17 (Leo Jenkins)
-                  </span>
-                  <h3 className="font-serif text-base font-bold text-[#18221D] mt-2">
-                    Collaborative Family Oversight
-                  </h3>
-                  <ul className="mt-2 space-y-1.5 text-xs text-[#5C665F]">
-                    <li>✓ Parent views completed assignment summaries</li>
-                    <li>✓ Parent views development dimensions & trends</li>
-                    <li>✕ Private journal text remains strictly encrypted</li>
-                    <li>✕ No camera or surveillance tracking permitted</li>
-                  </ul>
-                </div>
-
-                <div className="p-5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA]">
-                  <span className="text-xs font-bold text-[#183B2B] bg-[#E2EBE5] px-2.5 py-0.5 rounded-full">
-                    Ages 18–25 (Maya Jenkins)
-                  </span>
-                  <h3 className="font-serif text-base font-bold text-[#18221D] mt-2">
-                    Young Adult Explicit-Consent Protocol
-                  </h3>
-                  <ul className="mt-2 space-y-1.5 text-xs text-[#5C665F]">
-                    <li>✓ Adult student selects exactly which items to share</li>
-                    <li>✓ Joint assignments visible only when consented</li>
-                    <li>✓ Student can revoke portal link at any time</li>
-                    <li>✕ Zero third-party or advertising access</li>
-                  </ul>
-                </div>
+                {students.map((std) => {
+                  const isMinor = std.age < 18;
+                  return (
+                    <div key={std.id} className="p-5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA]">
+                      <span className="text-xs font-bold text-[#183B2B] bg-[#E2EBE5] px-2.5 py-0.5 rounded-full">
+                        {isMinor ? 'Ages 15–17' : 'Ages 18–25'} ({std.name})
+                      </span>
+                      <h3 className="font-serif text-base font-bold text-[#18221D] mt-2">
+                        {isMinor ? 'Collaborative Family Oversight' : 'Young Adult Explicit-Consent Protocol'}
+                      </h3>
+                      <ul className="mt-2 space-y-1.5 text-xs text-[#5C665F]">
+                        {isMinor ? (
+                          <>
+                            <li>✓ Parent views completed assignment summaries</li>
+                            <li>✓ Parent views development dimensions & trends</li>
+                            <li>✕ Private journal text remains strictly encrypted</li>
+                            <li>✕ No camera or surveillance tracking permitted</li>
+                          </>
+                        ) : (
+                          <>
+                            <li>✓ Adult student selects exactly which items to share</li>
+                            <li>✓ Joint assignments visible only when consented</li>
+                            <li>✓ Student can revoke portal link at any time</li>
+                            <li>✕ Zero third-party or advertising access</li>
+                          </>
+                        )}
+                      </ul>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -2653,45 +2696,66 @@ export const ParentDashboardPage = () => {
 
       {/* ────────────────── ADD NEW STUDENT MODAL ────────────────── */}
       {isAddStudentModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fadeIn">
-          <div className="w-full max-w-lg rounded-[32px] bg-white/95 backdrop-blur-2xl p-7 sm:p-8 shadow-2xl border border-white/80 space-y-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/45 backdrop-blur-sm animate-fadeIn">
+          <div className="w-full max-w-xl max-h-[92vh] overflow-y-auto rounded-[28px] bg-white/95 backdrop-blur-2xl p-6 sm:p-7 shadow-2xl border border-white/80 space-y-4">
+            
+            {/* Header */}
             <div className="flex items-center justify-between pb-3 border-b border-[#F0ECE1]">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-[#E2EBE5] text-[#183B2B] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-xl bg-[#E2EBE5] text-[#183B2B] flex items-center justify-center shrink-0">
                   <UserPlus className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-xl font-bold text-[#18221D]">
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[#18221D] leading-tight">
                     Link New Student Account
                   </h3>
-                  <span className="text-xs text-[#5C665F]">Connect another young adult (ages 15–25)</span>
+                  <span className="text-[11px] text-[#5C665F]">Connect another young adult explorer (ages 15–25)</span>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setIsAddStudentModalOpen(false)}
-                className="p-1.5 rounded-full text-[#5C665F] hover:bg-gray-100 cursor-pointer"
+                className="p-1 rounded-full text-[#5C665F] hover:bg-gray-100 cursor-pointer"
               >
                 ✕
               </button>
             </div>
 
-            <form onSubmit={handleAddStudent} className="space-y-4">
-              <div>
-                <label className="text-xs font-semibold text-[#18221D] block mb-1">
-                  Student Full Name *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={newStudentForm.name}
-                  onChange={(e) => setNewStudentForm({ ...newStudentForm, name: e.target.value })}
-                  placeholder="e.g. Aria Jenkins"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B] focus:ring-2 focus:ring-[#183B2B]/10"
-                />
+            <form onSubmit={handleAddStudent} className="space-y-3.5">
+              
+              {/* Row 1: Name & Gmail */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                    Student Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={newStudentForm.name}
+                    onChange={(e) => setNewStudentForm({ ...newStudentForm, name: e.target.value })}
+                    placeholder="e.g. Aria Jenkins"
+                    className="w-full px-3.5 py-2 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B] focus:ring-2 focus:ring-[#183B2B]/10"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                    Student Gmail / Email *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={newStudentForm.email}
+                    onChange={(e) => setNewStudentForm({ ...newStudentForm, email: e.target.value })}
+                    placeholder="e.g. aria.jenkins@gmail.com"
+                    className="w-full px-3.5 py-2 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B] focus:ring-2 focus:ring-[#183B2B]/10"
+                  />
+                </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              {/* Row 2: Age & PIN */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="text-xs font-semibold text-[#18221D] block mb-1">
                     Age (15–25) *
@@ -2699,7 +2763,7 @@ export const ParentDashboardPage = () => {
                   <select
                     value={newStudentForm.age}
                     onChange={(e) => setNewStudentForm({ ...newStudentForm, age: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
+                    className="w-full px-3.5 py-2 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
                   >
                     {[15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25].map((a) => (
                       <option key={a} value={a}>
@@ -2720,37 +2784,41 @@ export const ParentDashboardPage = () => {
                     value={newStudentForm.pin}
                     onChange={(e) => setNewStudentForm({ ...newStudentForm, pin: e.target.value })}
                     placeholder="1234"
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
+                    className="w-full px-3.5 py-2 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
                   />
                 </div>
               </div>
 
-              <div>
-                <label className="text-xs font-semibold text-[#18221D] block mb-1">
-                  Academic Stage / Grade
-                </label>
-                <input
-                  type="text"
-                  value={newStudentForm.stage}
-                  onChange={(e) => setNewStudentForm({ ...newStudentForm, stage: e.target.value })}
-                  placeholder="e.g. High School Junior · College Prep"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
-                />
+              {/* Row 3: Stage & Archetype */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                    Academic Stage / Grade
+                  </label>
+                  <input
+                    type="text"
+                    value={newStudentForm.stage}
+                    onChange={(e) => setNewStudentForm({ ...newStudentForm, stage: e.target.value })}
+                    placeholder="e.g. High School Junior"
+                    className="w-full px-3.5 py-2 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                    Growth Archetype
+                  </label>
+                  <input
+                    type="text"
+                    value={newStudentForm.archetype}
+                    onChange={(e) => setNewStudentForm({ ...newStudentForm, archetype: e.target.value })}
+                    placeholder="e.g. Curious Explorer"
+                    className="w-full px-3.5 py-2 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
+                  />
+                </div>
               </div>
 
-              <div>
-                <label className="text-xs font-semibold text-[#18221D] block mb-1">
-                  Growth Archetype
-                </label>
-                <input
-                  type="text"
-                  value={newStudentForm.archetype}
-                  onChange={(e) => setNewStudentForm({ ...newStudentForm, archetype: e.target.value })}
-                  placeholder="e.g. Creative Synthesizer & Empathetic Leader"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
-                />
-              </div>
-
+              {/* Row 4: Interests */}
               <div>
                 <label className="text-xs font-semibold text-[#18221D] block mb-1">
                   Interests & Passions (comma-separated)
@@ -2759,26 +2827,29 @@ export const ParentDashboardPage = () => {
                   type="text"
                   value={newStudentForm.interests}
                   onChange={(e) => setNewStudentForm({ ...newStudentForm, interests: e.target.value })}
-                  placeholder="e.g. Debate, Digital Art, Psychology"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
+                  placeholder="e.g. Debate, Digital Art, Astronomy"
+                  className="w-full px-3.5 py-2 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
                 />
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA] text-xs text-[#5C665F]">
-                🔒 <strong>Privacy Assurance:</strong> Connecting a student links their habit consistency and milestones to your Parent Portal, while their personal journal remains 100% private and encrypted.
+              {/* Compact Privacy Note */}
+              <div className="p-2.5 rounded-xl bg-[#FBF9F5] border border-[#E8E4DA] text-[11px] text-[#5C665F] flex items-center gap-2">
+                <span className="shrink-0 text-xs">🔒</span>
+                <span>Habit milestones are linked, while student diary text remains 100% private and encrypted.</span>
               </div>
 
+              {/* Action Buttons */}
               <div className="pt-2 flex items-center justify-end gap-3">
                 <button
                   type="button"
                   onClick={() => setIsAddStudentModalOpen(false)}
-                  className="px-5 py-2.5 rounded-full text-xs font-semibold text-[#5C665F] hover:bg-gray-100 transition-colors cursor-pointer"
+                  className="px-5 py-2 rounded-full text-xs font-semibold text-[#5C665F] hover:bg-gray-100 transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2.5 rounded-full text-xs font-bold text-white bg-[#183B2B] hover:bg-[#112D20] shadow-sm transition-all cursor-pointer"
+                  className="px-6 py-2 rounded-full text-xs font-bold text-white bg-[#183B2B] hover:bg-[#112D20] shadow-sm transition-all cursor-pointer"
                 >
                   Confirm & Link Student →
                 </button>
