@@ -300,24 +300,24 @@ export const StudentAssignmentsPage = () => {
       {/* ─────────────────────────────────────────────────────────────
           2. ASSIGNMENT SUMMARY COUNTERS
           ───────────────────────────────────────────────────────────── */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2 sm:gap-2.5">
         {/* Total */}
         <button
           type="button"
           onClick={() => handleFilterChange('All')}
-          className={`p-4 rounded-2xl border text-left transition-all cursor-pointer shadow-xs ${
+          className={`py-2.5 px-3 rounded-xl border text-left transition-all cursor-pointer shadow-2xs ${
             statusFilter === 'All' && !overdueOnly
               ? 'bg-[#193F30] text-white border-black'
               : 'bg-white text-[#202923] border-black/30 hover:border-black/60'
           }`}
         >
-          <span className={`text-[10px] font-bold uppercase tracking-wider block ${statusFilter === 'All' && !overdueOnly ? 'text-white/80' : 'text-[#737A73]'}`}>
+          <span className={`text-[9.5px] font-bold uppercase tracking-wider block ${statusFilter === 'All' && !overdueOnly ? 'text-white/80' : 'text-[#737A73]'}`}>
             Total Tasks
           </span>
-          <span className="font-serif text-2xl font-bold mt-1 block">
+          <span className="font-serif text-lg sm:text-xl font-bold mt-0.5 block leading-tight">
             {counters.total}
           </span>
-          <span className={`text-[11px] mt-0.5 block ${statusFilter === 'All' && !overdueOnly ? 'text-white/80' : 'text-[#737A73]'}`}>
+          <span className={`text-[10px] mt-0.5 block ${statusFilter === 'All' && !overdueOnly ? 'text-white/80' : 'text-[#737A73]'}`}>
             All records
           </span>
         </button>
@@ -326,19 +326,19 @@ export const StudentAssignmentsPage = () => {
         <button
           type="button"
           onClick={() => handleFilterChange('In Progress')}
-          className={`p-4 rounded-2xl border text-left transition-all cursor-pointer shadow-xs ${
+          className={`py-2.5 px-3 rounded-xl border text-left transition-all cursor-pointer shadow-2xs ${
             statusFilter === 'In Progress'
               ? 'bg-[#193F30] text-white border-black'
               : 'bg-white text-[#202923] border-black/30 hover:border-black/60'
           }`}
         >
-          <span className={`text-[10px] font-bold uppercase tracking-wider block ${statusFilter === 'In Progress' ? 'text-white/80' : 'text-[#737A73]'}`}>
+          <span className={`text-[9.5px] font-bold uppercase tracking-wider block ${statusFilter === 'In Progress' ? 'text-white/80' : 'text-[#737A73]'}`}>
             In Progress
           </span>
-          <span className={`font-serif text-2xl font-bold mt-1 block ${statusFilter === 'In Progress' ? 'text-white' : 'text-amber-800'}`}>
+          <span className={`font-serif text-lg sm:text-xl font-bold mt-0.5 block leading-tight ${statusFilter === 'In Progress' ? 'text-white' : 'text-amber-800'}`}>
             {counters.inProgress}
           </span>
-          <span className={`text-[11px] mt-0.5 block ${statusFilter === 'In Progress' ? 'text-white/80' : 'text-[#737A73]'}`}>
+          <span className={`text-[10px] mt-0.5 block ${statusFilter === 'In Progress' ? 'text-white/80' : 'text-[#737A73]'}`}>
             Active draft
           </span>
         </button>
@@ -347,19 +347,19 @@ export const StudentAssignmentsPage = () => {
         <button
           type="button"
           onClick={() => handleFilterChange('Pending')}
-          className={`p-4 rounded-2xl border text-left transition-all cursor-pointer shadow-xs ${
+          className={`py-2.5 px-3 rounded-xl border text-left transition-all cursor-pointer shadow-2xs ${
             statusFilter === 'Pending'
               ? 'bg-[#193F30] text-white border-black'
               : 'bg-white text-[#202923] border-black/30 hover:border-black/60'
           }`}
         >
-          <span className={`text-[10px] font-bold uppercase tracking-wider block ${statusFilter === 'Pending' ? 'text-white/80' : 'text-[#737A73]'}`}>
+          <span className={`text-[9.5px] font-bold uppercase tracking-wider block ${statusFilter === 'Pending' ? 'text-white/80' : 'text-[#737A73]'}`}>
             Pending
           </span>
-          <span className="font-serif text-2xl font-bold mt-1 block">
+          <span className="font-serif text-lg sm:text-xl font-bold mt-0.5 block leading-tight">
             {counters.pending}
           </span>
-          <span className={`text-[11px] mt-0.5 block ${statusFilter === 'Pending' ? 'text-white/80' : 'text-[#737A73]'}`}>
+          <span className={`text-[10px] mt-0.5 block ${statusFilter === 'Pending' ? 'text-white/80' : 'text-[#737A73]'}`}>
             To start
           </span>
         </button>
@@ -368,19 +368,19 @@ export const StudentAssignmentsPage = () => {
         <button
           type="button"
           onClick={() => handleFilterChange('Submitted')}
-          className={`p-4 rounded-2xl border text-left transition-all cursor-pointer shadow-xs ${
+          className={`py-2.5 px-3 rounded-xl border text-left transition-all cursor-pointer shadow-2xs ${
             statusFilter === 'Submitted'
               ? 'bg-[#193F30] text-white border-black'
               : 'bg-white text-[#202923] border-black/30 hover:border-black/60'
           }`}
         >
-          <span className={`text-[10px] font-bold uppercase tracking-wider block ${statusFilter === 'Submitted' ? 'text-white/80' : 'text-[#737A73]'}`}>
+          <span className={`text-[9.5px] font-bold uppercase tracking-wider block ${statusFilter === 'Submitted' ? 'text-white/80' : 'text-[#737A73]'}`}>
             Submitted
           </span>
-          <span className={`font-serif text-2xl font-bold mt-1 block ${statusFilter === 'Submitted' ? 'text-white' : 'text-blue-800'}`}>
+          <span className={`font-serif text-lg sm:text-xl font-bold mt-0.5 block leading-tight ${statusFilter === 'Submitted' ? 'text-white' : 'text-blue-800'}`}>
             {counters.submitted}
           </span>
-          <span className={`text-[11px] mt-0.5 block ${statusFilter === 'Submitted' ? 'text-white/80' : 'text-[#737A73]'}`}>
+          <span className={`text-[10px] mt-0.5 block ${statusFilter === 'Submitted' ? 'text-white/80' : 'text-[#737A73]'}`}>
             In review
           </span>
         </button>
@@ -389,19 +389,19 @@ export const StudentAssignmentsPage = () => {
         <button
           type="button"
           onClick={() => handleFilterChange('Completed')}
-          className={`p-4 rounded-2xl border text-left transition-all cursor-pointer shadow-xs ${
+          className={`py-2.5 px-3 rounded-xl border text-left transition-all cursor-pointer shadow-2xs ${
             statusFilter === 'Completed'
               ? 'bg-[#193F30] text-white border-black'
               : 'bg-white text-[#202923] border-black/30 hover:border-black/60'
           }`}
         >
-          <span className={`text-[10px] font-bold uppercase tracking-wider block ${statusFilter === 'Completed' ? 'text-white/80' : 'text-[#737A73]'}`}>
+          <span className={`text-[9.5px] font-bold uppercase tracking-wider block ${statusFilter === 'Completed' ? 'text-white/80' : 'text-[#737A73]'}`}>
             Completed
           </span>
-          <span className={`font-serif text-2xl font-bold mt-1 block ${statusFilter === 'Completed' ? 'text-white' : 'text-emerald-800'}`}>
+          <span className={`font-serif text-lg sm:text-xl font-bold mt-0.5 block leading-tight ${statusFilter === 'Completed' ? 'text-white' : 'text-emerald-800'}`}>
             {counters.completed}
           </span>
-          <span className={`text-[11px] mt-0.5 block ${statusFilter === 'Completed' ? 'text-white/80' : 'text-[#737A73]'}`}>
+          <span className={`text-[10px] mt-0.5 block ${statusFilter === 'Completed' ? 'text-white/80' : 'text-[#737A73]'}`}>
             Finished
           </span>
         </button>
@@ -410,19 +410,19 @@ export const StudentAssignmentsPage = () => {
         <button
           type="button"
           onClick={() => handleFilterChange('Needs Revision')}
-          className={`p-4 rounded-2xl border text-left transition-all cursor-pointer shadow-xs ${
+          className={`py-2.5 px-3 rounded-xl border text-left transition-all cursor-pointer shadow-2xs ${
             statusFilter === 'Needs Revision'
               ? 'bg-[#193F30] text-white border-black'
               : 'bg-white text-[#202923] border-black/30 hover:border-black/60'
           }`}
         >
-          <span className={`text-[10px] font-bold uppercase tracking-wider block ${statusFilter === 'Needs Revision' ? 'text-white/80' : 'text-[#737A73]'}`}>
+          <span className={`text-[9.5px] font-bold uppercase tracking-wider block ${statusFilter === 'Needs Revision' ? 'text-white/80' : 'text-[#737A73]'}`}>
             Needs Revision
           </span>
-          <span className={`font-serif text-2xl font-bold mt-1 block ${statusFilter === 'Needs Revision' ? 'text-white' : 'text-rose-800'}`}>
+          <span className={`font-serif text-lg sm:text-xl font-bold mt-0.5 block leading-tight ${statusFilter === 'Needs Revision' ? 'text-white' : 'text-rose-800'}`}>
             {counters.needsRevision}
           </span>
-          <span className={`text-[11px] mt-0.5 block ${statusFilter === 'Needs Revision' ? 'text-white/80' : 'text-[#737A73]'}`}>
+          <span className={`text-[10px] mt-0.5 block ${statusFilter === 'Needs Revision' ? 'text-white/80' : 'text-[#737A73]'}`}>
             Revisions
           </span>
         </button>
@@ -434,19 +434,19 @@ export const StudentAssignmentsPage = () => {
             setOverdueOnly(!overdueOnly);
             setCurrentPage(1);
           }}
-          className={`p-4 rounded-2xl border text-left transition-all cursor-pointer shadow-xs ${
+          className={`py-2.5 px-3 rounded-xl border text-left transition-all cursor-pointer shadow-2xs ${
             overdueOnly
               ? 'bg-rose-900 text-white border-black'
               : 'bg-white text-[#202923] border-black/30 hover:border-rose-400'
           }`}
         >
-          <span className={`text-[10px] font-bold uppercase tracking-wider block ${overdueOnly ? 'text-white/80' : 'text-rose-700'}`}>
+          <span className={`text-[9.5px] font-bold uppercase tracking-wider block ${overdueOnly ? 'text-white/80' : 'text-rose-700'}`}>
             Overdue
           </span>
-          <span className={`font-serif text-2xl font-bold mt-1 block ${overdueOnly ? 'text-white' : 'text-rose-700'}`}>
+          <span className={`font-serif text-lg sm:text-xl font-bold mt-0.5 block leading-tight ${overdueOnly ? 'text-white' : 'text-rose-700'}`}>
             {counters.overdue}
           </span>
-          <span className={`text-[11px] mt-0.5 block ${overdueOnly ? 'text-white/80' : 'text-[#737A73]'}`}>
+          <span className={`text-[10px] mt-0.5 block ${overdueOnly ? 'text-white/80' : 'text-[#737A73]'}`}>
             Past due
           </span>
         </button>
