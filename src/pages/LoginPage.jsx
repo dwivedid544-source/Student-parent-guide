@@ -15,8 +15,8 @@ export const LoginPage = () => {
 
   // Parent Login Form State
   const [formData, setFormData] = useState({
-    email: 'sarah.guardian@highorbit.com',
-    password: '',
+    email: 'parent@gmail.com',
+    password: '12345678',
     rememberMe: true,
   });
 
@@ -170,6 +170,29 @@ export const LoginPage = () => {
         {activeTab === 'PARENT' && (
           <form onSubmit={handleParentSubmit} className="flex flex-col gap-3.5">
             
+            {/* Quick Demo Credentials Button */}
+            <button
+              type="button"
+              onClick={() => {
+                setFormData({
+                  email: 'parent@gmail.com',
+                  password: '12345678',
+                  rememberMe: true,
+                });
+                setErrors({});
+                setGeneralError('');
+              }}
+              className="w-full py-2.5 px-3.5 rounded-xl bg-[#E2EBE5] hover:bg-[#D4E4D8] border border-[#183B2B]/20 text-[#183B2B] text-xs font-semibold flex items-center justify-between transition-all cursor-pointer group shadow-2xs"
+            >
+              <span className="flex items-center gap-1.5 font-bold">
+                <ShieldCheck className="w-4 h-4 text-[#183B2B]" />
+                <span>Fill Demo Credentials</span>
+              </span>
+              <span className="font-mono text-[11px] bg-white/90 text-[#183B2B] px-2 py-0.5 rounded border border-[#183B2B]/20">
+                parent@gmail.com · 12345678
+              </span>
+            </button>
+
             {/* Email Address */}
             <FormInput
               label="Parent / Guardian Email"
@@ -177,7 +200,7 @@ export const LoginPage = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="e.g. sarah.guardian@highorbit.com"
+              placeholder="e.g. parent@gmail.com"
               error={errors.email}
               required
               autoComplete="email"

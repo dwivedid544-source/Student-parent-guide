@@ -9,6 +9,7 @@ import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
 import { ParentDashboardHandoff } from './pages/ParentDashboardHandoff';
+import { ParentDashboardPage } from './pages/parent/ParentDashboardPage';
 import { ChildDashboardHandoff } from './pages/ChildDashboardHandoff';
 
 // Onboarding Pages
@@ -45,7 +46,7 @@ export function App() {
         <Route path="/onboarding/success" element={<SuccessPage />} />
 
         {/* C. Role-Based Destination Handoffs */}
-        <Route path="/parent/dashboard" element={<ParentDashboardHandoff />} />
+        <Route path="/parent/dashboard" element={<ParentDashboardPage />} />
         <Route path="/child/dashboard" element={<ChildDashboardHandoff />} />
         <Route path="/child/universe" element={<Navigate to="/child/dashboard" replace />} />
 
