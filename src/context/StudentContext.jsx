@@ -803,6 +803,14 @@ export const StudentProvider = ({ children }) => {
     setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
   };
 
+  const deleteNotification = (id) => {
+    setNotifications((prev) => prev.filter((n) => n.id !== id));
+  };
+
+  const clearAllNotifications = () => {
+    setNotifications([]);
+  };
+
   const updateReviewFeedback = (id, reviewPayload) => {
     const { status, author, role, comment, revisionInstructions } = reviewPayload;
     const nowStr = new Intl.DateTimeFormat('en-US', {
@@ -852,6 +860,8 @@ export const StudentProvider = ({ children }) => {
         notifications,
         markNotificationRead,
         markAllNotificationsRead,
+        deleteNotification,
+        clearAllNotifications,
         unreadCount,
         events,
         logEvent,
