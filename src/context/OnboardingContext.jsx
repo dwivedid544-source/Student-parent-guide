@@ -9,61 +9,37 @@ const OnboardingContext = createContext();
 
 const initialParent = {
   id: 'p_101',
-  name: 'Alex McWonder',
-  email: 'sparkymcwonder@gmail.com',
+  name: 'Sarah Jenkins',
+  email: 'sarah.guardian@highorbit.com',
   role: 'PARENT',
   onboardingCompleted: true,
   familyProfile: {
-    familyName: 'The McWonder Family',
-    numChildren: 2,
+    familyName: 'The HighOrbit Family',
+    numChildren: 1,
     communicationPreference: 'weekly_email',
   },
 };
 
 const initialChildren = [
   {
-    id: 'child_1',
+    id: 'student_1',
     parentId: 'p_101',
-    name: 'Sparky McWonder',
-    nickname: 'Sparky',
-    ageGroup: '6–9 years',
-    dateOfBirth: '2018-05-14',
-    grade: 'Grade 2',
-    interests: ['Space & Science', 'Mathematics', 'Puzzles & Logic'],
-    learningGoals: ['Improve Problem Solving', 'Develop Focus', 'Build Confidence'],
+    name: 'Alex Parker',
+    nickname: 'Alex',
+    ageGroup: '15–18 years',
+    dateOfBirth: '2009-04-12',
+    grade: 'Grade 11',
+    interests: ['Leadership & Growth', 'Mathematics & Logic', 'Creative Writing', 'Philosophy & Ethics'],
+    learningGoals: ['Improve Problem Solving', 'Develop Sustained Focus', 'Build Confidence'],
     avatar: {
-      id: 'sparky',
-      name: 'Sparky McWonder',
-      title: 'The Inquisitive Adventurer',
-      avatarImg: avatarSparkyImg,
-      badge: '🚀 Cosmic Explorer',
-      quote: '"Every question is the start of a brand new adventure!"',
-      color: '#F45124',
+      id: 'student_alex',
+      name: 'Alex Parker',
+      title: 'HighOrbit Student',
+      badge: '🎯 Mindful Scholar',
+      quote: '"Clarity precedes mastery."',
+      color: '#193F30',
     },
     pin: '1234',
-    role: 'CHILD',
-    onboardingStatus: 'completed',
-  },
-  {
-    id: 'child_2',
-    parentId: 'p_101',
-    name: 'Luna McWonder',
-    nickname: 'Luna',
-    ageGroup: '10–14 years',
-    dateOfBirth: '2014-11-20',
-    grade: 'Grade 5',
-    interests: ['Coding & Technology', 'Creative Art', 'Language & Stories'],
-    learningGoals: ['Develop Creativity', 'Explore New Skills', 'Improve Communication'],
-    avatar: {
-      id: 'luna',
-      name: 'Luna Starweaver',
-      title: 'The Dreamer & Storyteller',
-      avatarImg: avatarLunaImg,
-      badge: '✨ Star Weaver',
-      quote: '"Imagination lets you fly higher than any rocket!"',
-      color: '#9375E8',
-    },
-    pin: '5678',
     role: 'CHILD',
     onboardingStatus: 'completed',
   },
@@ -86,15 +62,19 @@ export const OnboardingProvider = ({ children: reactChildren }) => {
       const saved = localStorage.getItem('lifeverse_children_list');
       if (saved) {
         const parsed = JSON.parse(saved);
-        // Ensure image references are restored
-        return parsed.map((c) => {
-          if (c.avatar?.id === 'sparky') c.avatar.avatarImg = avatarSparkyImg;
-          else if (c.avatar?.id === 'luna') c.avatar.avatarImg = avatarLunaImg;
-          else if (c.avatar?.id === 'leo') c.avatar.avatarImg = avatarLeoImg;
-          else if (c.avatar?.id === 'oliver') c.avatar.avatarImg = avatarOliverImg;
-          else if (c.avatar?.id === 'milo') c.avatar.avatarImg = avatarMiloImg;
-          return c;
-        });
+        // Clean out legacy "Sparky" / "Luna" so user sees only the unified student profile
+        const hasLegacy = parsed.some(
+          (c) =>
+            c.name?.includes('Sparky') ||
+            c.name?.includes('Luna') ||
+            c.nickname === 'Sparky' ||
+            c.nickname === 'Luna' ||
+            c.id === 'child_1' ||
+            c.id === 'child_2'
+        );
+        if (!hasLegacy && parsed.length > 0) {
+          return parsed;
+        }
       }
     } catch (e) {
       console.warn('Could not read children list from localStorage', e);
@@ -105,11 +85,11 @@ export const OnboardingProvider = ({ children: reactChildren }) => {
   const [activeChildId, setActiveChildId] = useState(() => {
     try {
       const saved = localStorage.getItem('lifeverse_active_child_id');
-      if (saved) return saved;
+      if (saved && saved !== 'child_1' && saved !== 'child_2') return saved;
     } catch (e) {
       // ignore
     }
-    return 'child_1';
+    return 'student_1';
   });
 
   const [currentRole, setCurrentRole] = useState(() => {
@@ -373,20 +353,19 @@ export const OnboardingProvider = ({ children: reactChildren }) => {
     activeChild,
 
     // Active Child snapshot for legacy components
-    childName: activeChild?.name || 'Sparky McWonder',
-    childNickname: activeChild?.nickname || 'Sparky',
+    childName: activeChild?.name || 'Alex Parker',
+    childNickname: activeChild?.nickname || 'Alex',
     dateOfBirth: activeChild?.dateOfBirth || '',
-    grade: activeChild?.grade || 'Grade 2',
-    ageGroup: activeChild?.ageGroup || '6–9 years',
-    interests: activeChild?.interests || ['Space & Science', 'Mathematics'],
+    grade: activeChild?.grade || 'Grade 11',
+    ageGroup: activeChild?.ageGroup || '15–18 years',
+    interests: activeChild?.interests || ['Leadership & Growth', 'Mathematics & Logic'],
     learningGoals: activeChild?.learningGoals || ['Improve Problem Solving'],
     avatar: activeChild?.avatar || {
-      id: 'sparky',
-      name: 'Sparky McWonder',
-      title: 'The Inquisitive Adventurer',
-      avatarImg: avatarSparkyImg,
-      badge: '🚀 Cosmic Explorer',
-      color: '#F45124',
+      id: 'student_alex',
+      name: 'Alex Parker',
+      title: 'HighOrbit Student',
+      badge: '🎯 Mindful Scholar',
+      color: '#193F30',
     },
   };
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { OnboardingProvider } from './context/OnboardingContext';
+import { StudentProvider } from './context/StudentContext';
 
 // Pages
 import { LandingPage } from './pages/LandingPage';
@@ -9,7 +10,24 @@ import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
 import { ParentDashboardHandoff } from './pages/ParentDashboardHandoff';
-import { ChildDashboardHandoff } from './pages/ChildDashboardHandoff';
+
+// Student Sanctuary System
+import { StudentLayout } from './components/student/StudentLayout';
+import { StudentDashboardPage } from './pages/student/StudentDashboardPage';
+import { StudentAssignmentsPage } from './pages/student/StudentAssignmentsPage';
+import { StudentAssignmentDetailsPage } from './pages/student/StudentAssignmentDetailsPage';
+import { StudentSubmissionFeedbackPage } from './pages/student/StudentSubmissionFeedbackPage';
+import { StudentActivitiesPage } from './pages/student/StudentActivitiesPage';
+import { StudentAssessmentPage } from './pages/student/StudentAssessmentPage';
+import { StudentPersonalityPage } from './pages/student/StudentPersonalityPage';
+import { StudentWellnessPage } from './pages/student/StudentWellnessPage';
+import { StudentGrowthPage } from './pages/student/StudentGrowthPage';
+import { StudentAchievementsPage } from './pages/student/StudentAchievementsPage';
+import { StudentAIStudioPage } from './pages/student/StudentAIStudioPage';
+import { StudentNotificationsPage } from './pages/student/StudentNotificationsPage';
+import { StudentProfilePage } from './pages/student/StudentProfilePage';
+import { StudentSettingsPage } from './pages/student/StudentSettingsPage';
+import { StudentHelpPage } from './pages/student/StudentHelpPage';
 
 // Onboarding Pages
 import { WelcomePage } from './pages/onboarding/WelcomePage';
@@ -21,6 +39,17 @@ import { GoalsPage } from './pages/onboarding/GoalsPage';
 import { AvatarSelectionPage } from './pages/onboarding/AvatarSelectionPage';
 import { AccountLinkingPage } from './pages/onboarding/AccountLinkingPage';
 import { SuccessPage } from './pages/onboarding/SuccessPage';
+
+// Wrapper for Student Sanctuary
+function StudentSanctuaryWrapper() {
+  return (
+    <StudentProvider>
+      <StudentLayout>
+        <Outlet />
+      </StudentLayout>
+    </StudentProvider>
+  );
+}
 
 export function App() {
   return (
@@ -44,10 +73,35 @@ export function App() {
         <Route path="/onboarding/link" element={<AccountLinkingPage />} />
         <Route path="/onboarding/success" element={<SuccessPage />} />
 
-        {/* C. Role-Based Destination Handoffs */}
+        {/* C. Parent Portal */}
         <Route path="/parent/dashboard" element={<ParentDashboardHandoff />} />
-        <Route path="/child/dashboard" element={<ChildDashboardHandoff />} />
-        <Route path="/child/universe" element={<Navigate to="/child/dashboard" replace />} />
+
+        {/* D. HighOrbit Student Sanctuary (All 13 Modules) */}
+        <Route path="/child" element={<StudentSanctuaryWrapper />}>
+          <Route index element={<Navigate to="/child/dashboard" replace />} />
+          <Route path="dashboard" element={<StudentDashboardPage />} />
+          <Route path="assignments" element={<StudentAssignmentsPage />} />
+          <Route path="assignments/:assignmentId" element={<StudentAssignmentDetailsPage />} />
+          <Route path="assignments/:assignmentId/feedback" element={<StudentSubmissionFeedbackPage />} />
+          <Route path="assignments/:assignmentId/status" element={<StudentSubmissionFeedbackPage />} />
+          <Route path="assignments/feedback" element={<StudentSubmissionFeedbackPage />} />
+          <Route path="activities" element={<StudentActivitiesPage />} />
+          <Route path="self-assessment" element={<StudentAssessmentPage />} />
+          <Route path="personality" element={<StudentPersonalityPage />} />
+          <Route path="wellness" element={<StudentWellnessPage />} />
+          <Route path="growth" element={<StudentGrowthPage />} />
+          <Route path="achievements" element={<StudentAchievementsPage />} />
+          <Route path="ai-studio" element={<StudentAIStudioPage />} />
+          <Route path="notifications" element={<StudentNotificationsPage />} />
+          <Route path="profile" element={<StudentProfilePage />} />
+          <Route path="settings" element={<StudentSettingsPage />} />
+          <Route path="help" element={<StudentHelpPage />} />
+          <Route path="universe" element={<Navigate to="/child/dashboard" replace />} />
+        </Route>
+
+        {/* Student Alias Routes for /student/* */}
+        <Route path="/student" element={<Navigate to="/child/dashboard" replace />} />
+        <Route path="/student/*" element={<Navigate to="/child/dashboard" replace />} />
 
         {/* Fallback to home */}
         <Route path="*" element={<Navigate to="/" replace />} />

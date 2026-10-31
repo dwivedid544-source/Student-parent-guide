@@ -26,8 +26,8 @@ export const LoginPage = () => {
   const [generalError, setGeneralError] = useState('');
 
   // Student Access State
-  const [selectedStudentId, setSelectedStudentId] = useState(childrenList[0]?.id || 'child_1');
-  const [studentPin, setStudentPin] = useState('');
+  const [selectedStudentId, setSelectedStudentId] = useState(childrenList[0]?.id || 'student_1');
+  const [studentPin, setStudentPin] = useState('1234');
   const [studentPinError, setStudentPinError] = useState('');
 
   const handleChange = (e) => {
@@ -88,7 +88,8 @@ export const LoginPage = () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      const success = loginChild(selectedStudentId, studentPin);
+      const targetStudentId = childrenList[0]?.id || selectedStudentId || 'student_1';
+      const success = loginChild(targetStudentId, studentPin);
       if (success) {
         setSuccessMsg("PIN Verified! Entering your Student Sanctuary...");
         setTimeout(() => {
@@ -246,54 +247,45 @@ export const LoginPage = () => {
           <form onSubmit={handleStudentAccess} className="flex flex-col gap-3.5">
             
             <div className="text-xs text-[#4B554E] leading-relaxed bg-[#F5F2EB] p-3 rounded-2xl border border-[#E8E4DA]">
-              Welcome back, Explorer. Select your profile and enter your 4-digit PIN to access your personal sanctuary.
+              Welcome back to your personal sanctuary. Sign in with your student PIN to access your personal growth dashboard.
             </div>
 
-            {/* Student Selector */}
-            <div>
-              <label className="text-[#18221D] text-xs font-semibold tracking-wide pl-1 mb-2 block">
-                Select Your Profile
-              </label>
-
-              <div className="grid grid-cols-2 gap-2.5">
-                {childrenList.map((student) => {
-                  const isSelected = student.id === selectedStudentId;
-                  return (
-                    <div
-                      key={student.id}
-                      onClick={() => {
-                        setSelectedStudentId(student.id);
-                        setStudentPinError('');
-                      }}
-                      className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center gap-2.5 ${
-                        isSelected
-                          ? 'border-[#183B2B] bg-[#E2EBE5] ring-2 ring-[#183B2B]/20 shadow-xs'
-                          : 'border-[#E8E4DA] bg-white hover:bg-[#F8F6F0]'
-                      }`}
-                    >
-                      <div className="w-9 h-9 rounded-full bg-[#183B2B] text-white flex items-center justify-center font-bold text-xs shrink-0">
-                        {student.name.charAt(0)}
-                      </div>
-                      <div className="flex flex-col text-left overflow-hidden">
-                        <span className="text-xs font-bold text-[#18221D] truncate">
-                          {student.nickname || student.name}
-                        </span>
-                        <span className="text-[10px] text-[#5C665F] truncate">
-                          Student · Age 17
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
+            {/* Single Unified HighOrbit Student Profile Banner */}
+            <div className="p-3.5 rounded-2xl bg-[#EDF2EC] border border-[#193F30]/20 flex items-center justify-between shadow-2xs">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#193F30] text-white flex items-center justify-center font-bold text-sm shadow-xs shrink-0">
+                  A
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-xs sm:text-sm font-bold text-[#18221D]">
+                    {childrenList[0]?.name || 'Alex Parker'}
+                  </span>
+                  <span className="text-[11px] text-[#4B735F] font-semibold">
+                    HighOrbit Student · Age 17 · Grade 11
+                  </span>
+                </div>
               </div>
+              <span className="text-[10px] font-bold text-[#193F30] bg-white px-2.5 py-1 rounded-full border border-[#DCD6C8]">
+                Student Profile
+              </span>
             </div>
 
             {/* 4-Digit Student PIN Input */}
             <div className="flex flex-col gap-1.5 w-full">
-              <label className="text-[#18221D] text-xs sm:text-sm font-semibold tracking-wide pl-1 flex items-center justify-between">
-                <span>Student Access PIN</span>
-                <span className="text-[11px] text-[#4B735F] font-bold">Demo: 1234</span>
-              </label>
+              <div className="flex items-center justify-between text-xs sm:text-sm pl-1">
+                <span className="font-semibold text-[#18221D]">Student Access PIN</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setStudentPin('1234');
+                    setStudentPinError('');
+                  }}
+                  className="text-[11px] text-[#193F30] font-bold underline hover:text-[#204936] cursor-pointer"
+                  title="Autofill Demo PIN"
+                >
+                  Demo PIN: 1234 (Click to fill)
+                </button>
+              </div>
 
               <input
                 type="password"
@@ -303,8 +295,8 @@ export const LoginPage = () => {
                   setStudentPin(e.target.value);
                   if (studentPinError) setStudentPinError('');
                 }}
-                placeholder="••••"
-                className="w-full py-2.5 px-4 text-center text-xl font-bold tracking-widest rounded-full text-[#18221D] placeholder-[#9CA3AF] bg-white border border-[#DCD6C8] focus:outline-none focus:border-[#183B2B] focus:ring-2 focus:ring-[#183B2B]/20 transition-all shadow-xs"
+                placeholder="1234"
+                className="w-full py-2.5 px-4 text-center text-xl font-bold tracking-widest rounded-full text-[#18221D] placeholder-[#9CA3AF] bg-white border border-[#DCD6C8] focus:outline-none focus:border-[#193F30] focus:ring-2 focus:ring-[#193F30]/20 transition-all shadow-xs"
               />
 
               {studentPinError && (
@@ -326,7 +318,7 @@ export const LoginPage = () => {
             </div>
 
             <div className="text-center text-xs text-[#5C665F] pt-0.5">
-              Need assistance? Check with your parent or reset PIN via Parent Portal.
+              Demo Access: Enter PIN <strong className="text-[#193F30]">1234</strong> to enter the HighOrbit Student Dashboard.
             </div>
           </form>
         )}
