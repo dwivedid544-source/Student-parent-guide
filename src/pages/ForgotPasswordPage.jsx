@@ -35,15 +35,15 @@ export const ForgotPasswordPage = () => {
     <AuthLayout
       heading={
         <>
-          Let's Get You <span className="italic font-serif text-[#194333]">Back In.</span>
+          Let's Get You <span className="bg-gradient-to-r from-primary via-primary-container to-secondary-container bg-clip-text text-transparent font-bold">Back In.</span>
         </>
       }
       subheading="Enter your registered email address to continue your password recovery."
       description="We'll dispatch a secure recovery link so you can regain seamless access to your personal development dashboard."
       bottomNote={
-        <span className="block text-xs text-[#53675D]">
+        <span className="block text-xs text-on-surface-variant">
           Remembered your credentials?{' '}
-          <Link to="/login" className="text-[#194333] hover:underline font-bold transition-colors">
+          <Link to="/login" className="text-primary hover:underline font-bold transition-colors">
             Return to login.
           </Link>
         </span>
@@ -52,17 +52,17 @@ export const ForgotPasswordPage = () => {
     >
       {isSubmitted ? (
         <div className="flex flex-col items-center text-center py-2 animate-fadeIn">
-          <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#DCE8DE] to-[#C9DEC8] border border-white/90 text-[#194333] flex items-center justify-center mb-3.5 shadow-md">
+          <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary-fixed to-secondary-fixed border border-white/90 text-primary flex items-center justify-center mb-3.5 shadow-md">
             <CheckCircle2 className="w-8 h-8 stroke-[2.2]" />
           </div>
 
-          <h3 className="font-serif text-2xl font-bold text-[#18221D]">
+          <h3 className="font-serif text-2xl font-bold text-on-surface">
             Recovery Link Dispatched
           </h3>
 
-          <p className="mt-2 text-xs sm:text-sm text-[#4B554E] leading-relaxed">
+          <p className="mt-2 text-xs sm:text-sm text-on-surface-variant leading-relaxed">
             We have sent password reset instructions to{' '}
-            <strong className="text-[#194333]">{email}</strong>.
+            <strong className="text-primary font-bold">{email}</strong>.
             Please check your inbox or spam folder.
           </p>
 
@@ -70,14 +70,14 @@ export const ForgotPasswordPage = () => {
             <button
               type="button"
               onClick={() => setIsSubmitted(false)}
-              className="w-full py-2.5 rounded-full text-xs font-semibold text-[#4B554E] highorbit-glass-tile hover:bg-white/80 transition-all cursor-pointer"
+              className="w-full py-2.5 rounded-full text-xs font-semibold text-on-surface-variant highorbit-glass-tile hover:bg-white/80 transition-all cursor-pointer"
             >
               Use another email address
             </button>
 
             <Link
               to="/login"
-              className="w-full py-3 rounded-full text-center text-sm font-semibold text-white bg-gradient-to-r from-[#194333] to-[#123024] hover:from-[#133528] hover:to-[#0d231a] shadow-md border border-white/20 transition-all"
+              className="w-full py-3 rounded-full text-center text-sm font-semibold text-white bg-gradient-to-r from-primary via-[#6f56d1] to-secondary-container hover:from-primary/95 hover:to-secondary-container/95 shadow-lg shadow-primary/25 shadow-md border border-white/20 transition-all"
             >
               Return to Sign In
             </Link>
@@ -85,7 +85,7 @@ export const ForgotPasswordPage = () => {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
-          <p className="text-xs sm:text-sm text-[#4B554E] leading-relaxed">
+          <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
             Enter the email associated with your family account. We'll send you a secure verification link to create a new password.
           </p>
 
@@ -123,7 +123,7 @@ export const ForgotPasswordPage = () => {
           <div className="text-center pt-2 border-t border-white/60">
             <Link
               to="/login"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#194333] hover:underline transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Login</span>

@@ -18,11 +18,12 @@ export const PrimaryButton = ({
   }[size] || 'py-3 px-6 text-sm font-semibold';
 
   const variantClasses = {
-    forest: 'bg-[#183B2B] hover:bg-[#112D20] text-white shadow-[0_4px_20px_rgba(24,59,43,0.18)] hover:shadow-[0_6px_25px_rgba(24,59,43,0.25)] hover:scale-[1.01] active:scale-[0.99]',
-    orange: 'bg-[#183B2B] hover:bg-[#112D20] text-white shadow-[0_4px_20px_rgba(24,59,43,0.18)]',
-    outline: 'bg-white hover:bg-[#FBF9F5] text-[#18221D] border border-[#DCD6C8] hover:border-[#183B2B]',
-    secondary: 'bg-[#EFECE4] hover:bg-[#E5E0D5] text-[#18221D] border border-[#D5CFBF]/60',
-  }[variant] || 'bg-[#183B2B] text-white';
+    forest: 'bg-gradient-to-r from-primary via-[#6f56d1] to-secondary-container hover:from-primary/95 hover:to-secondary-container/95 text-white shadow-[0_4px_20px_rgba(95,72,185,0.28)] hover:shadow-[0_6px_25px_rgba(95,72,185,0.38)] hover:scale-[1.01] active:scale-[0.99] border border-white/20',
+    primary: 'bg-gradient-to-r from-primary via-[#6f56d1] to-secondary-container hover:from-primary/95 hover:to-secondary-container/95 text-white shadow-[0_4px_20px_rgba(95,72,185,0.28)] hover:shadow-[0_6px_25px_rgba(95,72,185,0.38)] hover:scale-[1.01] active:scale-[0.99] border border-white/20',
+    orange: 'bg-gradient-to-r from-secondary-container to-secondary hover:opacity-95 text-white shadow-md',
+    outline: 'bg-white/80 hover:bg-white text-on-surface border border-white/90 hover:border-primary/40 shadow-sm backdrop-blur-md',
+    secondary: 'bg-surface-container hover:bg-surface-container-high text-on-surface border border-white/60',
+  }[variant] || 'bg-gradient-to-r from-primary via-[#6f56d1] to-secondary-container text-white';
 
   return (
     <button

@@ -437,22 +437,22 @@ export const ParentDashboardPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBF9F5] text-[#18221D] font-sans selection:bg-[#194333] selection:text-white flex flex-col lg:flex-row relative">
+    <div className="min-h-screen bg-[#FCF8FF] text-[#1b1831] font-sans selection:bg-primary selection:text-white flex flex-col lg:flex-row relative">
       
       {/* ────────────────── AMBIENT GLASS GRADIENT ACCENTS ────────────────── */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute -top-40 -left-40 w-[32rem] h-[32rem] bg-[#DCE8DE]/30 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 -right-40 w-[36rem] h-[36rem] bg-[#EDEDE5]/60 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 left-1/4 w-[38rem] h-[38rem] bg-[#E2EBE5]/40 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -left-40 w-[32rem] h-[32rem] bg-gradient-to-tr from-[#8B75E8]/25 via-[#FF9EAD]/20 to-[#FFE28A]/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 -right-40 w-[36rem] h-[36rem] bg-gradient-to-br from-[#8CCFFF]/25 via-[#8B75E8]/20 to-[#FF9EAD]/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 left-1/4 w-[38rem] h-[38rem] bg-gradient-to-t from-[#FFE28A]/20 via-[#FF9EAD]/15 to-[#8B75E8]/20 rounded-full blur-3xl" />
       </div>
 
       {/* ────────────────── MOBILE TOP BAR ────────────────── */}
-      <header className="lg:hidden sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-[#E8E4DA]/80 px-4 py-3 flex items-center justify-between shadow-2xs">
+      <header className="lg:hidden sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-[#E6DEFF]/80 px-4 py-3 flex items-center justify-between shadow-2xs">
         <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={() => setIsMobileDrawerOpen(true)}
-            className="p-2 rounded-xl bg-white/80 border border-[#E8E4DA] text-[#18221D] hover:bg-white transition-colors"
+            className="p-2 rounded-xl bg-white/80 border border-[#E6DEFF] text-[#1b1831] hover:bg-white transition-colors"
             aria-label="Open Navigation Menu"
           >
             <Menu className="w-5 h-5" />
@@ -464,10 +464,10 @@ export const ParentDashboardPage = () => {
             className="flex items-center gap-2 text-left cursor-pointer"
             title="Parent Dashboard Overview"
           >
-            <div className="w-8 h-8 rounded-full bg-[#183B2B] text-white flex items-center justify-center shadow-xs">
-              <Compass className="w-4 h-4 text-[#DCE8DE]" />
+            <div className="w-8 h-8 rounded-full bg-[#5f48b9] text-white flex items-center justify-center shadow-xs">
+              <Compass className="w-4 h-4 text-[#E6DEFF]" />
             </div>
-            <span className="font-serif text-xl font-bold tracking-tight text-[#18221D]">
+            <span className="font-serif text-xl font-bold tracking-tight text-[#1b1831]">
               HighOrbit
             </span>
           </button>
@@ -475,15 +475,15 @@ export const ParentDashboardPage = () => {
 
         {/* Mobile Student Switcher Pill */}
         <div className="flex items-center gap-2">
-          <div className="flex items-center bg-[#F0ECE1] border border-[#E0DACE] rounded-full p-0.5 text-xs font-semibold">
+          <div className="flex items-center bg-[#FCF8FF] border border-[#E6DEFF] rounded-full p-0.5 text-xs font-semibold">
             {students.map((std) => (
               <button
                 key={std.id}
                 onClick={() => setSelectedStudentId(std.id)}
                 className={`px-2.5 py-1 rounded-full transition-all text-[11px] ${
                   selectedStudentId === std.id
-                    ? 'bg-[#183B2B] text-white font-bold shadow-2xs'
-                    : 'text-[#4B554E]'
+                    ? 'bg-[#5f48b9] text-white font-bold shadow-2xs'
+                    : 'text-[#484552]'
                 }`}
               >
                 {std.initials}
@@ -491,7 +491,7 @@ export const ParentDashboardPage = () => {
             ))}
           </div>
 
-          <div className="w-8 h-8 rounded-full bg-[#183B2B] text-white flex items-center justify-center font-serif font-bold text-xs">
+          <div className="w-8 h-8 rounded-full bg-[#5f48b9] text-white flex items-center justify-center font-serif font-bold text-xs">
             SJ
           </div>
         </div>
@@ -503,23 +503,23 @@ export const ParentDashboardPage = () => {
           {/* Backdrop */}
           <div
             onClick={() => setIsMobileDrawerOpen(false)}
-            className="fixed inset-0 bg-[#18221D]/30 backdrop-blur-xs transition-opacity"
+            className="fixed inset-0 bg-[#1b1831]/30 backdrop-blur-xs transition-opacity"
           />
 
           {/* Drawer Content */}
-          <aside className="fixed inset-y-0 left-0 w-72 bg-[#FBF9F5]/95 backdrop-blur-2xl border-r border-white/80 p-5 flex flex-col justify-between shadow-2xl z-10 overflow-y-auto">
+          <aside className="fixed inset-y-0 left-0 w-72 bg-[#FCF8FF]/95 backdrop-blur-2xl border-r border-white/80 p-5 flex flex-col justify-between shadow-2xl z-10 overflow-y-auto">
             <div>
               {/* Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-[#E8E4DA]/80">
+              <div className="flex items-center justify-between pb-4 border-b border-[#E6DEFF]/80">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-[#183B2B] text-white flex items-center justify-center shadow-xs">
-                    <Compass className="w-4 h-4 text-[#DCE8DE]" />
+                  <div className="w-8 h-8 rounded-full bg-[#5f48b9] text-white flex items-center justify-center shadow-xs">
+                    <Compass className="w-4 h-4 text-[#E6DEFF]" />
                   </div>
                   <div>
-                    <span className="font-serif text-lg font-bold text-[#18221D] block leading-tight">
+                    <span className="font-serif text-lg font-bold text-[#1b1831] block leading-tight">
                       HighOrbit
                     </span>
-                    <span className="text-[10px] font-bold text-[#183B2B] tracking-wider uppercase">
+                    <span className="text-[10px] font-bold text-[#5f48b9] tracking-wider uppercase">
                       Parent Portal
                     </span>
                   </div>
@@ -528,7 +528,7 @@ export const ParentDashboardPage = () => {
                 <button
                   type="button"
                   onClick={() => setIsMobileDrawerOpen(false)}
-                  className="p-1.5 rounded-full hover:bg-black/5 text-[#5C665F]"
+                  className="p-1.5 rounded-full hover:bg-black/5 text-[#484552]"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -537,7 +537,7 @@ export const ParentDashboardPage = () => {
               {/* Mobile Student Context */}
               <div className="my-4 p-3 rounded-2xl bg-white/70 backdrop-blur-md border border-white/90 shadow-2xs">
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[10px] font-bold text-[#53675D] uppercase tracking-wider">
+                  <span className="text-[10px] font-bold text-[#484552] uppercase tracking-wider">
                     Active Student ({students.length})
                   </span>
                   <button
@@ -545,7 +545,7 @@ export const ParentDashboardPage = () => {
                       setIsMobileDrawerOpen(false);
                       setIsAddStudentModalOpen(true);
                     }}
-                    className="text-[10px] font-bold text-[#183B2B] bg-[#E2EBE5] px-2 py-0.5 rounded-full flex items-center gap-0.5 cursor-pointer"
+                    className="text-[10px] font-bold text-[#5f48b9] bg-[#E6DEFF] px-2 py-0.5 rounded-full flex items-center gap-0.5 cursor-pointer"
                   >
                     <Plus className="w-2.5 h-2.5" />
                     <span>Add</span>
@@ -553,14 +553,14 @@ export const ParentDashboardPage = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded-full bg-[#183B2B] text-white flex items-center justify-center font-bold text-xs shadow-2xs">
+                    <div className="w-9 h-9 rounded-full bg-[#5f48b9] text-white flex items-center justify-center font-bold text-xs shadow-2xs">
                       {activeStudent.initials}
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-[#18221D] leading-tight">
+                      <h4 className="text-sm font-bold text-[#1b1831] leading-tight">
                         {activeStudent.name}
                       </h4>
-                      <span className="text-[11px] text-[#4B735F] font-medium">
+                      <span className="text-[11px] text-[#5f48b9] font-medium">
                         {activeStudent.age} yrs · Senior
                       </span>
                     </div>
@@ -568,15 +568,15 @@ export const ParentDashboardPage = () => {
                 </div>
 
                 {/* Sibling Quick Switcher in Mobile Drawer */}
-                <div className="mt-2.5 pt-2 border-t border-[#E8E4DA]/80 flex items-center gap-1 flex-wrap">
+                <div className="mt-2.5 pt-2 border-t border-[#E6DEFF]/80 flex items-center gap-1 flex-wrap">
                   {students.map((std) => (
                     <button
                       key={std.id}
                       onClick={() => setSelectedStudentId(std.id)}
                       className={`text-[11px] font-bold px-2 py-1 rounded-lg transition-all cursor-pointer ${
                         selectedStudentId === std.id
-                          ? 'bg-[#183B2B] text-white'
-                          : 'bg-white/80 text-[#4B554E]'
+                          ? 'bg-[#5f48b9] text-white'
+                          : 'bg-white/80 text-[#484552]'
                       }`}
                     >
                       {std.name.split(' ')[0]} ({std.age})
@@ -596,11 +596,11 @@ export const ParentDashboardPage = () => {
                       onClick={() => handleSelectNav(item.id)}
                       className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-sm font-semibold transition-all text-left ${
                         isActive
-                          ? 'bg-[#183B2B] text-white shadow-sm'
-                          : 'text-[#4B554E] hover:text-[#18221D] hover:bg-white/60'
+                          ? 'bg-[#5f48b9] text-white shadow-sm'
+                          : 'text-[#484552] hover:text-[#1b1831] hover:bg-white/60'
                       }`}
                     >
-                      <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-[#DCE8DE]' : 'text-[#4B735F]'}`} />
+                      <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-[#E6DEFF]' : 'text-[#5f48b9]'}`} />
                       <span>{item.label}</span>
                     </button>
                   );
@@ -609,11 +609,11 @@ export const ParentDashboardPage = () => {
             </div>
 
             {/* Mobile Drawer Bottom */}
-            <div className="pt-4 border-t border-[#E8E4DA]/80 space-y-1.5">
+            <div className="pt-4 border-t border-[#E6DEFF]/80 space-y-1.5">
               <button
                 onClick={() => handleSelectNav('settings')}
                 className={`w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-xs font-semibold ${
-                  activeTab === 'settings' ? 'bg-[#183B2B] text-white' : 'text-[#4B554E] hover:bg-white/60'
+                  activeTab === 'settings' ? 'bg-[#5f48b9] text-white' : 'text-[#484552] hover:bg-white/60'
                 }`}
               >
                 <Sliders className="w-4 h-4" />
@@ -625,7 +625,7 @@ export const ParentDashboardPage = () => {
                   setIsMobileDrawerOpen(false);
                   setIsHelpModalOpen(true);
                 }}
-                className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-xs font-semibold text-[#4B554E] hover:bg-white/60"
+                className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-xs font-semibold text-[#484552] hover:bg-white/60"
               >
                 <HelpCircle className="w-4 h-4" />
                 <span>Help & Support</span>
@@ -633,12 +633,12 @@ export const ParentDashboardPage = () => {
 
               <div className="pt-2 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-[#183B2B] text-white flex items-center justify-center font-bold text-xs">
+                  <div className="w-8 h-8 rounded-full bg-[#5f48b9] text-white flex items-center justify-center font-bold text-xs">
                     SJ
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-[#18221D]">Sarah Jenkins</div>
-                    <div className="text-[10px] text-[#53675D]">Parent Account</div>
+                    <div className="text-xs font-bold text-[#1b1831]">Sarah Jenkins</div>
+                    <div className="text-[10px] text-[#484552]">Parent Account</div>
                   </div>
                 </div>
 
@@ -672,16 +672,16 @@ export const ParentDashboardPage = () => {
               className="flex items-center gap-2.5 group text-left cursor-pointer"
               title="Parent Dashboard Overview"
             >
-              <div className="w-9 h-9 rounded-full bg-[#183B2B] text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform shrink-0">
-                <Compass className="w-5 h-5 text-[#DCE8DE]" />
+              <div className="w-9 h-9 rounded-full bg-[#5f48b9] text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform shrink-0">
+                <Compass className="w-5 h-5 text-[#E6DEFF]" />
               </div>
 
               {!isSidebarCollapsed && (
                 <div className="animate-fadeIn">
-                  <span className="font-serif text-xl font-bold tracking-tight text-[#18221D] block leading-tight">
+                  <span className="font-serif text-xl font-bold tracking-tight text-[#1b1831] block leading-tight">
                     HighOrbit
                   </span>
-                  <span className="text-[10px] font-bold text-[#183B2B] tracking-wider uppercase">
+                  <span className="text-[10px] font-bold text-[#5f48b9] tracking-wider uppercase">
                     Parent Portal
                   </span>
                 </div>
@@ -692,29 +692,29 @@ export const ParentDashboardPage = () => {
             <button
               type="button"
               onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-              className="p-1.5 rounded-xl text-[#5C665F] hover:text-[#18221D] hover:bg-white/80 border border-transparent hover:border-[#E8E4DA] transition-all cursor-pointer"
+              className="p-1.5 rounded-xl text-[#484552] hover:text-[#1b1831] hover:bg-white/80 border border-transparent hover:border-[#E6DEFF] transition-all cursor-pointer"
               title={isSidebarCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
               aria-label={isSidebarCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
             >
               {isSidebarCollapsed ? (
-                <PanelLeftOpen className="w-4 h-4 text-[#183B2B]" />
+                <PanelLeftOpen className="w-4 h-4 text-[#5f48b9]" />
               ) : (
-                <PanelLeftClose className="w-4 h-4 text-[#5C665F]" />
+                <PanelLeftClose className="w-4 h-4 text-[#484552]" />
               )}
             </button>
           </div>
 
           {/* Student Context Card */}
           {!isSidebarCollapsed ? (
-            <div className="p-3.5 rounded-2xl bg-gradient-to-br from-white/90 to-[#FAF8F4]/80 backdrop-blur-md border border-white/90 shadow-2xs animate-fadeIn">
+            <div className="p-3.5 rounded-2xl bg-gradient-to-br from-white/90 to-[#FCF8FF]/80 backdrop-blur-md border border-white/90 shadow-2xs animate-fadeIn">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-bold text-[#53675D] uppercase tracking-wider">
+                <span className="text-[10px] font-bold text-[#484552] uppercase tracking-wider">
                   Active Student
                 </span>
                 <button
                   type="button"
                   onClick={() => setIsAddStudentModalOpen(true)}
-                  className="text-[10px] font-bold text-[#183B2B] bg-[#E2EBE5] hover:bg-[#D4E2D8] px-2 py-0.5 rounded-full flex items-center gap-1 transition-colors cursor-pointer"
+                  className="text-[10px] font-bold text-[#5f48b9] bg-[#E6DEFF] hover:bg-[#E6DEFF] px-2 py-0.5 rounded-full flex items-center gap-1 transition-colors cursor-pointer"
                   title="Link a new child / student"
                 >
                   <Plus className="w-2.5 h-2.5" />
@@ -723,30 +723,30 @@ export const ParentDashboardPage = () => {
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#183B2B] text-white flex items-center justify-center font-bold text-xs shadow-2xs shrink-0">
+                <div className="w-10 h-10 rounded-full bg-[#5f48b9] text-white flex items-center justify-center font-bold text-xs shadow-2xs shrink-0">
                   {activeStudent.initials}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h4 className="text-sm font-bold text-[#18221D] truncate">
+                  <h4 className="text-sm font-bold text-[#1b1831] truncate">
                     {activeStudent.name}
                   </h4>
-                  <p className="text-xs text-[#4B735F] truncate">
+                  <p className="text-xs text-[#5f48b9] truncate">
                     {activeStudent.age} yrs · Senior
                   </p>
                 </div>
               </div>
 
               {/* Sibling Quick Switcher Pills + Add button */}
-              <div className="mt-3 pt-2.5 border-t border-[#E8E4DA]/80 flex items-center gap-1.5 flex-wrap">
-                <span className="text-[11px] text-[#5C665F] font-medium mr-1">Switch:</span>
+              <div className="mt-3 pt-2.5 border-t border-[#E6DEFF]/80 flex items-center gap-1.5 flex-wrap">
+                <span className="text-[11px] text-[#484552] font-medium mr-1">Switch:</span>
                 {students.map((std) => (
                   <button
                     key={std.id}
                     onClick={() => setSelectedStudentId(std.id)}
                     className={`py-1 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                       selectedStudentId === std.id
-                        ? 'bg-[#183B2B] text-white shadow-2xs font-bold'
-                        : 'bg-white/60 hover:bg-white text-[#4B554E] border border-[#E8E4DA]'
+                        ? 'bg-[#5f48b9] text-white shadow-2xs font-bold'
+                        : 'bg-white/60 hover:bg-white text-[#484552] border border-[#E6DEFF]'
                     }`}
                   >
                     {std.name.split(' ')[0]} ({std.age})
@@ -755,7 +755,7 @@ export const ParentDashboardPage = () => {
                 <button
                   type="button"
                   onClick={() => setIsAddStudentModalOpen(true)}
-                  className="py-1 px-2 rounded-lg text-xs font-bold text-[#183B2B] bg-[#E2EBE5] hover:bg-[#D4E2D8] border border-[#183B2B]/20 flex items-center gap-1 transition-all cursor-pointer"
+                  className="py-1 px-2 rounded-lg text-xs font-bold text-[#5f48b9] bg-[#E6DEFF] hover:bg-[#E6DEFF] border border-[#5f48b9]/20 flex items-center gap-1 transition-all cursor-pointer"
                   title="Add another student"
                 >
                   <Plus className="w-3 h-3" />
@@ -769,7 +769,7 @@ export const ParentDashboardPage = () => {
               <button
                 type="button"
                 onClick={() => setSelectedStudentId(selectedStudentId === 'student_1' ? 'student_2' : 'student_1')}
-                className="w-10 h-10 rounded-full bg-[#183B2B] text-white flex items-center justify-center font-bold text-xs shadow-2xs border-2 border-white cursor-pointer hover:scale-105 transition-transform"
+                className="w-10 h-10 rounded-full bg-[#5f48b9] text-white flex items-center justify-center font-bold text-xs shadow-2xs border-2 border-white cursor-pointer hover:scale-105 transition-transform"
                 title={`Active: ${activeStudent.name}. Click to switch student.`}
               >
                 {activeStudent.initials}
@@ -791,11 +791,11 @@ export const ParentDashboardPage = () => {
                       isSidebarCollapsed ? 'justify-center px-2' : 'px-3.5'
                     } ${
                       isActive
-                        ? 'bg-[#183B2B] text-white shadow-sm font-bold border border-white/20'
-                        : 'text-[#4B554E] hover:text-[#18221D] hover:bg-white/70'
+                        ? 'bg-[#5f48b9] text-white shadow-sm font-bold border border-white/20'
+                        : 'text-[#484552] hover:text-[#1b1831] hover:bg-white/70'
                     }`}
                   >
-                    <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-[#DCE8DE]' : 'text-[#4B735F]'}`} />
+                    <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-[#E6DEFF]' : 'text-[#5f48b9]'}`} />
                     {!isSidebarCollapsed && (
                       <span className="truncate">{item.label}</span>
                     )}
@@ -803,7 +803,7 @@ export const ParentDashboardPage = () => {
 
                   {/* Tooltip when collapsed */}
                   {isSidebarCollapsed && (
-                    <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-[#18221D] text-white text-xs font-semibold whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity shadow-lg z-50">
+                    <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-[#1b1831] text-white text-xs font-semibold whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity shadow-lg z-50">
                       {item.label}
                     </div>
                   )}
@@ -815,7 +815,7 @@ export const ParentDashboardPage = () => {
         </div>
 
         {/* Bottom Navigation Segment */}
-        <div className="pt-4 border-t border-[#E8E4DA]/80 space-y-1.5">
+        <div className="pt-4 border-t border-[#E6DEFF]/80 space-y-1.5">
           
           {/* Privacy & Settings */}
           <div className="relative group">
@@ -825,15 +825,15 @@ export const ParentDashboardPage = () => {
                 isSidebarCollapsed ? 'justify-center px-2' : 'px-3.5'
               } ${
                 activeTab === 'settings'
-                  ? 'bg-[#183B2B] text-white shadow-sm font-bold'
-                  : 'text-[#4B554E] hover:text-[#18221D] hover:bg-white/70'
+                  ? 'bg-[#5f48b9] text-white shadow-sm font-bold'
+                  : 'text-[#484552] hover:text-[#1b1831] hover:bg-white/70'
               }`}
             >
-              <Sliders className="w-4 h-4 shrink-0 text-[#4B735F]" />
+              <Sliders className="w-4 h-4 shrink-0 text-[#5f48b9]" />
               {!isSidebarCollapsed && <span>Privacy & Settings</span>}
             </button>
             {isSidebarCollapsed && (
-              <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-[#18221D] text-white text-xs font-semibold whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity shadow-lg z-50">
+              <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-[#1b1831] text-white text-xs font-semibold whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity shadow-lg z-50">
                 Privacy & Settings
               </div>
             )}
@@ -843,15 +843,15 @@ export const ParentDashboardPage = () => {
           <div className="relative group">
             <button
               onClick={() => setIsHelpModalOpen(true)}
-              className={`w-full flex items-center gap-3 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold text-[#4B554E] hover:text-[#18221D] hover:bg-white/70 transition-all cursor-pointer ${
+              className={`w-full flex items-center gap-3 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold text-[#484552] hover:text-[#1b1831] hover:bg-white/70 transition-all cursor-pointer ${
                 isSidebarCollapsed ? 'justify-center px-2' : 'px-3.5'
               }`}
             >
-              <HelpCircle className="w-4 h-4 shrink-0 text-[#4B735F]" />
+              <HelpCircle className="w-4 h-4 shrink-0 text-[#5f48b9]" />
               {!isSidebarCollapsed && <span>Help & Support</span>}
             </button>
             {isSidebarCollapsed && (
-              <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-[#18221D] text-white text-xs font-semibold whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity shadow-lg z-50">
+              <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-[#1b1831] text-white text-xs font-semibold whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity shadow-lg z-50">
                 Help & Support
               </div>
             )}
@@ -861,14 +861,14 @@ export const ParentDashboardPage = () => {
           {!isSidebarCollapsed ? (
             <div className="p-2.5 mt-2 rounded-2xl bg-white/60 backdrop-blur-md border border-white/80 flex items-center justify-between shadow-2xs">
               <div className="flex items-center gap-2.5 min-w-0">
-                <div className="w-8 h-8 rounded-full bg-[#183B2B] text-white flex items-center justify-center font-serif font-bold text-xs shrink-0">
+                <div className="w-8 h-8 rounded-full bg-[#5f48b9] text-white flex items-center justify-center font-serif font-bold text-xs shrink-0">
                   SJ
                 </div>
                 <div className="min-w-0">
-                  <div className="text-xs font-bold text-[#18221D] truncate">
+                  <div className="text-xs font-bold text-[#1b1831] truncate">
                     {parentAccount?.name || 'Sarah Jenkins'}
                   </div>
-                  <div className="text-[10px] text-[#53675D] truncate">
+                  <div className="text-[10px] text-[#484552] truncate">
                     Parent Account
                   </div>
                 </div>
@@ -876,7 +876,7 @@ export const ParentDashboardPage = () => {
 
               <button
                 onClick={handleLogout}
-                className="p-1.5 text-[#5C665F] hover:text-red-700 hover:bg-red-50 rounded-xl transition-colors cursor-pointer"
+                className="p-1.5 text-[#484552] hover:text-red-700 hover:bg-red-50 rounded-xl transition-colors cursor-pointer"
                 title="Sign Out"
               >
                 <LogOut className="w-4 h-4" />
@@ -886,7 +886,7 @@ export const ParentDashboardPage = () => {
             <div className="flex justify-center pt-2">
               <button
                 onClick={handleLogout}
-                className="p-2.5 text-[#5C665F] hover:text-red-700 hover:bg-red-50 rounded-2xl transition-colors cursor-pointer"
+                className="p-2.5 text-[#484552] hover:text-red-700 hover:bg-red-50 rounded-2xl transition-colors cursor-pointer"
                 title="Sign Out"
               >
                 <LogOut className="w-4 h-4" />
@@ -912,17 +912,17 @@ export const ParentDashboardPage = () => {
           <div className="space-y-8 animate-fadeIn">
             
             {/* Top Welcome Header - Premium Forest Green Glass */}
-            <div className="rounded-[32px] bg-gradient-to-br from-[#183B2B] to-[#122D21] text-white p-7 sm:p-9 shadow-lg relative overflow-hidden border border-white/10">
+            <div className="rounded-[32px] bg-gradient-to-tr from-primary via-primary-container to-[#624bbc] text-white p-7 sm:p-9 shadow-2xl shadow-primary/25 relative overflow-hidden border border-white/20">
               <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-white/5 blur-2xl pointer-events-none" />
               
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
                 <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white/90 text-xs font-semibold uppercase tracking-wider mb-3 backdrop-blur-md border border-white/10">
-                    <Sparkles className="w-3.5 h-3.5 text-[#A7D4B5]" />
+                    <Sparkles className="w-3.5 h-3.5 text-[#FFE28A]" />
                     <span>Weekly Parent Pulse</span>
                   </div>
                   <h1 className="font-serif text-3xl sm:text-4xl lg:text-[40px] font-normal leading-tight">
-                    Welcome back, <span className="italic text-[#DCE8DE]">{parentAccount?.name?.split(' ')[0] || 'Sarah'}.</span>
+                    Welcome back, <span className="italic text-[#E6DEFF]">{parentAccount?.name?.split(' ')[0] || 'Sarah'}.</span>
                   </h1>
                   <p className="mt-2 text-xs sm:text-sm text-white/80 max-w-xl leading-relaxed">
                     Active student: <strong>{activeStudent.name}</strong> ({activeStudent.age} yrs, {activeStudent.stage}).
@@ -931,12 +931,12 @@ export const ParentDashboardPage = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                  <div className="px-4 py-2 rounded-2xl bg-white/10 border border-white/15 text-xs text-[#DCE8DE] backdrop-blur-md">
+                  <div className="px-4 py-2 rounded-2xl bg-white/10 border border-white/15 text-xs text-[#E6DEFF] backdrop-blur-md">
                     <span>Sample Data Mode</span>
                   </div>
                   <button
                     onClick={() => setActiveTab('guide')}
-                    className="px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-[#183B2B] bg-white hover:bg-[#FBF9F5] shadow-xs transition-all cursor-pointer"
+                    className="px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-primary font-bold bg-white hover:bg-white/95 shadow-md hover:scale-105 shadow-xs transition-all cursor-pointer"
                   >
                     Explore Parenting Guide →
                   </button>
@@ -946,23 +946,23 @@ export const ParentDashboardPage = () => {
               {/* Quick Metrics Bar */}
               <div className="mt-8 pt-6 border-t border-white/15 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-left">
                 <div>
-                  <div className="text-xs text-[#A7D4B5] font-semibold">Focus Consistency</div>
+                  <div className="text-xs text-[#FFE28A] font-semibold">Focus Consistency</div>
                   <div className="font-serif text-2xl sm:text-3xl font-bold mt-0.5">{activeStudent.growthIndex}%</div>
                   <div className="text-[11px] text-white/70 mt-0.5">+6% from last month</div>
                 </div>
                 <div>
-                  <div className="text-xs text-[#A7D4B5] font-semibold">Quests Completed</div>
+                  <div className="text-xs text-[#FFE28A] font-semibold">Quests Completed</div>
                   <div className="font-serif text-2xl sm:text-3xl font-bold mt-0.5">{activeStudent.questsCompleted} / {activeStudent.totalQuests}</div>
                   <div className="text-[11px] text-white/70 mt-0.5">4 active growth tracks</div>
                 </div>
                 <div>
-                  <div className="text-xs text-[#A7D4B5] font-semibold">Habit Reflection Streak</div>
+                  <div className="text-xs text-[#FFE28A] font-semibold">Habit Reflection Streak</div>
                   <div className="font-serif text-2xl sm:text-3xl font-bold mt-0.5">{activeStudent.streakDays} Days</div>
                   <div className="text-[11px] text-white/70 mt-0.5">Continuous journaling</div>
                 </div>
                 <div>
-                  <div className="text-xs text-[#A7D4B5] font-semibold">Parent-Student Trust</div>
-                  <div className="font-serif text-2xl sm:text-3xl font-bold mt-0.5 text-[#DCE8DE]">Steady</div>
+                  <div className="text-xs text-[#FFE28A] font-semibold">Parent-Student Trust</div>
+                  <div className="font-serif text-2xl sm:text-3xl font-bold mt-0.5 text-[#E6DEFF]">Steady</div>
                   <div className="text-[11px] text-white/70 mt-0.5">High consent compliance</div>
                 </div>
               </div>
@@ -978,16 +978,16 @@ export const ParentDashboardPage = () => {
                 <div className="rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/90 p-6 sm:p-7 shadow-[0_10px_30px_rgba(25,67,51,0.05)]">
                   <div className="flex items-center justify-between mb-5">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-xl bg-[#E2EBE5] text-[#183B2B] flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-xl bg-[#E6DEFF] text-[#5f48b9] flex items-center justify-center">
                         <Target className="w-4 h-4" />
                       </div>
-                      <h2 className="font-serif text-xl font-bold text-[#18221D]">
+                      <h2 className="font-serif text-xl font-bold text-[#1b1831]">
                         Assignments & Activities Pulse
                       </h2>
                     </div>
                     <button
                       onClick={() => setActiveTab('assignments')}
-                      className="text-xs font-bold text-[#183B2B] hover:underline cursor-pointer"
+                      className="text-xs font-bold text-[#5f48b9] hover:underline cursor-pointer"
                     >
                       View All ({assignments.length}) →
                     </button>
@@ -997,17 +997,17 @@ export const ParentDashboardPage = () => {
                     {assignments.slice(0, 3).map((asg) => (
                       <div
                         key={asg.id}
-                        className="p-4 rounded-2xl bg-white/60 backdrop-blur-md border border-[#E8E4DA]/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-[#183B2B]/40 hover:bg-white/80 transition-all shadow-2xs"
+                        className="p-4 rounded-2xl bg-white/60 backdrop-blur-md border border-[#E6DEFF]/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-[#5f48b9]/40 hover:bg-white/80 transition-all shadow-2xs"
                       >
                         <div>
                           <div className="flex items-center gap-2 mb-1">
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#4B735F] bg-[#E2EBE5] px-2 py-0.5 rounded-md">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#5f48b9] bg-[#E6DEFF] px-2 py-0.5 rounded-md">
                               {asg.track}
                             </span>
-                            <span className="text-xs text-[#5C665F]">Due {asg.dueDate}</span>
+                            <span className="text-xs text-[#484552]">Due {asg.dueDate}</span>
                           </div>
-                          <h3 className="text-sm font-bold text-[#18221D]">{asg.title}</h3>
-                          <p className="text-xs text-[#5C665F] mt-0.5 italic">Note: "{asg.parentNote}"</p>
+                          <h3 className="text-sm font-bold text-[#1b1831]">{asg.title}</h3>
+                          <p className="text-xs text-[#484552] mt-0.5 italic">Note: "{asg.parentNote}"</p>
                         </div>
 
                         <div className="flex items-center gap-2 shrink-0">
@@ -1017,13 +1017,13 @@ export const ParentDashboardPage = () => {
                                 setReviewModalData(asg);
                                 setFeedbackInput('');
                               }}
-                              className="px-3.5 py-1.5 rounded-full text-xs font-bold text-white bg-[#183B2B] hover:bg-[#112D20] shadow-2xs transition-all cursor-pointer"
+                              className="px-3.5 py-1.5 rounded-full text-xs font-bold text-white bg-[#5f48b9] hover:bg-[#4a31a2] shadow-2xs transition-all cursor-pointer"
                             >
                               Review Submission
                             </button>
                           ) : (
                             <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                              asg.status === 'Completed' ? 'bg-[#E2EBE5] text-[#183B2B]' : 'bg-[#F0ECE1] text-[#4B554E]'
+                              asg.status === 'Completed' ? 'bg-[#E6DEFF] text-[#5f48b9]' : 'bg-[#FCF8FF] text-[#484552]'
                             }`}>
                               {asg.status}
                             </span>
@@ -1038,38 +1038,38 @@ export const ParentDashboardPage = () => {
                 <div className="rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/90 p-6 sm:p-7 shadow-[0_10px_30px_rgba(25,67,51,0.05)]">
                   <div className="flex items-center justify-between mb-5">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-xl bg-[#E2EBE5] text-[#183B2B] flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-xl bg-[#E6DEFF] text-[#5f48b9] flex items-center justify-center">
                         <TrendingUp className="w-4 h-4" />
                       </div>
-                      <h2 className="font-serif text-xl font-bold text-[#18221D]">
+                      <h2 className="font-serif text-xl font-bold text-[#1b1831]">
                         Student-Shared Activity Log
                       </h2>
                     </div>
-                    <span className="text-xs text-[#5C665F]">Consented Real-time Sync</span>
+                    <span className="text-xs text-[#484552]">Consented Real-time Sync</span>
                   </div>
 
                   <div className="space-y-4">
-                    <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/50 border border-[#E8E4DA]/70">
-                      <div className="w-8 h-8 rounded-full bg-[#E2EBE5] text-[#183B2B] flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/50 border border-[#E6DEFF]/70">
+                      <div className="w-8 h-8 rounded-full bg-[#E6DEFF] text-[#5f48b9] flex items-center justify-center shrink-0 mt-0.5">
                         <CheckCircle2 className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-xs text-[#5C665F]">Today, 2:15 PM · Self-Discovery Track</div>
-                        <h4 className="text-sm font-bold text-[#18221D] mt-0.5">Completed "Strengths & Flow State Inventory"</h4>
-                        <p className="text-xs text-[#4B554E] mt-1 leading-relaxed">
+                        <div className="text-xs text-[#484552]">Today, 2:15 PM · Self-Discovery Track</div>
+                        <h4 className="text-sm font-bold text-[#1b1831] mt-0.5">Completed "Strengths & Flow State Inventory"</h4>
+                        <p className="text-xs text-[#484552] mt-1 leading-relaxed">
                           Leo identified <strong>Deep Work in Solitude</strong> and <strong>Systems Thinking</strong> as primary peak-energy triggers.
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/50 border border-[#E8E4DA]/70">
-                      <div className="w-8 h-8 rounded-full bg-[#E2EBE5] text-[#183B2B] flex items-center justify-center shrink-0 mt-0.5">
-                        <Heart className="w-4 h-4 text-[#183B2B]" />
+                    <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/50 border border-[#E6DEFF]/70">
+                      <div className="w-8 h-8 rounded-full bg-[#E6DEFF] text-[#5f48b9] flex items-center justify-center shrink-0 mt-0.5">
+                        <Heart className="w-4 h-4 text-[#5f48b9]" />
                       </div>
                       <div>
-                        <div className="text-xs text-[#5C665F]">Yesterday, 9:30 PM · Daily Evening Reflection</div>
-                        <h4 className="text-sm font-bold text-[#18221D] mt-0.5">Logged Gratitude & Stress Check</h4>
-                        <p className="text-xs text-[#4B554E] mt-1 leading-relaxed">
+                        <div className="text-xs text-[#484552]">Yesterday, 9:30 PM · Daily Evening Reflection</div>
+                        <h4 className="text-sm font-bold text-[#1b1831] mt-0.5">Logged Gratitude & Stress Check</h4>
+                        <p className="text-xs text-[#484552] mt-1 leading-relaxed">
                           Shared Mood: <strong>Calm & Focused (4/5)</strong>. Logged 25 minutes of classical guitar practice as a decompression ritual.
                         </p>
                       </div>
@@ -1088,11 +1088,11 @@ export const ParentDashboardPage = () => {
                     <div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center">
                       <AlertCircle className="w-4 h-4" />
                     </div>
-                    <h2 className="font-serif text-xl font-bold text-[#18221D]">
+                    <h2 className="font-serif text-xl font-bold text-[#1b1831]">
                       Areas Where Support May Be Needed
                     </h2>
                   </div>
-                  <p className="text-xs text-[#5C665F] leading-relaxed mb-4">
+                  <p className="text-xs text-[#484552] leading-relaxed mb-4">
                     Generated from student-shared reflection patterns and habit check-ins.
                   </p>
 
@@ -1110,18 +1110,18 @@ export const ParentDashboardPage = () => {
                           setActiveTab('guide');
                           setSelectedSituationId('stress');
                         }}
-                        className="mt-2 text-xs font-bold text-[#183B2B] hover:underline block cursor-pointer"
+                        className="mt-2 text-xs font-bold text-[#5f48b9] hover:underline block cursor-pointer"
                       >
                         Read Stress & Sleep Guide →
                       </button>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-white/50 border border-[#E8E4DA]/80">
+                    <div className="p-4 rounded-2xl bg-white/50 border border-[#E6DEFF]/80">
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-xs font-bold text-[#18221D]">Public Speaking Hesitation</span>
-                        <span className="text-[10px] font-bold text-[#4B735F] bg-[#E2EBE5] px-2 py-0.5 rounded-full">Opportunity</span>
+                        <span className="text-xs font-bold text-[#1b1831]">Public Speaking Hesitation</span>
+                        <span className="text-[10px] font-bold text-[#5f48b9] bg-[#E6DEFF] px-2 py-0.5 rounded-full">Opportunity</span>
                       </div>
-                      <p className="text-xs text-[#5C665F] leading-relaxed">
+                      <p className="text-xs text-[#484552] leading-relaxed">
                         Expressed reluctance about leading the upcoming youth forum. Recommended conversational encouragement rather than unsolicited advice.
                       </p>
                       <button
@@ -1129,7 +1129,7 @@ export const ParentDashboardPage = () => {
                           setActiveTab('guide');
                           setSelectedSituationId('confidence');
                         }}
-                        className="mt-2 text-xs font-bold text-[#183B2B] hover:underline block cursor-pointer"
+                        className="mt-2 text-xs font-bold text-[#5f48b9] hover:underline block cursor-pointer"
                       >
                         Explore Confidence Guide →
                       </button>
@@ -1138,26 +1138,26 @@ export const ParentDashboardPage = () => {
                 </div>
 
                 {/* Recommended Parent Action for Today - Frosted Glass Card */}
-                <div className="rounded-[32px] bg-gradient-to-br from-[#E2EBE5]/90 to-[#DCE8DE]/70 backdrop-blur-xl border border-white/90 p-6 sm:p-7 shadow-[0_10px_30px_rgba(25,67,51,0.05)]">
-                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#183B2B] mb-2">
-                    <Sparkles className="w-4 h-4 text-[#183B2B]" />
+                <div className="rounded-[32px] bg-gradient-to-br from-[#E6DEFF]/90 to-[#E6DEFF]/70 backdrop-blur-xl border border-white/90 p-6 sm:p-7 shadow-[0_10px_30px_rgba(25,67,51,0.05)]">
+                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#5f48b9] mb-2">
+                    <Sparkles className="w-4 h-4 text-[#5f48b9]" />
                     <span>Recommended Action for Today</span>
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-[#18221D]">
+                  <h3 className="font-serif text-lg font-bold text-[#1b1831]">
                     Ask an Open-Ended Curiosity Question
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#365142] mt-1.5 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#484552] mt-1.5 leading-relaxed">
                     Instead of asking <em>"Did you finish your applications?"</em>, try:
                   </p>
-                  <blockquote className="mt-3 p-3.5 rounded-2xl bg-white/80 border border-white/90 font-serif text-xs sm:text-sm italic text-[#18221D]">
+                  <blockquote className="mt-3 p-3.5 rounded-2xl bg-white/80 border border-white/90 font-serif text-xs sm:text-sm italic text-[#1b1831]">
                     "What part of your project felt most intellectually exciting to work through today?"
                   </blockquote>
                   
                   <div className="mt-4 flex items-center justify-between">
-                    <span className="text-xs text-[#4B554E]">Fosters autonomous motivation</span>
+                    <span className="text-xs text-[#484552]">Fosters autonomous motivation</span>
                     <button
                       onClick={() => setActiveTab('self_growth')}
-                      className="px-3.5 py-1.5 rounded-full text-xs font-bold text-white bg-[#183B2B] hover:bg-[#112D20] shadow-2xs transition-all cursor-pointer"
+                      className="px-3.5 py-1.5 rounded-full text-xs font-bold text-white bg-[#5f48b9] hover:bg-[#4a31a2] shadow-2xs transition-all cursor-pointer"
                     >
                       Log Practice
                     </button>
@@ -1179,31 +1179,31 @@ export const ParentDashboardPage = () => {
             
             {/* Header & Sibling Switcher Card */}
             <div className="rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/90 p-7 sm:p-8 shadow-[0_10px_30px_rgba(25,67,51,0.05)]">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E8E4DA]/80">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E6DEFF]/80">
                 <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E2EBE5] text-[#183B2B] text-xs font-semibold mb-2">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6DEFF] text-[#5f48b9] text-xs font-semibold mb-2">
                     <User className="w-3.5 h-3.5" />
                     <span>Linked Student Profile</span>
                   </div>
-                  <h1 className="font-serif text-3xl font-bold text-[#18221D]">
+                  <h1 className="font-serif text-3xl font-bold text-[#1b1831]">
                     {activeStudent.name}
                   </h1>
-                  <p className="text-xs sm:text-sm text-[#5C665F] mt-1">
+                  <p className="text-xs sm:text-sm text-[#484552] mt-1">
                     {activeStudent.age} Years Old · {activeStudent.stage}
                   </p>
                 </div>
 
                 {/* Sibling Toggle Pills + Add Student + Unlink Student Actions */}
                 <div className="flex flex-wrap items-center gap-2">
-                  <div className="flex items-center gap-1.5 bg-[#F0ECE1] border border-[#E0DACE] p-1.5 rounded-2xl">
+                  <div className="flex items-center gap-1.5 bg-[#FCF8FF] border border-[#E6DEFF] p-1.5 rounded-2xl">
                     {students.map((std) => (
                       <button
                         key={std.id}
                         onClick={() => setSelectedStudentId(std.id)}
                         className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                           selectedStudentId === std.id
-                            ? 'bg-[#183B2B] text-white shadow-2xs'
-                            : 'text-[#4B554E] hover:text-[#18221D]'
+                            ? 'bg-[#5f48b9] text-white shadow-2xs'
+                            : 'text-[#484552] hover:text-[#1b1831]'
                         }`}
                       >
                         {std.name} ({std.age} yrs)
@@ -1214,7 +1214,7 @@ export const ParentDashboardPage = () => {
                   <button
                     type="button"
                     onClick={() => setIsAddStudentModalOpen(true)}
-                    className="px-3.5 py-2 rounded-2xl text-xs font-bold text-white bg-[#183B2B] hover:bg-[#112D20] shadow-2xs flex items-center gap-1.5 transition-all cursor-pointer"
+                    className="px-3.5 py-2 rounded-2xl text-xs font-bold text-white bg-[#5f48b9] hover:bg-[#4a31a2] shadow-2xs flex items-center gap-1.5 transition-all cursor-pointer"
                   >
                     <UserPlus className="w-3.5 h-3.5" />
                     <span>Add Child</span>
@@ -1239,27 +1239,27 @@ export const ParentDashboardPage = () => {
 
               {/* Archetype & Core Identity */}
               <div className="pt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="p-5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA]">
-                  <span className="text-[11px] font-bold text-[#5C665F] uppercase tracking-wider block mb-1">
+                <div className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF]">
+                  <span className="text-[11px] font-bold text-[#484552] uppercase tracking-wider block mb-1">
                     Observed Growth Archetype
                   </span>
-                  <div className="font-serif text-lg font-bold text-[#18221D]">
+                  <div className="font-serif text-lg font-bold text-[#1b1831]">
                     {activeStudent.archetype}
                   </div>
-                  <p className="text-xs text-[#5C665F] mt-1.5 leading-relaxed">
+                  <p className="text-xs text-[#484552] mt-1.5 leading-relaxed">
                     Derives intrinsic motivation from mastery, logic rigor, and quiet deep reflection.
                   </p>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA]">
-                  <span className="text-[11px] font-bold text-[#5C665F] uppercase tracking-wider block mb-1">
+                <div className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF]">
+                  <span className="text-[11px] font-bold text-[#484552] uppercase tracking-wider block mb-1">
                     Declared Interests & Passions
                   </span>
                   <div className="flex flex-wrap gap-1.5 mt-2">
                     {activeStudent.interests.map((int) => (
                       <span
                         key={int}
-                        className="px-2.5 py-1 rounded-full text-xs font-semibold bg-white border border-[#DCD6C8] text-[#18221D]"
+                        className="px-2.5 py-1 rounded-full text-xs font-semibold bg-white border border-[#E6DEFF] text-[#1b1831]"
                       >
                         {int}
                       </span>
@@ -1267,15 +1267,15 @@ export const ParentDashboardPage = () => {
                   </div>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA]">
-                  <span className="text-[11px] font-bold text-[#5C665F] uppercase tracking-wider block mb-1">
+                <div className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF]">
+                  <span className="text-[11px] font-bold text-[#484552] uppercase tracking-wider block mb-1">
                     Privacy & Transparency Protocol
                   </span>
-                  <div className="flex items-center gap-2 text-xs font-bold text-[#183B2B] mt-1">
-                    <ShieldCheck className="w-4 h-4 text-[#183B2B]" />
+                  <div className="flex items-center gap-2 text-xs font-bold text-[#5f48b9] mt-1">
+                    <ShieldCheck className="w-4 h-4 text-[#5f48b9]" />
                     <span>Explicit Consent Active</span>
                   </div>
-                  <p className="text-xs text-[#5C665F] mt-1.5 leading-relaxed">
+                  <p className="text-xs text-[#484552] mt-1.5 leading-relaxed">
                     {activeStudent.privacyMode}
                   </p>
                 </div>
@@ -1286,15 +1286,15 @@ export const ParentDashboardPage = () => {
             <div className="rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/90 p-7 sm:p-8 shadow-[0_10px_30px_rgba(25,67,51,0.05)]">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h2 className="font-serif text-2xl font-bold text-[#18221D]">
+                  <h2 className="font-serif text-2xl font-bold text-[#1b1831]">
                     Strengths & Development Dimensions
                   </h2>
-                  <p className="text-xs sm:text-sm text-[#5C665F] mt-0.5">
+                  <p className="text-xs sm:text-sm text-[#484552] mt-0.5">
                     Synthesized from completed activities, self-assessments, and parent observations.
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-[#5C665F]">Zero psychometric labeling</span>
+                  <span className="text-xs text-[#484552]">Zero psychometric labeling</span>
                 </div>
               </div>
 
@@ -1302,31 +1302,31 @@ export const ParentDashboardPage = () => {
                 {activeStudent.strengths.map((st) => (
                   <div
                     key={st.name}
-                    className="p-4 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA] flex items-center justify-between gap-4"
+                    className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] flex items-center justify-between gap-4"
                   >
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
                           st.status === 'Strength'
-                            ? 'bg-[#E2EBE5] text-[#183B2B]'
+                            ? 'bg-[#E6DEFF] text-[#5f48b9]'
                             : st.status === 'High'
-                            ? 'bg-[#F0ECE1] text-[#4B554E]'
+                            ? 'bg-[#FCF8FF] text-[#484552]'
                             : 'bg-amber-100 text-amber-900'
                         }`}>
                           {st.status}
                         </span>
                       </div>
-                      <h4 className="text-sm font-bold text-[#18221D]">{st.name}</h4>
+                      <h4 className="text-sm font-bold text-[#1b1831]">{st.name}</h4>
                     </div>
 
                     <div className="flex items-center gap-3 shrink-0">
-                      <div className="w-24 bg-[#E8E4DA] h-2 rounded-full overflow-hidden">
+                      <div className="w-24 bg-[#E6DEFF] h-2 rounded-full overflow-hidden">
                         <div
-                          className="bg-[#183B2B] h-full rounded-full transition-all duration-500"
+                          className="bg-[#5f48b9] h-full rounded-full transition-all duration-500"
                           style={{ width: `${st.score}%` }}
                         />
                       </div>
-                      <span className="font-serif text-sm font-bold text-[#18221D] w-8 text-right">
+                      <span className="font-serif text-sm font-bold text-[#1b1831] w-8 text-right">
                         {st.score}%
                       </span>
                     </div>
@@ -1336,10 +1336,10 @@ export const ParentDashboardPage = () => {
             </div>
 
             {/* Absolute Media Restrictions Guarantee Card */}
-            <div className="rounded-[32px] bg-[#183B2B] text-white p-7 sm:p-8 shadow-md relative overflow-hidden">
+            <div className="rounded-[32px] bg-[#5f48b9] text-white p-7 sm:p-8 shadow-md relative overflow-hidden">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-xl shrink-0">
-                  <ShieldAlert className="w-6 h-6 text-[#A7D4B5]" />
+                  <ShieldAlert className="w-6 h-6 text-[#FFE28A]" />
                 </div>
                 <div>
                   <h3 className="font-serif text-xl font-bold">
@@ -1363,23 +1363,23 @@ export const ParentDashboardPage = () => {
             
             {/* Header */}
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E2EBE5] text-[#183B2B] text-xs font-semibold mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6DEFF] text-[#5f48b9] text-xs font-semibold mb-2">
                 <TrendingUp className="w-3.5 h-3.5" />
                 <span>Transparent Developmental Metrics</span>
               </div>
-              <h1 className="font-serif text-3xl font-bold text-[#18221D]">
+              <h1 className="font-serif text-3xl font-bold text-[#1b1831]">
                 Behaviour & Development Insights
               </h1>
-              <p className="text-xs sm:text-sm text-[#5C665F] mt-1 max-w-2xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#484552] mt-1 max-w-2xl leading-relaxed">
                 Clear distinction between student-reported data, parent observations, and completed activities. No clinical diagnosis or surveillance.
               </p>
             </div>
 
             {/* Source Distinctions Legend */}
             <div className="p-4 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/90 flex flex-wrap items-center gap-4 text-xs shadow-2xs">
-              <span className="font-bold text-[#18221D]">Source Badges:</span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E2EBE5] text-[#183B2B] font-semibold border border-[#183B2B]/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#183B2B]" />
+              <span className="font-bold text-[#1b1831]">Source Badges:</span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6DEFF] text-[#5f48b9] font-semibold border border-[#5f48b9]/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#5f48b9]" />
                 Student-Reported
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-800 font-semibold border border-blue-200">
@@ -1399,13 +1399,13 @@ export const ParentDashboardPage = () => {
             {/* 9 Pillars of Development Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {[
-                { title: '1. Confidence', desc: 'Self-belief in academic voice and social environments.', score: 76, badge: 'Student-Reported', color: 'bg-[#E2EBE5] text-[#183B2B]' },
+                { title: '1. Confidence', desc: 'Self-belief in academic voice and social environments.', score: 76, badge: 'Student-Reported', color: 'bg-[#E6DEFF] text-[#5f48b9]' },
                 { title: '2. Communication', desc: 'Active listening, asking for help, and expressing needs.', score: 70, badge: 'Activity Data', color: 'bg-purple-50 text-purple-800' },
-                { title: '3. Emotional Awareness', desc: 'Identifying emotions, journaling, and staying grounded.', score: 84, badge: 'Student-Reported', color: 'bg-[#E2EBE5] text-[#183B2B]' },
+                { title: '3. Emotional Awareness', desc: 'Identifying emotions, journaling, and staying grounded.', score: 84, badge: 'Student-Reported', color: 'bg-[#E6DEFF] text-[#5f48b9]' },
                 { title: '4. Focus & Attention', desc: 'Deep work habit consistency and screen boundary tracking.', score: 88, badge: 'Activity Data', color: 'bg-purple-50 text-purple-800' },
                 { title: '5. Time Management', desc: 'Scheduling assignments and preparing ahead of deadlines.', score: 82, badge: 'Parent Observation', color: 'bg-blue-50 text-blue-800' },
                 { title: '6. Decision-Making', desc: 'Evaluating trade-offs and handling university choices.', score: 74, badge: 'System Suggestion', color: 'bg-amber-50 text-amber-800' },
-                { title: '7. Motivation', desc: 'Intrinsic drive vs extrinsic performance pressure.', score: 80, badge: 'Student-Reported', color: 'bg-[#E2EBE5] text-[#183B2B]' },
+                { title: '7. Motivation', desc: 'Intrinsic drive vs extrinsic performance pressure.', score: 80, badge: 'Student-Reported', color: 'bg-[#E6DEFF] text-[#5f48b9]' },
                 { title: '8. Personal Responsibility', desc: 'Owning mistakes, team accountability, and follow-through.', score: 86, badge: 'Parent Observation', color: 'bg-blue-50 text-blue-800' },
                 { title: '9. Strengths & Passions', desc: 'Time spent in flow state on organic personal interests.', score: 90, badge: 'Activity Data', color: 'bg-purple-50 text-purple-800' }
               ].map((pil) => (
@@ -1418,14 +1418,14 @@ export const ParentDashboardPage = () => {
                       <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${pil.color}`}>
                         {pil.badge}
                       </span>
-                      <span className="font-serif text-sm font-bold text-[#18221D]">{pil.score}%</span>
+                      <span className="font-serif text-sm font-bold text-[#1b1831]">{pil.score}%</span>
                     </div>
-                    <h3 className="font-serif text-base font-bold text-[#18221D]">{pil.title}</h3>
-                    <p className="text-xs text-[#5C665F] mt-1 leading-relaxed">{pil.desc}</p>
+                    <h3 className="font-serif text-base font-bold text-[#1b1831]">{pil.title}</h3>
+                    <p className="text-xs text-[#484552] mt-1 leading-relaxed">{pil.desc}</p>
                   </div>
 
-                  <div className="w-full bg-[#E8E4DA] h-1.5 rounded-full overflow-hidden">
-                    <div className="bg-[#183B2B] h-full rounded-full" style={{ width: `${pil.score}%` }} />
+                  <div className="w-full bg-[#E6DEFF] h-1.5 rounded-full overflow-hidden">
+                    <div className="bg-[#5f48b9] h-full rounded-full" style={{ width: `${pil.score}%` }} />
                   </div>
                 </div>
               ))}
@@ -1435,14 +1435,14 @@ export const ParentDashboardPage = () => {
             <div className="rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/90 p-7 sm:p-8 shadow-[0_10px_30px_rgba(25,67,51,0.05)]">
               <div className="flex items-center justify-between mb-5">
                 <div>
-                  <h2 className="font-serif text-2xl font-bold text-[#18221D]">
+                  <h2 className="font-serif text-2xl font-bold text-[#1b1831]">
                     Record a Positive Parent Observation
                   </h2>
-                  <p className="text-xs sm:text-sm text-[#5C665F] mt-0.5">
+                  <p className="text-xs sm:text-sm text-[#484552] mt-0.5">
                     Log moments where you noticed effort, self-discipline, or emotional maturity. Kept safe in your family records.
                   </p>
                 </div>
-                <div className="w-8 h-8 rounded-xl bg-[#E2EBE5] text-[#183B2B] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-xl bg-[#E6DEFF] text-[#5f48b9] flex items-center justify-center">
                   <Plus className="w-4 h-4" />
                 </div>
               </div>
@@ -1466,13 +1466,13 @@ export const ParentDashboardPage = () => {
               >
                 <div className="flex flex-col sm:flex-row gap-4">
                   <div className="sm:w-64">
-                    <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                    <label className="text-xs font-semibold text-[#1b1831] block mb-1">
                       Category Tag
                     </label>
                     <select
                       value={observationCategory}
                       onChange={(e) => setObservationCategory(e.target.value)}
-                      className="w-full py-2.5 px-3.5 rounded-2xl bg-white/70 border border-[#DCD6C8] text-xs font-semibold text-[#18221D] focus:outline-none focus:border-[#183B2B]"
+                      className="w-full py-2.5 px-3.5 rounded-2xl bg-white/70 border border-[#E6DEFF] text-xs font-semibold text-[#1b1831] focus:outline-none focus:border-[#5f48b9]"
                     >
                       <option value="Focus & Time">Focus & Time</option>
                       <option value="Communication">Communication</option>
@@ -1483,7 +1483,7 @@ export const ParentDashboardPage = () => {
                   </div>
 
                   <div className="flex-1">
-                    <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                    <label className="text-xs font-semibold text-[#1b1831] block mb-1">
                       Observation Note (Non-judgmental & Specific)
                     </label>
                     <input
@@ -1491,7 +1491,7 @@ export const ParentDashboardPage = () => {
                       value={newObservationText}
                       onChange={(e) => setNewObservationText(e.target.value)}
                       placeholder="e.g. Leo spent 30 mins planning his revision calendar without being prompted."
-                      className="w-full py-2.5 px-4 rounded-2xl bg-white/70 border border-[#DCD6C8] text-xs sm:text-sm text-[#18221D] focus:outline-none focus:border-[#183B2B]"
+                      className="w-full py-2.5 px-4 rounded-2xl bg-white/70 border border-[#E6DEFF] text-xs sm:text-sm text-[#1b1831] focus:outline-none focus:border-[#5f48b9]"
                     />
                   </div>
                 </div>
@@ -1500,7 +1500,7 @@ export const ParentDashboardPage = () => {
                   <button
                     type="submit"
                     disabled={!newObservationText.trim()}
-                    className="px-6 py-2.5 rounded-full text-xs font-bold text-white bg-[#183B2B] hover:bg-[#112D20] disabled:opacity-50 transition-all cursor-pointer shadow-xs"
+                    className="px-6 py-2.5 rounded-full text-xs font-bold text-white bg-[#5f48b9] hover:bg-[#4a31a2] disabled:opacity-50 transition-all cursor-pointer shadow-xs"
                   >
                     Save Parent Observation
                   </button>
@@ -1508,24 +1508,24 @@ export const ParentDashboardPage = () => {
               </form>
 
               {/* History of Observations */}
-              <div className="mt-8 pt-6 border-t border-[#E8E4DA]/80 space-y-3">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#5C665F] block">
+              <div className="mt-8 pt-6 border-t border-[#E6DEFF]/80 space-y-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#484552] block">
                   Recent Recorded Observations ({parentObservations.length})
                 </span>
                 {parentObservations.map((obs) => (
                   <div
                     key={obs.id}
-                    className="p-4 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA] flex flex-col sm:flex-row sm:items-center justify-between gap-2"
+                    className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] flex flex-col sm:flex-row sm:items-center justify-between gap-2"
                   >
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-[10px] font-bold text-blue-800 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">
                           {obs.source}
                         </span>
-                        <span className="text-xs font-semibold text-[#183B2B]">{obs.category}</span>
-                        <span className="text-xs text-[#5C665F]">· {obs.date}</span>
+                        <span className="text-xs font-semibold text-[#5f48b9]">{obs.category}</span>
+                        <span className="text-xs text-[#484552]">· {obs.date}</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-[#18221D] leading-relaxed">{obs.observation}</p>
+                      <p className="text-xs sm:text-sm text-[#1b1831] leading-relaxed">{obs.observation}</p>
                     </div>
                   </div>
                 ))}
@@ -1543,14 +1543,14 @@ export const ParentDashboardPage = () => {
             
             {/* Guide Header */}
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E2EBE5] text-[#183B2B] text-xs font-semibold mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6DEFF] text-[#5f48b9] text-xs font-semibold mb-2">
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>Practical Psychology & Positive Guidance</span>
               </div>
-              <h1 className="font-serif text-3xl font-bold text-[#18221D]">
+              <h1 className="font-serif text-3xl font-bold text-[#1b1831]">
                 The HighOrbit Parenting Guide
               </h1>
-              <p className="text-xs sm:text-sm text-[#5C665F] mt-1 max-w-2xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#484552] mt-1 max-w-2xl leading-relaxed">
                 Evidence-based, respectful strategies for navigating common challenges with 15–25 year olds without lectures, friction, or guilt.
               </p>
             </div>
@@ -1564,8 +1564,8 @@ export const ParentDashboardPage = () => {
                     onClick={() => setGuideCategoryFilter(cat)}
                     className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer whitespace-nowrap ${
                       guideCategoryFilter === cat
-                        ? 'bg-[#183B2B] text-white shadow-2xs'
-                        : 'bg-white/80 hover:bg-white text-[#4B554E] border border-[#E8E4DA]'
+                        ? 'bg-[#5f48b9] text-white shadow-2xs'
+                        : 'bg-white/80 hover:bg-white text-[#484552] border border-[#E6DEFF]'
                     }`}
                   >
                     {cat}
@@ -1574,13 +1574,13 @@ export const ParentDashboardPage = () => {
               </div>
 
               <div className="relative w-full sm:w-72">
-                <Search className="w-4 h-4 text-[#5C665F] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Search className="w-4 h-4 text-[#484552] absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   value={guideSearchTerm}
                   onChange={(e) => setGuideSearchTerm(e.target.value)}
                   placeholder="Search situations..."
-                  className="w-full pl-9 pr-4 py-2 rounded-full bg-white/80 border border-[#E8E4DA] text-xs text-[#18221D] focus:outline-none focus:border-[#183B2B]"
+                  className="w-full pl-9 pr-4 py-2 rounded-full bg-white/80 border border-[#E6DEFF] text-xs text-[#1b1831] focus:outline-none focus:border-[#5f48b9]"
                 />
               </div>
             </div>
@@ -1598,21 +1598,21 @@ export const ParentDashboardPage = () => {
                       onClick={() => setSelectedSituationId(sit.id)}
                       className={`w-full p-4 rounded-2xl text-left border transition-all cursor-pointer flex flex-col gap-1.5 ${
                         isSelected
-                          ? 'bg-[#183B2B] text-white shadow-md border-[#183B2B]'
-                          : 'bg-white/80 hover:bg-white border-[#E8E4DA] text-[#18221D]'
+                          ? 'bg-[#5f48b9] text-white shadow-md border-[#5f48b9]'
+                          : 'bg-white/80 hover:bg-white border-[#E6DEFF] text-[#1b1831]'
                       }`}
                     >
                       <div className="flex items-center justify-between">
                         <span className={`text-[10px] font-bold uppercase tracking-wider ${
-                          isSelected ? 'text-[#A7D4B5]' : 'text-[#4B735F]'
+                          isSelected ? 'text-[#FFE28A]' : 'text-[#5f48b9]'
                         }`}>
                           {sit.category}
                         </span>
-                        <ChevronRight className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-[#5C665F]'}`} />
+                        <ChevronRight className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-[#484552]'}`} />
                       </div>
                       <h3 className="font-serif text-base font-bold leading-tight">{sit.title}</h3>
                       <p className={`text-xs line-clamp-2 mt-0.5 leading-relaxed ${
-                        isSelected ? 'text-white/80' : 'text-[#5C665F]'
+                        isSelected ? 'text-white/80' : 'text-[#484552]'
                       }`}>
                         {sit.summary}
                       </p>
@@ -1625,28 +1625,28 @@ export const ParentDashboardPage = () => {
               <div className="lg:col-span-8 rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/90 p-7 sm:p-9 shadow-[0_10px_30px_rgba(25,67,51,0.05)] space-y-7">
                 
                 {/* Title & Category Banner */}
-                <div className="border-b border-[#E8E4DA]/80 pb-5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#4B735F]">
+                <div className="border-b border-[#E6DEFF]/80 pb-5">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#5f48b9]">
                     {selectedSituation.category}
                   </span>
-                  <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#18221D] mt-1">
+                  <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#1b1831] mt-1">
                     {selectedSituation.title}
                   </h2>
-                  <p className="text-xs sm:text-sm text-[#5C665F] mt-2 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#484552] mt-2 leading-relaxed">
                     {selectedSituation.summary}
                   </p>
                 </div>
 
                 {/* 1. What You May Be Noticing */}
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-[#18221D] flex items-center gap-2 mb-3">
-                    <Eye className="w-4 h-4 text-[#183B2B]" />
+                  <h3 className="font-serif text-lg font-bold text-[#1b1831] flex items-center gap-2 mb-3">
+                    <Eye className="w-4 h-4 text-[#5f48b9]" />
                     <span>1. What You May Be Noticing</span>
                   </h3>
-                  <ul className="space-y-2 text-xs sm:text-sm text-[#4B554E] pl-2">
+                  <ul className="space-y-2 text-xs sm:text-sm text-[#484552] pl-2">
                     {(selectedSituation.noticing || selectedSituation.whatYouNotice || []).map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#183B2B] mt-2 shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#5f48b9] mt-2 shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -1654,14 +1654,14 @@ export const ParentDashboardPage = () => {
                 </div>
 
                 {/* 2. Possible Reasons (Without Assumption) */}
-                <div className="p-5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA]">
-                  <h3 className="font-serif text-lg font-bold text-[#18221D] mb-3">
+                <div className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF]">
+                  <h3 className="font-serif text-lg font-bold text-[#1b1831] mb-3">
                     2. Possible Reasons (Presented without judgment)
                   </h3>
-                  <ul className="space-y-2 text-xs sm:text-sm text-[#4B554E]">
+                  <ul className="space-y-2 text-xs sm:text-sm text-[#484552]">
                     {(selectedSituation.reasons || selectedSituation.possibleReasons || []).map((reason, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <span className="text-[#183B2B] font-bold">·</span>
+                        <span className="text-[#5f48b9] font-bold">·</span>
                         <span>{reason}</span>
                       </li>
                     ))}
@@ -1670,13 +1670,13 @@ export const ParentDashboardPage = () => {
 
                 {/* 3. Supportive Questions You Can Ask */}
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-[#18221D] flex items-center gap-2 mb-3">
-                    <MessageCircle className="w-4 h-4 text-[#183B2B]" />
+                  <h3 className="font-serif text-lg font-bold text-[#1b1831] flex items-center gap-2 mb-3">
+                    <MessageCircle className="w-4 h-4 text-[#5f48b9]" />
                     <span>3. Questions You Can Ask</span>
                   </h3>
                   <div className="space-y-2.5">
                     {(selectedSituation.questions || selectedSituation.supportiveQuestions || []).map((q, idx) => (
-                      <div key={idx} className="p-3.5 rounded-xl bg-[#E2EBE5]/60 border border-[#183B2B]/20 text-xs sm:text-sm text-[#183B2B] font-medium italic">
+                      <div key={idx} className="p-3.5 rounded-xl bg-[#E6DEFF]/60 border border-[#5f48b9]/20 text-xs sm:text-sm text-[#5f48b9] font-medium italic">
                         {q.startsWith('"') ? q : `"${q}"`}
                       </div>
                     ))}
@@ -1685,12 +1685,12 @@ export const ParentDashboardPage = () => {
 
                 {/* 4. What You Can Do VS 5. What to Avoid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="p-5 rounded-2xl bg-[#E2EBE5]/40 border border-[#183B2B]/20">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#183B2B] mb-2 flex items-center gap-1.5">
-                      <Check className="w-4 h-4 text-[#183B2B]" />
+                  <div className="p-5 rounded-2xl bg-[#E6DEFF]/40 border border-[#5f48b9]/20">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#5f48b9] mb-2 flex items-center gap-1.5">
+                      <Check className="w-4 h-4 text-[#5f48b9]" />
                       <span>4. What You Can Do</span>
                     </h4>
-                    <ul className="space-y-2 text-xs text-[#365142]">
+                    <ul className="space-y-2 text-xs text-[#484552]">
                       {(selectedSituation.dos || selectedSituation.whatToDo || []).map((item, idx) => (
                         <li key={idx}>✓ {item}</li>
                       ))}
@@ -1711,33 +1711,33 @@ export const ParentDashboardPage = () => {
                 </div>
 
                 {/* 6. Example Supportive Conversation Script */}
-                <div className="p-5 rounded-2xl bg-[#F0ECE1] border border-[#E0DACE]">
-                  <h4 className="font-serif text-base font-bold text-[#18221D] mb-3">
+                <div className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF]">
+                  <h4 className="font-serif text-base font-bold text-[#1b1831] mb-3">
                     6. Example Supportive Dialogue Script
                   </h4>
                   <div className="space-y-2.5 text-xs sm:text-sm">
                     {Array.isArray(selectedSituation.conversation) ? (
                       selectedSituation.conversation.map((msg, idx) => (
-                        <div key={idx} className="p-3 rounded-xl bg-white/80 border border-[#E8E4DA]">
-                          <strong className={`block mb-1 ${msg.speaker === 'Parent' ? 'text-[#183B2B]' : 'text-[#5C665F]'}`}>
+                        <div key={idx} className="p-3 rounded-xl bg-white/80 border border-[#E6DEFF]">
+                          <strong className={`block mb-1 ${msg.speaker === 'Parent' ? 'text-[#5f48b9]' : 'text-[#484552]'}`}>
                             {msg.speaker}:
                           </strong>
-                          <p className="italic text-[#18221D]">{msg.text}</p>
+                          <p className="italic text-[#1b1831]">{msg.text}</p>
                         </div>
                       ))
                     ) : selectedSituation.exampleScript ? (
                       <>
-                        <div className="p-3 rounded-xl bg-white/80 border border-[#E8E4DA]">
-                          <strong className="text-[#183B2B] block mb-1">Parent:</strong>
-                          <p className="italic text-[#18221D]">{selectedSituation.exampleScript.parent}</p>
+                        <div className="p-3 rounded-xl bg-white/80 border border-[#E6DEFF]">
+                          <strong className="text-[#5f48b9] block mb-1">Parent:</strong>
+                          <p className="italic text-[#1b1831]">{selectedSituation.exampleScript.parent}</p>
                         </div>
-                        <div className="p-3 rounded-xl bg-white/80 border border-[#E8E4DA]">
-                          <strong className="text-[#5C665F] block mb-1">Student:</strong>
-                          <p className="italic text-[#18221D]">{selectedSituation.exampleScript.student}</p>
+                        <div className="p-3 rounded-xl bg-white/80 border border-[#E6DEFF]">
+                          <strong className="text-[#484552] block mb-1">Student:</strong>
+                          <p className="italic text-[#1b1831]">{selectedSituation.exampleScript.student}</p>
                         </div>
-                        <div className="p-3 rounded-xl bg-white/80 border border-[#E8E4DA]">
-                          <strong className="text-[#183B2B] block mb-1">Parent Follow-up:</strong>
-                          <p className="italic text-[#18221D]">{selectedSituation.exampleScript.followUp}</p>
+                        <div className="p-3 rounded-xl bg-white/80 border border-[#E6DEFF]">
+                          <strong className="text-[#5f48b9] block mb-1">Parent Follow-up:</strong>
+                          <p className="italic text-[#1b1831]">{selectedSituation.exampleScript.followUp}</p>
                         </div>
                       </>
                     ) : null}
@@ -1745,9 +1745,9 @@ export const ParentDashboardPage = () => {
                 </div>
 
                 {/* 7. Suggested Follow-Up Activity */}
-                <div className="p-5 rounded-2xl bg-[#183B2B] text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="p-5 rounded-2xl bg-[#5f48b9] text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#A7D4B5]">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#FFE28A]">
                       7. Suggested Follow-Up Activity
                     </span>
                     <h4 className="font-serif text-lg font-bold text-white mt-0.5">
@@ -1768,7 +1768,7 @@ export const ParentDashboardPage = () => {
                       });
                       setIsAssignModalOpen(true);
                     }}
-                    className="px-5 py-2.5 rounded-full text-xs font-bold text-[#183B2B] bg-white hover:bg-[#FBF9F5] shadow-xs shrink-0 transition-all cursor-pointer"
+                    className="px-5 py-2.5 rounded-full text-xs font-bold text-primary font-bold bg-white hover:bg-white/95 shadow-md hover:scale-105 shadow-xs shrink-0 transition-all cursor-pointer"
                   >
                     1-Click Assign Activity →
                   </button>
@@ -1801,21 +1801,21 @@ export const ParentDashboardPage = () => {
             {/* Header + Assign CTA */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E2EBE5] text-[#183B2B] text-xs font-semibold mb-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6DEFF] text-[#5f48b9] text-xs font-semibold mb-2">
                   <Target className="w-3.5 h-3.5" />
                   <span>Personal Development Curriculum</span>
                 </div>
-                <h1 className="font-serif text-3xl font-bold text-[#18221D]">
+                <h1 className="font-serif text-3xl font-bold text-[#1b1831]">
                   Assignments & Activities Hub
                 </h1>
-                <p className="text-xs sm:text-sm text-[#5C665F] mt-1">
+                <p className="text-xs sm:text-sm text-[#484552] mt-1">
                   Assign constructive life-skills challenges and celebrate completed student reflections.
                 </p>
               </div>
 
               <button
                 onClick={() => setIsAssignModalOpen(true)}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-[#183B2B] hover:bg-[#112D20] shadow-sm transition-all cursor-pointer shrink-0"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-[#5f48b9] hover:bg-[#4a31a2] shadow-sm transition-all cursor-pointer shrink-0"
               >
                 <Plus className="w-4 h-4" />
                 <span>Assign New Growth Challenge</span>
@@ -1824,7 +1824,7 @@ export const ParentDashboardPage = () => {
 
             {/* Current Active Family Assignments */}
             <div className="rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/90 p-7 sm:p-8 shadow-[0_10px_30px_rgba(25,67,51,0.05)]">
-              <h2 className="font-serif text-xl font-bold text-[#18221D] mb-4">
+              <h2 className="font-serif text-xl font-bold text-[#1b1831] mb-4">
                 Active & Recent Assignments ({assignments.length})
               </h2>
 
@@ -1832,30 +1832,30 @@ export const ParentDashboardPage = () => {
                 {assignments.map((asg) => (
                   <div
                     key={asg.id}
-                    className="p-5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA] flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#183B2B]/40 transition-colors"
+                    className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#5f48b9]/40 transition-colors"
                   >
                     <div className="space-y-1.5 flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#183B2B] bg-[#E2EBE5] px-2.5 py-0.5 rounded-full">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#5f48b9] bg-[#E6DEFF] px-2.5 py-0.5 rounded-full">
                           {asg.track}
                         </span>
-                        <span className="text-xs font-bold text-[#18221D]">Student: {asg.studentName}</span>
-                        <span className="text-xs text-[#5C665F]">· Due {asg.dueDate}</span>
+                        <span className="text-xs font-bold text-[#1b1831]">Student: {asg.studentName}</span>
+                        <span className="text-xs text-[#484552]">· Due {asg.dueDate}</span>
                       </div>
-                      <h3 className="text-base font-bold text-[#18221D]">{asg.title}</h3>
-                      <p className="text-xs text-[#5C665F]">
+                      <h3 className="text-base font-bold text-[#1b1831]">{asg.title}</h3>
+                      <p className="text-xs text-[#484552]">
                         Parent Note: <span className="italic">"{asg.parentNote}"</span>
                       </p>
 
                       {asg.studentSubmission && (
-                        <div className="mt-2 p-3 rounded-xl bg-white border border-[#E8E4DA] text-xs text-[#18221D]">
-                          <strong className="text-[#183B2B] block mb-0.5">Student Reflection Submitted:</strong>
-                          <p className="leading-relaxed text-[#4B554E]">{asg.studentSubmission}</p>
+                        <div className="mt-2 p-3 rounded-xl bg-white border border-[#E6DEFF] text-xs text-[#1b1831]">
+                          <strong className="text-[#5f48b9] block mb-0.5">Student Reflection Submitted:</strong>
+                          <p className="leading-relaxed text-[#484552]">{asg.studentSubmission}</p>
                         </div>
                       )}
 
                       {asg.parentFeedback && (
-                        <div className="mt-2 p-3 rounded-xl bg-[#E2EBE5]/60 border border-[#183B2B]/20 text-xs text-[#183B2B]">
+                        <div className="mt-2 p-3 rounded-xl bg-[#E6DEFF]/60 border border-[#5f48b9]/20 text-xs text-[#5f48b9]">
                           <strong className="block mb-0.5">Parent Encouragement Given:</strong>
                           <p className="leading-relaxed">{asg.parentFeedback}</p>
                         </div>
@@ -1869,7 +1869,7 @@ export const ParentDashboardPage = () => {
                             setReviewModalData(asg);
                             setFeedbackInput('');
                           }}
-                          className="px-4 py-2 rounded-full text-xs font-bold text-white bg-[#183B2B] hover:bg-[#112D20] shadow-xs transition-all cursor-pointer flex items-center gap-1.5"
+                          className="px-4 py-2 rounded-full text-xs font-bold text-white bg-[#5f48b9] hover:bg-[#4a31a2] shadow-xs transition-all cursor-pointer flex items-center gap-1.5"
                         >
                           <Award className="w-3.5 h-3.5" />
                           <span>Review & Praise</span>
@@ -1877,8 +1877,8 @@ export const ParentDashboardPage = () => {
                       ) : (
                         <span className={`px-3.5 py-1.5 rounded-full text-xs font-semibold ${
                           asg.status === 'Completed'
-                            ? 'bg-[#E2EBE5] text-[#183B2B]'
-                            : 'bg-[#F0ECE1] text-[#4B554E]'
+                            ? 'bg-[#E6DEFF] text-[#5f48b9]'
+                            : 'bg-[#FCF8FF] text-[#484552]'
                         }`}>
                           {asg.status}
                         </span>
@@ -1891,10 +1891,10 @@ export const ParentDashboardPage = () => {
 
             {/* Catalog of Pre-Built Recommended Activities */}
             <div className="rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/90 p-7 sm:p-8 shadow-[0_10px_30px_rgba(25,67,51,0.05)]">
-              <h2 className="font-serif text-xl font-bold text-[#18221D] mb-1">
+              <h2 className="font-serif text-xl font-bold text-[#1b1831] mb-1">
                 Curated Challenge Catalog
               </h2>
-              <p className="text-xs text-[#5C665F] mb-6">
+              <p className="text-xs text-[#484552] mb-6">
                 Choose any challenge to assign directly with your personal encouraging note.
               </p>
 
@@ -1902,17 +1902,17 @@ export const ParentDashboardPage = () => {
                 {sampleActivitiesCatalog.map((act) => (
                   <div
                     key={act.id}
-                    className="p-5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA] flex flex-col justify-between gap-4 hover:border-[#183B2B]/40 transition-colors"
+                    className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] flex flex-col justify-between gap-4 hover:border-[#5f48b9]/40 transition-colors"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#4B735F] bg-[#E2EBE5] px-2 py-0.5 rounded-md">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#5f48b9] bg-[#E6DEFF] px-2 py-0.5 rounded-md">
                           {act.category}
                         </span>
-                        <span className="text-xs text-[#5C665F]">{act.duration}</span>
+                        <span className="text-xs text-[#484552]">{act.duration}</span>
                       </div>
-                      <h3 className="font-serif text-base font-bold text-[#18221D]">{act.title}</h3>
-                      <p className="text-xs text-[#5C665F] mt-1.5 leading-relaxed">{act.description}</p>
+                      <h3 className="font-serif text-base font-bold text-[#1b1831]">{act.title}</h3>
+                      <p className="text-xs text-[#484552] mt-1.5 leading-relaxed">{act.description}</p>
                     </div>
 
                     <button
@@ -1925,7 +1925,7 @@ export const ParentDashboardPage = () => {
                         });
                         setIsAssignModalOpen(true);
                       }}
-                      className="w-full py-2 rounded-xl text-xs font-bold text-[#183B2B] bg-white hover:bg-[#E2EBE5] border border-[#DCD6C8] transition-colors cursor-pointer"
+                      className="w-full py-2 rounded-xl text-xs font-bold text-[#5f48b9] bg-white hover:bg-[#E6DEFF] border border-[#E6DEFF] transition-colors cursor-pointer"
                     >
                       Select & Assign Challenge
                     </button>
@@ -1946,27 +1946,27 @@ export const ParentDashboardPage = () => {
             {/* Header + Timeframe Toggle */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E2EBE5] text-[#183B2B] text-xs font-semibold mb-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6DEFF] text-[#5f48b9] text-xs font-semibold mb-2">
                   <BarChart3 className="w-3.5 h-3.5" />
                   <span>Longitudinal Progress</span>
                 </div>
-                <h1 className="font-serif text-3xl font-bold text-[#18221D]">
+                <h1 className="font-serif text-3xl font-bold text-[#1b1831]">
                   HighOrbit Growth Reports
                 </h1>
-                <p className="text-xs sm:text-sm text-[#5C665F] mt-1">
+                <p className="text-xs sm:text-sm text-[#484552] mt-1">
                   Holistic reflection trends, habit milestones, and print-ready growth summaries.
                 </p>
               </div>
 
-              <div className="flex items-center gap-2 bg-[#F0ECE1] border border-[#E0DACE] p-1.5 rounded-2xl">
+              <div className="flex items-center gap-2 bg-[#FCF8FF] border border-[#E6DEFF] p-1.5 rounded-2xl">
                 {['30d', '60d', '90d'].map((tf) => (
                   <button
                     key={tf}
                     onClick={() => setGrowthTimeframe(tf)}
                     className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                       growthTimeframe === tf
-                        ? 'bg-[#183B2B] text-white shadow-2xs'
-                        : 'text-[#4B554E] hover:text-[#18221D]'
+                        ? 'bg-[#5f48b9] text-white shadow-2xs'
+                        : 'text-[#484552] hover:text-[#1b1831]'
                     }`}
                   >
                     Last {tf.toUpperCase()}
@@ -1978,12 +1978,12 @@ export const ParentDashboardPage = () => {
             {/* Comprehensive Report Card - Frosted Glass Card */}
             <div className="rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/90 p-7 sm:p-9 shadow-[0_10px_30px_rgba(25,67,51,0.05)] space-y-8">
               
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E8E4DA]/80">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E6DEFF]/80">
                 <div>
-                  <span className="text-[11px] font-bold text-[#5C665F] uppercase tracking-wider block">
+                  <span className="text-[11px] font-bold text-[#484552] uppercase tracking-wider block">
                     Report Card for:
                   </span>
-                  <h2 className="font-serif text-2xl font-bold text-[#18221D]">
+                  <h2 className="font-serif text-2xl font-bold text-[#1b1831]">
                     {activeStudent.name} ({activeStudent.stage})
                   </h2>
                 </div>
@@ -1991,7 +1991,7 @@ export const ParentDashboardPage = () => {
                 <button
                   type="button"
                   onClick={() => window.print()}
-                  className="px-4 py-2 rounded-full text-xs font-bold text-[#183B2B] bg-[#E2EBE5] hover:bg-[#D4E4D8] border border-[#183B2B]/20 transition-all cursor-pointer flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-full text-xs font-bold text-[#5f48b9] bg-[#E6DEFF] hover:bg-[#E6DEFF] border border-[#5f48b9]/20 transition-all cursor-pointer flex items-center gap-1.5"
                 >
                   <FileText className="w-3.5 h-3.5" />
                   <span>Export Printable Report</span>
@@ -2000,26 +2000,26 @@ export const ParentDashboardPage = () => {
 
               {/* High-Level Trajectory Highlights */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="p-5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA]">
-                  <span className="text-xs text-[#5C665F] font-semibold">Self-Discipline Consistency</span>
-                  <div className="font-serif text-3xl font-bold text-[#18221D] mt-1">+14%</div>
-                  <p className="text-xs text-[#4B554E] mt-1 leading-relaxed">
+                <div className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF]">
+                  <span className="text-xs text-[#484552] font-semibold">Self-Discipline Consistency</span>
+                  <div className="font-serif text-3xl font-bold text-[#1b1831] mt-1">+14%</div>
+                  <p className="text-xs text-[#484552] mt-1 leading-relaxed">
                     Consistent evening check-ins over the past 30 days without parental prompting.
                   </p>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA]">
-                  <span className="text-xs text-[#5C665F] font-semibold">Emotional Grounding Velocity</span>
-                  <div className="font-serif text-3xl font-bold text-[#18221D] mt-1">4.2 / 5.0</div>
-                  <p className="text-xs text-[#4B554E] mt-1 leading-relaxed">
+                <div className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF]">
+                  <span className="text-xs text-[#484552] font-semibold">Emotional Grounding Velocity</span>
+                  <div className="font-serif text-3xl font-bold text-[#1b1831] mt-1">4.2 / 5.0</div>
+                  <p className="text-xs text-[#484552] mt-1 leading-relaxed">
                     Student reports increased recovery speed from exam anxiety through deep-work habits.
                   </p>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA]">
-                  <span className="text-xs text-[#5C665F] font-semibold">Self-Advocacy Readiness</span>
-                  <div className="font-serif text-3xl font-bold text-[#183B2B] mt-1">Rising</div>
-                  <p className="text-xs text-[#4B554E] mt-1 leading-relaxed">
+                <div className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF]">
+                  <span className="text-xs text-[#484552] font-semibold">Self-Advocacy Readiness</span>
+                  <div className="font-serif text-3xl font-bold text-[#5f48b9] mt-1">Rising</div>
+                  <p className="text-xs text-[#484552] mt-1 leading-relaxed">
                     Transitioned from internal avoidance to scheduling mentor consultations directly.
                   </p>
                 </div>
@@ -2027,37 +2027,37 @@ export const ParentDashboardPage = () => {
 
               {/* Milestone Badges Achieved */}
               <div>
-                <h3 className="font-serif text-lg font-bold text-[#18221D] mb-4">
+                <h3 className="font-serif text-lg font-bold text-[#1b1831] mb-4">
                   Developmental Milestone Badges
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="p-4 rounded-2xl bg-[#E2EBE5]/50 border border-[#183B2B]/20 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#183B2B] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="p-4 rounded-2xl bg-[#E6DEFF]/50 border border-[#5f48b9]/20 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#5f48b9] text-white flex items-center justify-center font-bold text-xs shrink-0">
                       7D
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-[#18221D]">Weekly Journaling Streak</div>
-                      <span className="text-[11px] text-[#4B735F]">Achieved Oct 28, 2026</span>
+                      <div className="text-xs font-bold text-[#1b1831]">Weekly Journaling Streak</div>
+                      <span className="text-[11px] text-[#5f48b9]">Achieved Oct 28, 2026</span>
                     </div>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-[#E2EBE5]/50 border border-[#183B2B]/20 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#183B2B] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="p-4 rounded-2xl bg-[#E6DEFF]/50 border border-[#5f48b9]/20 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#5f48b9] text-white flex items-center justify-center font-bold text-xs shrink-0">
                       10Q
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-[#18221D]">10 Quests Completed</div>
-                      <span className="text-[11px] text-[#4B735F]">Achieved Oct 20, 2026</span>
+                      <div className="text-xs font-bold text-[#1b1831]">10 Quests Completed</div>
+                      <span className="text-[11px] text-[#5f48b9]">Achieved Oct 20, 2026</span>
                     </div>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-[#E2EBE5]/50 border border-[#183B2B]/20 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#183B2B] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="p-4 rounded-2xl bg-[#E6DEFF]/50 border border-[#5f48b9]/20 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#5f48b9] text-white flex items-center justify-center font-bold text-xs shrink-0">
                       ★
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-[#18221D]">Autonomy Milestone</div>
-                      <span className="text-[11px] text-[#4B735F]">Achieved Oct 15, 2026</span>
+                      <div className="text-xs font-bold text-[#1b1831]">Autonomy Milestone</div>
+                      <span className="text-[11px] text-[#5f48b9]">Achieved Oct 15, 2026</span>
                     </div>
                   </div>
                 </div>
@@ -2076,14 +2076,14 @@ export const ParentDashboardPage = () => {
             
             {/* Header */}
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E2EBE5] text-[#183B2B] text-xs font-semibold mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6DEFF] text-[#5f48b9] text-xs font-semibold mb-2">
                 <Heart className="w-3.5 h-3.5" />
                 <span>Parental Mindset & Practice</span>
               </div>
-              <h1 className="font-serif text-3xl font-bold text-[#18221D]">
+              <h1 className="font-serif text-3xl font-bold text-[#1b1831]">
                 My Parenting Growth
               </h1>
-              <p className="text-xs sm:text-sm text-[#5C665F] mt-1 max-w-2xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#484552] mt-1 max-w-2xl leading-relaxed">
                 Reflect on your own communication habits, track personal parenting goals, and cultivate calm, supportive connection.
               </p>
             </div>
@@ -2092,15 +2092,15 @@ export const ParentDashboardPage = () => {
             <div className="rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/90 p-7 sm:p-9 shadow-[0_10px_30px_rgba(25,67,51,0.05)] space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="font-serif text-xl font-bold text-[#18221D]">
+                  <h2 className="font-serif text-xl font-bold text-[#1b1831]">
                     Weekly Parenting Self-Reflection
                   </h2>
-                  <p className="text-xs text-[#5C665F] mt-0.5">
+                  <p className="text-xs text-[#484552] mt-0.5">
                     Prompt: <em>"Where did I listen with empathy this week instead of trying to control or fix?"</em>
                   </p>
                 </div>
                 {parentReflectionSaved && (
-                  <span className="text-xs text-[#183B2B] font-bold bg-[#E2EBE5] px-3 py-1 rounded-full animate-fadeIn">
+                  <span className="text-xs text-[#5f48b9] font-bold bg-[#E6DEFF] px-3 py-1 rounded-full animate-fadeIn">
                     ✓ Saved Privately
                   </span>
                 )}
@@ -2113,7 +2113,7 @@ export const ParentDashboardPage = () => {
                   setParentReflectionText(e.target.value);
                   if (parentReflectionSaved) setParentReflectionSaved(false);
                 }}
-                className="w-full p-4 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA] text-xs sm:text-sm text-[#18221D] focus:outline-none focus:border-[#183B2B] leading-relaxed"
+                className="w-full p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-xs sm:text-sm text-[#1b1831] focus:outline-none focus:border-[#5f48b9] leading-relaxed"
               />
 
               <div className="flex justify-end">
@@ -2123,7 +2123,7 @@ export const ParentDashboardPage = () => {
                     setParentReflectionSaved(true);
                     setTimeout(() => setParentReflectionSaved(false), 2500);
                   }}
-                  className="px-6 py-2.5 rounded-full text-xs font-bold text-white bg-[#183B2B] hover:bg-[#112D20] shadow-xs transition-all cursor-pointer"
+                  className="px-6 py-2.5 rounded-full text-xs font-bold text-white bg-[#5f48b9] hover:bg-[#4a31a2] shadow-xs transition-all cursor-pointer"
                 >
                   Save Reflection
                 </button>
@@ -2132,10 +2132,10 @@ export const ParentDashboardPage = () => {
 
             {/* Personal Parenting Goals Checklist */}
             <div className="rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/90 p-7 sm:p-8 shadow-[0_10px_30px_rgba(25,67,51,0.05)]">
-              <h2 className="font-serif text-xl font-bold text-[#18221D] mb-2">
+              <h2 className="font-serif text-xl font-bold text-[#1b1831] mb-2">
                 Personal Parenting Practice Targets
               </h2>
-              <p className="text-xs text-[#5C665F] mb-5">
+              <p className="text-xs text-[#484552] mb-5">
                 Check off practices you consciously demonstrated with your teen or young adult this week.
               </p>
 
@@ -2143,7 +2143,7 @@ export const ParentDashboardPage = () => {
                 {parentGoals.map((g) => (
                   <label
                     key={g.id}
-                    className="p-4 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA] flex items-center gap-3.5 cursor-pointer hover:border-[#183B2B]/40 transition-colors"
+                    className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] flex items-center gap-3.5 cursor-pointer hover:border-[#5f48b9]/40 transition-colors"
                   >
                     <input
                       type="checkbox"
@@ -2155,10 +2155,10 @@ export const ParentDashboardPage = () => {
                           )
                         );
                       }}
-                      className="w-4 h-4 rounded text-[#183B2B] border-[#DCD6C8] focus:ring-0 accent-[#183B2B] cursor-pointer shrink-0"
+                      className="w-4 h-4 rounded text-[#5f48b9] border-[#E6DEFF] focus:ring-0 accent-[#5f48b9] cursor-pointer shrink-0"
                     />
                     <span className={`text-xs sm:text-sm ${
-                      g.completed ? 'line-through text-[#5C665F]' : 'text-[#18221D] font-medium'
+                      g.completed ? 'line-through text-[#484552]' : 'text-[#1b1831] font-medium'
                     }`}>
                       {g.text}
                     </span>
@@ -2169,18 +2169,18 @@ export const ParentDashboardPage = () => {
 
             {/* Micro-Guides for Empathetic Communication */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 rounded-[28px] bg-[#E2EBE5]/60 border border-[#183B2B]/20">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#183B2B]">Micro-Guide</span>
-                <h3 className="font-serif text-lg font-bold text-[#18221D] mt-1">The 4-Second Pause Rule</h3>
-                <p className="text-xs text-[#365142] mt-2 leading-relaxed">
+              <div className="p-6 rounded-[28px] bg-[#E6DEFF]/60 border border-[#5f48b9]/20">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#5f48b9]">Micro-Guide</span>
+                <h3 className="font-serif text-lg font-bold text-[#1b1831] mt-1">The 4-Second Pause Rule</h3>
+                <p className="text-xs text-[#484552] mt-2 leading-relaxed">
                   When a teenager expresses a grievance, counting 4 seconds before answering decreases parental defensive tone by 70% and prevents verbal escalation.
                 </p>
               </div>
 
-              <div className="p-6 rounded-[28px] bg-[#F0ECE1] border border-[#E0DACE]">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#5C665F]">Micro-Guide</span>
-                <h3 className="font-serif text-lg font-bold text-[#18221D] mt-1">Separating Worth from Grades</h3>
-                <p className="text-xs text-[#4B554E] mt-2 leading-relaxed">
+              <div className="p-6 rounded-[28px] bg-[#FCF8FF] border border-[#E6DEFF]">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#484552]">Micro-Guide</span>
+                <h3 className="font-serif text-lg font-bold text-[#1b1831] mt-1">Separating Worth from Grades</h3>
+                <p className="text-xs text-[#484552] mt-2 leading-relaxed">
                   Praise curiosity, resilience under confusion, and work ethic rather than raw test scores. This builds deep resilience against burnout.
                 </p>
               </div>
@@ -2197,14 +2197,14 @@ export const ParentDashboardPage = () => {
             
             {/* Header */}
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E2EBE5] text-[#183B2B] text-xs font-semibold mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6DEFF] text-[#5f48b9] text-xs font-semibold mb-2">
                 <Sliders className="w-3.5 h-3.5" />
                 <span>Account, Consent & Safety Governance</span>
               </div>
-              <h1 className="font-serif text-3xl font-bold text-[#18221D]">
+              <h1 className="font-serif text-3xl font-bold text-[#1b1831]">
                 Privacy & Portal Settings
               </h1>
-              <p className="text-xs sm:text-sm text-[#5C665F] mt-1">
+              <p className="text-xs sm:text-sm text-[#484552] mt-1">
                 Manage transparent consent levels, notification alerts, and linked child profiles.
               </p>
             </div>
@@ -2213,10 +2213,10 @@ export const ParentDashboardPage = () => {
             <div className="rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/90 p-7 sm:p-8 shadow-[0_10px_30px_rgba(25,67,51,0.05)] space-y-6">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <h2 className="font-serif text-xl font-bold text-[#18221D]">
+                  <h2 className="font-serif text-xl font-bold text-[#1b1831]">
                     Linked Student Accounts & Family Members
                   </h2>
-                  <p className="text-xs sm:text-sm text-[#5C665F] mt-1">
+                  <p className="text-xs sm:text-sm text-[#484552] mt-1">
                     Manage active child profiles, add new teenagers/young adults, or adjust portal access.
                   </p>
                 </div>
@@ -2224,7 +2224,7 @@ export const ParentDashboardPage = () => {
                 <button
                   type="button"
                   onClick={() => setIsAddStudentModalOpen(true)}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-[#183B2B] hover:bg-[#112D20] shadow-sm transition-all cursor-pointer shrink-0"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-[#5f48b9] hover:bg-[#4a31a2] shadow-sm transition-all cursor-pointer shrink-0"
                 >
                   <UserPlus className="w-4 h-4" />
                   <span>Link New Student</span>
@@ -2240,31 +2240,31 @@ export const ParentDashboardPage = () => {
                       key={std.id}
                       className={`p-5 rounded-2xl border transition-all flex flex-col justify-between ${
                         isCurrent
-                          ? 'bg-[#E2EBE5]/40 border-[#183B2B]/40 shadow-xs'
-                          : 'bg-[#FBF9F5] border-[#E8E4DA]'
+                          ? 'bg-[#E6DEFF]/40 border-[#5f48b9]/40 shadow-xs'
+                          : 'bg-[#FCF8FF] border-[#E6DEFF]'
                       }`}
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex items-center gap-3">
-                          <div className="w-11 h-11 rounded-full bg-[#183B2B] text-white flex items-center justify-center font-bold text-sm shadow-2xs">
+                          <div className="w-11 h-11 rounded-full bg-[#5f48b9] text-white flex items-center justify-center font-bold text-sm shadow-2xs">
                             {std.initials}
                           </div>
                           <div>
                             <div className="flex items-center gap-2">
-                              <h3 className="font-serif text-base font-bold text-[#18221D]">
+                              <h3 className="font-serif text-base font-bold text-[#1b1831]">
                                 {std.name}
                               </h3>
                               {isCurrent && (
-                                <span className="text-[10px] font-bold text-[#183B2B] bg-white border border-[#183B2B]/30 px-2 py-0.5 rounded-full">
+                                <span className="text-[10px] font-bold text-[#5f48b9] bg-white border border-[#5f48b9]/30 px-2 py-0.5 rounded-full">
                                   Active View
                                 </span>
                               )}
                             </div>
-                            <p className="text-xs text-[#5C665F]">
+                            <p className="text-xs text-[#484552]">
                               {std.age} Years Old · {std.stage}
                             </p>
                             {std.email && (
-                              <p className="text-[11px] text-[#4B735F] mt-0.5 font-medium">
+                              <p className="text-[11px] text-[#5f48b9] mt-0.5 font-medium">
                                 ✉️ {std.email}
                               </p>
                             )}
@@ -2286,20 +2286,20 @@ export const ParentDashboardPage = () => {
                         </button>
                       </div>
 
-                      <div className="mt-4 pt-3 border-t border-[#E8E4DA]/60 flex items-center justify-between text-xs">
-                        <span className="text-[11px] text-[#4B735F] font-medium">
+                      <div className="mt-4 pt-3 border-t border-[#E6DEFF]/60 flex items-center justify-between text-xs">
+                        <span className="text-[11px] text-[#5f48b9] font-medium">
                           {std.archetype}
                         </span>
                         {!isCurrent ? (
                           <button
                             type="button"
                             onClick={() => setSelectedStudentId(std.id)}
-                            className="font-bold text-[#183B2B] hover:underline cursor-pointer"
+                            className="font-bold text-[#5f48b9] hover:underline cursor-pointer"
                           >
                             Switch to this student →
                           </button>
                         ) : (
-                          <span className="font-semibold text-[#183B2B]">
+                          <span className="font-semibold text-[#5f48b9]">
                             Currently Viewing ✓
                           </span>
                         )}
@@ -2312,7 +2312,7 @@ export const ParentDashboardPage = () => {
 
             {/* Age Governance Protocol Card - Frosted Glass Card */}
             <div className="rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/90 p-7 sm:p-8 shadow-[0_10px_30px_rgba(25,67,51,0.05)] space-y-6">
-              <h2 className="font-serif text-xl font-bold text-[#18221D]">
+              <h2 className="font-serif text-xl font-bold text-[#1b1831]">
                 Age-Appropriate Data Governance Matrix
               </h2>
 
@@ -2320,14 +2320,14 @@ export const ParentDashboardPage = () => {
                 {students.map((std) => {
                   const isMinor = std.age < 18;
                   return (
-                    <div key={std.id} className="p-5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA]">
-                      <span className="text-xs font-bold text-[#183B2B] bg-[#E2EBE5] px-2.5 py-0.5 rounded-full">
+                    <div key={std.id} className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF]">
+                      <span className="text-xs font-bold text-[#5f48b9] bg-[#E6DEFF] px-2.5 py-0.5 rounded-full">
                         {isMinor ? 'Ages 15–17' : 'Ages 18–25'} ({std.name})
                       </span>
-                      <h3 className="font-serif text-base font-bold text-[#18221D] mt-2">
+                      <h3 className="font-serif text-base font-bold text-[#1b1831] mt-2">
                         {isMinor ? 'Collaborative Family Oversight' : 'Young Adult Explicit-Consent Protocol'}
                       </h3>
-                      <ul className="mt-2 space-y-1.5 text-xs text-[#5C665F]">
+                      <ul className="mt-2 space-y-1.5 text-xs text-[#484552]">
                         {isMinor ? (
                           <>
                             <li>✓ Parent views completed assignment summaries</li>
@@ -2352,24 +2352,24 @@ export const ParentDashboardPage = () => {
 
             {/* Parent Notification Preferences */}
             <div className="rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/90 p-7 sm:p-8 shadow-[0_10px_30px_rgba(25,67,51,0.05)] space-y-4">
-              <h2 className="font-serif text-xl font-bold text-[#18221D]">
+              <h2 className="font-serif text-xl font-bold text-[#1b1831]">
                 Notification & Digest Preferences
               </h2>
               <div className="space-y-3">
-                <label className="flex items-center justify-between p-3.5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA] cursor-pointer">
+                <label className="flex items-center justify-between p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] cursor-pointer">
                   <div>
-                    <div className="text-xs sm:text-sm font-bold text-[#18221D]">Weekly Family Digest (Sunday 8:00 AM)</div>
-                    <div className="text-xs text-[#5C665F]">Receive a calm email summary of habit streaks and completed challenges.</div>
+                    <div className="text-xs sm:text-sm font-bold text-[#1b1831]">Weekly Family Digest (Sunday 8:00 AM)</div>
+                    <div className="text-xs text-[#484552]">Receive a calm email summary of habit streaks and completed challenges.</div>
                   </div>
-                  <input type="checkbox" defaultChecked className="w-4 h-4 rounded text-[#183B2B] accent-[#183B2B] cursor-pointer" />
+                  <input type="checkbox" defaultChecked className="w-4 h-4 rounded text-[#5f48b9] accent-[#5f48b9] cursor-pointer" />
                 </label>
 
-                <label className="flex items-center justify-between p-3.5 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA] cursor-pointer">
+                <label className="flex items-center justify-between p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] cursor-pointer">
                   <div>
-                    <div className="text-xs sm:text-sm font-bold text-[#18221D]">Assignment Submission Alerts</div>
-                    <div className="text-xs text-[#5C665F]">Immediate notification when a child marks an activity ready for parent review.</div>
+                    <div className="text-xs sm:text-sm font-bold text-[#1b1831]">Assignment Submission Alerts</div>
+                    <div className="text-xs text-[#484552]">Immediate notification when a child marks an activity ready for parent review.</div>
                   </div>
-                  <input type="checkbox" defaultChecked className="w-4 h-4 rounded text-[#183B2B] accent-[#183B2B] cursor-pointer" />
+                  <input type="checkbox" defaultChecked className="w-4 h-4 rounded text-[#5f48b9] accent-[#5f48b9] cursor-pointer" />
                 </label>
               </div>
             </div>
@@ -2380,11 +2380,11 @@ export const ParentDashboardPage = () => {
         </main>
 
         {/* ────────────────── FOOTER ────────────────── */}
-        <footer className="py-6 bg-white/40 backdrop-blur-md border-t border-[#E8E4DA]/60 text-center text-xs text-[#5C665F]">
+        <footer className="py-6 bg-white/40 backdrop-blur-md border-t border-[#E6DEFF]/60 text-center text-xs text-[#484552]">
           <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
             <span>© 2026 HighOrbit. Complete Parent & Student Growth Architecture.</span>
             <div className="flex gap-4">
-              <span className="font-semibold text-[#183B2B]">Zero Camera Access Enforced</span>
+              <span className="font-semibold text-[#5f48b9]">Zero Camera Access Enforced</span>
               <span>·</span>
               <span>100% Student Privacy Protocol</span>
             </div>
@@ -2396,17 +2396,17 @@ export const ParentDashboardPage = () => {
       {/* ────────────────── MODAL: ASSIGN CHALLENGE ────────────────── */}
       {isAssignModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fadeIn">
-          <div className="w-full max-w-lg rounded-[32px] bg-white p-7 sm:p-8 shadow-2xl border border-[#E8E4DA] space-y-5">
-            <div className="flex items-center justify-between pb-3 border-b border-[#F0ECE1]">
+          <div className="w-full max-w-lg rounded-[32px] bg-white p-7 sm:p-8 shadow-2xl border border-[#E6DEFF] space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-[#FCF8FF]">
               <div className="flex items-center gap-2">
-                <Target className="w-5 h-5 text-[#183B2B]" />
-                <h3 className="font-serif text-xl font-bold text-[#18221D]">
+                <Target className="w-5 h-5 text-[#5f48b9]" />
+                <h3 className="font-serif text-xl font-bold text-[#1b1831]">
                   Assign Personal Growth Challenge
                 </h3>
               </div>
               <button
                 onClick={() => setIsAssignModalOpen(false)}
-                className="p-1 rounded-full text-[#5C665F] hover:bg-gray-100"
+                className="p-1 rounded-full text-[#484552] hover:bg-gray-100"
               >
                 ✕
               </button>
@@ -2414,13 +2414,13 @@ export const ParentDashboardPage = () => {
 
             <form onSubmit={handleCreateAssignment} className="space-y-4">
               <div>
-                <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                <label className="text-xs font-semibold text-[#1b1831] block mb-1">
                   Select Target Child
                 </label>
                 <select
                   value={newAssignmentData.studentId}
                   onChange={(e) => setNewAssignmentData({ ...newAssignmentData, studentId: e.target.value })}
-                  className="w-full py-2.5 px-3.5 rounded-2xl bg-[#FBF9F5] border border-[#DCD6C8] text-xs font-semibold text-[#18221D] focus:outline-none focus:border-[#183B2B]"
+                  className="w-full py-2.5 px-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-xs font-semibold text-[#1b1831] focus:outline-none focus:border-[#5f48b9]"
                 >
                   {students.map((std) => (
                     <option key={std.id} value={std.id}>
@@ -2431,13 +2431,13 @@ export const ParentDashboardPage = () => {
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                <label className="text-xs font-semibold text-[#1b1831] block mb-1">
                   Choose Growth Challenge
                 </label>
                 <select
                   value={newAssignmentData.activityId}
                   onChange={(e) => setNewAssignmentData({ ...newAssignmentData, activityId: e.target.value })}
-                  className="w-full py-2.5 px-3.5 rounded-2xl bg-[#FBF9F5] border border-[#DCD6C8] text-xs font-semibold text-[#18221D] focus:outline-none focus:border-[#183B2B]"
+                  className="w-full py-2.5 px-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-xs font-semibold text-[#1b1831] focus:outline-none focus:border-[#5f48b9]"
                 >
                   {sampleActivitiesCatalog.map((act) => (
                     <option key={act.id} value={act.id}>
@@ -2448,40 +2448,40 @@ export const ParentDashboardPage = () => {
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                <label className="text-xs font-semibold text-[#1b1831] block mb-1">
                   Target Due Date
                 </label>
                 <input
                   type="date"
                   value={newAssignmentData.dueDate}
                   onChange={(e) => setNewAssignmentData({ ...newAssignmentData, dueDate: e.target.value })}
-                  className="w-full py-2.5 px-3.5 rounded-2xl bg-[#FBF9F5] border border-[#DCD6C8] text-xs font-semibold text-[#18221D] focus:outline-none focus:border-[#183B2B]"
+                  className="w-full py-2.5 px-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-xs font-semibold text-[#1b1831] focus:outline-none focus:border-[#5f48b9]"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                <label className="text-xs font-semibold text-[#1b1831] block mb-1">
                   Personal Encouraging Note from Parent
                 </label>
                 <textarea
                   rows={3}
                   value={newAssignmentData.parentNote}
                   onChange={(e) => setNewAssignmentData({ ...newAssignmentData, parentNote: e.target.value })}
-                  className="w-full p-3.5 rounded-2xl bg-[#FBF9F5] border border-[#DCD6C8] text-xs text-[#18221D] focus:outline-none focus:border-[#183B2B]"
+                  className="w-full p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-xs text-[#1b1831] focus:outline-none focus:border-[#5f48b9]"
                 />
               </div>
 
-              <div className="pt-2 flex items-center justify-end gap-3 border-t border-[#F0ECE1]">
+              <div className="pt-2 flex items-center justify-end gap-3 border-t border-[#FCF8FF]">
                 <button
                   type="button"
                   onClick={() => setIsAssignModalOpen(false)}
-                  className="px-5 py-2.5 rounded-full text-xs font-semibold text-[#4B554E] bg-[#F0ECE1] hover:bg-[#E5E0D5] transition-colors cursor-pointer"
+                  className="px-5 py-2.5 rounded-full text-xs font-semibold text-[#484552] bg-[#FCF8FF] hover:bg-[#E6DEFF] transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2.5 rounded-full text-xs font-bold text-white bg-[#183B2B] hover:bg-[#112D20] transition-colors cursor-pointer shadow-xs"
+                  className="px-6 py-2.5 rounded-full text-xs font-bold text-white bg-[#5f48b9] hover:bg-[#4a31a2] transition-colors cursor-pointer shadow-xs"
                 >
                   Assign to Student
                 </button>
@@ -2494,17 +2494,17 @@ export const ParentDashboardPage = () => {
       {/* ────────────────── MODAL: REVIEW SUBMISSION & PRAISE ────────────────── */}
       {reviewModalData && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fadeIn">
-          <div className="w-full max-w-lg rounded-[32px] bg-white p-7 sm:p-8 shadow-2xl border border-[#E8E4DA] space-y-5">
-            <div className="flex items-center justify-between pb-3 border-b border-[#F0ECE1]">
+          <div className="w-full max-w-lg rounded-[32px] bg-white p-7 sm:p-8 shadow-2xl border border-[#E6DEFF] space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-[#FCF8FF]">
               <div className="flex items-center gap-2">
-                <Award className="w-5 h-5 text-[#183B2B]" />
-                <h3 className="font-serif text-xl font-bold text-[#18221D]">
+                <Award className="w-5 h-5 text-[#5f48b9]" />
+                <h3 className="font-serif text-xl font-bold text-[#1b1831]">
                   Review Student Submission
                 </h3>
               </div>
               <button
                 onClick={() => setReviewModalData(null)}
-                className="p-1 rounded-full text-[#5C665F] hover:bg-gray-100"
+                className="p-1 rounded-full text-[#484552] hover:bg-gray-100"
               >
                 ✕
               </button>
@@ -2512,28 +2512,28 @@ export const ParentDashboardPage = () => {
 
             <div className="space-y-4">
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#4B735F]">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#5f48b9]">
                   {reviewModalData.track}
                 </span>
-                <h4 className="text-base font-bold text-[#18221D] mt-0.5">
+                <h4 className="text-base font-bold text-[#1b1831] mt-0.5">
                   {reviewModalData.title}
                 </h4>
-                <p className="text-xs text-[#5C665F] mt-0.5">
+                <p className="text-xs text-[#484552] mt-0.5">
                   Submitted by {reviewModalData.studentName}
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA]">
-                <strong className="text-xs font-bold text-[#183B2B] block mb-1">
+              <div className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF]">
+                <strong className="text-xs font-bold text-[#5f48b9] block mb-1">
                   Student Reflection Text:
                 </strong>
-                <p className="text-xs sm:text-sm text-[#18221D] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#1b1831] leading-relaxed">
                   "{reviewModalData.studentSubmission}"
                 </p>
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                <label className="text-xs font-semibold text-[#1b1831] block mb-1">
                   Send Specific Praise or Validation (Non-Critical)
                 </label>
                 <textarea
@@ -2541,7 +2541,7 @@ export const ParentDashboardPage = () => {
                   value={feedbackInput}
                   onChange={(e) => setFeedbackInput(e.target.value)}
                   placeholder="e.g. Loved your insight about slowing down. That self-awareness will serve you well!"
-                  className="w-full p-3.5 rounded-2xl bg-[#FBF9F5] border border-[#DCD6C8] text-xs text-[#18221D] focus:outline-none focus:border-[#183B2B]"
+                  className="w-full p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-xs text-[#1b1831] focus:outline-none focus:border-[#5f48b9]"
                 />
               </div>
 
@@ -2552,7 +2552,7 @@ export const ParentDashboardPage = () => {
                     key={sticker}
                     type="button"
                     onClick={() => setFeedbackInput((prev) => (prev ? `${prev} ${sticker}` : sticker))}
-                    className="px-3 py-1 rounded-full text-xs font-semibold bg-[#E2EBE5] text-[#183B2B] hover:bg-[#D4E4D8] transition-colors cursor-pointer"
+                    className="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6DEFF] text-[#5f48b9] hover:bg-[#E6DEFF] transition-colors cursor-pointer"
                   >
                     + {sticker}
                   </button>
@@ -2560,24 +2560,24 @@ export const ParentDashboardPage = () => {
               </div>
 
               {feedbackSentSuccess && (
-                <div className="p-3 rounded-2xl bg-[#E2EBE5] text-[#183B2B] text-xs font-bold flex items-center gap-2">
+                <div className="p-3 rounded-2xl bg-[#E6DEFF] text-[#5f48b9] text-xs font-bold flex items-center gap-2">
                   <Check className="w-4 h-4" />
                   <span>Feedback dispatched and challenge marked as completed!</span>
                 </div>
               )}
 
-              <div className="pt-3 flex items-center justify-end gap-3 border-t border-[#F0ECE1]">
+              <div className="pt-3 flex items-center justify-end gap-3 border-t border-[#FCF8FF]">
                 <button
                   type="button"
                   onClick={() => setReviewModalData(null)}
-                  className="px-5 py-2.5 rounded-full text-xs font-semibold text-[#4B554E] bg-[#F0ECE1] hover:bg-[#E5E0D5] transition-colors cursor-pointer"
+                  className="px-5 py-2.5 rounded-full text-xs font-semibold text-[#484552] bg-[#FCF8FF] hover:bg-[#E6DEFF] transition-colors cursor-pointer"
                 >
                   Close
                 </button>
                 <button
                   type="button"
                   onClick={handleSendFeedback}
-                  className="px-6 py-2.5 rounded-full text-xs font-bold text-white bg-[#183B2B] hover:bg-[#112D20] transition-colors cursor-pointer shadow-xs flex items-center gap-1.5"
+                  className="px-6 py-2.5 rounded-full text-xs font-bold text-white bg-[#5f48b9] hover:bg-[#4a31a2] transition-colors cursor-pointer shadow-xs flex items-center gap-1.5"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>Send Praise & Complete</span>
@@ -2592,21 +2592,21 @@ export const ParentDashboardPage = () => {
       {isHelpModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fadeIn">
           <div className="w-full max-w-xl rounded-[32px] bg-white/95 backdrop-blur-2xl p-7 sm:p-8 shadow-2xl border border-white/80 space-y-6">
-            <div className="flex items-center justify-between pb-3 border-b border-[#F0ECE1]">
+            <div className="flex items-center justify-between pb-3 border-b border-[#FCF8FF]">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-[#E2EBE5] text-[#183B2B] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-xl bg-[#E6DEFF] text-[#5f48b9] flex items-center justify-center">
                   <HelpCircle className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-xl font-bold text-[#18221D]">
+                  <h3 className="font-serif text-xl font-bold text-[#1b1831]">
                     HighOrbit Family Support Hub
                   </h3>
-                  <span className="text-xs text-[#5C665F]">Dedicated parenting assistance and resources</span>
+                  <span className="text-xs text-[#484552]">Dedicated parenting assistance and resources</span>
                 </div>
               </div>
               <button
                 onClick={() => setIsHelpModalOpen(false)}
-                className="p-1.5 rounded-full text-[#5C665F] hover:bg-gray-100"
+                className="p-1.5 rounded-full text-[#484552] hover:bg-gray-100"
               >
                 ✕
               </button>
@@ -2614,28 +2614,28 @@ export const ParentDashboardPage = () => {
 
             {/* Support Channels */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 rounded-2xl bg-[#FBF9F5] border border-[#E8E4DA]">
-                <div className="flex items-center gap-2 text-xs font-bold text-[#183B2B] mb-1">
+              <div className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF]">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#5f48b9] mb-1">
                   <Mail className="w-4 h-4" />
                   <span>Product & Account Support</span>
                 </div>
-                <p className="text-xs text-[#5C665F] leading-relaxed">
+                <p className="text-xs text-[#484552] leading-relaxed">
                   Questions about linking children, PIN management, or privacy settings?
                 </p>
                 <a
                   href="mailto:support@highorbit.app"
-                  className="mt-2 text-xs font-bold text-[#183B2B] hover:underline block"
+                  className="mt-2 text-xs font-bold text-[#5f48b9] hover:underline block"
                 >
                   support@highorbit.app →
                 </a>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#E2EBE5]/50 border border-[#183B2B]/20">
-                <div className="flex items-center gap-2 text-xs font-bold text-[#183B2B] mb-1">
+              <div className="p-4 rounded-2xl bg-[#E6DEFF]/50 border border-[#5f48b9]/20">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#5f48b9] mb-1">
                   <BookOpen className="w-4 h-4" />
                   <span>The Parenting Guide</span>
                 </div>
-                <p className="text-xs text-[#365142] leading-relaxed">
+                <p className="text-xs text-[#484552] leading-relaxed">
                   Explore practical scripts and guidance for 10 common adolescent challenges.
                 </p>
                 <button
@@ -2643,7 +2643,7 @@ export const ParentDashboardPage = () => {
                     setIsHelpModalOpen(false);
                     setActiveTab('guide');
                   }}
-                  className="mt-2 text-xs font-bold text-[#183B2B] hover:underline block cursor-pointer"
+                  className="mt-2 text-xs font-bold text-[#5f48b9] hover:underline block cursor-pointer"
                 >
                   Open Guide Situations →
                 </button>
@@ -2672,7 +2672,7 @@ export const ParentDashboardPage = () => {
               <button
                 type="button"
                 onClick={() => setIsHelpModalOpen(false)}
-                className="px-6 py-2.5 rounded-full text-xs font-bold text-white bg-[#183B2B] hover:bg-[#112D20] transition-colors cursor-pointer shadow-xs"
+                className="px-6 py-2.5 rounded-full text-xs font-bold text-white bg-[#5f48b9] hover:bg-[#4a31a2] transition-colors cursor-pointer shadow-xs"
               >
                 Got It
               </button>
@@ -2683,7 +2683,7 @@ export const ParentDashboardPage = () => {
 
       {/* ────────────────── TOAST NOTIFICATION ────────────────── */}
       {studentActionToast && (
-        <div className="fixed top-6 right-6 z-50 animate-fadeIn bg-[#183B2B] text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-white/20 text-xs sm:text-sm font-medium">
+        <div className="fixed top-6 right-6 z-50 animate-fadeIn bg-[#5f48b9] text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-white/20 text-xs sm:text-sm font-medium">
           <span>{studentActionToast}</span>
           <button
             onClick={() => setStudentActionToast(null)}
@@ -2700,22 +2700,22 @@ export const ParentDashboardPage = () => {
           <div className="w-full max-w-xl max-h-[92vh] overflow-y-auto rounded-[28px] bg-white/95 backdrop-blur-2xl p-6 sm:p-7 shadow-2xl border border-white/80 space-y-4">
             
             {/* Header */}
-            <div className="flex items-center justify-between pb-3 border-b border-[#F0ECE1]">
+            <div className="flex items-center justify-between pb-3 border-b border-[#FCF8FF]">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-[#E2EBE5] text-[#183B2B] flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 rounded-xl bg-[#E6DEFF] text-[#5f48b9] flex items-center justify-center shrink-0">
                   <UserPlus className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[#18221D] leading-tight">
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[#1b1831] leading-tight">
                     Link New Student Account
                   </h3>
-                  <span className="text-[11px] text-[#5C665F]">Connect another young adult explorer (ages 15–25)</span>
+                  <span className="text-[11px] text-[#484552]">Connect another young adult explorer (ages 15–25)</span>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setIsAddStudentModalOpen(false)}
-                className="p-1 rounded-full text-[#5C665F] hover:bg-gray-100 cursor-pointer"
+                className="p-1 rounded-full text-[#484552] hover:bg-gray-100 cursor-pointer"
               >
                 ✕
               </button>
@@ -2726,7 +2726,7 @@ export const ParentDashboardPage = () => {
               {/* Row 1: Name & Gmail */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                  <label className="text-xs font-semibold text-[#1b1831] block mb-1">
                     Student Full Name *
                   </label>
                   <input
@@ -2735,12 +2735,12 @@ export const ParentDashboardPage = () => {
                     value={newStudentForm.name}
                     onChange={(e) => setNewStudentForm({ ...newStudentForm, name: e.target.value })}
                     placeholder="e.g. Aria Jenkins"
-                    className="w-full px-3.5 py-2 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B] focus:ring-2 focus:ring-[#183B2B]/10"
+                    className="w-full px-3.5 py-2 rounded-xl border border-[#E6DEFF] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#5f48b9] focus:ring-2 focus:ring-[#5f48b9]/10"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                  <label className="text-xs font-semibold text-[#1b1831] block mb-1">
                     Student Gmail / Email *
                   </label>
                   <input
@@ -2749,7 +2749,7 @@ export const ParentDashboardPage = () => {
                     value={newStudentForm.email}
                     onChange={(e) => setNewStudentForm({ ...newStudentForm, email: e.target.value })}
                     placeholder="e.g. aria.jenkins@gmail.com"
-                    className="w-full px-3.5 py-2 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B] focus:ring-2 focus:ring-[#183B2B]/10"
+                    className="w-full px-3.5 py-2 rounded-xl border border-[#E6DEFF] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#5f48b9] focus:ring-2 focus:ring-[#5f48b9]/10"
                   />
                 </div>
               </div>
@@ -2757,13 +2757,13 @@ export const ParentDashboardPage = () => {
               {/* Row 2: Age & PIN */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                  <label className="text-xs font-semibold text-[#1b1831] block mb-1">
                     Age (15–25) *
                   </label>
                   <select
                     value={newStudentForm.age}
                     onChange={(e) => setNewStudentForm({ ...newStudentForm, age: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
+                    className="w-full px-3.5 py-2 rounded-xl border border-[#E6DEFF] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#5f48b9]"
                   >
                     {[15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25].map((a) => (
                       <option key={a} value={a}>
@@ -2774,7 +2774,7 @@ export const ParentDashboardPage = () => {
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                  <label className="text-xs font-semibold text-[#1b1831] block mb-1">
                     Student 4-Digit PIN *
                   </label>
                   <input
@@ -2784,7 +2784,7 @@ export const ParentDashboardPage = () => {
                     value={newStudentForm.pin}
                     onChange={(e) => setNewStudentForm({ ...newStudentForm, pin: e.target.value })}
                     placeholder="1234"
-                    className="w-full px-3.5 py-2 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
+                    className="w-full px-3.5 py-2 rounded-xl border border-[#E6DEFF] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#5f48b9]"
                   />
                 </div>
               </div>
@@ -2792,7 +2792,7 @@ export const ParentDashboardPage = () => {
               {/* Row 3: Stage & Archetype */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                  <label className="text-xs font-semibold text-[#1b1831] block mb-1">
                     Academic Stage / Grade
                   </label>
                   <input
@@ -2800,12 +2800,12 @@ export const ParentDashboardPage = () => {
                     value={newStudentForm.stage}
                     onChange={(e) => setNewStudentForm({ ...newStudentForm, stage: e.target.value })}
                     placeholder="e.g. High School Junior"
-                    className="w-full px-3.5 py-2 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
+                    className="w-full px-3.5 py-2 rounded-xl border border-[#E6DEFF] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#5f48b9]"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                  <label className="text-xs font-semibold text-[#1b1831] block mb-1">
                     Growth Archetype
                   </label>
                   <input
@@ -2813,14 +2813,14 @@ export const ParentDashboardPage = () => {
                     value={newStudentForm.archetype}
                     onChange={(e) => setNewStudentForm({ ...newStudentForm, archetype: e.target.value })}
                     placeholder="e.g. Curious Explorer"
-                    className="w-full px-3.5 py-2 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
+                    className="w-full px-3.5 py-2 rounded-xl border border-[#E6DEFF] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#5f48b9]"
                   />
                 </div>
               </div>
 
               {/* Row 4: Interests */}
               <div>
-                <label className="text-xs font-semibold text-[#18221D] block mb-1">
+                <label className="text-xs font-semibold text-[#1b1831] block mb-1">
                   Interests & Passions (comma-separated)
                 </label>
                 <input
@@ -2828,12 +2828,12 @@ export const ParentDashboardPage = () => {
                   value={newStudentForm.interests}
                   onChange={(e) => setNewStudentForm({ ...newStudentForm, interests: e.target.value })}
                   placeholder="e.g. Debate, Digital Art, Astronomy"
-                  className="w-full px-3.5 py-2 rounded-xl border border-[#DCD6C8] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#183B2B]"
+                  className="w-full px-3.5 py-2 rounded-xl border border-[#E6DEFF] bg-white text-xs sm:text-sm focus:outline-none focus:border-[#5f48b9]"
                 />
               </div>
 
               {/* Compact Privacy Note */}
-              <div className="p-2.5 rounded-xl bg-[#FBF9F5] border border-[#E8E4DA] text-[11px] text-[#5C665F] flex items-center gap-2">
+              <div className="p-2.5 rounded-xl bg-[#FCF8FF] border border-[#E6DEFF] text-[11px] text-[#484552] flex items-center gap-2">
                 <span className="shrink-0 text-xs">🔒</span>
                 <span>Habit milestones are linked, while student diary text remains 100% private and encrypted.</span>
               </div>
@@ -2843,13 +2843,13 @@ export const ParentDashboardPage = () => {
                 <button
                   type="button"
                   onClick={() => setIsAddStudentModalOpen(false)}
-                  className="px-5 py-2 rounded-full text-xs font-semibold text-[#5C665F] hover:bg-gray-100 transition-colors cursor-pointer"
+                  className="px-5 py-2 rounded-full text-xs font-semibold text-[#484552] hover:bg-gray-100 transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2 rounded-full text-xs font-bold text-white bg-[#183B2B] hover:bg-[#112D20] shadow-sm transition-all cursor-pointer"
+                  className="px-6 py-2 rounded-full text-xs font-bold text-white bg-[#5f48b9] hover:bg-[#4a31a2] shadow-sm transition-all cursor-pointer"
                 >
                   Confirm & Link Student →
                 </button>
@@ -2868,16 +2868,16 @@ export const ParentDashboardPage = () => {
                 <Trash2 className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-serif text-lg font-bold text-[#18221D]">
+                <h3 className="font-serif text-lg font-bold text-[#1b1831]">
                   Unlink {studentToUnlink.name}?
                 </h3>
-                <span className="text-xs text-[#5C665F]">
+                <span className="text-xs text-[#484552]">
                   Remove profile from Parent Portal
                 </span>
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-[#4B554E] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#484552] leading-relaxed">
               Are you sure you want to remove <strong>{studentToUnlink.name}</strong> ({studentToUnlink.age} yrs) from your Parent Portal view?
             </p>
 
@@ -2889,7 +2889,7 @@ export const ParentDashboardPage = () => {
               <button
                 type="button"
                 onClick={() => setStudentToUnlink(null)}
-                className="px-5 py-2.5 rounded-full text-xs font-semibold text-[#5C665F] hover:bg-gray-100 transition-colors cursor-pointer"
+                className="px-5 py-2.5 rounded-full text-xs font-semibold text-[#484552] hover:bg-gray-100 transition-colors cursor-pointer"
               >
                 Cancel
               </button>

@@ -31,9 +31,7 @@ export const AuthVideoVisual = ({ className = '' }) => {
           const d = imgData.data;
           const len = d.length;
 
-          // Target ONLY orange/red accents (shirts, speech bubbles, card blocks)
-          // Red is dominant (r > 160), while green & blue are low (< 125), and difference (r - g) > 65
-          // Human skin tones have g > 135 and b > 125, so skin is 100% untouched!
+          // Target red/orange accents and tint to HighOrbit brand purple (#5f48b9)
           for (let i = 0; i < len; i += 4) {
             const r = d[i];
             const g = d[i + 1];
@@ -41,10 +39,9 @@ export const AuthVideoVisual = ({ className = '' }) => {
 
             if (r > 160 && g < 125 && b < 125 && (r - g) > 65) {
               const intensity = r / 240;
-              // HighOrbit iconic brand forest green (#194333 / #226344)
-              d[i]     = Math.min(255, Math.round(25 * intensity));  // R
-              d[i + 1] = Math.min(255, Math.round(85 * intensity));  // G
-              d[i + 2] = Math.min(255, Math.round(52 * intensity));  // B
+              d[i]     = Math.min(255, Math.round(95 * intensity));
+              d[i + 1] = Math.min(255, Math.round(72 * intensity));
+              d[i + 2] = Math.min(255, Math.round(185 * intensity));
             }
           }
 
@@ -75,13 +72,13 @@ export const AuthVideoVisual = ({ className = '' }) => {
     <div className={`relative w-full max-w-[440px] select-none ${className}`}>
       
       {/* Ambient Glow behind the card */}
-      <div className="absolute -inset-1.5 rounded-[32px] bg-gradient-to-tr from-[#194333]/12 via-[#4B735F]/8 to-[#A7D4B5]/18 blur-xl pointer-events-none" />
+      <div className="absolute -inset-2 rounded-[32px] bg-gradient-to-tr from-primary/25 via-secondary-container/20 to-primary-container/25 blur-xl pointer-events-none" />
 
-      {/* Main Framed Card following HighOrbit's warm cream & forest green theme */}
-      <div className="relative z-10 w-full rounded-[26px] bg-white/90 backdrop-blur-md border border-[#E8E3D7] p-2 sm:p-2.5 shadow-[0_12px_32px_rgba(25,67,51,0.07)] overflow-hidden group">
+      {/* Main Framed Card following HighOrbit's glassy pastel theme */}
+      <div className="relative z-10 w-full rounded-[26px] bg-white/75 backdrop-blur-md border border-white/90 p-2 sm:p-2.5 shadow-xl shadow-primary/10 overflow-hidden group">
         
         {/* Video Canvas Container */}
-        <div className="relative w-full h-[200px] sm:h-[220px] rounded-[20px] overflow-hidden bg-[#FAF8F5] flex items-center justify-center">
+        <div className="relative w-full h-[200px] sm:h-[220px] rounded-[20px] overflow-hidden bg-surface-container-low flex items-center justify-center">
           
           {/* Source video playing in background */}
           <video
@@ -95,7 +92,7 @@ export const AuthVideoVisual = ({ className = '' }) => {
             className="absolute inset-0 opacity-0 pointer-events-none"
           />
 
-          {/* Real-time processed Canvas: Natural Skin + HighOrbit Brand Green Accents */}
+          {/* Real-time processed Canvas: Natural Skin + HighOrbit Brand Purple Accents */}
           <canvas
             ref={canvasRef}
             width={520}
@@ -107,12 +104,12 @@ export const AuthVideoVisual = ({ className = '' }) => {
           />
 
           {/* Floating Frosted Glass Micro-Badge (Bottom Left) */}
-          <div className="absolute bottom-2.5 left-2.5 bg-white/94 backdrop-blur-md border border-[#194333]/15 rounded-full px-3 py-1 shadow-xs flex items-center gap-1.5 pointer-events-none">
+          <div className="absolute bottom-2.5 left-2.5 bg-white/90 backdrop-blur-md border border-white/80 rounded-full px-3 py-1 shadow-sm flex items-center gap-1.5 pointer-events-none">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2F7353] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#194333]" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-container opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
             </span>
-            <span className="text-[10.5px] sm:text-[11px] font-semibold text-[#194333] tracking-wide">
+            <span className="text-[10.5px] sm:text-[11px] font-bold text-primary tracking-wide">
               Safe Space • Growth &amp; Collaboration
             </span>
           </div>

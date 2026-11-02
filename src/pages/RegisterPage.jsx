@@ -37,9 +37,9 @@ export const RegisterPage = () => {
       case 2:
         return { score: 2, label: 'Fair', color: 'bg-amber-400', textColor: 'text-amber-600' };
       case 3:
-        return { score: 3, label: 'Good', color: 'bg-[#4B735F]', textColor: 'text-[#4B735F]' };
+        return { score: 3, label: 'Good', color: 'bg-secondary-container', textColor: 'text-secondary-container' };
       case 4:
-        return { score: 4, label: 'Strong', color: 'bg-[#194333]', textColor: 'text-[#194333]' };
+        return { score: 4, label: 'Strong', color: 'bg-primary', textColor: 'text-primary' };
       default:
         return { score: 1, label: 'Weak', color: 'bg-red-400', textColor: 'text-red-600' };
     }
@@ -113,7 +113,7 @@ export const RegisterPage = () => {
     <AuthLayout
       heading={
         <>
-          Begin Your <span className="italic font-serif text-[#194333]">HighOrbit Journey.</span>
+          Begin Your <span className="bg-gradient-to-r from-primary via-primary-container to-secondary-container bg-clip-text text-transparent font-bold">HighOrbit Journey.</span>
         </>
       }
       subheading="Create your account and take the first step towards meaningful growth."
@@ -124,15 +124,15 @@ export const RegisterPage = () => {
       <form onSubmit={handleSubmit} className="flex flex-col gap-2.5 sm:gap-3">
         
         {/* Role Notice Pill - Frosted Glass Tile */}
-        <div className="flex items-center gap-2 p-2 rounded-2xl highorbit-glass-tile text-xs text-[#18221D] shadow-2xs">
-          <ShieldCheck className="w-3.5 h-3.5 text-[#194333] shrink-0" />
+        <div className="flex items-center gap-2 p-2 rounded-2xl highorbit-glass-tile text-xs text-on-surface shadow-2xs">
+          <ShieldCheck className="w-3.5 h-3.5 text-primary shrink-0" />
           <span>Creates master <strong>Parent/Family</strong> account</span>
         </div>
 
         {/* Success message banner */}
         {successMsg && (
-          <div className="p-2.5 rounded-2xl bg-gradient-to-r from-[#DCE8DE]/80 to-[#DCE8DE]/50 border border-white/80 text-[#194333] text-xs sm:text-sm font-semibold flex items-center gap-2 backdrop-blur-md shadow-2xs animate-fadeIn">
-            <Check className="w-4 h-4 text-[#194333] shrink-0" />
+          <div className="p-2.5 rounded-2xl bg-gradient-to-r from-primary-fixed/90 to-secondary-fixed/60 border border-white/80 text-primary text-xs sm:text-sm font-semibold flex items-center gap-2 backdrop-blur-md shadow-2xs animate-fadeIn">
+            <Check className="w-4 h-4 text-primary shrink-0" />
             <span>{successMsg}</span>
           </div>
         )}
@@ -181,7 +181,7 @@ export const RegisterPage = () => {
           {formData.password && (
             <div className="px-1 pt-0.5 flex flex-col gap-1 animate-fadeIn">
               <div className="flex items-center justify-between text-[11px] font-semibold">
-                <span className="text-[#53675D]">Password Strength:</span>
+                <span className="text-on-surface-variant">Password Strength:</span>
                 <span className={strength.textColor}>{strength.label}</span>
               </div>
               <div className="grid grid-cols-4 gap-1 h-1.5 w-full bg-white/60 backdrop-blur-xs rounded-full overflow-hidden p-0.5 border border-white/70">
@@ -209,16 +209,16 @@ export const RegisterPage = () => {
 
         {/* Terms and Privacy Agreement */}
         <div className="pt-0.5 flex flex-col gap-1">
-          <label className="flex items-start gap-2 cursor-pointer text-xs text-[#4B554E] select-none leading-relaxed">
+          <label className="flex items-start gap-2 cursor-pointer text-xs text-on-surface-variant select-none leading-relaxed">
             <input
               type="checkbox"
               name="agreeTerms"
               checked={formData.agreeTerms}
               onChange={handleChange}
-              className="w-4 h-4 mt-0.5 rounded text-[#194333] border-[#DCD6C8] focus:ring-0 cursor-pointer accent-[#194333] shrink-0"
+              className="w-4 h-4 mt-0.5 rounded text-primary border-primary/30 focus:ring-0 cursor-pointer accent-primary shrink-0"
             />
             <span>
-              I agree to the HighOrbit <span className="underline font-semibold text-[#18221D]">Family Safety Terms</span> and <span className="underline font-semibold text-[#18221D]">Privacy Policy</span>.
+              I agree to the HighOrbit <span className="underline font-semibold text-on-surface">Family Safety Terms</span> and <span className="underline font-semibold text-on-surface">Privacy Policy</span>.
             </span>
           </label>
           {errors.agreeTerms && (
@@ -246,11 +246,11 @@ export const RegisterPage = () => {
 
         {/* Already Registered Navigation */}
         <div className="text-center pt-2 border-t border-white/60">
-          <span className="text-xs text-[#53675D]">
+          <span className="text-xs text-on-surface-variant">
             Already Registered?{' '}
             <Link
               to="/login"
-              className="font-bold text-[#194333] hover:underline transition-colors"
+              className="font-bold text-primary hover:underline transition-colors"
             >
               Sign In
             </Link>

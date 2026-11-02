@@ -21,14 +21,14 @@ export const FormInput = ({
   return (
     <div className={`flex flex-col gap-1.5 w-full ${className}`}>
       {label && (
-        <label className="text-[#18221D] text-xs sm:text-sm font-semibold tracking-wide pl-1">
-          {label} {required && <span className="text-[#194333]">*</span>}
+        <label className="text-on-surface text-xs sm:text-sm font-semibold tracking-wide pl-1">
+          {label} {required && <span className="text-primary font-bold">*</span>}
         </label>
       )}
 
       <div className="relative flex items-center">
         {Icon && (
-          <div className="absolute left-4 text-[#53675D] pointer-events-none">
+          <div className="absolute left-4 text-on-surface-variant/70 pointer-events-none">
             <Icon className="w-4 h-4" />
           </div>
         )}
@@ -41,7 +41,7 @@ export const FormInput = ({
           placeholder={placeholder}
           required={required}
           autoComplete={autoComplete}
-          className={`w-full py-2.5 px-4 text-sm font-medium rounded-full text-[#18221D] placeholder-[#6E7B74] 
+          className={`w-full py-2.5 px-4 text-sm font-medium rounded-full text-on-surface placeholder-[#797584]/60 
             highorbit-glass-input
             focus:outline-none
             transition-all duration-200
@@ -55,7 +55,7 @@ export const FormInput = ({
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-4 text-[#53675D] hover:text-[#18221D] transition-colors p-1 cursor-pointer"
+            className="absolute right-4 text-on-surface-variant/70 hover:text-primary transition-colors p-1 cursor-pointer"
             tabIndex={-1}
             aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
