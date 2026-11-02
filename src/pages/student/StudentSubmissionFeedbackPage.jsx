@@ -106,8 +106,8 @@ export const StudentSubmissionFeedbackPage = () => {
         };
       case 'Completed':
         return {
-          badge: 'bg-[#9CCDB0] text-[#193F30] border border-[#78b390]',
-          dot: 'bg-[#193F30]',
+          badge: 'bg-[#8bcefe] text-primary border border-[#78b390]',
+          dot: 'bg-primary',
           title: 'Approved & Completed',
           description: 'Your assignment has been fully reviewed, approved, and marked complete.'
         };
@@ -162,14 +162,14 @@ export const StudentSubmissionFeedbackPage = () => {
         <div className="w-16 h-16 rounded-3xl bg-rose-50 text-rose-800 flex items-center justify-center mx-auto border border-rose-200">
           <ShieldAlert className="w-8 h-8" />
         </div>
-        <h2 className="font-serif text-2xl font-bold text-[#202923]">Access Denied</h2>
-        <p className="text-sm text-[#737A73] leading-relaxed">
+        <h2 className=" text-2xl font-bold text-[#1b1831]">Access Denied</h2>
+        <p className="text-sm text-[#6A6678] leading-relaxed">
           You are not authorized to access this submission. Records in HighOrbit are confidential and strictly restricted to the authenticated student owner.
         </p>
         <div className="pt-2">
           <Link
             to="/child/assignments"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container transition-all shadow-sm"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Return to My Assignments</span>
@@ -183,13 +183,13 @@ export const StudentSubmissionFeedbackPage = () => {
   if (!assignment) {
     return (
       <div className="max-w-xl mx-auto py-16 px-6 text-center space-y-4 animate-fadeIn">
-        <div className="w-16 h-16 rounded-3xl bg-[#F1EDE2] text-[#193F30] flex items-center justify-center mx-auto border border-black/30 shadow-xs">
+        <div className="w-16 h-16 rounded-3xl bg-[#F3EFFF] text-primary flex items-center justify-center mx-auto border border-[#E6DEFF] shadow-xs">
           <AlertCircle className="w-8 h-8" />
         </div>
-        <h2 className="font-serif text-2xl font-bold text-[#202923]">Submission Not Found</h2>
-        <p className="text-sm text-[#737A73] leading-relaxed">
+        <h2 className=" text-2xl font-bold text-[#1b1831]">Submission Not Found</h2>
+        <p className="text-sm text-[#6A6678] leading-relaxed">
           No submission or feedback record was found for assignment ID:{' '}
-          <span className="font-mono text-xs font-bold text-[#202923] bg-[#F1EDE2] px-2 py-0.5 rounded-md border border-black/20">
+          <span className="font-mono text-xs font-bold text-[#1b1831] bg-[#F3EFFF] px-2 py-0.5 rounded-md border border-[#E6DEFF]">
             {targetId || 'None'}
           </span>
           .
@@ -197,7 +197,7 @@ export const StudentSubmissionFeedbackPage = () => {
         <div className="pt-2">
           <Link
             to="/child/assignments"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 hover:border-black/50 transition-all shadow-xs"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] hover:border-primary/40 transition-all shadow-xs"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to My Assignments</span>
@@ -216,11 +216,11 @@ export const StudentSubmissionFeedbackPage = () => {
       {/* ─────────────────────────────────────────────────────────────
           2. BREADCRUMBS & SUBMISSION SWITCHER
           ───────────────────────────────────────────────────────────── */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/20">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E6DEFF]">
         <div className="flex items-center gap-2 text-xs">
           <Link
             to="/child/assignments"
-            className="p-1.5 rounded-xl text-[#737A73] hover:text-[#193F30] hover:bg-[#EDF2EC] transition-colors flex items-center gap-1 font-semibold"
+            className="p-1.5 rounded-xl text-[#6A6678] hover:text-primary hover:bg-[#EBE5FF] transition-colors flex items-center gap-1 font-semibold"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>My Assignments</span>
@@ -228,22 +228,22 @@ export const StudentSubmissionFeedbackPage = () => {
           <span className="text-black/30">/</span>
           <Link
             to={`/child/assignments/${assignment.id}`}
-            className="text-[#737A73] hover:text-[#193F30] transition-colors font-medium truncate max-w-xs"
+            className="text-[#6A6678] hover:text-primary transition-colors font-medium truncate max-w-xs"
           >
             {assignment.title}
           </Link>
           <span className="text-black/30">/</span>
-          <span className="text-[#193F30] font-bold">Status & Feedback</span>
+          <span className="text-primary font-bold">Status & Feedback</span>
         </div>
 
         {/* Multi-Submission Switcher Dropdown */}
         {authorizedSubmissions.length > 1 && (
           <div className="flex items-center gap-2 text-xs self-start sm:self-auto">
-            <span className="text-[#737A73] font-medium hidden md:inline">Other Submissions:</span>
+            <span className="text-[#6A6678] font-medium hidden md:inline">Other Submissions:</span>
             <select
               value={assignment.id}
               onChange={(e) => navigate(`/child/assignments/${e.target.value}/feedback`)}
-              className="py-1.5 px-3 rounded-xl bg-white border border-black/30 hover:border-black/50 text-xs font-semibold text-[#202923] focus:outline-hidden focus:border-black cursor-pointer shadow-2xs"
+              className="py-1.5 px-3 rounded-xl bg-white border border-[#E6DEFF] hover:border-primary/40 text-xs font-semibold text-[#1b1831] focus:outline-hidden focus:border-black cursor-pointer shadow-2xs"
             >
               {authorizedSubmissions.map((s) => (
                 <option key={s.id} value={s.id}>
@@ -257,18 +257,18 @@ export const StudentSubmissionFeedbackPage = () => {
 
       {/* Resubmission Success Alert Toast */}
       {revisionSuccessNotice && (
-        <div className="p-4 sm:p-5 rounded-3xl bg-[#9CCDB0]/25 border-2 border-[#193F30] text-[#193F30] flex items-center justify-between shadow-xs animate-fadeIn">
+        <div className="p-4 sm:p-5 rounded-3xl bg-[#8bcefe]/25 border-2 border-primary text-primary flex items-center justify-between shadow-xs animate-fadeIn">
           <div className="flex items-center gap-3">
-            <CheckCircle2 className="w-6 h-6 text-[#193F30] shrink-0" />
+            <CheckCircle2 className="w-6 h-6 text-primary shrink-0" />
             <div>
-              <strong className="block text-sm font-bold text-[#193F30]">Revision Resubmitted!</strong>
-              <p className="text-xs text-[#202923] mt-0.5">{revisionSuccessNotice}</p>
+              <strong className="block text-sm font-bold text-primary">Revision Resubmitted!</strong>
+              <p className="text-xs text-[#1b1831] mt-0.5">{revisionSuccessNotice}</p>
             </div>
           </div>
           <button
             type="button"
             onClick={() => setRevisionSuccessNotice(null)}
-            className="p-1 rounded-lg text-[#193F30] hover:bg-[#193F30]/10 cursor-pointer"
+            className="p-1 rounded-lg text-primary hover:bg-primary/10 cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -278,24 +278,24 @@ export const StudentSubmissionFeedbackPage = () => {
       {/* ─────────────────────────────────────────────────────────────
           3. HERO CARD: ASSIGNMENT TITLE, STATUS, & PROGRESS STEPPER
           ───────────────────────────────────────────────────────────── */}
-      <section className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 hover:border-black/50 shadow-xs transition-all space-y-6">
+      <section className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] hover:border-primary/40 shadow-xs transition-all space-y-6">
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
           <div className="space-y-3 max-w-3xl">
             {/* Badges */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-bold text-[#193F30] bg-[#EDF2EC] border border-black/20 px-3 py-1 rounded-full">
+              <span className="text-xs font-bold text-primary bg-[#EBE5FF] border border-[#E6DEFF] px-3 py-1 rounded-full">
                 {assignment.subject}
               </span>
 
               {assignment.activityType && (
-                <span className="text-xs font-medium text-[#737A73] bg-[#F1EDE2] border border-black/20 px-3 py-1 rounded-full">
+                <span className="text-xs font-medium text-[#6A6678] bg-[#F3EFFF] border border-[#E6DEFF] px-3 py-1 rounded-full">
                   {assignment.activityType}
                 </span>
               )}
 
               {/* Status Badge */}
               <span
-                className={`text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full flex items-center gap-1.5 border border-black/30 ${statusConfig.badge}`}
+                className={`text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full flex items-center gap-1.5 border border-[#E6DEFF] ${statusConfig.badge}`}
               >
                 <span className={`w-2 h-2 rounded-full ${statusConfig.dot}`} />
                 <span>{assignment.status}</span>
@@ -303,53 +303,53 @@ export const StudentSubmissionFeedbackPage = () => {
             </div>
 
             {/* Title */}
-            <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#202923] tracking-tight">
+            <h1 className=" text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1b1831] tracking-tight">
               {assignment.title}
             </h1>
 
-            <p className="text-xs sm:text-sm text-[#737A73] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#6A6678] leading-relaxed">
               {statusConfig.description}
             </p>
           </div>
 
           {/* Quick Review Metadata Card */}
-          <div className="p-5 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs space-y-3 min-w-[260px] shrink-0 text-xs">
+          <div className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs space-y-3 min-w-[260px] shrink-0 text-xs">
             <div>
-              <span className="text-[10px] uppercase font-bold text-[#737A73] tracking-wider block">
+              <span className="text-[10px] uppercase font-bold text-[#6A6678] tracking-wider block">
                 Submission Date & Time
               </span>
-              <div className="font-semibold text-[#202923] flex items-center gap-1.5 mt-0.5">
-                <Calendar className="w-3.5 h-3.5 text-[#193F30]" />
+              <div className="font-semibold text-[#1b1831] flex items-center gap-1.5 mt-0.5">
+                <Calendar className="w-3.5 h-3.5 text-primary" />
                 <span>{assignment.submission?.submittedAt || 'Recorded'}</span>
               </div>
             </div>
 
-            <div className="pt-2 border-t border-black/20">
-              <span className="text-[10px] uppercase font-bold text-[#737A73] tracking-wider block">
+            <div className="pt-2 border-t border-[#E6DEFF]">
+              <span className="text-[10px] uppercase font-bold text-[#6A6678] tracking-wider block">
                 Review Status
               </span>
-              <div className="font-bold text-[#193F30] flex items-center gap-1.5 mt-0.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#193F30]" />
+              <div className="font-bold text-primary flex items-center gap-1.5 mt-0.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-primary" />
                 <span>{assignment.status}</span>
               </div>
             </div>
 
-            <div className="pt-2 border-t border-black/20">
-              <span className="text-[10px] uppercase font-bold text-[#737A73] tracking-wider block">
+            <div className="pt-2 border-t border-[#E6DEFF]">
+              <span className="text-[10px] uppercase font-bold text-[#6A6678] tracking-wider block">
                 Assigned Mentor / Reviewer
               </span>
-              <div className="font-semibold text-[#202923] flex items-center gap-1.5 mt-0.5">
-                <UserCheck className="w-3.5 h-3.5 text-[#193F30]" />
+              <div className="font-semibold text-[#1b1831] flex items-center gap-1.5 mt-0.5">
+                <UserCheck className="w-3.5 h-3.5 text-primary" />
                 <span>{assignment.feedback?.author || assignment.reviewer || 'Sarah Jenkins (Mentor)'}</span>
               </div>
             </div>
 
-            <div className="pt-2 border-t border-black/20">
-              <span className="text-[10px] uppercase font-bold text-[#737A73] tracking-wider block">
+            <div className="pt-2 border-t border-[#E6DEFF]">
+              <span className="text-[10px] uppercase font-bold text-[#6A6678] tracking-wider block">
                 Submission Version
               </span>
-              <div className="font-bold text-[#202923] flex items-center gap-1.5 mt-0.5">
-                <History className="w-3.5 h-3.5 text-[#193F30]" />
+              <div className="font-bold text-[#1b1831] flex items-center gap-1.5 mt-0.5">
+                <History className="w-3.5 h-3.5 text-primary" />
                 <span>Version {assignment.submission?.version || 1}</span>
               </div>
             </div>
@@ -357,8 +357,8 @@ export const StudentSubmissionFeedbackPage = () => {
         </div>
 
         {/* 4-Stage Progressive Review Stepper */}
-        <div className="pt-4 border-t border-black/20">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-[#737A73] block mb-3">
+        <div className="pt-4 border-t border-[#E6DEFF]">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-[#6A6678] block mb-3">
             Review Progression Stage
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
@@ -368,10 +368,10 @@ export const StudentSubmissionFeedbackPage = () => {
               className={`p-3.5 rounded-2xl border text-xs flex items-center gap-3 transition-all ${
                 assignment.status === 'Submitted'
                   ? 'bg-blue-50 border-blue-400 text-blue-900 font-bold ring-2 ring-blue-500/20'
-                  : 'bg-[#EDF2EC] border-black/30 text-[#193F30]'
+                  : 'bg-[#EBE5FF] border-[#E6DEFF] text-primary'
               }`}
             >
-              <div className="w-6 h-6 rounded-full bg-white border border-black/20 flex items-center justify-center shrink-0 text-[11px] font-bold">
+              <div className="w-6 h-6 rounded-full bg-white border border-[#E6DEFF] flex items-center justify-center shrink-0 text-[11px] font-bold">
                 ✓
               </div>
               <div>
@@ -386,11 +386,11 @@ export const StudentSubmissionFeedbackPage = () => {
                 assignment.status === 'Under Review'
                   ? 'bg-amber-50 border-amber-400 text-amber-950 font-bold ring-2 ring-amber-500/20'
                   : assignment.status === 'Completed' || assignment.status === 'Needs Revision'
-                  ? 'bg-[#EDF2EC] border-black/30 text-[#193F30]'
-                  : 'bg-[#F8F7F2] border-black/25 text-[#737A73]'
+                  ? 'bg-[#EBE5FF] border-[#E6DEFF] text-primary'
+                  : 'bg-[#FCF8FF] border-[#E6DEFF] text-[#6A6678]'
               }`}
             >
-              <div className="w-6 h-6 rounded-full bg-white border border-black/20 flex items-center justify-center shrink-0 text-[11px] font-bold">
+              <div className="w-6 h-6 rounded-full bg-white border border-[#E6DEFF] flex items-center justify-center shrink-0 text-[11px] font-bold">
                 {assignment.status === 'Completed' || assignment.status === 'Needs Revision' ? '✓' : '2'}
               </div>
               <div>
@@ -403,13 +403,13 @@ export const StudentSubmissionFeedbackPage = () => {
             <div
               className={`p-3.5 rounded-2xl border text-xs flex items-center gap-3 transition-all ${
                 assignment.status === 'Completed'
-                  ? 'bg-[#EDF2EC] border-black/30 text-[#193F30] font-bold ring-2 ring-[#193F30]/20'
+                  ? 'bg-[#EBE5FF] border-[#E6DEFF] text-primary font-bold ring-2 ring-primary/20'
                   : assignment.status === 'Needs Revision'
                   ? 'bg-rose-50 border-rose-400 text-rose-950 font-bold ring-2 ring-rose-500/20'
-                  : 'bg-[#F8F7F2] border-black/25 text-[#737A73]'
+                  : 'bg-[#FCF8FF] border-[#E6DEFF] text-[#6A6678]'
               }`}
             >
-              <div className="w-6 h-6 rounded-full bg-white border border-black/20 flex items-center justify-center shrink-0 text-[11px] font-bold">
+              <div className="w-6 h-6 rounded-full bg-white border border-[#E6DEFF] flex items-center justify-center shrink-0 text-[11px] font-bold">
                 {assignment.status === 'Completed' ? '✓' : assignment.status === 'Needs Revision' ? '!' : '3'}
               </div>
               <div>
@@ -426,11 +426,11 @@ export const StudentSubmissionFeedbackPage = () => {
             <div
               className={`p-3.5 rounded-2xl border text-xs flex items-center gap-3 transition-all ${
                 assignment.status === 'Completed'
-                  ? 'bg-[#9CCDB0] border-black/30 text-[#193F30] font-bold'
-                  : 'bg-[#F8F7F2] border-black/25 text-[#737A73]'
+                  ? 'bg-[#8bcefe] border-[#E6DEFF] text-primary font-bold'
+                  : 'bg-[#FCF8FF] border-[#E6DEFF] text-[#6A6678]'
               }`}
             >
-              <div className="w-6 h-6 rounded-full bg-white border border-black/20 flex items-center justify-center shrink-0 text-[11px] font-bold">
+              <div className="w-6 h-6 rounded-full bg-white border border-[#E6DEFF] flex items-center justify-center shrink-0 text-[11px] font-bold">
                 {assignment.status === 'Completed' ? '★' : '4'}
               </div>
               <div>
@@ -450,20 +450,20 @@ export const StudentSubmissionFeedbackPage = () => {
         
         {/* Left Column (7 cols): Reviewer Feedback Card */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="p-6 sm:p-7 rounded-3xl bg-white border border-black/30 hover:border-black/50 transition-all shadow-xs space-y-5">
+          <div className="p-6 sm:p-7 rounded-3xl bg-white border border-[#E6DEFF] hover:border-primary/40 transition-all shadow-xs space-y-5">
             
-            <div className="pb-3 border-b border-black/20 flex items-center justify-between">
+            <div className="pb-3 border-b border-[#E6DEFF] flex items-center justify-between">
               <div>
-                <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#202923]">
+                <h2 className=" text-xl sm:text-2xl font-bold text-[#1b1831]">
                   Reviewer Feedback
                 </h2>
-                <p className="text-xs text-[#737A73]">
+                <p className="text-xs text-[#6A6678]">
                   Mentor evaluation and developmental guidance.
                 </p>
               </div>
 
               {assignment.feedback && (
-                <span className="text-xs font-semibold text-[#193F30] bg-[#EDF2EC] px-3 py-1 rounded-full border border-black/30 shadow-2xs">
+                <span className="text-xs font-semibold text-primary bg-[#EBE5FF] px-3 py-1 rounded-full border border-[#E6DEFF] shadow-2xs">
                   Official Review
                 </span>
               )}
@@ -471,28 +471,28 @@ export const StudentSubmissionFeedbackPage = () => {
 
             {/* Case A: Reviewer Feedback is Available */}
             {assignment.feedback ? (
-              <div className="p-6 rounded-2xl bg-[#F1EDE2]/70 border border-black/30 shadow-2xs space-y-4">
+              <div className="p-6 rounded-2xl bg-[#F3EFFF]/70 border border-[#E6DEFF] shadow-2xs space-y-4">
                 
                 {/* Reviewer Header */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/20">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E6DEFF]">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-[#193F30] text-white flex items-center justify-center font-bold text-sm shadow-xs">
+                    <div className="w-10 h-10 rounded-2xl bg-primary text-white flex items-center justify-center font-bold text-sm shadow-xs">
                       SJ
                     </div>
                     <div>
-                      <strong className="text-sm font-bold text-[#202923] block">
+                      <strong className="text-sm font-bold text-[#1b1831] block">
                         {assignment.feedback.author || 'Sarah Jenkins'}
                       </strong>
-                      <span className="text-xs text-[#737A73]">
+                      <span className="text-xs text-[#6A6678]">
                         {assignment.feedback.role || 'Verified Leadership & Values Mentor'}
                       </span>
                     </div>
                   </div>
 
                   <div className="text-right">
-                    <span className="text-[10px] uppercase font-bold text-[#737A73] block">Review Date</span>
-                    <span className="text-xs font-semibold text-[#202923] flex items-center gap-1 justify-end">
-                      <Clock className="w-3.5 h-3.5 text-[#193F30]" />
+                    <span className="text-[10px] uppercase font-bold text-[#6A6678] block">Review Date</span>
+                    <span className="text-xs font-semibold text-[#1b1831] flex items-center gap-1 justify-end">
+                      <Clock className="w-3.5 h-3.5 text-primary" />
                       <span>{assignment.feedback.date}</span>
                     </span>
                   </div>
@@ -500,10 +500,10 @@ export const StudentSubmissionFeedbackPage = () => {
 
                 {/* Feedback Comment */}
                 <div className="space-y-1.5">
-                  <span className="text-[11px] uppercase font-bold text-[#737A73] tracking-wider block">
+                  <span className="text-[11px] uppercase font-bold text-[#6A6678] tracking-wider block">
                     Mentor Notes & Evaluation:
                   </span>
-                  <div className="p-4 rounded-xl bg-white border border-black/30 text-xs sm:text-sm text-[#202923] leading-relaxed italic shadow-2xs">
+                  <div className="p-4 rounded-xl bg-white border border-[#E6DEFF] text-xs sm:text-sm text-[#1b1831] leading-relaxed italic shadow-2xs">
                     "{assignment.feedback.comment}"
                   </div>
                 </div>
@@ -513,7 +513,7 @@ export const StudentSubmissionFeedbackPage = () => {
                   <div className="p-5 rounded-2xl bg-rose-50 border-2 border-rose-300 text-rose-950 space-y-3 animate-fadeIn">
                     <div className="flex items-center gap-2">
                       <AlertTriangle className="w-5 h-5 text-rose-700 shrink-0" />
-                      <h4 className="font-serif text-sm sm:text-base font-bold text-rose-900">
+                      <h4 className=" text-sm sm:text-base font-bold text-rose-900">
                         Required Revision Instructions:
                       </h4>
                     </div>
@@ -531,19 +531,19 @@ export const StudentSubmissionFeedbackPage = () => {
               </div>
             ) : (
               /* Case C: Feedback NOT Yet Available (Under Review or Submitted) */
-              <div className="p-8 sm:p-10 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs text-center space-y-3">
-                <div className="w-12 h-12 rounded-full bg-[#EDF2EC] text-[#193F30] flex items-center justify-center mx-auto">
+              <div className="p-8 sm:p-10 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs text-center space-y-3">
+                <div className="w-12 h-12 rounded-full bg-[#EBE5FF] text-primary flex items-center justify-center mx-auto">
                   <Clock className="w-6 h-6 animate-pulse" />
                 </div>
-                <h3 className="font-serif text-lg font-bold text-[#202923]">
+                <h3 className=" text-lg font-bold text-[#1b1831]">
                   {assignment.status === 'Under Review' ? 'Review In Progress' : 'Feedback Not Yet Available'}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#737A73] max-w-md mx-auto leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#6A6678] max-w-md mx-auto leading-relaxed">
                   {assignment.status === 'Under Review'
                     ? 'Mentor Sarah Jenkins has opened your submission and is actively reviewing your reflection. Constructive guidance and rubric scores will appear here once finalized.'
                     : 'Your assignment reflection has been securely delivered to the review queue. A mentor will review your submission shortly. No reviewer feedback has been issued yet.'}
                 </p>
-                <div className="text-[11px] text-[#193F30] font-semibold pt-1">
+                <div className="text-[11px] text-primary font-semibold pt-1">
                   • Server timestamp verified • Read-only review guarantee •
                 </div>
               </div>
@@ -552,10 +552,10 @@ export const StudentSubmissionFeedbackPage = () => {
             {/* ─────────────────────────────────────────────────────────────
                 ACTIONS & RESUBMIT BUTTON (Permitted ONLY for Needs Revision)
                 ───────────────────────────────────────────────────────────── */}
-            <div className="pt-4 border-t border-black/20 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+            <div className="pt-4 border-t border-[#E6DEFF] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
               <Link
                 to={`/child/assignments/${assignment.id}`}
-                className="py-2.5 px-5 rounded-full text-xs font-semibold text-[#202923] hover:text-black bg-white border border-black/30 hover:border-black/50 hover:bg-[#F8F7F2] transition-all inline-flex items-center justify-center gap-1.5 shadow-xs"
+                className="py-2.5 px-5 rounded-full text-xs font-semibold text-[#1b1831] hover:text-black bg-white border border-[#E6DEFF] hover:border-primary/40 hover:bg-[#FCF8FF] transition-all inline-flex items-center justify-center gap-1.5 shadow-xs"
               >
                 <Eye className="w-3.5 h-3.5" />
                 <span>View Full Assignment Details</span>
@@ -566,14 +566,14 @@ export const StudentSubmissionFeedbackPage = () => {
                 <button
                   type="button"
                   onClick={() => setShowRevisionModal(true)}
-                  className="py-2.5 px-6 rounded-full text-xs font-semibold text-white bg-rose-800 hover:bg-rose-900 border border-black/30 hover:border-black/50 transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+                  className="py-2.5 px-6 rounded-full text-xs font-semibold text-white bg-rose-800 hover:bg-rose-900 border border-[#E6DEFF] hover:border-primary/40 transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>Revise & Resubmit Assignment</span>
                 </button>
               ) : (
-                <div className="text-[11px] text-[#737A73] italic flex items-center gap-1.5 justify-center sm:justify-end">
-                  <Lock className="w-3.5 h-3.5 text-[#737A73]" />
+                <div className="text-[11px] text-[#6A6678] italic flex items-center gap-1.5 justify-center sm:justify-end">
+                  <Lock className="w-3.5 h-3.5 text-[#6A6678]" />
                   <span>
                     {assignment.status === 'Completed'
                       ? 'Resubmission locked: Assignment is completed'
@@ -588,38 +588,38 @@ export const StudentSubmissionFeedbackPage = () => {
 
         {/* Right Column (5 cols): Submitted Answers Record & History */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="p-6 rounded-3xl bg-white border border-black/30 hover:border-black/50 transition-all shadow-xs space-y-5">
+          <div className="p-6 rounded-3xl bg-white border border-[#E6DEFF] hover:border-primary/40 transition-all shadow-xs space-y-5">
             
-            <div className="pb-3 border-b border-black/20 flex items-center justify-between">
+            <div className="pb-3 border-b border-[#E6DEFF] flex items-center justify-between">
               <div>
-                <h3 className="font-serif text-lg font-bold text-[#202923]">
+                <h3 className=" text-lg font-bold text-[#1b1831]">
                   Submitted Record
                 </h3>
-                <p className="text-xs text-[#737A73]">
+                <p className="text-xs text-[#6A6678]">
                   Authorized submission answers on file.
                 </p>
               </div>
 
-              <span className="text-xs font-bold text-[#202923] bg-[#F8F7F2] px-2.5 py-1 rounded-lg border border-black/30">
+              <span className="text-xs font-bold text-[#1b1831] bg-[#FCF8FF] px-2.5 py-1 rounded-lg border border-[#E6DEFF]">
                 Version {assignment.submission?.version || 1}
               </span>
             </div>
 
             {/* Activity Completed Indicator */}
-            <div className="p-3 rounded-2xl bg-[#EDF2EC] border border-[#9CCDB0] flex items-center gap-2.5 text-xs text-[#193F30] font-semibold">
-              <CheckCircle2 className="w-4 h-4 text-[#193F30] shrink-0" />
+            <div className="p-3 rounded-2xl bg-[#EBE5FF] border border-[#9CCDB0] flex items-center gap-2.5 text-xs text-primary font-semibold">
+              <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
               <span>Activity Steps Confirmed Completed</span>
             </div>
 
             {/* Submitted Answers List */}
             <div className="space-y-3.5 max-h-[380px] overflow-y-auto no-scrollbar">
               {(assignment.requiredQuestions || []).map((q, idx) => (
-                <div key={q.id} className="p-3.5 rounded-2xl bg-[#F8F7F2] border border-black/30 space-y-1 text-xs">
-                  <div className="font-bold text-[#202923] flex items-center justify-between">
+                <div key={q.id} className="p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] space-y-1 text-xs">
+                  <div className="font-bold text-[#1b1831] flex items-center justify-between">
                     <span>Q{idx + 1}. {q.title}</span>
-                    <span className="text-[10px] text-[#737A73] uppercase">{q.type.replace('_', ' ')}</span>
+                    <span className="text-[10px] text-[#6A6678] uppercase">{q.type.replace('_', ' ')}</span>
                   </div>
-                  <div className="p-2.5 rounded-xl bg-white border border-black/30 text-[#202923] whitespace-pre-wrap leading-relaxed shadow-2xs">
+                  <div className="p-2.5 rounded-xl bg-white border border-[#E6DEFF] text-[#1b1831] whitespace-pre-wrap leading-relaxed shadow-2xs">
                     {assignment.submission?.answers?.[q.id] ||
                       assignment.draftAnswers?.[q.id] ||
                       '(No response recorded)'}
@@ -629,14 +629,14 @@ export const StudentSubmissionFeedbackPage = () => {
 
               {/* Attached file summary if present */}
               {assignment.submission?.attachedFile && (
-                <div className="p-3 rounded-2xl bg-[#F8F7F2] border border-black/30 flex items-center justify-between gap-3 text-xs">
+                <div className="p-3 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] flex items-center justify-between gap-3 text-xs">
                   <div className="flex items-center gap-2.5 overflow-hidden">
-                    <FileCheck className="w-4 h-4 text-[#193F30] shrink-0" />
+                    <FileCheck className="w-4 h-4 text-primary shrink-0" />
                     <div className="overflow-hidden">
-                      <span className="font-bold text-[#202923] block truncate">
+                      <span className="font-bold text-[#1b1831] block truncate">
                         {assignment.submission.attachedFile.name}
                       </span>
-                      <span className="text-[10px] text-[#737A73]">Verified Attachment</span>
+                      <span className="text-[10px] text-[#6A6678]">Verified Attachment</span>
                     </div>
                   </div>
                   <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
@@ -648,24 +648,24 @@ export const StudentSubmissionFeedbackPage = () => {
 
             {/* Submission History Log where supported */}
             {assignment.submissionHistory && assignment.submissionHistory.length > 0 && (
-              <div className="pt-3 border-t border-black/20 space-y-2">
-                <span className="text-[11px] uppercase font-bold text-[#737A73] tracking-wider block">
+              <div className="pt-3 border-t border-[#E6DEFF] space-y-2">
+                <span className="text-[11px] uppercase font-bold text-[#6A6678] tracking-wider block">
                   Submission History Timeline ({assignment.submissionHistory.length + 1} iterations):
                 </span>
                 <div className="space-y-1.5">
                   {assignment.submissionHistory.map((h, hIdx) => (
                     <div
                       key={hIdx}
-                      className="p-2.5 rounded-xl bg-[#F8F7F2] border border-black/25 text-xs flex items-center justify-between text-[#737A73]"
+                      className="p-2.5 rounded-xl bg-[#FCF8FF] border border-[#E6DEFF] text-xs flex items-center justify-between text-[#6A6678]"
                     >
                       <div className="flex items-center gap-2">
-                        <History className="w-3.5 h-3.5 text-[#193F30]" />
+                        <History className="w-3.5 h-3.5 text-primary" />
                         <span>Version {h.version || hIdx + 1}</span>
                       </div>
                       <span className="text-[10px]">{h.submittedAt}</span>
                     </div>
                   ))}
-                  <div className="p-2.5 rounded-xl bg-[#EDF2EC] border border-black/30 text-xs flex items-center justify-between text-[#193F30] font-bold">
+                  <div className="p-2.5 rounded-xl bg-[#EBE5FF] border border-[#E6DEFF] text-xs flex items-center justify-between text-primary font-bold">
                     <div className="flex items-center gap-2">
                       <Check className="w-3.5 h-3.5 stroke-[2.5]" />
                       <span>Version {assignment.submission?.version || 2} (Current)</span>
@@ -686,24 +686,24 @@ export const StudentSubmissionFeedbackPage = () => {
           ───────────────────────────────────────────────────────────── */}
       {showRevisionModal && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
-          <div className="w-full max-w-2xl bg-white rounded-3xl border border-black/30 shadow-2xl p-6 sm:p-8 space-y-5 max-h-[90vh] overflow-y-auto no-scrollbar">
+          <div className="w-full max-w-2xl bg-white rounded-3xl border border-[#E6DEFF] shadow-2xl p-6 sm:p-8 space-y-5 max-h-[90vh] overflow-y-auto no-scrollbar">
             
-            <div className="flex items-center justify-between pb-3 border-b border-black/20">
+            <div className="flex items-center justify-between pb-3 border-b border-[#E6DEFF]">
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-rose-800 bg-rose-100 px-2.5 py-0.5 rounded-full border border-black/20">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-rose-800 bg-rose-100 px-2.5 py-0.5 rounded-full border border-[#E6DEFF]">
                   Authorized Resubmission
                 </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#202923] mt-1">
+                <h3 className=" text-xl sm:text-2xl font-bold text-[#1b1831] mt-1">
                   Revise & Resubmit Reflection
                 </h3>
-                <p className="text-xs text-[#737A73]">
+                <p className="text-xs text-[#6A6678]">
                   Update your responses addressing Sarah Jenkins's guidance notes.
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => setShowRevisionModal(false)}
-                className="p-1 rounded-full text-[#737A73] hover:text-black cursor-pointer"
+                className="p-1 rounded-full text-[#6A6678] hover:text-black cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -727,8 +727,8 @@ export const StudentSubmissionFeedbackPage = () => {
             {/* Questions Revision Form */}
             <div className="space-y-4">
               {(assignment.requiredQuestions || []).map((q, idx) => (
-                <div key={q.id} className="p-4 rounded-2xl bg-[#F8F7F2] border border-black/30 space-y-2 text-xs">
-                  <div className="font-bold text-[#202923] flex items-center justify-between">
+                <div key={q.id} className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] space-y-2 text-xs">
+                  <div className="font-bold text-[#1b1831] flex items-center justify-between">
                     <span>Q{idx + 1}. {q.title}</span>
                     {q.required && <span className="text-rose-600 font-bold">*</span>}
                   </div>
@@ -740,8 +740,8 @@ export const StudentSubmissionFeedbackPage = () => {
                           key={oIdx}
                           className={`p-2.5 rounded-xl border flex items-center gap-2.5 cursor-pointer transition-all ${
                             revisionAnswers[q.id] === opt
-                              ? 'bg-[#193F30] text-white border-[#193F30] font-semibold'
-                              : 'bg-white text-[#202923] border-black/30 hover:border-black/50 shadow-2xs'
+                              ? 'bg-primary text-white border-primary font-semibold'
+                              : 'bg-white text-[#1b1831] border-[#E6DEFF] hover:border-primary/40 shadow-2xs'
                           }`}
                         >
                           <input
@@ -763,7 +763,7 @@ export const StudentSubmissionFeedbackPage = () => {
                       type="text"
                       value={revisionAnswers[q.id] || ''}
                       onChange={(e) => setRevisionAnswers((prev) => ({ ...prev, [q.id]: e.target.value }))}
-                      className="w-full p-3 rounded-xl bg-white border border-black/30 focus:border-black/60 text-xs text-[#202923] focus:outline-hidden shadow-2xs"
+                      className="w-full p-3 rounded-xl bg-white border border-[#E6DEFF] focus:border-black/60 text-xs text-[#1b1831] focus:outline-hidden shadow-2xs"
                     />
                   )}
 
@@ -772,7 +772,7 @@ export const StudentSubmissionFeedbackPage = () => {
                       rows={4}
                       value={revisionAnswers[q.id] || ''}
                       onChange={(e) => setRevisionAnswers((prev) => ({ ...prev, [q.id]: e.target.value }))}
-                      className="w-full p-3 rounded-xl bg-white border border-black/30 focus:border-black/60 text-xs text-[#202923] focus:outline-hidden leading-relaxed shadow-2xs"
+                      className="w-full p-3 rounded-xl bg-white border border-[#E6DEFF] focus:border-black/60 text-xs text-[#1b1831] focus:outline-hidden leading-relaxed shadow-2xs"
                     />
                   )}
                 </div>
@@ -780,12 +780,12 @@ export const StudentSubmissionFeedbackPage = () => {
             </div>
 
             {/* Modal Actions */}
-            <div className="flex items-center justify-end gap-2 pt-3 border-t border-black/20">
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E6DEFF]">
               <button
                 type="button"
                 onClick={() => setShowRevisionModal(false)}
                 disabled={isSubmittingRevision}
-                className="py-2.5 px-5 rounded-full text-xs font-semibold text-[#202923] hover:text-black bg-white border border-black/30 hover:border-black/50 hover:bg-[#F8F7F2] transition-all cursor-pointer shadow-xs"
+                className="py-2.5 px-5 rounded-full text-xs font-semibold text-[#1b1831] hover:text-black bg-white border border-[#E6DEFF] hover:border-primary/40 hover:bg-[#FCF8FF] transition-all cursor-pointer shadow-xs"
               >
                 Cancel
               </button>
@@ -794,7 +794,7 @@ export const StudentSubmissionFeedbackPage = () => {
                 type="button"
                 onClick={handleResubmit}
                 disabled={isSubmittingRevision}
-                className="py-2.5 px-6 rounded-full text-xs font-semibold text-white bg-rose-800 hover:bg-rose-900 border border-black/30 hover:border-black/50 transition-all flex items-center gap-2 cursor-pointer shadow-xs disabled:opacity-50"
+                className="py-2.5 px-6 rounded-full text-xs font-semibold text-white bg-rose-800 hover:bg-rose-900 border border-[#E6DEFF] hover:border-primary/40 transition-all flex items-center gap-2 cursor-pointer shadow-xs disabled:opacity-50"
               >
                 {isSubmittingRevision ? (
                   <>

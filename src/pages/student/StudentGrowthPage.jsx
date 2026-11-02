@@ -239,9 +239,9 @@ export const StudentGrowthPage = () => {
     switch (status) {
       case 'Completed':
         return {
-          bg: 'bg-[#EDF2EC]',
-          text: 'text-[#193F30]',
-          border: 'border-black/20',
+          bg: 'bg-[#EBE5FF]',
+          text: 'text-primary',
+          border: 'border-[#E6DEFF]',
           label: 'Completed'
         };
       case 'Submitted':
@@ -249,28 +249,28 @@ export const StudentGrowthPage = () => {
         return {
           bg: 'bg-[#E8F4F8]',
           text: 'text-[#1D5C75]',
-          border: 'border-black/20',
+          border: 'border-[#E6DEFF]',
           label: 'Under Review'
         };
       case 'Needs Revision':
         return {
           bg: 'bg-[#FFF9EB]',
           text: 'text-[#B45309]',
-          border: 'border-black/20',
+          border: 'border-[#E6DEFF]',
           label: 'Needs Revision'
         };
       case 'In Progress':
         return {
           bg: 'bg-[#F2EDF8]',
           text: 'text-[#5A3882]',
-          border: 'border-black/20',
+          border: 'border-[#E6DEFF]',
           label: 'In Progress'
         };
       default:
         return {
-          bg: 'bg-[#F8F7F2]',
-          text: 'text-[#737A73]',
-          border: 'border-black/20',
+          bg: 'bg-[#FCF8FF]',
+          text: 'text-[#6A6678]',
+          border: 'border-[#E6DEFF]',
           label: status || 'Pending'
         };
     }
@@ -279,28 +279,28 @@ export const StudentGrowthPage = () => {
   return (
     <div className="space-y-6 sm:space-y-8 animate-fadeIn pb-12">
       {/* 1. Header & Date Filter */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-black/15">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-[#E6DEFF]">
         <div>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#EDF2EC] text-[#193F30] border border-black/20">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#EBE5FF] text-primary border border-[#E6DEFF]">
               Student Growth Record
             </span>
-            <span className="text-xs text-[#737A73] font-medium flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#193F30]" /> Verified Backend Data
+            <span className="text-xs text-[#6A6678] font-medium flex items-center gap-1">
+              <ShieldCheck className="w-3.5 h-3.5 text-primary" /> Verified Backend Data
             </span>
           </div>
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#202923] tracking-tight mt-1">
+          <h2 className=" text-2xl sm:text-3xl font-bold text-[#1b1831] tracking-tight mt-1">
             My Growth & Progress
           </h2>
-          <p className="text-xs sm:text-sm text-[#737A73] mt-1 max-w-2xl">
+          <p className="text-xs sm:text-sm text-[#6A6678] mt-1 max-w-2xl">
             A comprehensive, data-backed record of completed activities, verified assignment submissions, personal goals, and mentor feedback.
           </p>
         </div>
 
         {/* Date Filter & Tab Selection */}
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1 p-1 rounded-xl bg-[#F1EDE2] border border-black/30">
-            <span className="text-[11px] font-bold text-[#737A73] px-2 flex items-center gap-1">
+          <div className="flex items-center gap-1 p-1 rounded-xl bg-[#F3EFFF] border border-[#E6DEFF]">
+            <span className="text-[11px] font-bold text-[#6A6678] px-2 flex items-center gap-1">
               <Filter className="w-3 h-3" /> Filter:
             </span>
             {[
@@ -314,8 +314,8 @@ export const StudentGrowthPage = () => {
                 onClick={() => setDateFilter(f.id)}
                 className={`py-1 px-3 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                   dateFilter === f.id
-                    ? 'bg-[#193F30] text-white border border-black/30 shadow-2xs'
-                    : 'text-[#202923] hover:text-black'
+                    ? 'bg-primary text-white border border-[#E6DEFF] shadow-2xs'
+                    : 'text-[#1b1831] hover:text-black'
                 }`}
               >
                 {f.label}
@@ -328,94 +328,94 @@ export const StudentGrowthPage = () => {
       {/* 2. Top Metric Cards (Calculated from actual database records) */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Completed Activities */}
-        <div className="p-5 rounded-3xl bg-white border border-black/30 shadow-xs flex flex-col justify-between hover:border-black/50 transition-all">
+        <div className="p-5 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs flex flex-col justify-between hover:border-primary/40 transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#737A73]">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#6A6678]">
               Completed Activities
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#EDF2EC] text-[#193F30] border border-black/20 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-[#EBE5FF] text-primary border border-[#E6DEFF] flex items-center justify-center">
               <ListTodo className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3">
             <div className="flex items-baseline gap-2">
-              <span className="font-serif text-3xl font-bold text-[#193F30]">
+              <span className=" text-3xl font-bold text-primary">
                 {totalCompletedActivitiesCount}
               </span>
               <span className="text-xs text-[#4B735F] font-semibold">completed</span>
             </div>
-            <p className="text-[11px] text-[#737A73] mt-1">
+            <p className="text-[11px] text-[#6A6678] mt-1">
               {completedActivities.length} curriculum + {filteredWellnessSessions.length} wellness
             </p>
           </div>
         </div>
 
         {/* Completed Assignments */}
-        <div className="p-5 rounded-3xl bg-white border border-black/30 shadow-xs flex flex-col justify-between hover:border-black/50 transition-all">
+        <div className="p-5 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs flex flex-col justify-between hover:border-primary/40 transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#737A73]">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#6A6678]">
               Completed Assignments
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#E8F4F8] text-[#1D5C75] border border-black/20 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-[#E8F4F8] text-[#1D5C75] border border-[#E6DEFF] flex items-center justify-center">
               <CheckSquare className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3">
             <div className="flex items-baseline gap-2">
-              <span className="font-serif text-3xl font-bold text-[#1D5C75]">
+              <span className=" text-3xl font-bold text-[#1D5C75]">
                 {completedAssignments.length}
               </span>
-              <span className="text-xs text-[#737A73] font-semibold">
+              <span className="text-xs text-[#6A6678] font-semibold">
                 of {totalAssignmentsCount} total
               </span>
             </div>
-            <p className="text-[11px] text-[#737A73] mt-1">
+            <p className="text-[11px] text-[#6A6678] mt-1">
               Completion Rate: <strong>{assignmentCompletionRate}%</strong>
             </p>
           </div>
         </div>
 
         {/* Active Personal Goals */}
-        <div className="p-5 rounded-3xl bg-white border border-black/30 shadow-xs flex flex-col justify-between hover:border-black/50 transition-all">
+        <div className="p-5 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs flex flex-col justify-between hover:border-primary/40 transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#737A73]">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#6A6678]">
               Active Personal Goals
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#F2EDF8] text-[#5A3882] border border-black/20 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-[#F2EDF8] text-[#5A3882] border border-[#E6DEFF] flex items-center justify-center">
               <Target className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3">
             <div className="flex items-baseline gap-2">
-              <span className="font-serif text-3xl font-bold text-[#5A3882]">
+              <span className=" text-3xl font-bold text-[#5A3882]">
                 {developmentalGoals.length}
               </span>
               <span className="text-xs text-[#5A3882] font-semibold">in progress</span>
             </div>
-            <p className="text-[11px] text-[#737A73] mt-1">
+            <p className="text-[11px] text-[#6A6678] mt-1">
               Average Progress: <strong>{Math.round((assignmentCompletionRate + habitConsistencyRate + wellnessProgressRate) / 3)}%</strong>
             </p>
           </div>
         </div>
 
         {/* Weekly Focus & Study Time */}
-        <div className="p-5 rounded-3xl bg-white border border-black/30 shadow-xs flex flex-col justify-between hover:border-black/50 transition-all">
+        <div className="p-5 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs flex flex-col justify-between hover:border-primary/40 transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#737A73]">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#6A6678]">
               Weekly Mindful Focus
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#FAF9F5] text-[#193F30] border border-black/20 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-[#FAF9F5] text-primary border border-[#E6DEFF] flex items-center justify-center">
               <Clock className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3">
             <div className="flex items-baseline gap-2">
-              <span className="font-serif text-3xl font-bold text-[#193F30]">
+              <span className=" text-3xl font-bold text-primary">
                 {weeklySummaryStats.focusMinutes}
               </span>
               <span className="text-xs text-[#4B735F] font-semibold">mins logged</span>
             </div>
-            <p className="text-[11px] text-[#737A73] mt-1">
+            <p className="text-[11px] text-[#6A6678] mt-1">
               Across {weeklySummaryStats.wellnessSessions} verified sessions
             </p>
           </div>
@@ -423,7 +423,7 @@ export const StudentGrowthPage = () => {
       </div>
 
       {/* 3. Section Navigation Tabs */}
-      <div className="flex items-center gap-1.5 p-1.5 rounded-2xl bg-[#F1EDE2] border border-black/30 overflow-x-auto scrollbar-none">
+      <div className="flex items-center gap-1.5 p-1.5 rounded-2xl bg-[#F3EFFF] border border-[#E6DEFF] overflow-x-auto scrollbar-none">
         {[
           { id: 'overview', label: 'Growth Overview & Goals' },
           { id: 'assignments', label: `Assignment History (${filteredAssignments.length})` },
@@ -437,8 +437,8 @@ export const StudentGrowthPage = () => {
             onClick={() => setActiveTab(tab.id)}
             className={`py-2 px-3.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === tab.id
-                ? 'bg-[#193F30] text-white border border-black/30 shadow-xs'
-                : 'text-[#202923] hover:text-black hover:bg-black/5'
+                ? 'bg-primary text-white border border-[#E6DEFF] shadow-xs'
+                : 'text-[#1b1831] hover:text-black hover:bg-black/5'
             }`}
           >
             {tab.label}
@@ -453,18 +453,18 @@ export const StudentGrowthPage = () => {
         <div className="space-y-6 sm:space-y-8">
           
           {/* Active Personal Goals with Defined Progress Calculations */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 shadow-xs space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-black/15">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#E6DEFF]">
               <div>
-                <h3 className="font-serif text-lg sm:text-xl font-bold text-[#202923] flex items-center gap-2">
-                  <Target className="w-5 h-5 text-[#193F30]" />
+                <h3 className=" text-lg sm:text-xl font-bold text-[#1b1831] flex items-center gap-2">
+                  <Target className="w-5 h-5 text-primary" />
                   <span>Personal Goal Progress & Defined Calculations</span>
                 </h3>
-                <p className="text-xs text-[#737A73] mt-0.5">
+                <p className="text-xs text-[#6A6678] mt-0.5">
                   Every percentage is calculated strictly from verified database records.
                 </p>
               </div>
-              <span className="text-[11px] font-semibold text-[#193F30] bg-[#EDF2EC] px-3 py-1 rounded-full border border-black/20 self-start sm:self-auto">
+              <span className="text-[11px] font-semibold text-primary bg-[#EBE5FF] px-3 py-1 rounded-full border border-[#E6DEFF] self-start sm:self-auto">
                 No Fabricated Statistics
               </span>
             </div>
@@ -473,27 +473,27 @@ export const StudentGrowthPage = () => {
               {developmentalGoals.map((goal) => (
                 <div
                   key={goal.id}
-                  className="p-5 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs flex flex-col justify-between space-y-4 hover:border-black/50 transition-all"
+                  className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs flex flex-col justify-between space-y-4 hover:border-primary/40 transition-all"
                 >
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#737A73] bg-[#F1EDE2] px-2 py-0.5 rounded-md border border-black/15">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#6A6678] bg-[#F3EFFF] px-2 py-0.5 rounded-md border border-[#E6DEFF]">
                         {goal.category}
                       </span>
-                      <span className="text-xs font-bold text-[#193F30]">{goal.status}</span>
+                      <span className="text-xs font-bold text-primary">{goal.status}</span>
                     </div>
 
-                    <h4 className="font-serif text-base font-bold text-[#202923]">
+                    <h4 className=" text-base font-bold text-[#1b1831]">
                       {goal.title}
                     </h4>
                     <p className="text-xs text-[#555] font-medium">{goal.metric}</p>
                   </div>
 
                   {/* Progress Bar & Percentage */}
-                  <div className="space-y-1.5 pt-2 border-t border-black/15">
+                  <div className="space-y-1.5 pt-2 border-t border-[#E6DEFF]">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-[#737A73] font-semibold">Calculated Progress</span>
-                      <span className="font-bold text-[#193F30]">{goal.progress}%</span>
+                      <span className="text-[#6A6678] font-semibold">Calculated Progress</span>
+                      <span className="font-bold text-primary">{goal.progress}%</span>
                     </div>
                     <div className="w-full h-2.5 rounded-full bg-black/10 overflow-hidden">
                       <div
@@ -504,8 +504,8 @@ export const StudentGrowthPage = () => {
                         }}
                       />
                     </div>
-                    <div className="text-[10px] text-[#737A73] italic pt-1 flex items-center gap-1">
-                      <HelpCircle className="w-3 h-3 text-[#193F30] shrink-0" />
+                    <div className="text-[10px] text-[#6A6678] italic pt-1 flex items-center gap-1">
+                      <HelpCircle className="w-3 h-3 text-primary shrink-0" />
                       <span>Formula: {goal.calculationFormula}</span>
                     </div>
                   </div>
@@ -515,55 +515,55 @@ export const StudentGrowthPage = () => {
           </div>
 
           {/* Weekly Activity Summary (Bar Chart / Progress Grid) */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 shadow-xs space-y-6">
-            <div className="flex items-center justify-between pb-3 border-b border-black/15">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-6">
+            <div className="flex items-center justify-between pb-3 border-b border-[#E6DEFF]">
               <div>
-                <h3 className="font-serif text-lg sm:text-xl font-bold text-[#202923] flex items-center gap-2">
-                  <Activity className="w-5 h-5 text-[#193F30]" />
+                <h3 className=" text-lg sm:text-xl font-bold text-[#1b1831] flex items-center gap-2">
+                  <Activity className="w-5 h-5 text-primary" />
                   <span>Weekly Activity Summary</span>
                 </h3>
-                <p className="text-xs text-[#737A73] mt-0.5">
+                <p className="text-xs text-[#6A6678] mt-0.5">
                   Consolidated distribution of actions completed across core learning pillars.
                 </p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-              <div className="p-4 rounded-2xl bg-[#F8F7F2] border border-black/30 text-center space-y-1">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#737A73]">
+              <div className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-center space-y-1">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#6A6678]">
                   Assignments Submitted
                 </span>
-                <span className="font-serif text-2xl font-bold text-[#193F30] block">
+                <span className=" text-2xl font-bold text-primary block">
                   {weeklySummaryStats.assignmentsSubmitted}
                 </span>
                 <span className="text-[10px] text-[#4B735F] font-semibold">Submitted & Verified</span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#F8F7F2] border border-black/30 text-center space-y-1">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#737A73]">
+              <div className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-center space-y-1">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#6A6678]">
                   Curriculum Activities
                 </span>
-                <span className="font-serif text-2xl font-bold text-[#193F30] block">
+                <span className=" text-2xl font-bold text-primary block">
                   {weeklySummaryStats.activitiesDone}
                 </span>
                 <span className="text-[10px] text-[#4B735F] font-semibold">Completed Steps</span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#F8F7F2] border border-black/30 text-center space-y-1">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#737A73]">
+              <div className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-center space-y-1">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#6A6678]">
                   Wellness Sessions
                 </span>
-                <span className="font-serif text-2xl font-bold text-[#193F30] block">
+                <span className=" text-2xl font-bold text-primary block">
                   {weeklySummaryStats.wellnessSessions}
                 </span>
                 <span className="text-[10px] text-[#4B735F] font-semibold">Breathing & Focus</span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#F8F7F2] border border-black/30 text-center space-y-1">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#737A73]">
+              <div className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-center space-y-1">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#6A6678]">
                   Focus Logged
                 </span>
-                <span className="font-serif text-2xl font-bold text-[#193F30] block">
+                <span className=" text-2xl font-bold text-primary block">
                   {weeklySummaryStats.focusMinutes}m
                 </span>
                 <span className="text-[10px] text-[#4B735F] font-semibold">Deep Study Minutes</span>
@@ -572,14 +572,14 @@ export const StudentGrowthPage = () => {
           </div>
 
           {/* Recent Milestones Timeline */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 shadow-xs space-y-6">
-            <div className="flex items-center justify-between pb-3 border-b border-black/15">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-6">
+            <div className="flex items-center justify-between pb-3 border-b border-[#E6DEFF]">
               <div>
-                <h3 className="font-serif text-lg sm:text-xl font-bold text-[#202923] flex items-center gap-2">
-                  <Award className="w-5 h-5 text-[#193F30]" />
+                <h3 className=" text-lg sm:text-xl font-bold text-[#1b1831] flex items-center gap-2">
+                  <Award className="w-5 h-5 text-primary" />
                   <span>Recent Milestones & Breakthroughs</span>
                 </h3>
-                <p className="text-xs text-[#737A73] mt-0.5">
+                <p className="text-xs text-[#6A6678] mt-0.5">
                   Verified developmental milestones recorded along your learning journey.
                 </p>
               </div>
@@ -588,21 +588,21 @@ export const StudentGrowthPage = () => {
             <div className="relative pl-6 space-y-8 before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-black/20">
               {milestones.map((m) => (
                 <div key={m.id} className="relative flex flex-col gap-1.5">
-                  <div className="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-[#193F30] ring-4 ring-[#EDF2EC] border border-black/30" />
+                  <div className="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-[#EDF2EC] border border-[#E6DEFF]" />
                   <div className="flex items-center gap-2 text-xs">
-                    <span className="font-bold text-[#193F30]">{m.date}</span>
-                    <span className="text-[#737A73]">•</span>
-                    <span className="text-[10px] font-semibold text-[#737A73] bg-[#F1EDE2] border border-black/20 px-2 py-0.5 rounded-full">
+                    <span className="font-bold text-primary">{m.date}</span>
+                    <span className="text-[#6A6678]">•</span>
+                    <span className="text-[10px] font-semibold text-[#6A6678] bg-[#F3EFFF] border border-[#E6DEFF] px-2 py-0.5 rounded-full">
                       {m.category}
                     </span>
-                    <span className="text-[10px] font-bold text-[#193F30] bg-[#EDF2EC] px-2 py-0.5 rounded-full border border-black/20 flex items-center gap-1">
+                    <span className="text-[10px] font-bold text-primary bg-[#EBE5FF] px-2 py-0.5 rounded-full border border-[#E6DEFF] flex items-center gap-1">
                       <Check className="w-2.5 h-2.5" /> Verified
                     </span>
                   </div>
-                  <h4 className="font-serif text-base font-bold text-[#202923]">
+                  <h4 className=" text-base font-bold text-[#1b1831]">
                     {m.title}
                   </h4>
-                  <p className="text-xs sm:text-sm text-[#737A73] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#6A6678] leading-relaxed">
                     {m.description}
                   </p>
                 </div>
@@ -617,27 +617,27 @@ export const StudentGrowthPage = () => {
           TAB 2: ASSIGNMENT HISTORY (Accurate Status Badges)
           ========================================================================= */}
       {activeTab === 'assignments' && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 shadow-xs space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/15">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E6DEFF]">
             <div>
-              <h3 className="font-serif text-lg sm:text-xl font-bold text-[#202923] flex items-center gap-2">
-                <CheckSquare className="w-5 h-5 text-[#193F30]" />
+              <h3 className=" text-lg sm:text-xl font-bold text-[#1b1831] flex items-center gap-2">
+                <CheckSquare className="w-5 h-5 text-primary" />
                 <span>Assignment History</span>
               </h3>
-              <p className="text-xs text-[#737A73] mt-0.5">
+              <p className="text-xs text-[#6A6678] mt-0.5">
                 Authoritative record of assignments, review stages, and submission timestamps.
               </p>
             </div>
-            <div className="text-xs text-[#737A73]">
+            <div className="text-xs text-[#6A6678]">
               Showing <strong>{filteredAssignments.length}</strong> assignments
             </div>
           </div>
 
           {filteredAssignments.length === 0 ? (
-            <div className="p-12 text-center rounded-2xl bg-[#F8F7F2] border border-black/20">
-              <CheckSquare className="w-8 h-8 mx-auto text-[#737A73] mb-2" />
-              <p className="text-sm font-bold text-[#202923]">No assignments found for this filter</p>
-              <p className="text-xs text-[#737A73] mt-1">Adjust the date filter to view your full academic history.</p>
+            <div className="p-12 text-center rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF]">
+              <CheckSquare className="w-8 h-8 mx-auto text-[#6A6678] mb-2" />
+              <p className="text-sm font-bold text-[#1b1831]">No assignments found for this filter</p>
+              <p className="text-xs text-[#6A6678] mt-1">Adjust the date filter to view your full academic history.</p>
             </div>
           ) : (
             <div className="divide-y divide-black/15">
@@ -652,16 +652,16 @@ export const StudentGrowthPage = () => {
                         >
                           {badge.label}
                         </span>
-                        <span className="text-xs font-semibold text-[#737A73]">
+                        <span className="text-xs font-semibold text-[#6A6678]">
                           {asg.subject}
                         </span>
-                        <span className="text-[#737A73] text-xs">•</span>
-                        <span className="text-xs text-[#737A73]">
+                        <span className="text-[#6A6678] text-xs">•</span>
+                        <span className="text-xs text-[#6A6678]">
                           Due: {asg.dueDate}
                         </span>
                       </div>
 
-                      <h4 className="font-serif text-base font-bold text-[#202923]">
+                      <h4 className=" text-base font-bold text-[#1b1831]">
                         {asg.title}
                       </h4>
                       <p className="text-xs text-[#555] line-clamp-2 leading-relaxed">
@@ -669,10 +669,10 @@ export const StudentGrowthPage = () => {
                       </p>
 
                       {asg.submission && (
-                        <div className="p-3 rounded-xl bg-[#F8F7F2] border border-black/15 text-xs text-[#333]">
-                          <strong className="text-[#193F30]">Your Submission:</strong>{' '}
+                        <div className="p-3 rounded-xl bg-[#FCF8FF] border border-[#E6DEFF] text-xs text-[#333]">
+                          <strong className="text-primary">Your Submission:</strong>{' '}
                           <span className="italic">{asg.submission.content || 'Submission answers recorded.'}</span>
-                          <span className="block text-[10px] text-[#737A73] mt-1">
+                          <span className="block text-[10px] text-[#6A6678] mt-1">
                             Submitted: {asg.submission.submittedAt}
                           </span>
                         </div>
@@ -680,11 +680,11 @@ export const StudentGrowthPage = () => {
                     </div>
 
                     <div className="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end gap-2 shrink-0">
-                      <span className="text-[11px] font-semibold text-[#737A73]">
+                      <span className="text-[11px] font-semibold text-[#6A6678]">
                         Duration: {asg.duration || '30 mins'}
                       </span>
                       {asg.feedback && (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#193F30] bg-[#EDF2EC] px-2.5 py-1 rounded-lg border border-black/20">
+                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-primary bg-[#EBE5FF] px-2.5 py-1 rounded-lg border border-[#E6DEFF]">
                           <MessageSquare className="w-3.5 h-3.5" />
                           <span>Feedback Available</span>
                         </span>
@@ -702,18 +702,18 @@ export const StudentGrowthPage = () => {
           TAB 3: COMPLETED ACTIVITIES (Curriculum & Wellness)
           ========================================================================= */}
       {activeTab === 'activities' && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 shadow-xs space-y-6">
-          <div className="flex items-center justify-between pb-3 border-b border-black/15">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-6">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E6DEFF]">
             <div>
-              <h3 className="font-serif text-lg sm:text-xl font-bold text-[#202923] flex items-center gap-2">
-                <ListTodo className="w-5 h-5 text-[#193F30]" />
+              <h3 className=" text-lg sm:text-xl font-bold text-[#1b1831] flex items-center gap-2">
+                <ListTodo className="w-5 h-5 text-primary" />
                 <span>Completed Activities Record</span>
               </h3>
-              <p className="text-xs text-[#737A73] mt-0.5">
+              <p className="text-xs text-[#6A6678] mt-0.5">
                 Every curriculum exercise and self-guided focus session completed by your account.
               </p>
             </div>
-            <span className="text-xs font-bold text-[#193F30] bg-[#EDF2EC] px-3 py-1 rounded-full border border-black/20">
+            <span className="text-xs font-bold text-primary bg-[#EBE5FF] px-3 py-1 rounded-full border border-[#E6DEFF]">
               {totalCompletedActivitiesCount} Total Completed
             </span>
           </div>
@@ -721,11 +721,11 @@ export const StudentGrowthPage = () => {
           <div className="space-y-6">
             {/* 1. Core Curriculum Activities */}
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#737A73] mb-3">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#6A6678] mb-3">
                 Curriculum Learning Activities ({completedActivities.length})
               </h4>
               {completedActivities.length === 0 ? (
-                <div className="p-6 rounded-2xl bg-[#F8F7F2] border border-black/15 text-xs text-[#737A73] text-center">
+                <div className="p-6 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-xs text-[#6A6678] text-center">
                   No completed curriculum activities matching this date filter.
                 </div>
               ) : (
@@ -733,27 +733,27 @@ export const StudentGrowthPage = () => {
                   {completedActivities.map((act) => (
                     <div
                       key={act.id}
-                      className="p-5 rounded-2xl bg-[#F8F7F2] border border-black/30 hover:border-black/50 shadow-2xs space-y-3 transition-all"
+                      className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] hover:border-primary/40 shadow-2xs space-y-3 transition-all"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#193F30] bg-[#EDF2EC] px-2 py-0.5 rounded-md border border-black/15">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-primary bg-[#EBE5FF] px-2 py-0.5 rounded-md border border-[#E6DEFF]">
                           {act.category}
                         </span>
-                        <span className="text-xs font-semibold text-[#737A73]">
+                        <span className="text-xs font-semibold text-[#6A6678]">
                           {act.completedAt || 'Recently'}
                         </span>
                       </div>
-                      <h5 className="font-serif text-base font-bold text-[#202923]">
+                      <h5 className=" text-base font-bold text-[#1b1831]">
                         {act.title}
                       </h5>
                       <p className="text-xs text-[#555] line-clamp-2">
                         {act.shortDescription || act.description}
                       </p>
-                      <div className="flex items-center justify-between pt-2 border-t border-black/15 text-xs">
+                      <div className="flex items-center justify-between pt-2 border-t border-[#E6DEFF] text-xs">
                         <span className="text-[#4B735F] font-semibold">
                           +{act.xp || 150} XP Awarded
                         </span>
-                        <span className="inline-flex items-center gap-1 font-bold text-[#193F30]">
+                        <span className="inline-flex items-center gap-1 font-bold text-primary">
                           <CheckCircle2 className="w-3.5 h-3.5" /> Complete
                         </span>
                       </div>
@@ -764,12 +764,12 @@ export const StudentGrowthPage = () => {
             </div>
 
             {/* 2. Focus & Wellness Completed Sessions */}
-            <div className="pt-4 border-t border-black/15">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#737A73] mb-3">
+            <div className="pt-4 border-t border-[#E6DEFF]">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#6A6678] mb-3">
                 Focus & Wellness Sessions ({filteredWellnessSessions.length})
               </h4>
               {filteredWellnessSessions.length === 0 ? (
-                <div className="p-6 rounded-2xl bg-[#F8F7F2] border border-black/15 text-xs text-[#737A73] text-center">
+                <div className="p-6 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-xs text-[#6A6678] text-center">
                   No completed wellness sessions in this period.
                 </div>
               ) : (
@@ -778,18 +778,18 @@ export const StudentGrowthPage = () => {
                     <div key={ses.id} className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="font-serif text-sm font-bold text-[#202923]">
+                          <span className=" text-sm font-bold text-[#1b1831]">
                             {ses.activityTitle}
                           </span>
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#193F30] bg-[#EDF2EC] px-2 py-0.5 rounded-full border border-black/15">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-primary bg-[#EBE5FF] px-2 py-0.5 rounded-full border border-[#E6DEFF]">
                             {ses.category}
                           </span>
                         </div>
-                        <span className="text-xs text-[#737A73]">
+                        <span className="text-xs text-[#6A6678]">
                           {ses.completedAt} • {Math.round((ses.durationSeconds || 0) / 60)} mins
                         </span>
                       </div>
-                      <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#193F30] bg-[#EDF2EC] px-2.5 py-1 rounded-lg border border-black/20 self-start sm:self-auto">
+                      <span className="inline-flex items-center gap-1 text-[11px] font-bold text-primary bg-[#EBE5FF] px-2.5 py-1 rounded-lg border border-[#E6DEFF] self-start sm:self-auto">
                         <CheckCircle2 className="w-3.5 h-3.5" /> Logged
                       </span>
                     </div>
@@ -805,18 +805,18 @@ export const StudentGrowthPage = () => {
           TAB 4: SAVED REFLECTIONS (Privacy Protection Safeguard)
           ========================================================================= */}
       {activeTab === 'reflections' && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 shadow-xs space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/15">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E6DEFF]">
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="font-serif text-lg sm:text-xl font-bold text-[#202923]">
+                <h3 className=" text-lg sm:text-xl font-bold text-[#1b1831]">
                   Saved Self-Reflections
                 </h3>
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#193F30] bg-[#EDF2EC] px-2 py-0.5 rounded-full border border-black/20">
+                <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-primary bg-[#EBE5FF] px-2 py-0.5 rounded-full border border-[#E6DEFF]">
                   <Lock className="w-3 h-3" /> Private to Student
                 </span>
               </div>
-              <p className="text-xs text-[#737A73] mt-0.5">
+              <p className="text-xs text-[#6A6678] mt-0.5">
                 Personal journal entries and wellness insights are protected from peer visibility.
               </p>
             </div>
@@ -825,16 +825,16 @@ export const StudentGrowthPage = () => {
             <button
               type="button"
               onClick={() => setShowPrivateReflections(!showPrivateReflections)}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#F8F7F2] text-[#202923] hover:bg-[#F1EDE2] text-xs font-semibold border border-black/30 transition-all cursor-pointer self-start sm:self-auto"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#FCF8FF] text-[#1b1831] hover:bg-[#F3EFFF] text-xs font-semibold border border-[#E6DEFF] transition-all cursor-pointer self-start sm:self-auto"
             >
               {showPrivateReflections ? (
                 <>
-                  <EyeOff className="w-3.5 h-3.5 text-[#737A73]" />
+                  <EyeOff className="w-3.5 h-3.5 text-[#6A6678]" />
                   <span>Mask Reflection Text</span>
                 </>
               ) : (
                 <>
-                  <Eye className="w-3.5 h-3.5 text-[#193F30]" />
+                  <Eye className="w-3.5 h-3.5 text-primary" />
                   <span>Reveal Reflection Text</span>
                 </>
               )}
@@ -846,13 +846,13 @@ export const StudentGrowthPage = () => {
             {(reflections || []).map((ref) => (
               <div
                 key={ref.id}
-                className="p-5 rounded-2xl bg-[#F8F7F2] border border-black/30 space-y-2 hover:border-black/50 transition-all"
+                className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] space-y-2 hover:border-primary/40 transition-all"
               >
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-serif text-sm font-bold text-[#202923]">
+                  <span className=" text-sm font-bold text-[#1b1831]">
                     {ref.title || ref.prompt || 'Journal Reflection'}
                   </span>
-                  <span className="text-[#737A73]">{ref.date || 'Recent Entry'}</span>
+                  <span className="text-[#6A6678]">{ref.date || 'Recent Entry'}</span>
                 </div>
                 <div className="text-xs leading-relaxed text-[#333]">
                   {showPrivateReflections ? (
@@ -862,7 +862,7 @@ export const StudentGrowthPage = () => {
                   )}
                 </div>
                 {ref.mood && (
-                  <span className="inline-block text-[10px] font-bold text-[#193F30] bg-[#EDF2EC] px-2 py-0.5 rounded-md border border-black/15">
+                  <span className="inline-block text-[10px] font-bold text-primary bg-[#EBE5FF] px-2 py-0.5 rounded-md border border-[#E6DEFF]">
                     Mood: {ref.mood}
                   </span>
                 )}
@@ -873,13 +873,13 @@ export const StudentGrowthPage = () => {
             {filteredWellnessSessions.filter((s) => s.reflectionNote).map((ses) => (
               <div
                 key={ses.id}
-                className="p-5 rounded-2xl bg-[#F8F7F2] border border-black/30 space-y-2 hover:border-black/50 transition-all"
+                className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] space-y-2 hover:border-primary/40 transition-all"
               >
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-serif text-sm font-bold text-[#202923]">
+                  <span className=" text-sm font-bold text-[#1b1831]">
                     {ses.activityTitle} (Post-Session Reflection)
                   </span>
-                  <span className="text-[#737A73]">{ses.completedAt}</span>
+                  <span className="text-[#6A6678]">{ses.completedAt}</span>
                 </div>
                 <div className="text-xs leading-relaxed text-[#333]">
                   {showPrivateReflections ? (
@@ -889,7 +889,7 @@ export const StudentGrowthPage = () => {
                   )}
                 </div>
                 {ses.moodAfter && (
-                  <span className="inline-block text-[10px] font-bold text-[#193F30] bg-[#EDF2EC] px-2 py-0.5 rounded-md border border-black/15">
+                  <span className="inline-block text-[10px] font-bold text-primary bg-[#EBE5FF] px-2 py-0.5 rounded-md border border-[#E6DEFF]">
                     Recorded State: {ses.moodAfter}
                   </span>
                 )}
@@ -903,27 +903,27 @@ export const StudentGrowthPage = () => {
           TAB 5: MENTOR FEEDBACK
           ========================================================================= */}
       {activeTab === 'feedback' && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 shadow-xs space-y-6">
-          <div className="flex items-center justify-between pb-3 border-b border-black/15">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-6">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E6DEFF]">
             <div>
-              <h3 className="font-serif text-lg sm:text-xl font-bold text-[#202923] flex items-center gap-2">
-                <MessageSquare className="w-5 h-5 text-[#193F30]" />
+              <h3 className=" text-lg sm:text-xl font-bold text-[#1b1831] flex items-center gap-2">
+                <MessageSquare className="w-5 h-5 text-primary" />
                 <span>Available Mentor & Teacher Feedback</span>
               </h3>
-              <p className="text-xs text-[#737A73] mt-0.5">
+              <p className="text-xs text-[#6A6678] mt-0.5">
                 Constructive feedback notes provided on your completed assignment submissions.
               </p>
             </div>
-            <span className="text-xs font-bold text-[#193F30] bg-[#EDF2EC] px-3 py-1 rounded-full border border-black/20">
+            <span className="text-xs font-bold text-primary bg-[#EBE5FF] px-3 py-1 rounded-full border border-[#E6DEFF]">
               {feedbackItems.length} Available Notes
             </span>
           </div>
 
           {feedbackItems.length === 0 ? (
-            <div className="p-12 text-center rounded-2xl bg-[#F8F7F2] border border-black/20">
-              <MessageSquare className="w-8 h-8 mx-auto text-[#737A73] mb-2" />
-              <p className="text-sm font-bold text-[#202923]">No feedback notes available yet</p>
-              <p className="text-xs text-[#737A73] mt-1">
+            <div className="p-12 text-center rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF]">
+              <MessageSquare className="w-8 h-8 mx-auto text-[#6A6678] mb-2" />
+              <p className="text-sm font-bold text-[#1b1831]">No feedback notes available yet</p>
+              <p className="text-xs text-[#6A6678] mt-1">
                 When your mentor or reviewer reviews your submitted assignments, their detailed comments will appear here.
               </p>
             </div>
@@ -934,30 +934,30 @@ export const StudentGrowthPage = () => {
                 return (
                   <div
                     key={fb.assignmentId}
-                    className="p-5 rounded-2xl bg-[#F8F7F2] border border-black/30 hover:border-black/50 transition-all space-y-3"
+                    className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] hover:border-primary/40 transition-all space-y-3"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#737A73]">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#6A6678]">
                           {fb.subject} • Assignment Review
                         </span>
-                        <h4 className="font-serif text-base font-bold text-[#202923]">
+                        <h4 className=" text-base font-bold text-[#1b1831]">
                           {fb.assignmentTitle}
                         </h4>
                       </div>
-                      <span className="text-xs text-[#737A73]">{fb.date}</span>
+                      <span className="text-xs text-[#6A6678]">{fb.date}</span>
                     </div>
 
-                    <div className="p-4 rounded-xl bg-white border border-black/20 space-y-2">
+                    <div className="p-4 rounded-xl bg-white border border-[#E6DEFF] space-y-2">
                       <div className="flex items-center gap-2">
-                        <span className="w-6 h-6 rounded-full bg-[#193F30] text-white flex items-center justify-center font-bold text-xs">
+                        <span className="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs">
                           {fb.author ? String(fb.author).charAt(0) : 'M'}
                         </span>
                         <div>
-                          <span className="text-xs font-bold text-[#202923] block leading-none">
+                          <span className="text-xs font-bold text-[#1b1831] block leading-none">
                             {fb.author || 'Mentor'}
                           </span>
-                          <span className="text-[10px] text-[#737A73]">{fb.role}</span>
+                          <span className="text-[10px] text-[#6A6678]">{fb.role}</span>
                         </div>
                       </div>
 
@@ -980,10 +980,10 @@ export const StudentGrowthPage = () => {
       )}
 
       {/* 8. Trust, Integrity & Non-Fabrication Guarantee Footer */}
-      <div className="p-4 rounded-2xl bg-[#FAF9F5] border border-black/20 flex items-start gap-3">
-        <ShieldCheck className="w-4 h-4 text-[#193F30] shrink-0 mt-0.5" />
+      <div className="p-4 rounded-2xl bg-[#FAF9F5] border border-[#E6DEFF] flex items-start gap-3">
+        <ShieldCheck className="w-4 h-4 text-primary shrink-0 mt-0.5" />
         <p className="text-[11px] sm:text-xs text-[#555] leading-relaxed">
-          <strong className="text-[#202923]">Data Integrity & Privacy Policy:</strong> HighOrbit My Growth metrics are computed exclusively from your authentic, submitted school records and logged wellness sessions. We do not display fabricated statistics, simulated mental health scores, or vanity metrics. All private reflections are restricted to your authenticated student profile.
+          <strong className="text-[#1b1831]">Data Integrity & Privacy Policy:</strong> HighOrbit My Growth metrics are computed exclusively from your authentic, submitted school records and logged wellness sessions. We do not display fabricated statistics, simulated mental health scores, or vanity metrics. All private reflections are restricted to your authenticated student profile.
         </p>
       </div>
 

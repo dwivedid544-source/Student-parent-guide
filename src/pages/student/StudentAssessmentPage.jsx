@@ -370,20 +370,20 @@ export const StudentAssessmentPage = () => {
       {/* ============================================================== */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EDF2EC] text-[#193F30] text-xs font-bold uppercase tracking-wider mb-2 border border-black/30">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBE5FF] text-primary text-xs font-bold uppercase tracking-wider mb-2 border border-[#E6DEFF]">
             <Target className="w-3.5 h-3.5" />
             <span>Student Growth & Self-Discovery</span>
           </div>
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#202923] tracking-tight">
+          <h2 className=" text-2xl sm:text-3xl font-bold text-[#1b1831] tracking-tight">
             Self-Assessment & Mindset Compass
           </h2>
-          <p className="text-xs sm:text-sm text-[#737A73] mt-1">
+          <p className="text-xs sm:text-sm text-[#6A6678] mt-1">
             Evidence-based reflection tools to clarify your inner strengths, learning flow, and personal development.
           </p>
         </div>
 
         {/* Tab switcher */}
-        <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-[#F1EDE2] border border-black/30 w-fit">
+        <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-[#F3EFFF] border border-[#E6DEFF] w-fit">
           <button
             type="button"
             onClick={() => {
@@ -392,8 +392,8 @@ export const StudentAssessmentPage = () => {
             }}
             className={`py-1.5 px-3.5 rounded-xl text-xs font-semibold transition-all cursor-pointer border ${
               currentView === 'catalog' || currentView === 'assessment' || currentView === 'review' || currentView === 'results'
-                ? 'bg-[#193F30] text-white border-black/30 shadow-xs'
-                : 'text-[#202923] border-transparent hover:text-black'
+                ? 'bg-primary text-white border-[#E6DEFF] shadow-xs'
+                : 'text-[#1b1831] border-transparent hover:text-black'
             }`}
           >
             Assessments ({assessments.length})
@@ -406,8 +406,8 @@ export const StudentAssessmentPage = () => {
             }}
             className={`py-1.5 px-3.5 rounded-xl text-xs font-semibold transition-all cursor-pointer border ${
               currentView === 'history'
-                ? 'bg-[#193F30] text-white border-black/30 shadow-xs'
-                : 'text-[#202923] border-transparent hover:text-black'
+                ? 'bg-primary text-white border-[#E6DEFF] shadow-xs'
+                : 'text-[#1b1831] border-transparent hover:text-black'
             }`}
           >
             Reflection Archive ({reflectionArchive.length})
@@ -422,61 +422,61 @@ export const StudentAssessmentPage = () => {
         <div className="space-y-6">
           {/* Summary Metric Counters */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            <div className="p-4 sm:p-5 rounded-3xl bg-white border border-black/30 shadow-xs flex items-center justify-between">
+            <div className="p-4 sm:p-5 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs flex items-center justify-between">
               <div>
-                <span className="text-[11px] font-bold text-[#737A73] uppercase tracking-wider block">Available</span>
-                <span className="font-serif text-2xl sm:text-3xl font-bold text-[#202923] mt-1 block">
+                <span className="text-[11px] font-bold text-[#6A6678] uppercase tracking-wider block">Available</span>
+                <span className=" text-2xl sm:text-3xl font-bold text-[#1b1831] mt-1 block">
                   {stats.total}
                 </span>
-                <span className="text-[11px] text-[#737A73]">Curriculum modules</span>
+                <span className="text-[11px] text-[#6A6678]">Curriculum modules</span>
               </div>
-              <div className="w-10 h-10 rounded-2xl bg-[#EDF2EC] text-[#193F30] flex items-center justify-center border border-black/20">
+              <div className="w-10 h-10 rounded-2xl bg-[#EBE5FF] text-primary flex items-center justify-center border border-[#E6DEFF]">
                 <BookOpen className="w-5 h-5" />
               </div>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-3xl bg-white border border-black/30 shadow-xs flex items-center justify-between">
+            <div className="p-4 sm:p-5 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs flex items-center justify-between">
               <div>
-                <span className="text-[11px] font-bold text-[#193F30] uppercase tracking-wider block">Completed</span>
-                <span className="font-serif text-2xl sm:text-3xl font-bold text-[#193F30] mt-1 block">
+                <span className="text-[11px] font-bold text-primary uppercase tracking-wider block">Completed</span>
+                <span className=" text-2xl sm:text-3xl font-bold text-primary mt-1 block">
                   {stats.completed}
                 </span>
                 <span className="text-[11px] text-[#4B735F] font-semibold">Profiles ready</span>
               </div>
-              <div className="w-10 h-10 rounded-2xl bg-[#EDF2EC] text-[#193F30] flex items-center justify-center border border-black/20">
+              <div className="w-10 h-10 rounded-2xl bg-[#EBE5FF] text-primary flex items-center justify-center border border-[#E6DEFF]">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-3xl bg-white border border-black/30 shadow-xs flex items-center justify-between">
+            <div className="p-4 sm:p-5 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs flex items-center justify-between">
               <div>
                 <span className="text-[11px] font-bold text-[#8C5E14] uppercase tracking-wider block">In Progress</span>
-                <span className="font-serif text-2xl sm:text-3xl font-bold text-[#8C5E14] mt-1 block">
+                <span className=" text-2xl sm:text-3xl font-bold text-[#8C5E14] mt-1 block">
                   {stats.inProgress}
                 </span>
                 <span className="text-[11px] text-[#8C5E14]">Drafts saved</span>
               </div>
-              <div className="w-10 h-10 rounded-2xl bg-[#FBF5E6] text-[#8C5E14] flex items-center justify-center border border-black/20">
+              <div className="w-10 h-10 rounded-2xl bg-[#FBF5E6] text-[#8C5E14] flex items-center justify-center border border-[#E6DEFF]">
                 <Clock className="w-5 h-5" />
               </div>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-3xl bg-white border border-black/30 shadow-xs flex items-center justify-between">
+            <div className="p-4 sm:p-5 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs flex items-center justify-between">
               <div>
-                <span className="text-[11px] font-bold text-[#737A73] uppercase tracking-wider block">Not Started</span>
-                <span className="font-serif text-2xl sm:text-3xl font-bold text-[#202923] mt-1 block">
+                <span className="text-[11px] font-bold text-[#6A6678] uppercase tracking-wider block">Not Started</span>
+                <span className=" text-2xl sm:text-3xl font-bold text-[#1b1831] mt-1 block">
                   {stats.notStarted}
                 </span>
-                <span className="text-[11px] text-[#737A73]">Ready for discovery</span>
+                <span className="text-[11px] text-[#6A6678]">Ready for discovery</span>
               </div>
-              <div className="w-10 h-10 rounded-2xl bg-[#F1EDE2] text-[#737A73] flex items-center justify-center border border-black/20">
+              <div className="w-10 h-10 rounded-2xl bg-[#F3EFFF] text-[#6A6678] flex items-center justify-center border border-[#E6DEFF]">
                 <Compass className="w-5 h-5" />
               </div>
             </div>
           </div>
 
           {/* Filters & Search Toolbar */}
-          <div className="p-4 rounded-3xl bg-white border border-black/30 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+          <div className="p-4 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
             {/* Status Filter Tabs */}
             <div className="flex flex-wrap items-center gap-1.5">
               {[
@@ -491,8 +491,8 @@ export const StudentAssessmentPage = () => {
                   onClick={() => setStatusFilter(tab.id)}
                   className={`py-1.5 px-3 rounded-xl text-xs font-semibold transition-all cursor-pointer border ${
                     statusFilter === tab.id
-                      ? 'bg-[#193F30] text-white border-black/30 shadow-xs'
-                      : 'bg-[#F8F7F2] text-[#202923] border-black/20 hover:border-black/40'
+                      ? 'bg-primary text-white border-[#E6DEFF] shadow-xs'
+                      : 'bg-[#FCF8FF] text-[#1b1831] border-[#E6DEFF] hover:border-[#E6DEFF]'
                   }`}
                 >
                   {tab.label}
@@ -502,19 +502,19 @@ export const StudentAssessmentPage = () => {
 
             {/* Search Box */}
             <div className="relative min-w-[220px]">
-              <Search className="w-4 h-4 text-[#737A73] absolute left-3 top-1/2 -translate-y-1/2" />
+              <Search className="w-4 h-4 text-[#6A6678] absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search assessments..."
-                className="w-full pl-9 pr-8 py-2 rounded-xl text-xs font-medium bg-[#F8F7F2] border border-black/30 focus:outline-none focus:ring-1 focus:ring-[#193F30] text-[#202923]"
+                className="w-full pl-9 pr-8 py-2 rounded-xl text-xs font-medium bg-[#FCF8FF] border border-[#E6DEFF] focus:outline-none focus:ring-1 focus:ring-primary text-[#1b1831]"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#737A73] hover:text-black cursor-pointer"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#6A6678] hover:text-black cursor-pointer"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -524,7 +524,7 @@ export const StudentAssessmentPage = () => {
 
           {/* Catalog Error Banner */}
           {catalogError && (
-            <div className="p-4 rounded-2xl bg-[#FDF2F2] border border-black/30 flex items-center gap-3 text-xs text-[#B42318]">
+            <div className="p-4 rounded-2xl bg-[#FDF2F2] border border-[#E6DEFF] flex items-center gap-3 text-xs text-[#B42318]">
               <AlertCircle className="w-5 h-5 shrink-0" />
               <span>{catalogError}</span>
               <button
@@ -539,15 +539,15 @@ export const StudentAssessmentPage = () => {
 
           {/* Assessment Cards Grid */}
           {isLoadingList ? (
-            <div className="p-12 text-center rounded-3xl bg-white border border-black/30 shadow-xs space-y-3">
-              <Loader2 className="w-7 h-7 text-[#193F30] animate-spin mx-auto" />
-              <p className="text-xs font-medium text-[#737A73]">Loading student self-assessments...</p>
+            <div className="p-12 text-center rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-3">
+              <Loader2 className="w-7 h-7 text-primary animate-spin mx-auto" />
+              <p className="text-xs font-medium text-[#6A6678]">Loading student self-assessments...</p>
             </div>
           ) : filteredAssessments.length === 0 ? (
-            <div className="p-12 text-center rounded-3xl bg-white border border-black/30 shadow-xs space-y-3">
-              <Compass className="w-8 h-8 text-[#737A73] mx-auto opacity-60" />
-              <h4 className="font-serif text-base font-bold text-[#202923]">No assessments found</h4>
-              <p className="text-xs text-[#737A73] max-w-sm mx-auto">
+            <div className="p-12 text-center rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-3">
+              <Compass className="w-8 h-8 text-[#6A6678] mx-auto opacity-60" />
+              <h4 className=" text-base font-bold text-[#1b1831]">No assessments found</h4>
+              <p className="text-xs text-[#6A6678] max-w-sm mx-auto">
                 No self-assessments match your selected filter. Clear your search or filter to see available modules.
               </p>
               <button
@@ -556,7 +556,7 @@ export const StudentAssessmentPage = () => {
                   setStatusFilter('ALL');
                   setSearchQuery('');
                 }}
-                className="py-1.5 px-4 rounded-xl text-xs font-semibold bg-[#193F30] text-white border border-black/30 cursor-pointer"
+                className="py-1.5 px-4 rounded-xl text-xs font-semibold bg-primary text-white border border-[#E6DEFF] cursor-pointer"
               >
                 Reset Filters
               </button>
@@ -572,38 +572,38 @@ export const StudentAssessmentPage = () => {
                 return (
                   <div
                     key={asmt.id}
-                    className="p-6 rounded-3xl bg-white border border-black/30 hover:border-black/50 shadow-xs transition-all flex flex-col justify-between gap-5 relative group"
+                    className="p-6 rounded-3xl bg-white border border-[#E6DEFF] hover:border-primary/40 shadow-xs transition-all flex flex-col justify-between gap-5 relative group"
                   >
                     <div className="space-y-3">
                       {/* Top Badges */}
                       <div className="flex items-center justify-between gap-2">
                         <div className="flex items-center gap-2">
-                          <span className="text-[11px] font-bold text-[#193F30] bg-[#EDF2EC] px-3 py-1 rounded-full border border-black/20">
+                          <span className="text-[11px] font-bold text-primary bg-[#EBE5FF] px-3 py-1 rounded-full border border-[#E6DEFF]">
                             {asmt.category || 'Mindset'}
                           </span>
-                          <span className="text-[10px] text-[#737A73] font-mono">v{asmt.version}</span>
+                          <span className="text-[10px] text-[#6A6678] font-mono">v{asmt.version}</span>
                         </div>
 
                         {/* Status Badge */}
                         {isCompleted && (
-                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#193F30] bg-[#EDF2EC] px-2.5 py-1 rounded-full border border-black/20">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#193F30]" />
+                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-primary bg-[#EBE5FF] px-2.5 py-1 rounded-full border border-[#E6DEFF]">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
                             <span>Completed</span>
                           </span>
                         )}
                         {isInProgress && (
-                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8C5E14] bg-[#FBF5E6] px-2.5 py-1 rounded-full border border-black/20">
+                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8C5E14] bg-[#FBF5E6] px-2.5 py-1 rounded-full border border-[#E6DEFF]">
                             <Clock className="w-3.5 h-3.5 text-[#8C5E14]" />
                             <span>In Progress ({asmt.answeredCount}/{asmt.totalQuestions})</span>
                           </span>
                         )}
                         {isNotStarted && (
-                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#737A73] bg-[#F1EDE2] px-2.5 py-1 rounded-full border border-black/20">
+                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#6A6678] bg-[#F3EFFF] px-2.5 py-1 rounded-full border border-[#E6DEFF]">
                             <span>Not Started</span>
                           </span>
                         )}
                         {isMissingDependency && (
-                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#B42318] bg-[#FDF2F2] px-2.5 py-1 rounded-full border border-black/20">
+                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#B42318] bg-[#FDF2F2] px-2.5 py-1 rounded-full border border-[#E6DEFF]">
                             <AlertTriangle className="w-3.5 h-3.5" />
                             <span>Dependency Pending</span>
                           </span>
@@ -612,16 +612,16 @@ export const StudentAssessmentPage = () => {
 
                       {/* Title & Description */}
                       <div>
-                        <h3 className="font-serif text-lg sm:text-xl font-bold text-[#202923] group-hover:text-[#193F30] transition-colors">
+                        <h3 className=" text-lg sm:text-xl font-bold text-[#1b1831] group-hover:text-primary transition-colors">
                           {asmt.title}
                         </h3>
-                        <p className="text-xs sm:text-sm text-[#737A73] leading-relaxed mt-1">
+                        <p className="text-xs sm:text-sm text-[#6A6678] leading-relaxed mt-1">
                           {asmt.description}
                         </p>
                       </div>
 
                       {/* Metadata Row */}
-                      <div className="flex flex-wrap items-center gap-4 text-xs text-[#737A73] pt-1">
+                      <div className="flex flex-wrap items-center gap-4 text-xs text-[#6A6678] pt-1">
                         {asmt.estimatedDuration && (
                           <div className="flex items-center gap-1.5">
                             <Clock className="w-3.5 h-3.5" />
@@ -650,13 +650,13 @@ export const StudentAssessmentPage = () => {
                     </div>
 
                     {/* Action Buttons Toolbar */}
-                    <div className="pt-4 border-t border-black/20 flex flex-wrap items-center justify-between gap-2">
+                    <div className="pt-4 border-t border-[#E6DEFF] flex flex-wrap items-center justify-between gap-2">
                       {isCompleted && (
                         <div className="flex items-center gap-2 w-full sm:w-auto">
                           <button
                             type="button"
                             onClick={() => handleViewResults(asmt.id)}
-                            className="flex-1 sm:flex-none py-2 px-4 rounded-xl text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] transition-colors border border-black/30 shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
+                            className="flex-1 sm:flex-none py-2 px-4 rounded-xl text-xs font-semibold text-white bg-primary hover:bg-primary-container transition-colors border border-[#E6DEFF] shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
                           >
                             <Sparkles className="w-3.5 h-3.5" />
                             <span>View Results</span>
@@ -668,7 +668,7 @@ export const StudentAssessmentPage = () => {
                                 setSelectedAssessmentId(asmt.id);
                                 setShowRetakeModal(true);
                               }}
-                              className="py-2 px-3 rounded-xl text-xs font-semibold text-[#193F30] bg-[#EDF2EC] hover:bg-[#E5E0D5] transition-colors border border-black/30 cursor-pointer flex items-center gap-1.5"
+                              className="py-2 px-3 rounded-xl text-xs font-semibold text-primary bg-[#EBE5FF] hover:bg-[#E6DEFF] transition-colors border border-[#E6DEFF] cursor-pointer flex items-center gap-1.5"
                               title="Retake Assessment"
                             >
                               <RotateCcw className="w-3.5 h-3.5" />
@@ -682,7 +682,7 @@ export const StudentAssessmentPage = () => {
                         <button
                           type="button"
                           onClick={() => handleStartOrContinue(asmt.id)}
-                          className="w-full sm:w-auto py-2 px-5 rounded-xl text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] transition-colors border border-black/30 shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
+                          className="w-full sm:w-auto py-2 px-5 rounded-xl text-xs font-semibold text-white bg-primary hover:bg-primary-container transition-colors border border-[#E6DEFF] shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
                         >
                           <span>Continue Assessment</span>
                           <ArrowRight className="w-3.5 h-3.5" />
@@ -693,7 +693,7 @@ export const StudentAssessmentPage = () => {
                         <button
                           type="button"
                           onClick={() => handleStartOrContinue(asmt.id)}
-                          className="w-full sm:w-auto py-2 px-5 rounded-xl text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] transition-colors border border-black/30 shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
+                          className="w-full sm:w-auto py-2 px-5 rounded-xl text-xs font-semibold text-white bg-primary hover:bg-primary-container transition-colors border border-[#E6DEFF] shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
                         >
                           <Play className="w-3.5 h-3.5" />
                           <span>Start Assessment</span>
@@ -709,7 +709,7 @@ export const StudentAssessmentPage = () => {
                               message: asmt.missingDependencyMessage || 'Curriculum configuration pending: Assessment questions and scoring rubric dependency not yet provisioned.'
                             });
                           }}
-                          className="w-full sm:w-auto py-2 px-4 rounded-xl text-xs font-semibold text-[#B42318] bg-[#FDF2F2] hover:bg-[#FCE8E8] transition-colors border border-black/30 cursor-pointer flex items-center justify-center gap-1.5"
+                          className="w-full sm:w-auto py-2 px-4 rounded-xl text-xs font-semibold text-[#B42318] bg-[#FDF2F2] hover:bg-[#FCE8E8] transition-colors border border-[#E6DEFF] cursor-pointer flex items-center justify-center gap-1.5"
                         >
                           <Info className="w-3.5 h-3.5" />
                           <span>Dependency Details</span>
@@ -742,7 +742,7 @@ export const StudentAssessmentPage = () => {
                   setCurrentView('catalog');
                 }
               }}
-              className="py-1.5 px-3 rounded-xl text-xs font-semibold text-[#202923] bg-white hover:bg-[#F8F7F2] border border-black/30 shadow-xs cursor-pointer flex items-center gap-1.5"
+              className="py-1.5 px-3 rounded-xl text-xs font-semibold text-[#1b1831] bg-white hover:bg-[#FCF8FF] border border-[#E6DEFF] shadow-xs cursor-pointer flex items-center gap-1.5"
             >
               <ChevronLeft className="w-4 h-4" />
               <span>Back to Assessments</span>
@@ -752,7 +752,7 @@ export const StudentAssessmentPage = () => {
               type="button"
               onClick={handleSaveProgress}
               disabled={isSavingProgress}
-              className="py-1.5 px-3.5 rounded-xl text-xs font-semibold text-[#193F30] bg-[#EDF2EC] hover:bg-[#E5E0D5] border border-black/30 shadow-xs cursor-pointer flex items-center gap-1.5 disabled:opacity-50"
+              className="py-1.5 px-3.5 rounded-xl text-xs font-semibold text-primary bg-[#EBE5FF] hover:bg-[#E6DEFF] border border-[#E6DEFF] shadow-xs cursor-pointer flex items-center gap-1.5 disabled:opacity-50"
             >
               {isSavingProgress ? (
                 <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -765,20 +765,20 @@ export const StudentAssessmentPage = () => {
 
           {/* Save Success Notice */}
           {saveSuccessNotice && (
-            <div className="p-3.5 rounded-2xl bg-[#EDF2EC] border border-black/30 text-xs font-medium text-[#193F30] flex items-center gap-2 animate-fadeIn">
-              <CheckCircle2 className="w-4 h-4 shrink-0 text-[#193F30]" />
+            <div className="p-3.5 rounded-2xl bg-[#EBE5FF] border border-[#E6DEFF] text-xs font-medium text-primary flex items-center gap-2 animate-fadeIn">
+              <CheckCircle2 className="w-4 h-4 shrink-0 text-primary" />
               <span>{saveSuccessNotice}</span>
             </div>
           )}
 
           {/* Pre-Assessment Instructions Banner */}
           {currentQuestionIndex === 0 && activeAssessment.instructions && (
-            <div className="p-5 rounded-3xl bg-[#F8F7F2] border border-black/30 shadow-xs space-y-2">
-              <div className="flex items-center gap-2 text-xs font-bold text-[#193F30] uppercase tracking-wider">
+            <div className="p-5 rounded-3xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-xs space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-wider">
                 <Info className="w-4 h-4" />
                 <span>Instructions & Guidelines</span>
               </div>
-              <ul className="space-y-1.5 text-xs text-[#737A73] list-disc list-inside">
+              <ul className="space-y-1.5 text-xs text-[#6A6678] list-disc list-inside">
                 {activeAssessment.instructions.map((inst, idx) => (
                   <li key={idx} className="leading-relaxed">{inst}</li>
                 ))}
@@ -791,22 +791,22 @@ export const StudentAssessmentPage = () => {
           )}
 
           {/* Stepper Progress Card */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 shadow-xs space-y-6">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-6">
             {/* Header: Step Counter & Progress Bar */}
             <div className="space-y-3">
               <div className="flex items-center justify-between text-xs font-bold">
-                <span className="text-[#193F30] bg-[#EDF2EC] px-3 py-1 rounded-full border border-black/20">
+                <span className="text-primary bg-[#EBE5FF] px-3 py-1 rounded-full border border-[#E6DEFF]">
                   Question {currentQuestionIndex + 1} of {activeAssessment.questions.length}
                 </span>
-                <span className="text-[#737A73]">
+                <span className="text-[#6A6678]">
                   {Math.round(((currentQuestionIndex + 1) / activeAssessment.questions.length) * 100)}% Complete
                 </span>
               </div>
 
               {/* Progress Bar */}
-              <div className="w-full h-2 bg-[#EDF2EC] rounded-full overflow-hidden border border-black/20">
+              <div className="w-full h-2 bg-[#EBE5FF] rounded-full overflow-hidden border border-[#E6DEFF]">
                 <div
-                  className="h-full bg-[#193F30] transition-all duration-300 rounded-full"
+                  className="h-full bg-primary transition-all duration-300 rounded-full"
                   style={{
                     width: `${((currentQuestionIndex + 1) / activeAssessment.questions.length) * 100}%`
                   }}
@@ -829,10 +829,10 @@ export const StudentAssessmentPage = () => {
                       }}
                       className={`w-6 h-6 rounded-full text-[10px] font-bold flex items-center justify-center transition-all cursor-pointer border ${
                         isCurrent
-                          ? 'bg-[#193F30] text-white border-black/40 ring-2 ring-[#193F30]/30'
+                          ? 'bg-primary text-white border-[#E6DEFF] ring-2 ring-primary/30'
                           : isAnswered
-                          ? 'bg-[#EDF2EC] text-[#193F30] border-black/30'
-                          : 'bg-[#F8F7F2] text-[#737A73] border-black/20 hover:border-black/40'
+                          ? 'bg-[#EBE5FF] text-primary border-[#E6DEFF]'
+                          : 'bg-[#FCF8FF] text-[#6A6678] border-[#E6DEFF] hover:border-[#E6DEFF]'
                       }`}
                       title={`Go to Question ${idx + 1}: ${q.title}`}
                     >
@@ -852,16 +852,16 @@ export const StudentAssessmentPage = () => {
                 <div className="space-y-5 pt-2">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-[11px] font-bold text-[#737A73] uppercase tracking-wider">
+                      <span className="text-[11px] font-bold text-[#6A6678] uppercase tracking-wider">
                         {q.title}
                       </span>
                       {q.required && (
-                        <span className="text-[10px] font-semibold text-[#B42318] bg-[#FDF2F2] px-2 py-0.5 rounded-full border border-black/20">
+                        <span className="text-[10px] font-semibold text-[#B42318] bg-[#FDF2F2] px-2 py-0.5 rounded-full border border-[#E6DEFF]">
                           * Required
                         </span>
                       )}
                     </div>
-                    <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#202923] leading-snug">
+                    <h3 className=" text-xl sm:text-2xl font-bold text-[#1b1831] leading-snug">
                       {q.question}
                     </h3>
                   </div>
@@ -878,13 +878,13 @@ export const StudentAssessmentPage = () => {
                             onClick={() => handleAnswerChange(q.id, opt.id)}
                             className={`p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer flex items-start gap-3.5 ${
                               isSelected
-                                ? 'bg-[#EDF2EC] border-[#193F30] text-[#193F30] ring-1 ring-[#193F30] shadow-xs'
-                                : 'bg-[#F8F7F2] border-black/30 hover:border-black/50 text-[#202923]'
+                                ? 'bg-[#EBE5FF] border-primary text-primary ring-1 ring-primary shadow-xs'
+                                : 'bg-[#FCF8FF] border-[#E6DEFF] hover:border-primary/40 text-[#1b1831]'
                             }`}
                           >
                             <div
                               className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-0.5 ${
-                                isSelected ? 'bg-[#193F30] border-[#193F30] text-white' : 'border-black/30 bg-white'
+                                isSelected ? 'bg-primary border-primary text-white' : 'border-[#E6DEFF] bg-white'
                               }`}
                             >
                               {isSelected && <span className="w-2 h-2 rounded-full bg-white" />}
@@ -895,7 +895,7 @@ export const StudentAssessmentPage = () => {
                                 {opt.label}
                               </span>
                               {opt.trait && (
-                                <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-[#193F30] bg-white px-2 py-0.5 rounded-md border border-black/20">
+                                <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-primary bg-white px-2 py-0.5 rounded-md border border-[#E6DEFF]">
                                   Trait: {opt.trait}
                                 </span>
                               )}
@@ -926,8 +926,8 @@ export const StudentAssessmentPage = () => {
                               onClick={() => handleAnswerChange(q.id, lvl.value)}
                               className={`p-3 sm:p-4 rounded-2xl border text-center transition-all cursor-pointer flex flex-col items-center justify-between gap-2 ${
                                 isSelected
-                                  ? 'bg-[#193F30] text-white border-black/40 ring-2 ring-[#193F30]/30 shadow-xs'
-                                  : 'bg-[#F8F7F2] border-black/30 hover:border-black/50 text-[#202923]'
+                                  ? 'bg-primary text-white border-[#E6DEFF] ring-2 ring-primary/30 shadow-xs'
+                                  : 'bg-[#FCF8FF] border-[#E6DEFF] hover:border-primary/40 text-[#1b1831]'
                               }`}
                             >
                               <span className="text-base sm:text-lg font-bold">{lvl.value}</span>
@@ -949,9 +949,9 @@ export const StudentAssessmentPage = () => {
                         value={currentVal || ''}
                         onChange={(e) => handleAnswerChange(q.id, e.target.value)}
                         placeholder={q.placeholder || 'Enter your detailed reflection...'}
-                        className="w-full p-4 rounded-2xl bg-[#F8F7F2] border border-black/30 focus:outline-none focus:ring-1 focus:ring-[#193F30] text-xs sm:text-sm text-[#202923] leading-relaxed resize-y"
+                        className="w-full p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] focus:outline-none focus:ring-1 focus:ring-primary text-xs sm:text-sm text-[#1b1831] leading-relaxed resize-y"
                       />
-                      <div className="flex items-center justify-between text-[11px] text-[#737A73]">
+                      <div className="flex items-center justify-between text-[11px] text-[#6A6678]">
                         <span>
                           {q.minLength
                             ? `Minimum ${q.minLength} characters required`
@@ -964,7 +964,7 @@ export const StudentAssessmentPage = () => {
 
                   {/* In-Line Validation Error */}
                   {validationError && (
-                    <div className="p-3 rounded-2xl bg-[#FDF2F2] border border-black/30 text-xs text-[#B42318] flex items-center gap-2">
+                    <div className="p-3 rounded-2xl bg-[#FDF2F2] border border-[#E6DEFF] text-xs text-[#B42318] flex items-center gap-2">
                       <AlertCircle className="w-4 h-4 shrink-0" />
                       <span>{validationError}</span>
                     </div>
@@ -974,12 +974,12 @@ export const StudentAssessmentPage = () => {
             })()}
 
             {/* Bottom Stepper Controls */}
-            <div className="flex items-center justify-between pt-6 border-t border-black/20">
+            <div className="flex items-center justify-between pt-6 border-t border-[#E6DEFF]">
               <button
                 type="button"
                 disabled={currentQuestionIndex === 0}
                 onClick={handlePrevQuestion}
-                className="py-2 px-4 rounded-xl text-xs font-semibold text-[#202923] bg-white hover:bg-[#F8F7F2] border border-black/30 shadow-xs disabled:opacity-40 cursor-pointer flex items-center gap-1.5"
+                className="py-2 px-4 rounded-xl text-xs font-semibold text-[#1b1831] bg-white hover:bg-[#FCF8FF] border border-[#E6DEFF] shadow-xs disabled:opacity-40 cursor-pointer flex items-center gap-1.5"
               >
                 <ChevronLeft className="w-4 h-4" />
                 <span>Previous</span>
@@ -989,7 +989,7 @@ export const StudentAssessmentPage = () => {
                 <button
                   type="button"
                   onClick={handleNextQuestion}
-                  className="py-2.5 px-6 rounded-xl text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] transition-colors border border-black/30 shadow-xs cursor-pointer flex items-center gap-1.5"
+                  className="py-2.5 px-6 rounded-xl text-xs font-semibold text-white bg-primary hover:bg-primary-container transition-colors border border-[#E6DEFF] shadow-xs cursor-pointer flex items-center gap-1.5"
                 >
                   <span>Next Question</span>
                   <ChevronRight className="w-4 h-4" />
@@ -1002,7 +1002,7 @@ export const StudentAssessmentPage = () => {
                       setCurrentView('review');
                     }
                   }}
-                  className="py-2.5 px-6 rounded-xl text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] transition-colors border border-black/30 shadow-xs cursor-pointer flex items-center gap-1.5"
+                  className="py-2.5 px-6 rounded-xl text-xs font-semibold text-white bg-primary hover:bg-primary-container transition-colors border border-[#E6DEFF] shadow-xs cursor-pointer flex items-center gap-1.5"
                 >
                   <CheckSquare className="w-4 h-4" />
                   <span>Review Answers</span>
@@ -1023,20 +1023,20 @@ export const StudentAssessmentPage = () => {
             <button
               type="button"
               onClick={() => setCurrentView('assessment')}
-              className="py-1.5 px-3 rounded-xl text-xs font-semibold text-[#202923] bg-white hover:bg-[#F8F7F2] border border-black/30 shadow-xs cursor-pointer flex items-center gap-1.5"
+              className="py-1.5 px-3 rounded-xl text-xs font-semibold text-[#1b1831] bg-white hover:bg-[#FCF8FF] border border-[#E6DEFF] shadow-xs cursor-pointer flex items-center gap-1.5"
             >
               <ChevronLeft className="w-4 h-4" />
               <span>Back to Questions</span>
             </button>
 
-            <span className="text-xs font-bold text-[#193F30] bg-[#EDF2EC] px-3 py-1 rounded-full border border-black/20">
+            <span className="text-xs font-bold text-primary bg-[#EBE5FF] px-3 py-1 rounded-full border border-[#E6DEFF]">
               Review Step
             </span>
           </div>
 
           {/* Missing Questions Warning (if any) */}
           {missingQuestionsList.length > 0 && (
-            <div className="p-4 rounded-3xl bg-[#FDF2F2] border border-black/30 text-xs text-[#B42318] space-y-2">
+            <div className="p-4 rounded-3xl bg-[#FDF2F2] border border-[#E6DEFF] text-xs text-[#B42318] space-y-2">
               <div className="flex items-center gap-2 font-bold">
                 <AlertCircle className="w-4 h-4 shrink-0" />
                 <span>Please answer all required questions before final submission:</span>
@@ -1052,12 +1052,12 @@ export const StudentAssessmentPage = () => {
           )}
 
           {/* Review Summary Card */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 shadow-xs space-y-6">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-6">
             <div>
-              <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#202923]">
+              <h3 className=" text-xl sm:text-2xl font-bold text-[#1b1831]">
                 Review Your Answers
               </h3>
-              <p className="text-xs sm:text-sm text-[#737A73] mt-1">
+              <p className="text-xs sm:text-sm text-[#6A6678] mt-1">
                 Please verify your responses before submitting. You can click "Edit" on any question to adjust your response.
               </p>
             </div>
@@ -1087,19 +1087,19 @@ export const StudentAssessmentPage = () => {
                     key={q.id}
                     className={`p-4 rounded-2xl border transition-all flex flex-col sm:flex-row sm:items-start justify-between gap-3 ${
                       isMissing
-                        ? 'bg-[#FDF2F2] border-black/30'
-                        : 'bg-[#F8F7F2] border-black/30 hover:border-black/50'
+                        ? 'bg-[#FDF2F2] border-[#E6DEFF]'
+                        : 'bg-[#FCF8FF] border-[#E6DEFF] hover:border-primary/40'
                     }`}
                   >
                     <div className="space-y-1 max-w-xl">
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-bold text-[#193F30] uppercase">
+                        <span className="text-[10px] font-bold text-primary uppercase">
                           Question {idx + 1}
                         </span>
-                        <span className="text-xs font-bold text-[#202923]">{q.title}</span>
+                        <span className="text-xs font-bold text-[#1b1831]">{q.title}</span>
                       </div>
-                      <p className="text-xs text-[#737A73] italic line-clamp-1">{q.question}</p>
-                      <p className={`text-xs font-medium pt-1 ${isMissing ? 'text-[#B42318]' : 'text-[#202923]'}`}>
+                      <p className="text-xs text-[#6A6678] italic line-clamp-1">{q.question}</p>
+                      <p className={`text-xs font-medium pt-1 ${isMissing ? 'text-[#B42318]' : 'text-[#1b1831]'}`}>
                         {displayVal}
                       </p>
                     </div>
@@ -1110,7 +1110,7 @@ export const StudentAssessmentPage = () => {
                         setCurrentQuestionIndex(idx);
                         setCurrentView('assessment');
                       }}
-                      className="py-1 px-3 rounded-xl text-xs font-semibold text-[#193F30] bg-white hover:bg-[#EDF2EC] border border-black/30 cursor-pointer self-start shrink-0"
+                      className="py-1 px-3 rounded-xl text-xs font-semibold text-primary bg-white hover:bg-[#EBE5FF] border border-[#E6DEFF] cursor-pointer self-start shrink-0"
                     >
                       Edit
                     </button>
@@ -1120,12 +1120,12 @@ export const StudentAssessmentPage = () => {
             </div>
 
             {/* Submission Toolbar */}
-            <div className="pt-6 border-t border-black/20 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="pt-6 border-t border-[#E6DEFF] flex flex-col sm:flex-row items-center justify-between gap-3">
               <button
                 type="button"
                 onClick={handleSaveProgress}
                 disabled={isSavingProgress}
-                className="w-full sm:w-auto py-2.5 px-4 rounded-xl text-xs font-semibold text-[#202923] bg-white hover:bg-[#F8F7F2] border border-black/30 shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
+                className="w-full sm:w-auto py-2.5 px-4 rounded-xl text-xs font-semibold text-[#1b1831] bg-white hover:bg-[#FCF8FF] border border-[#E6DEFF] shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
               >
                 <Save className="w-3.5 h-3.5" />
                 <span>Save Draft & Finish Later</span>
@@ -1138,7 +1138,7 @@ export const StudentAssessmentPage = () => {
                     setShowSubmitModal(true);
                   }
                 }}
-                className="w-full sm:w-auto py-2.5 px-6 rounded-xl text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] transition-colors border border-black/30 shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
+                className="w-full sm:w-auto py-2.5 px-6 rounded-xl text-xs font-semibold text-white bg-primary hover:bg-primary-container transition-colors border border-[#E6DEFF] shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
               >
                 <CheckCircle2 className="w-4 h-4" />
                 <span>Submit Assessment</span>
@@ -1153,22 +1153,22 @@ export const StudentAssessmentPage = () => {
       {/* ============================================================== */}
       {showSubmitModal && (
         <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl border border-black/30 p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-5 animate-scaleUp">
-            <div className="w-12 h-12 rounded-2xl bg-[#EDF2EC] text-[#193F30] flex items-center justify-center border border-black/20 mx-auto">
+          <div className="bg-white rounded-3xl border border-[#E6DEFF] p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-5 animate-scaleUp">
+            <div className="w-12 h-12 rounded-2xl bg-[#EBE5FF] text-primary flex items-center justify-center border border-[#E6DEFF] mx-auto">
               <Target className="w-6 h-6" />
             </div>
 
             <div className="text-center space-y-2">
-              <h3 className="font-serif text-xl font-bold text-[#202923]">
+              <h3 className=" text-xl font-bold text-[#1b1831]">
                 Submit Self-Assessment?
               </h3>
-              <p className="text-xs sm:text-sm text-[#737A73] leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#6A6678] leading-relaxed">
                 Your responses will be saved against your student record and calculated using defined curriculum scoring rules to generate your growth profile.
               </p>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-[#F8F7F2] border border-black/30 text-[11px] text-[#737A73] space-y-1">
-              <div className="flex items-center gap-1.5 font-bold text-[#193F30]">
+            <div className="p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-[11px] text-[#6A6678] space-y-1">
+              <div className="flex items-center gap-1.5 font-bold text-primary">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 <span>Student Ownership Verified</span>
               </div>
@@ -1179,7 +1179,7 @@ export const StudentAssessmentPage = () => {
               <button
                 type="button"
                 onClick={() => setShowSubmitModal(false)}
-                className="py-2.5 px-4 rounded-xl text-xs font-semibold text-[#202923] bg-[#F8F7F2] hover:bg-[#E5E0D5] border border-black/30 cursor-pointer"
+                className="py-2.5 px-4 rounded-xl text-xs font-semibold text-[#1b1831] bg-[#FCF8FF] hover:bg-[#E6DEFF] border border-[#E6DEFF] cursor-pointer"
               >
                 Review More
               </button>
@@ -1187,7 +1187,7 @@ export const StudentAssessmentPage = () => {
                 type="button"
                 disabled={isSubmitting}
                 onClick={handleFinalSubmit}
-                className="py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 shadow-xs cursor-pointer flex items-center justify-center gap-1.5 disabled:opacity-50"
+                className="py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] shadow-xs cursor-pointer flex items-center justify-center gap-1.5 disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -1206,16 +1206,16 @@ export const StudentAssessmentPage = () => {
       {/* ============================================================== */}
       {showRetakeModal && (
         <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl border border-black/30 p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-5 animate-scaleUp">
-            <div className="w-12 h-12 rounded-2xl bg-[#FBF5E6] text-[#8C5E14] flex items-center justify-center border border-black/20 mx-auto">
+          <div className="bg-white rounded-3xl border border-[#E6DEFF] p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-5 animate-scaleUp">
+            <div className="w-12 h-12 rounded-2xl bg-[#FBF5E6] text-[#8C5E14] flex items-center justify-center border border-[#E6DEFF] mx-auto">
               <RotateCcw className="w-6 h-6" />
             </div>
 
             <div className="text-center space-y-2">
-              <h3 className="font-serif text-xl font-bold text-[#202923]">
+              <h3 className=" text-xl font-bold text-[#1b1831]">
                 Retake Assessment?
               </h3>
-              <p className="text-xs sm:text-sm text-[#737A73] leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#6A6678] leading-relaxed">
                 This assessment permits retaking. Resetting will clear your current answers and allow you to reflect afresh with updated responses.
               </p>
             </div>
@@ -1224,7 +1224,7 @@ export const StudentAssessmentPage = () => {
               <button
                 type="button"
                 onClick={() => setShowRetakeModal(false)}
-                className="py-2.5 px-4 rounded-xl text-xs font-semibold text-[#202923] bg-[#F8F7F2] hover:bg-[#E5E0D5] border border-black/30 cursor-pointer"
+                className="py-2.5 px-4 rounded-xl text-xs font-semibold text-[#1b1831] bg-[#FCF8FF] hover:bg-[#E6DEFF] border border-[#E6DEFF] cursor-pointer"
               >
                 Cancel
               </button>
@@ -1232,7 +1232,7 @@ export const StudentAssessmentPage = () => {
                 type="button"
                 disabled={isRetaking}
                 onClick={handleRetakeConfirm}
-                className="py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 shadow-xs cursor-pointer flex items-center justify-center gap-1.5 disabled:opacity-50"
+                className="py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] shadow-xs cursor-pointer flex items-center justify-center gap-1.5 disabled:opacity-50"
               >
                 {isRetaking ? (
                   <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -1251,29 +1251,29 @@ export const StudentAssessmentPage = () => {
       {/* ============================================================== */}
       {dependencyModal && (
         <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl border border-black/30 p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-5 animate-scaleUp">
-            <div className="w-12 h-12 rounded-2xl bg-[#FDF2F2] text-[#B42318] flex items-center justify-center border border-black/20 mx-auto">
+          <div className="bg-white rounded-3xl border border-[#E6DEFF] p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-5 animate-scaleUp">
+            <div className="w-12 h-12 rounded-2xl bg-[#FDF2F2] text-[#B42318] flex items-center justify-center border border-[#E6DEFF] mx-auto">
               <AlertTriangle className="w-6 h-6" />
             </div>
 
             <div className="text-center space-y-2">
-              <h3 className="font-serif text-xl font-bold text-[#202923]">
+              <h3 className=" text-xl font-bold text-[#1b1831]">
                 {dependencyModal.title}
               </h3>
-              <p className="text-xs sm:text-sm text-[#737A73] leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#6A6678] leading-relaxed">
                 {dependencyModal.message}
               </p>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-[#F8F7F2] border border-black/30 text-[11px] text-[#737A73] space-y-1">
-              <span className="font-bold text-[#202923] block">Curriculum Integrity Policy:</span>
+            <div className="p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-[11px] text-[#6A6678] space-y-1">
+              <span className="font-bold text-[#1b1831] block">Curriculum Integrity Policy:</span>
               <p>In accordance with educational policy, results and questions cannot be fabricated without authorized curriculum rubric approval.</p>
             </div>
 
             <button
               type="button"
               onClick={() => setDependencyModal(null)}
-              className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-[#202923] bg-[#F8F7F2] hover:bg-[#E5E0D5] border border-black/30 cursor-pointer"
+              className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-[#1b1831] bg-[#FCF8FF] hover:bg-[#E6DEFF] border border-[#E6DEFF] cursor-pointer"
             >
               Understood
             </button>
@@ -1291,7 +1291,7 @@ export const StudentAssessmentPage = () => {
             <button
               type="button"
               onClick={() => setCurrentView('catalog')}
-              className="py-1.5 px-3.5 rounded-xl text-xs font-semibold text-[#202923] bg-white hover:bg-[#F8F7F2] border border-black/30 shadow-xs cursor-pointer flex items-center gap-1.5"
+              className="py-1.5 px-3.5 rounded-xl text-xs font-semibold text-[#1b1831] bg-white hover:bg-[#FCF8FF] border border-[#E6DEFF] shadow-xs cursor-pointer flex items-center gap-1.5"
             >
               <ChevronLeft className="w-4 h-4" />
               <span>Back to Assessments</span>
@@ -1301,7 +1301,7 @@ export const StudentAssessmentPage = () => {
               <button
                 type="button"
                 onClick={() => setShowRetakeModal(true)}
-                className="py-1.5 px-3.5 rounded-xl text-xs font-semibold text-[#193F30] bg-[#EDF2EC] hover:bg-[#E5E0D5] border border-black/30 shadow-xs cursor-pointer flex items-center gap-1.5"
+                className="py-1.5 px-3.5 rounded-xl text-xs font-semibold text-primary bg-[#EBE5FF] hover:bg-[#E6DEFF] border border-[#E6DEFF] shadow-xs cursor-pointer flex items-center gap-1.5"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Retake Assessment</span>
@@ -1310,19 +1310,19 @@ export const StudentAssessmentPage = () => {
           </div>
 
           {isLoadingResults ? (
-            <div className="p-12 text-center rounded-3xl bg-white border border-black/30 shadow-xs space-y-3">
-              <Loader2 className="w-7 h-7 text-[#193F30] animate-spin mx-auto" />
-              <p className="text-xs font-medium text-[#737A73]">Calculating your growth profile & insights...</p>
+            <div className="p-12 text-center rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-3">
+              <Loader2 className="w-7 h-7 text-primary animate-spin mx-auto" />
+              <p className="text-xs font-medium text-[#6A6678]">Calculating your growth profile & insights...</p>
             </div>
           ) : resultsError ? (
-            <div className="p-6 rounded-3xl bg-[#FDF2F2] border border-black/30 text-center space-y-3">
+            <div className="p-6 rounded-3xl bg-[#FDF2F2] border border-[#E6DEFF] text-center space-y-3">
               <AlertCircle className="w-8 h-8 text-[#B42318] mx-auto" />
-              <h4 className="font-serif text-lg font-bold text-[#B42318]">Results Unavailable</h4>
-              <p className="text-xs text-[#737A73]">{resultsError}</p>
+              <h4 className=" text-lg font-bold text-[#B42318]">Results Unavailable</h4>
+              <p className="text-xs text-[#6A6678]">{resultsError}</p>
               <button
                 type="button"
                 onClick={() => setCurrentView('catalog')}
-                className="py-2 px-4 rounded-xl text-xs font-semibold bg-[#193F30] text-white border border-black/30 cursor-pointer"
+                className="py-2 px-4 rounded-xl text-xs font-semibold bg-primary text-white border border-[#E6DEFF] cursor-pointer"
               >
                 Return to Catalog
               </button>
@@ -1330,40 +1330,40 @@ export const StudentAssessmentPage = () => {
           ) : resultsData?.results ? (
             <div className="space-y-6">
               {/* Results Hero Card */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 shadow-xs space-y-6">
+              <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-6">
                 {/* Status Bar */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-black/20 text-xs">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-[#E6DEFF] text-xs">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#193F30] bg-[#EDF2EC] px-3 py-1 rounded-full border border-black/20 flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#193F30]" />
+                    <span className="font-bold text-primary bg-[#EBE5FF] px-3 py-1 rounded-full border border-[#E6DEFF] flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
                       <span>Completed Assessment</span>
                     </span>
-                    <span className="text-[#737A73] font-mono">v{resultsData.version}</span>
+                    <span className="text-[#6A6678] font-mono">v{resultsData.version}</span>
                   </div>
-                  <div className="text-[#737A73] flex items-center gap-2">
-                    <ShieldCheck className="w-3.5 h-3.5 text-[#193F30]" />
+                  <div className="text-[#6A6678] flex items-center gap-2">
+                    <ShieldCheck className="w-3.5 h-3.5 text-primary" />
                     <span>Completed {resultsData.completedAt}</span>
                   </div>
                 </div>
 
                 {/* Archetype & Core Metric */}
-                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 p-6 rounded-2xl bg-gradient-to-r from-[#F1EDE2] via-[#EDF2EC] to-[#F1EDE2] border border-black/30">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 p-6 rounded-2xl bg-gradient-to-r from-[#F3EFFF] via-[#EBE5FF] to-[#F3EFFF] border border-[#E6DEFF]">
                   <div className="space-y-2 max-w-xl">
-                    <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white text-[#193F30] text-[11px] font-bold uppercase tracking-wider border border-black/20">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white text-primary text-[11px] font-bold uppercase tracking-wider border border-[#E6DEFF]">
                       <Sparkles className="w-3.5 h-3.5" />
                       <span>Configured Growth Archetype</span>
                     </div>
-                    <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#202923]">
+                    <h3 className=" text-2xl sm:text-3xl font-bold text-[#1b1831]">
                       {resultsData.results.archetype}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#737A73] leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#6A6678] leading-relaxed">
                       {resultsData.results.summary}
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-white border border-black/30 text-center min-w-[150px] shadow-xs">
-                    <span className="text-[11px] font-bold text-[#737A73] uppercase block">Growth Index</span>
-                    <div className="font-serif text-3xl font-bold text-[#193F30] mt-1">
+                  <div className="p-4 rounded-2xl bg-white border border-[#E6DEFF] text-center min-w-[150px] shadow-xs">
+                    <span className="text-[11px] font-bold text-[#6A6678] uppercase block">Growth Index</span>
+                    <div className=" text-3xl font-bold text-primary mt-1">
                       {resultsData.results.overallIndex}%
                     </div>
                     <span className="text-[10px] text-[#4B735F] font-semibold">Validated Profile</span>
@@ -1373,20 +1373,20 @@ export const StudentAssessmentPage = () => {
                 {/* Dimension Scores Breakdown (if available) */}
                 {resultsData.results.dimensionScores && (
                   <div className="space-y-3 pt-2">
-                    <h4 className="font-serif text-base font-bold text-[#202923]">
+                    <h4 className=" text-base font-bold text-[#1b1831]">
                       Cognitive Dimension Breakdown
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {Object.entries(resultsData.results.dimensionScores).map(([dim, val]) => (
-                        <div key={dim} className="p-3.5 rounded-2xl bg-[#F8F7F2] border border-black/30 space-y-1.5">
+                        <div key={dim} className="p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] space-y-1.5">
                           <div className="flex items-center justify-between text-xs">
-                            <span className="font-bold text-[#202923] capitalize">
+                            <span className="font-bold text-[#1b1831] capitalize">
                               {dim.replace(/([A-Z])/g, ' $1')}
                             </span>
-                            <span className="font-serif font-bold text-[#193F30]">{val}%</span>
+                            <span className=" font-bold text-primary">{val}%</span>
                           </div>
-                          <div className="w-full h-1.5 bg-white rounded-full overflow-hidden border border-black/20">
-                            <div className="h-full bg-[#193F30] rounded-full" style={{ width: `${val}%` }} />
+                          <div className="w-full h-1.5 bg-white rounded-full overflow-hidden border border-[#E6DEFF]">
+                            <div className="h-full bg-primary rounded-full" style={{ width: `${val}%` }} />
                           </div>
                         </div>
                       ))}
@@ -1397,14 +1397,14 @@ export const StudentAssessmentPage = () => {
 
               {/* Permitted Core Strengths & Interests Matrix */}
               {resultsData.results.permittedStrengths && (
-                <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 shadow-xs space-y-4">
+                <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-4">
                   <div className="flex items-center gap-2">
-                    <Brain className="w-5 h-5 text-[#193F30]" />
-                    <h4 className="font-serif text-xl font-bold text-[#202923]">
+                    <Brain className="w-5 h-5 text-primary" />
+                    <h4 className=" text-xl font-bold text-[#1b1831]">
                       Validated Strengths & Interests
                     </h4>
                   </div>
-                  <p className="text-xs text-[#737A73]">
+                  <p className="text-xs text-[#6A6678]">
                     Derived from your responses according to verified curriculum rubric rules without speculative diagnoses.
                   </p>
 
@@ -1412,22 +1412,22 @@ export const StudentAssessmentPage = () => {
                     {resultsData.results.permittedStrengths.map((str, idx) => (
                       <div
                         key={idx}
-                        className="p-5 rounded-2xl bg-[#F8F7F2] border border-black/30 space-y-2 hover:border-black/50 transition-all"
+                        className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] space-y-2 hover:border-primary/40 transition-all"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="font-serif text-base font-bold text-[#202923]">
+                          <span className=" text-base font-bold text-[#1b1831]">
                             {str.name}
                           </span>
                           {str.score !== undefined && (
-                            <span className="text-xs font-bold font-serif text-[#193F30]">
+                            <span className="text-xs font-bold  text-primary">
                               {str.score}%
                             </span>
                           )}
                         </div>
-                        <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-[#193F30] bg-[#EDF2EC] px-2 py-0.5 rounded-md border border-black/20">
+                        <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-primary bg-[#EBE5FF] px-2 py-0.5 rounded-md border border-[#E6DEFF]">
                           {str.category}
                         </span>
-                        <p className="text-xs text-[#737A73] leading-relaxed">
+                        <p className="text-xs text-[#6A6678] leading-relaxed">
                           {str.description}
                         </p>
                       </div>
@@ -1438,10 +1438,10 @@ export const StudentAssessmentPage = () => {
 
               {/* Reflection Prompts & Interactive Notes */}
               {resultsData.results.reflectionPrompts && (
-                <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 shadow-xs space-y-4">
+                <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-4">
                   <div className="flex items-center gap-2">
-                    <Sparkles className="w-5 h-5 text-[#193F30]" />
-                    <h4 className="font-serif text-xl font-bold text-[#202923]">
+                    <Sparkles className="w-5 h-5 text-primary" />
+                    <h4 className=" text-xl font-bold text-[#1b1831]">
                       Targeted Reflection Prompts
                     </h4>
                   </div>
@@ -1450,12 +1450,12 @@ export const StudentAssessmentPage = () => {
                     {resultsData.results.reflectionPrompts.map((prompt, idx) => (
                       <div
                         key={idx}
-                        className="p-4 rounded-2xl bg-[#F8F7F2] border border-black/30 space-y-1"
+                        className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] space-y-1"
                       >
-                        <span className="text-[10px] font-bold text-[#193F30] uppercase">
+                        <span className="text-[10px] font-bold text-primary uppercase">
                           Inquiry #{idx + 1}
                         </span>
-                        <p className="text-xs sm:text-sm font-medium text-[#202923] italic">
+                        <p className="text-xs sm:text-sm font-medium text-[#1b1831] italic">
                           "{prompt}"
                         </p>
                       </div>
@@ -1464,7 +1464,7 @@ export const StudentAssessmentPage = () => {
 
                   {/* Reflection Note Input */}
                   <div className="pt-2 space-y-2">
-                    <label className="text-xs font-bold text-[#202923] block">
+                    <label className="text-xs font-bold text-[#1b1831] block">
                       Record Your Personal Growth Takeaway:
                     </label>
                     <textarea
@@ -1472,22 +1472,22 @@ export const StudentAssessmentPage = () => {
                       value={studentReflectionNote}
                       onChange={(e) => setStudentReflectionNote(e.target.value)}
                       placeholder="Write how you will apply these insights in your upcoming study week..."
-                      className="w-full p-3.5 rounded-2xl bg-[#F8F7F2] border border-black/30 focus:outline-none focus:ring-1 focus:ring-[#193F30] text-xs text-[#202923] resize-y"
+                      className="w-full p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] focus:outline-none focus:ring-1 focus:ring-primary text-xs text-[#1b1831] resize-y"
                     />
                     <div className="flex items-center justify-between">
                       {noteSavedNotice ? (
-                        <span className="text-xs font-bold text-[#193F30] flex items-center gap-1">
+                        <span className="text-xs font-bold text-primary flex items-center gap-1">
                           <Check className="w-3.5 h-3.5" />
                           <span>Reflection archived to your growth record!</span>
                         </span>
                       ) : (
-                        <span className="text-[11px] text-[#737A73]">Saved to your reflection archive.</span>
+                        <span className="text-[11px] text-[#6A6678]">Saved to your reflection archive.</span>
                       )}
                       <button
                         type="button"
                         onClick={handleSaveReflectionNote}
                         disabled={!studentReflectionNote.trim()}
-                        className="py-1.5 px-4 rounded-xl text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 shadow-xs disabled:opacity-40 cursor-pointer"
+                        className="py-1.5 px-4 rounded-xl text-xs font-semibold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] shadow-xs disabled:opacity-40 cursor-pointer"
                       >
                         Archive Note
                       </button>
@@ -1498,23 +1498,23 @@ export const StudentAssessmentPage = () => {
 
               {/* Relevant Activity Suggestions */}
               {resultsData.results.activitySuggestions && resultsData.results.activitySuggestions.length > 0 && (
-                <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 shadow-xs space-y-4">
+                <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Compass className="w-5 h-5 text-[#193F30]" />
-                      <h4 className="font-serif text-xl font-bold text-[#202923]">
+                      <Compass className="w-5 h-5 text-primary" />
+                      <h4 className=" text-xl font-bold text-[#1b1831]">
                         Recommended Next Activities
                       </h4>
                     </div>
                     <Link
                       to="/child/activities"
-                      className="text-xs font-bold text-[#193F30] hover:underline flex items-center gap-1"
+                      className="text-xs font-bold text-primary hover:underline flex items-center gap-1"
                     >
                       <span>Explore all activities</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </Link>
                   </div>
-                  <p className="text-xs text-[#737A73]">
+                  <p className="text-xs text-[#6A6678]">
                     Hand-picked personal growth exercises designed to cultivate your top strengths.
                   </p>
 
@@ -1522,23 +1522,23 @@ export const StudentAssessmentPage = () => {
                     {resultsData.results.activitySuggestions.map((act) => (
                       <div
                         key={act.id}
-                        className="p-5 rounded-2xl bg-[#F8F7F2] border border-black/30 hover:border-black/50 transition-all flex flex-col justify-between gap-3 shadow-2xs"
+                        className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] hover:border-primary/40 transition-all flex flex-col justify-between gap-3 shadow-2xs"
                       >
                         <div className="space-y-2">
                           <div className="flex items-center justify-between text-[10px] font-bold">
-                            <span className="text-[#193F30] bg-[#EDF2EC] px-2 py-0.5 rounded-md border border-black/20">
+                            <span className="text-primary bg-[#EBE5FF] px-2 py-0.5 rounded-md border border-[#E6DEFF]">
                               {act.category}
                             </span>
-                            <span className="text-[#737A73] flex items-center gap-1">
+                            <span className="text-[#6A6678] flex items-center gap-1">
                               <Clock className="w-3 h-3" />
                               <span>{act.duration}</span>
                             </span>
                           </div>
-                          <h5 className="font-serif text-sm font-bold text-[#202923] leading-snug">
+                          <h5 className=" text-sm font-bold text-[#1b1831] leading-snug">
                             {act.title}
                           </h5>
                           {act.reason && (
-                            <p className="text-[11px] text-[#737A73] leading-relaxed">
+                            <p className="text-[11px] text-[#6A6678] leading-relaxed">
                               {act.reason}
                             </p>
                           )}
@@ -1546,7 +1546,7 @@ export const StudentAssessmentPage = () => {
 
                         <Link
                           to="/child/activities"
-                          className="w-full py-2 px-3 rounded-xl text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 shadow-xs flex items-center justify-center gap-1.5 transition-colors"
+                          className="w-full py-2 px-3 rounded-xl text-xs font-semibold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] shadow-xs flex items-center justify-center gap-1.5 transition-colors"
                         >
                           <Play className="w-3 h-3" />
                           <span>Start Activity</span>
@@ -1568,14 +1568,14 @@ export const StudentAssessmentPage = () => {
         <div className="max-w-3xl mx-auto space-y-4">
           <div className="flex items-center justify-between pb-2">
             <div>
-              <h3 className="font-serif text-xl font-bold text-[#202923]">
+              <h3 className=" text-xl font-bold text-[#1b1831]">
                 Your Personal Reflection Archive
               </h3>
-              <p className="text-xs text-[#737A73]">
+              <p className="text-xs text-[#6A6678]">
                 Chronological log of your mindset reflections, self-discoveries, and daily intentions.
               </p>
             </div>
-            <span className="text-xs font-bold text-[#193F30] bg-[#EDF2EC] px-3 py-1 rounded-full border border-black/20">
+            <span className="text-xs font-bold text-primary bg-[#EBE5FF] px-3 py-1 rounded-full border border-[#E6DEFF]">
               {reflectionArchive.length} Entries
             </span>
           </div>
@@ -1583,19 +1583,19 @@ export const StudentAssessmentPage = () => {
           {reflectionArchive.map((ref) => (
             <div
               key={ref.id}
-              className="p-5 sm:p-6 rounded-3xl bg-white border border-black/30 hover:border-black/50 shadow-xs space-y-3 transition-all"
+              className="p-5 sm:p-6 rounded-3xl bg-white border border-[#E6DEFF] hover:border-primary/40 shadow-xs space-y-3 transition-all"
             >
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-[#193F30] bg-[#EDF2EC] px-3 py-1 rounded-full border border-black/20 flex items-center gap-1.5">
+                <span className="font-bold text-primary bg-[#EBE5FF] px-3 py-1 rounded-full border border-[#E6DEFF] flex items-center gap-1.5">
                   <span>{ref.moodEmoji}</span>
                   <span>{ref.mood}</span>
                 </span>
-                <span className="text-[#737A73] font-medium">{ref.date}</span>
+                <span className="text-[#6A6678] font-medium">{ref.date}</span>
               </div>
-              <p className="text-xs sm:text-sm font-semibold text-[#202923] italic">
+              <p className="text-xs sm:text-sm font-semibold text-[#1b1831] italic">
                 "{ref.prompt}"
               </p>
-              <p className="text-xs sm:text-sm text-[#737A73] leading-relaxed pt-2 border-t border-black/20">
+              <p className="text-xs sm:text-sm text-[#6A6678] leading-relaxed pt-2 border-t border-[#E6DEFF]">
                 {ref.entry}
               </p>
             </div>

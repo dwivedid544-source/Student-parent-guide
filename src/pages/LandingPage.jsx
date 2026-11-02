@@ -1,94 +1,167 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FamilyStoriesSlider } from '../components/landing/FamilyStoriesSlider';
 import { HeroMomCallVisual } from '../components/landing/HeroMomCallVisual';
 import { PillarsVisualGrid } from '../components/landing/PillarsVisualGrid';
 
 export const LandingPage = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <div className="bg-background text-on-surface antialiased overflow-x-hidden selection:bg-primary-fixed selection:text-on-primary-fixed font-body-md min-h-screen">
       {/*  Top Navigation (Shared Component compliant)  */}
-      <header className="docked full-width top-0 sticky z-50 bg-surface-container-lowest/80 dark:bg-inverse-surface/80 backdrop-blur-md shadow-sm border-b border-surface-container dark:border-surface-variant/20 transition-all duration-200">
-      <div className="flex justify-between items-center w-full px-margin-tablet lg:px-margin-desktop max-w-7xl mx-auto h-20 flex-nowrap gap-2 sm:gap-4">
-        {/* Brand Logo & Emotional Badge */}
-        <Link to="/" className="flex items-center gap-2 group flex-shrink-0 whitespace-nowrap">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#8B75E8] via-[#FF9EAD] to-[#FFE28A] p-[2px] shadow-sm flex items-center justify-center flex-shrink-0">
-            <div className="w-full h-full bg-surface-container-lowest rounded-full flex items-center justify-center">
-              <span className="material-symbols-outlined text-primary text-xl" data-icon="favorite" data-weight="fill" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
+      {/*  Top Navigation - Fully Mobile Responsive  */}
+      <header className="sticky top-0 z-50 w-full bg-surface-container-lowest/90 backdrop-blur-md shadow-xs border-b border-surface-container transition-all duration-200">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20 gap-2">
+            {/* Brand Logo & Emotional Badge */}
+            <Link to="/" className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-[#8B75E8] via-[#FF9EAD] to-[#FFE28A] p-[2px] shadow-sm flex items-center justify-center flex-shrink-0">
+                <div className="w-full h-full bg-surface-container-lowest rounded-full flex items-center justify-center">
+                  <span className="material-symbols-outlined text-primary text-base sm:text-xl" data-icon="favorite" data-weight="fill" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
+                </div>
+              </div>
+              <span className="text-sm sm:text-lg font-extrabold text-primary tracking-tight whitespace-nowrap">HIGH ORBIT</span>
+            </Link>
+
+            {/* Desktop Nav Links - Single Line Pill with Shiny Hover Effects */}
+            <nav className="hidden md:flex items-center gap-1.5 lg:gap-2.5 p-1 rounded-full bg-white/50 dark:bg-inverse-surface/40 backdrop-blur-xl border border-primary-fixed/40 shadow-xs flex-nowrap whitespace-nowrap flex-shrink-0">
+              <a
+                href="#students"
+                className="group relative overflow-hidden px-3 lg:px-4 py-2 rounded-full font-label-md text-on-surface-variant hover:text-primary bg-transparent hover:bg-white/95 backdrop-blur-md border border-transparent hover:border-primary-fixed/60 shadow-xs hover:shadow-[0_4px_20px_rgba(119,104,216,0.22)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/80 before:to-transparent before:transition-transform before:duration-700 before:pointer-events-none"
+              >
+                <span className="material-symbols-outlined text-sm text-primary/70 group-hover:text-primary group-hover:scale-110 transition-transform">school</span>
+                <span className="whitespace-nowrap">For Students</span>
+              </a>
+
+              <a
+                href="#parents"
+                className="group relative overflow-hidden px-3 lg:px-4 py-2 rounded-full font-label-md text-on-surface-variant hover:text-secondary bg-transparent hover:bg-white/95 backdrop-blur-md border border-transparent hover:border-secondary-fixed/60 shadow-xs hover:shadow-[0_4px_20px_rgba(254,157,172,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/80 before:to-transparent before:transition-transform before:duration-700 before:pointer-events-none"
+              >
+                <span className="material-symbols-outlined text-sm text-secondary/70 group-hover:text-secondary group-hover:scale-110 transition-transform">family_restroom</span>
+                <span className="whitespace-nowrap">For Parents</span>
+              </a>
+
+              <a
+                href="#how-it-works"
+                className="group relative overflow-hidden px-3 lg:px-4 py-2 rounded-full font-label-md text-on-surface-variant hover:text-primary bg-transparent hover:bg-white/95 backdrop-blur-md border border-transparent hover:border-primary-fixed/60 shadow-xs hover:shadow-[0_4px_20px_rgba(119,104,216,0.22)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/80 before:to-transparent before:transition-transform before:duration-700 before:pointer-events-none"
+              >
+                <span className="material-symbols-outlined text-sm text-primary/70 group-hover:text-primary group-hover:rotate-45 transition-transform">insights</span>
+                <span className="whitespace-nowrap">How It Works</span>
+              </a>
+
+              <a
+                href="#stories"
+                className="group relative overflow-hidden px-3 lg:px-4 py-2 rounded-full font-label-md text-on-surface-variant hover:text-[#944D12] bg-transparent hover:bg-white/95 backdrop-blur-md border border-transparent hover:border-[#FFBD8A]/60 shadow-xs hover:shadow-[0_4px_20px_rgba(255,189,138,0.28)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/80 before:to-transparent before:transition-transform before:duration-700 before:pointer-events-none"
+              >
+                <span className="material-symbols-outlined text-sm text-[#944D12]/70 group-hover:text-[#944D12] group-hover:scale-110 transition-transform">auto_stories</span>
+                <span className="whitespace-nowrap">Stories</span>
+              </a>
+
+              <a
+                href="#resources"
+                className="group relative overflow-hidden px-3 lg:px-4 py-2 rounded-full font-label-md text-on-surface-variant hover:text-tertiary bg-transparent hover:bg-white/95 backdrop-blur-md border border-transparent hover:border-tertiary-fixed-dim/60 shadow-xs hover:shadow-[0_4px_20px_rgba(140,207,255,0.28)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/80 before:to-transparent before:transition-transform before:duration-700 before:pointer-events-none"
+              >
+                <span className="material-symbols-outlined text-sm text-tertiary/70 group-hover:text-tertiary group-hover:scale-110 transition-transform">spa</span>
+                <span className="whitespace-nowrap">Resources</span>
+              </a>
+            </nav>
+
+            {/* Desktop Actions */}
+            <div className="hidden md:flex items-center gap-2 sm:gap-3 flex-shrink-0 flex-nowrap whitespace-nowrap">
+              <Link
+                to="/login"
+                className="group relative overflow-hidden px-4 py-2 rounded-full font-label-md text-primary bg-white/70 hover:bg-white backdrop-blur-md border border-primary-fixed/50 hover:border-primary shadow-xs hover:shadow-[0_4px_16px_rgba(95,72,185,0.2)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 whitespace-nowrap flex-shrink-0"
+              >
+                <span>Sign In</span>
+              </Link>
+
+              <Link
+                to="/register"
+                className="group relative overflow-hidden px-4 lg:px-5 py-2 rounded-full font-label-md text-on-primary bg-gradient-to-r from-primary to-secondary-container hover:shadow-[0_6px_24px_rgba(95,72,185,0.35)] hover:scale-[1.02] active:scale-95 transition-all duration-200 flex items-center gap-1.5 shadow-sm whitespace-nowrap flex-shrink-0"
+              >
+                <span className="material-symbols-outlined text-sm" data-icon="hub">hub</span>
+                <span>Connect Family</span>
+              </Link>
+            </div>
+
+            {/* Mobile Actions: Compact Sign In + Connect + Hamburger Toggle */}
+            <div className="flex md:hidden items-center gap-1.5 flex-shrink-0">
+              <Link
+                to="/login"
+                className="px-2.5 py-1.5 rounded-full text-xs font-semibold text-primary bg-white/80 border border-primary-fixed/50 hover:bg-white transition-colors whitespace-nowrap"
+              >
+                Sign In
+              </Link>
+              <Link
+                to="/register"
+                className="px-3 py-1.5 rounded-full text-xs font-bold text-white bg-gradient-to-r from-primary to-secondary-container shadow-xs flex items-center gap-1 whitespace-nowrap"
+              >
+                <span className="material-symbols-outlined text-xs">hub</span>
+                <span>Connect</span>
+              </Link>
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-1.5 rounded-xl text-primary bg-white/80 border border-primary-fixed/40 hover:bg-white transition-colors cursor-pointer flex items-center justify-center ml-0.5"
+                aria-label="Toggle navigation menu"
+              >
+                <span className="material-symbols-outlined text-xl">
+                  {mobileMenuOpen ? 'close' : 'menu'}
+                </span>
+              </button>
             </div>
           </div>
-          <span className="text-headline-md font-headline-md text-primary dark:text-inverse-primary tracking-tight whitespace-nowrap">HIGH ORBIT</span>
-        </Link>
-
-        {/* Desktop Nav Links - Single Line Pill with Shiny Hover Effects */}
-        <nav className="hidden md:flex items-center gap-1.5 lg:gap-2.5 p-1 rounded-full bg-white/50 dark:bg-inverse-surface/40 backdrop-blur-xl border border-primary-fixed/40 shadow-xs flex-nowrap whitespace-nowrap flex-shrink-0">
-          <a
-            href="#students"
-            className="group relative overflow-hidden px-3.5 lg:px-4 py-2 rounded-full font-label-md text-on-surface-variant hover:text-primary bg-transparent hover:bg-white/95 backdrop-blur-md border border-transparent hover:border-primary-fixed/60 shadow-xs hover:shadow-[0_4px_20px_rgba(119,104,216,0.22)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/80 before:to-transparent before:transition-transform before:duration-700 before:pointer-events-none"
-          >
-            <span className="material-symbols-outlined text-sm text-primary/70 group-hover:text-primary group-hover:scale-110 transition-transform">school</span>
-            <span className="whitespace-nowrap">For Students</span>
-          </a>
-
-          <a
-            href="#parents"
-            className="group relative overflow-hidden px-3.5 lg:px-4 py-2 rounded-full font-label-md text-on-surface-variant hover:text-secondary bg-transparent hover:bg-white/95 backdrop-blur-md border border-transparent hover:border-secondary-fixed/60 shadow-xs hover:shadow-[0_4px_20px_rgba(254,157,172,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/80 before:to-transparent before:transition-transform before:duration-700 before:pointer-events-none"
-          >
-            <span className="material-symbols-outlined text-sm text-secondary/70 group-hover:text-secondary group-hover:scale-110 transition-transform">family_restroom</span>
-            <span className="whitespace-nowrap">For Parents</span>
-          </a>
-
-          <a
-            href="#how-it-works"
-            className="group relative overflow-hidden px-3.5 lg:px-4 py-2 rounded-full font-label-md text-on-surface-variant hover:text-primary bg-transparent hover:bg-white/95 backdrop-blur-md border border-transparent hover:border-primary-fixed/60 shadow-xs hover:shadow-[0_4px_20px_rgba(119,104,216,0.22)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/80 before:to-transparent before:transition-transform before:duration-700 before:pointer-events-none"
-          >
-            <span className="material-symbols-outlined text-sm text-primary/70 group-hover:text-primary group-hover:rotate-45 transition-transform">insights</span>
-            <span className="whitespace-nowrap">How It Works</span>
-          </a>
-
-          <a
-            href="#stories"
-            className="group relative overflow-hidden px-3.5 lg:px-4 py-2 rounded-full font-label-md text-on-surface-variant hover:text-[#944D12] bg-transparent hover:bg-white/95 backdrop-blur-md border border-transparent hover:border-[#FFBD8A]/60 shadow-xs hover:shadow-[0_4px_20px_rgba(255,189,138,0.28)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/80 before:to-transparent before:transition-transform before:duration-700 before:pointer-events-none"
-          >
-            <span className="material-symbols-outlined text-sm text-[#944D12]/70 group-hover:text-[#944D12] group-hover:scale-110 transition-transform">auto_stories</span>
-            <span className="whitespace-nowrap">Stories</span>
-          </a>
-
-          <a
-            href="#resources"
-            className="group relative overflow-hidden px-3.5 lg:px-4 py-2 rounded-full font-label-md text-on-surface-variant hover:text-tertiary bg-transparent hover:bg-white/95 backdrop-blur-md border border-transparent hover:border-tertiary-fixed-dim/60 shadow-xs hover:shadow-[0_4px_20px_rgba(140,207,255,0.28)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/80 before:to-transparent before:transition-transform before:duration-700 before:pointer-events-none"
-          >
-            <span className="material-symbols-outlined text-sm text-tertiary/70 group-hover:text-tertiary group-hover:scale-110 transition-transform">spa</span>
-            <span className="whitespace-nowrap">Resources</span>
-          </a>
-        </nav>
-
-        {/* Trailing CTAs - Single Line with Shiny Shimmer */}
-        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 flex-nowrap whitespace-nowrap">
-          <Link
-            to="/login"
-            className="group relative overflow-hidden hidden sm:inline-flex px-4 py-2.5 rounded-full font-label-md text-primary bg-white/70 hover:bg-white backdrop-blur-md border border-primary-fixed/50 hover:border-primary shadow-xs hover:shadow-[0_4px_16px_rgba(95,72,185,0.2)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 whitespace-nowrap flex-shrink-0 before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/90 before:to-transparent before:transition-transform before:duration-700 before:pointer-events-none"
-          >
-            <span className="whitespace-nowrap">Sign In</span>
-          </Link>
-
-          <Link
-            to="/register"
-            className="group relative overflow-hidden px-5 py-2.5 rounded-full font-label-md text-on-primary bg-gradient-to-r from-primary to-secondary-container hover:shadow-[0_6px_24px_rgba(95,72,185,0.35)] hover:scale-[1.02] active:scale-95 transition-all duration-200 flex items-center gap-1.5 shadow-sm whitespace-nowrap flex-shrink-0 before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/35 before:to-transparent before:transition-transform before:duration-700 before:pointer-events-none"
-          >
-            <span className="material-symbols-outlined text-sm" data-icon="hub">hub</span>
-            <span className="whitespace-nowrap">Connect Family</span>
-          </Link>
         </div>
-      </div>
-    </header>
+
+        {/* Mobile Dropdown Drawer */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-surface-container bg-surface-container-lowest/98 backdrop-blur-2xl shadow-xl animate-fadeIn px-4 py-4">
+            <nav className="flex flex-col gap-1">
+              {[
+                { href: '#students', icon: 'school', label: 'For Students' },
+                { href: '#parents', icon: 'family_restroom', label: 'For Parents' },
+                { href: '#how-it-works', icon: 'insights', label: 'How It Works' },
+                { href: '#stories', icon: 'auto_stories', label: 'Stories' },
+                { href: '#resources', icon: 'spa', label: 'Resources' },
+              ].map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-primary-fixed/15 transition-colors"
+                >
+                  <span className="material-symbols-outlined text-lg text-primary">{item.icon}</span>
+                  <span>{item.label}</span>
+                </a>
+              ))}
+            </nav>
+            <div className="mt-3 pt-3 border-t border-surface-container/60 flex flex-col gap-2">
+              <Link
+                to="/register"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-2.5 rounded-full text-center text-xs font-bold text-white bg-gradient-to-r from-primary to-secondary-container shadow-md flex items-center justify-center gap-1.5"
+              >
+                <span className="material-symbols-outlined text-sm">hub</span>
+                <span>Connect Family Portal</span>
+              </Link>
+              <Link
+                to="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-2 rounded-full text-center text-xs font-semibold text-primary border border-primary-fixed hover:bg-white transition-colors"
+              >
+                Sign In with Credentials
+              </Link>
+            </div>
+          </div>
+        )}
+      </header>
       {/*  Section 1 – Hero Section  */}
-      <section className="relative pt-12 pb-20 md:py-24 rainbow-mesh overflow-hidden">
+      <section className="relative pt-6 sm:pt-12 pb-16 md:py-24 rainbow-mesh overflow-hidden">
       <div className="max-w-7xl mx-auto px-margin md:px-margin-tablet lg:px-margin-desktop">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
       {/*  Hero Text  */}
       <div className="lg:col-span-6 space-y-space-md text-center lg:text-left z-10">
-      <div className="inline-flex items-center gap-2 px-space-md py-1.5 rounded-full bg-surface-container-highest text-primary font-label-sm border border-primary-fixed shadow-sm">
+      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-highest text-primary text-xs font-semibold border border-primary-fixed shadow-xs max-w-full">
       <span className="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
                   Hostel &amp; Dormitory Emotional Wellness
                 </div>
@@ -106,7 +179,7 @@ export const LandingPage = () => {
                   </a>
       </div>
       {/*  Micro Trust Stats  */}
-      <div className="pt-4 flex items-center justify-center lg:justify-start gap-6 text-on-surface-variant font-label-sm">
+      <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-6 text-on-surface-variant font-label-sm">
       <div className="flex items-center gap-1.5">
       <span className="material-symbols-outlined text-secondary-container" data-icon="verified_user">verified_user</span>
       <span>100% Zero-Judgment Space</span>

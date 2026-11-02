@@ -36,17 +36,17 @@ export const StudentHelpPage = () => {
   return (
     <div className="space-y-6 sm:space-y-8 animate-fadeIn max-w-4xl mx-auto">
       <div>
-        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#202923] tracking-tight">
+        <h2 className=" text-2xl sm:text-3xl font-bold text-[#1b1831] tracking-tight">
           Help & Support Center
         </h2>
-        <p className="text-xs sm:text-sm text-[#737A73] mt-1">
+        <p className="text-xs sm:text-sm text-[#6A6678] mt-1">
           Guidance on making the most of your HighOrbit sanctuary and personal growth tools.
         </p>
       </div>
 
       {/* FAQ Accordion */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 hover:border-black/50 shadow-xs transition-all space-y-4">
-        <h3 className="font-serif text-xl font-bold text-[#202923] border-b border-black/20 pb-3">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] hover:border-primary/40 shadow-xs transition-all space-y-4">
+        <h3 className=" text-xl font-bold text-[#1b1831] border-b border-[#E6DEFF] pb-3">
           Frequently Asked Questions
         </h3>
 
@@ -56,22 +56,22 @@ export const StudentHelpPage = () => {
             return (
               <div
                 key={idx}
-                className="rounded-2xl border border-black/30 hover:border-black/50 overflow-hidden shadow-2xs transition-all"
+                className="rounded-2xl border border-[#E6DEFF] hover:border-primary/40 overflow-hidden shadow-2xs transition-all"
               >
                 <button
                   type="button"
                   onClick={() => setOpenFaq(isOpen ? null : idx)}
-                  className="w-full p-4 text-left flex items-center justify-between gap-3 bg-[#F8F7F2] hover:bg-[#F1EDE2] transition-colors cursor-pointer"
+                  className="w-full p-4 text-left flex items-center justify-between gap-3 bg-[#FCF8FF] hover:bg-[#F3EFFF] transition-colors cursor-pointer"
                 >
-                  <span className="text-xs sm:text-sm font-bold text-[#202923]">{faq.q}</span>
+                  <span className="text-xs sm:text-sm font-bold text-[#1b1831]">{faq.q}</span>
                   <ChevronDown
-                    className={`w-4 h-4 text-[#737A73] transition-transform ${
-                      isOpen ? 'rotate-180 text-[#193F30]' : ''
+                    className={`w-4 h-4 text-[#6A6678] transition-transform ${
+                      isOpen ? 'rotate-180 text-primary' : ''
                     }`}
                   />
                 </button>
                 {isOpen && (
-                  <div className="p-4 bg-white text-xs sm:text-sm text-[#737A73] leading-relaxed border-t border-black/20">
+                  <div className="p-4 bg-white text-xs sm:text-sm text-[#6A6678] leading-relaxed border-t border-[#E6DEFF]">
                     {faq.a}
                   </div>
                 )}
@@ -82,12 +82,12 @@ export const StudentHelpPage = () => {
       </div>
 
       {/* Contact Support Note */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 hover:border-black/50 shadow-xs transition-all space-y-4">
-        <h3 className="font-serif text-xl font-bold text-[#202923] flex items-center gap-2">
-          <MessageSquare className="w-5 h-5 text-[#193F30]" />
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] hover:border-primary/40 shadow-xs transition-all space-y-4">
+        <h3 className=" text-xl font-bold text-[#1b1831] flex items-center gap-2">
+          <MessageSquare className="w-5 h-5 text-primary" />
           <span>Ask a Question or Share Feedback</span>
         </h3>
-        <p className="text-xs text-[#737A73]">
+        <p className="text-xs text-[#6A6678]">
           Have questions about your goals or suggestions for your dashboard? Send a message to our support guides.
         </p>
 
@@ -97,11 +97,11 @@ export const StudentHelpPage = () => {
             value={supportMessage}
             onChange={(e) => setSupportMessage(e.target.value)}
             placeholder="Type your message or question here..."
-            className="w-full p-3.5 rounded-2xl bg-[#F8F7F2] border border-black/30 hover:border-black/50 text-xs sm:text-sm text-[#202923] placeholder-[#737A73] focus:outline-none focus:border-black shadow-2xs transition-all resize-none"
+            className="w-full p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] hover:border-primary/40 text-xs sm:text-sm text-[#1b1831] placeholder-[#737A73] focus:outline-none focus:border-black shadow-2xs transition-all resize-none"
           />
 
           {submitted && (
-            <div className="p-2.5 rounded-xl bg-[#EDF2EC] border border-black/30 text-[#193F30] text-xs font-semibold flex items-center gap-2 animate-fadeIn shadow-2xs">
+            <div className="p-2.5 rounded-xl bg-[#EBE5FF] border border-[#E6DEFF] text-primary text-xs font-semibold flex items-center gap-2 animate-fadeIn shadow-2xs">
               <CheckCircle2 className="w-4 h-4" />
               <span>Thank you! Your message has been received by the HighOrbit team.</span>
             </div>
@@ -110,7 +110,7 @@ export const StudentHelpPage = () => {
           <button
             type="submit"
             disabled={!supportMessage.trim()}
-            className="py-2.5 px-6 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 hover:border-black/50 disabled:opacity-50 transition-colors shadow-xs flex items-center gap-2 cursor-pointer"
+            className="py-2.5 px-6 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] hover:border-primary/40 disabled:opacity-50 transition-colors shadow-xs flex items-center gap-2 cursor-pointer"
           >
             <Send className="w-3.5 h-3.5" />
             <span>Send Message</span>

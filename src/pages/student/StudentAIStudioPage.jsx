@@ -45,10 +45,10 @@ export const StudentAIStudioPage = () => {
   return (
     <div className="space-y-6 sm:space-y-8 animate-fadeIn max-w-4xl mx-auto">
       <div>
-        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#202923] tracking-tight">
+        <h2 className=" text-2xl sm:text-3xl font-bold text-[#1b1831] tracking-tight">
           AI Learning Studio
         </h2>
-        <p className="text-xs sm:text-sm text-[#737A73] mt-1">
+        <p className="text-xs sm:text-sm text-[#6A6678] mt-1">
           An intentional, ad-free study assistant designed for active recall, essay synthesis, and deep comprehension.
         </p>
       </div>
@@ -60,7 +60,7 @@ export const StudentAIStudioPage = () => {
             key={idx}
             type="button"
             onClick={() => handleSend(p)}
-            className="text-xs font-semibold px-3.5 py-2 rounded-full bg-white border border-black/30 hover:border-black/50 text-[#202923] hover:bg-[#EDF2EC] transition-all text-left cursor-pointer shadow-xs"
+            className="text-xs font-semibold px-3.5 py-2 rounded-full bg-white border border-[#E6DEFF] hover:border-primary/40 text-[#1b1831] hover:bg-[#EBE5FF] transition-all text-left cursor-pointer shadow-xs"
           >
             <span>{p}</span>
           </button>
@@ -68,7 +68,7 @@ export const StudentAIStudioPage = () => {
       </div>
 
       {/* Chat Conversation Box */}
-      <div className="p-5 sm:p-7 rounded-3xl bg-white border border-black/30 hover:border-black/50 shadow-xs flex flex-col h-[460px] justify-between gap-4 transition-all">
+      <div className="p-5 sm:p-7 rounded-3xl bg-white border border-[#E6DEFF] hover:border-primary/40 shadow-xs flex flex-col h-[460px] justify-between gap-4 transition-all">
         <div className="flex-1 overflow-y-auto space-y-4 pr-2 scrollbar-thin">
           {messages.map((m, idx) => (
             <div
@@ -78,7 +78,7 @@ export const StudentAIStudioPage = () => {
               }`}
             >
               {m.role === 'assistant' && (
-                <div className="w-8 h-8 rounded-xl bg-[#EDF2EC] text-[#193F30] border border-black/20 flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 rounded-xl bg-[#EBE5FF] text-primary border border-[#E6DEFF] flex items-center justify-center shrink-0">
                   <Cpu className="w-4 h-4" />
                 </div>
               )}
@@ -86,8 +86,8 @@ export const StudentAIStudioPage = () => {
               <div
                 className={`max-w-xl p-4 rounded-2xl text-xs sm:text-sm leading-relaxed whitespace-pre-line shadow-2xs ${
                   m.role === 'user'
-                    ? 'bg-[#193F30] text-white rounded-tr-xs border border-black/30'
-                    : 'bg-[#F8F7F2] text-[#202923] border border-black/25 rounded-tl-xs'
+                    ? 'bg-primary text-white rounded-tr-xs border border-[#E6DEFF]'
+                    : 'bg-[#FCF8FF] text-[#1b1831] border border-[#E6DEFF] rounded-tl-xs'
                 }`}
               >
                 {m.content}
@@ -96,8 +96,8 @@ export const StudentAIStudioPage = () => {
           ))}
 
           {isGenerating && (
-            <div className="flex items-center gap-2 text-xs text-[#737A73] pl-11">
-              <Sparkles className="w-4 h-4 animate-spin text-[#193F30]" />
+            <div className="flex items-center gap-2 text-xs text-[#6A6678] pl-11">
+              <Sparkles className="w-4 h-4 animate-spin text-primary" />
               <span>Formulating study synthesis...</span>
             </div>
           )}
@@ -109,19 +109,19 @@ export const StudentAIStudioPage = () => {
             e.preventDefault();
             handleSend();
           }}
-          className="flex items-center gap-2 pt-3 border-t border-black/20"
+          className="flex items-center gap-2 pt-3 border-t border-[#E6DEFF]"
         >
           <input
             type="text"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Ask a question or describe a topic to explore..."
-            className="flex-1 py-3 px-4 text-xs sm:text-sm rounded-full bg-[#F8F7F2] border border-black/30 hover:border-black/50 text-[#202923] placeholder-[#737A73] focus:outline-none focus:border-black shadow-2xs transition-all"
+            className="flex-1 py-3 px-4 text-xs sm:text-sm rounded-full bg-[#FCF8FF] border border-[#E6DEFF] hover:border-primary/40 text-[#1b1831] placeholder-[#737A73] focus:outline-none focus:border-black shadow-2xs transition-all"
           />
           <button
             type="submit"
             disabled={!prompt.trim() || isGenerating}
-            className="p-3 rounded-full bg-[#193F30] hover:bg-[#204936] text-white border border-black/30 hover:border-black/50 disabled:opacity-50 transition-colors shadow-xs cursor-pointer"
+            className="p-3 rounded-full bg-primary hover:bg-primary-container text-white border border-[#E6DEFF] hover:border-primary/40 disabled:opacity-50 transition-colors shadow-xs cursor-pointer"
             aria-label="Send message"
           >
             <Send className="w-4 h-4" />

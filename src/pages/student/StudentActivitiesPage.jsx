@@ -224,14 +224,14 @@ export const StudentActivitiesPage = () => {
   const getStatusBadge = (status, restricted) => {
     if (restricted) {
       return {
-        pill: 'bg-gray-100 text-gray-800 border border-black/20',
+        pill: 'bg-gray-100 text-gray-800 border border-[#E6DEFF]',
         text: 'Restricted'
       };
     }
     switch (status) {
       case 'Completed':
         return {
-          pill: 'bg-[#9CCDB0] text-[#193F30] border border-[#78b390]',
+          pill: 'bg-[#8bcefe] text-primary border border-[#78b390]',
           text: 'Completed'
         };
       case 'In Progress':
@@ -242,7 +242,7 @@ export const StudentActivitiesPage = () => {
       case 'Not Started':
       default:
         return {
-          pill: 'bg-[#EDF2EC] text-[#193F30] border border-black/20',
+          pill: 'bg-[#EBE5FF] text-primary border border-[#E6DEFF]',
           text: 'Available'
         };
     }
@@ -268,20 +268,20 @@ export const StudentActivitiesPage = () => {
       {/* ─────────────────────────────────────────────────────────────
           1. PAGE HEADER
           ───────────────────────────────────────────────────────────── */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-black/20">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#E6DEFF]">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#193F30] bg-[#EDF2EC] px-2.5 py-0.5 rounded-full border border-black/20">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-primary bg-[#EBE5FF] px-2.5 py-0.5 rounded-full border border-[#E6DEFF]">
               Student Sanctuary
             </span>
-            <span className="text-xs text-[#737A73]">
+            <span className="text-xs text-[#6A6678]">
               • {activeChild?.name || 'Alex Parker'}
             </span>
           </div>
-          <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#202923] tracking-tight mt-1">
+          <h1 className=" text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1b1831] tracking-tight mt-1">
             My Activities & Growth Quests
           </h1>
-          <p className="text-xs sm:text-sm text-[#737A73] mt-1 max-w-2xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#6A6678] mt-1 max-w-2xl leading-relaxed">
             Explore self-paced personal development activities, mindfulness exercises, and focus challenges separately from your assignments. Learn, reflect, and build character at your own pace.
           </p>
         </div>
@@ -291,9 +291,9 @@ export const StudentActivitiesPage = () => {
           type="button"
           onClick={loadActivities}
           disabled={isLoading}
-          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-[#202923] bg-white hover:bg-[#EDF2EC] border border-black/30 hover:border-black/50 transition-all shadow-xs cursor-pointer self-start md:self-auto"
+          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-[#1b1831] bg-white hover:bg-[#EBE5FF] border border-[#E6DEFF] hover:border-primary/40 transition-all shadow-xs cursor-pointer self-start md:self-auto"
         >
-          <RotateCcw className={`w-3.5 h-3.5 text-[#193F30] ${isLoading ? 'animate-spin' : ''}`} />
+          <RotateCcw className={`w-3.5 h-3.5 text-primary ${isLoading ? 'animate-spin' : ''}`} />
           <span>Sync Activities</span>
         </button>
       </div>
@@ -303,32 +303,32 @@ export const StudentActivitiesPage = () => {
           ───────────────────────────────────────────────────────────── */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Card 1: Total Activities */}
-        <div className="p-5 rounded-2xl bg-white border border-black/30 shadow-xs hover:border-black/50 transition-all flex flex-col justify-between gap-3">
+        <div className="p-5 rounded-2xl bg-white border border-[#E6DEFF] shadow-xs hover:border-primary/40 transition-all flex flex-col justify-between gap-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#737A73]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#6A6678]">
               Curated Quests
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#EDF2EC] text-[#193F30] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-[#EBE5FF] text-primary flex items-center justify-center">
               <Compass className="w-4 h-4" />
             </div>
           </div>
           <div>
-            <div className="text-3xl font-serif font-bold text-[#202923]">
+            <div className="text-3xl  font-bold text-[#1b1831]">
               {activities.length}
             </div>
-            <p className="text-xs text-[#737A73] mt-0.5">
+            <p className="text-xs text-[#6A6678] mt-0.5">
               Across {availableCategories.length} configured domains
             </p>
           </div>
-          <span className="text-[11px] font-semibold text-[#193F30] bg-[#EDF2EC] px-2.5 py-0.5 rounded-full w-fit border border-black/20">
+          <span className="text-[11px] font-semibold text-primary bg-[#EBE5FF] px-2.5 py-0.5 rounded-full w-fit border border-[#E6DEFF]">
             Self-Paced Exploration
           </span>
         </div>
 
         {/* Card 2: In Progress */}
-        <div className="p-5 rounded-2xl bg-white border border-black/30 shadow-xs hover:border-black/50 transition-all flex flex-col justify-between gap-3">
+        <div className="p-5 rounded-2xl bg-white border border-[#E6DEFF] shadow-xs hover:border-primary/40 transition-all flex flex-col justify-between gap-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#737A73]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#6A6678]">
               In Progress
             </span>
             <div className="w-8 h-8 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center">
@@ -336,10 +336,10 @@ export const StudentActivitiesPage = () => {
             </div>
           </div>
           <div>
-            <div className="text-3xl font-serif font-bold text-[#202923]">
+            <div className="text-3xl  font-bold text-[#1b1831]">
               {inProgressCount}
             </div>
-            <p className="text-xs text-[#737A73] mt-0.5">
+            <p className="text-xs text-[#6A6678] mt-0.5">
               Saved drafts ready to resume
             </p>
           </div>
@@ -349,47 +349,47 @@ export const StudentActivitiesPage = () => {
         </div>
 
         {/* Card 3: Completed */}
-        <div className="p-5 rounded-2xl bg-white border border-black/30 shadow-xs hover:border-black/50 transition-all flex flex-col justify-between gap-3">
+        <div className="p-5 rounded-2xl bg-white border border-[#E6DEFF] shadow-xs hover:border-primary/40 transition-all flex flex-col justify-between gap-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#737A73]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#6A6678]">
               Completed
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#9CCDB0] text-[#193F30] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-[#8bcefe] text-primary flex items-center justify-center">
               <CheckCircle2 className="w-4 h-4" />
             </div>
           </div>
           <div>
-            <div className="text-3xl font-serif font-bold text-[#202923]">
+            <div className="text-3xl  font-bold text-[#1b1831]">
               {completedCount}
             </div>
-            <p className="text-xs text-[#737A73] mt-0.5">
+            <p className="text-xs text-[#6A6678] mt-0.5">
               {activities.length ? Math.round((completedCount / activities.length) * 100) : 0}% completion mastery
             </p>
           </div>
-          <span className="text-[11px] font-semibold text-[#193F30] bg-[#EDF2EC] px-2.5 py-0.5 rounded-full w-fit border border-black/20">
+          <span className="text-[11px] font-semibold text-primary bg-[#EBE5FF] px-2.5 py-0.5 rounded-full w-fit border border-[#E6DEFF]">
             Verified Reflections
           </span>
         </div>
 
         {/* Card 4: Available to Start */}
-        <div className="p-5 rounded-2xl bg-white border border-black/30 shadow-xs hover:border-black/50 transition-all flex flex-col justify-between gap-3">
+        <div className="p-5 rounded-2xl bg-white border border-[#E6DEFF] shadow-xs hover:border-primary/40 transition-all flex flex-col justify-between gap-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#737A73]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#6A6678]">
               Available Quests
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#F1EDE2] text-[#193F30] flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-[#193F30]" />
+            <div className="w-8 h-8 rounded-xl bg-[#F3EFFF] text-primary flex items-center justify-center">
+              <Sparkles className="w-4 h-4 text-primary" />
             </div>
           </div>
           <div>
-            <div className="text-3xl font-serif font-bold text-[#202923]">
+            <div className="text-3xl  font-bold text-[#1b1831]">
               {availableCount}
             </div>
-            <p className="text-xs text-[#737A73] mt-0.5">
+            <p className="text-xs text-[#6A6678] mt-0.5">
               Fresh opportunities to explore
             </p>
           </div>
-          <span className="text-[11px] font-semibold text-[#193F30] bg-[#EDF2EC] px-2.5 py-0.5 rounded-full w-fit border border-black/20">
+          <span className="text-[11px] font-semibold text-primary bg-[#EBE5FF] px-2.5 py-0.5 rounded-full w-fit border border-[#E6DEFF]">
             Start Anytime
           </span>
         </div>
@@ -398,26 +398,26 @@ export const StudentActivitiesPage = () => {
       {/* ─────────────────────────────────────────────────────────────
           3. INTERACTIVE CONTROLS: SEARCH, STATUS TABS, DYNAMIC CATEGORIES
           ───────────────────────────────────────────────────────────── */}
-      <div className="p-5 sm:p-6 rounded-3xl bg-white border border-black/30 shadow-xs space-y-4">
+      <div className="p-5 sm:p-6 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-4">
         
         {/* Search & Status Tabs Row */}
         <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
           
           {/* Keyword Search Input */}
           <div className="relative flex-1 max-w-md">
-            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#737A73]" />
+            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#6A6678]" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search activities by title, practice, or keyword..."
-              className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-[#F8F7F2] border border-black/30 text-xs sm:text-sm text-[#202923] placeholder-[#737A73] focus:outline-hidden focus:border-[#193F30] transition-colors"
+              className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-xs sm:text-sm text-[#1b1831] placeholder-[#737A73] focus:outline-hidden focus:border-primary transition-colors"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#737A73] hover:text-black p-1 cursor-pointer"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6A6678] hover:text-black p-1 cursor-pointer"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -425,14 +425,14 @@ export const StudentActivitiesPage = () => {
           </div>
 
           {/* Status Filter Tabs */}
-          <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-[#F8F7F2] border border-black/25 shrink-0 self-start md:self-auto overflow-x-auto max-w-full">
+          <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shrink-0 self-start md:self-auto overflow-x-auto max-w-full">
             <button
               type="button"
               onClick={() => setSelectedStatus('ALL')}
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
                 selectedStatus === 'ALL'
-                  ? 'bg-[#193F30] text-white shadow-2xs'
-                  : 'text-[#737A73] hover:text-[#202923]'
+                  ? 'bg-primary text-white shadow-2xs'
+                  : 'text-[#6A6678] hover:text-[#1b1831]'
               }`}
             >
               All ({activities.length})
@@ -442,8 +442,8 @@ export const StudentActivitiesPage = () => {
               onClick={() => setSelectedStatus('IN_PROGRESS')}
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
                 selectedStatus === 'IN_PROGRESS'
-                  ? 'bg-[#193F30] text-white shadow-2xs'
-                  : 'text-[#737A73] hover:text-[#202923]'
+                  ? 'bg-primary text-white shadow-2xs'
+                  : 'text-[#6A6678] hover:text-[#1b1831]'
               }`}
             >
               In Progress ({inProgressCount})
@@ -453,8 +453,8 @@ export const StudentActivitiesPage = () => {
               onClick={() => setSelectedStatus('COMPLETED')}
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
                 selectedStatus === 'COMPLETED'
-                  ? 'bg-[#193F30] text-white shadow-2xs'
-                  : 'text-[#737A73] hover:text-[#202923]'
+                  ? 'bg-primary text-white shadow-2xs'
+                  : 'text-[#6A6678] hover:text-[#1b1831]'
               }`}
             >
               Completed ({completedCount})
@@ -464,8 +464,8 @@ export const StudentActivitiesPage = () => {
               onClick={() => setSelectedStatus('NOT_STARTED')}
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
                 selectedStatus === 'NOT_STARTED'
-                  ? 'bg-[#193F30] text-white shadow-2xs'
-                  : 'text-[#737A73] hover:text-[#202923]'
+                  ? 'bg-primary text-white shadow-2xs'
+                  : 'text-[#6A6678] hover:text-[#1b1831]'
               }`}
             >
               Available ({availableCount})
@@ -475,9 +475,9 @@ export const StudentActivitiesPage = () => {
         </div>
 
         {/* Dynamic Category Filter Pills Row (Displays ONLY configured categories) */}
-        <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-black/20">
-          <span className="text-xs font-bold text-[#737A73] flex items-center gap-1 mr-1">
-            <Filter className="w-3.5 h-3.5 text-[#193F30]" />
+        <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-[#E6DEFF]">
+          <span className="text-xs font-bold text-[#6A6678] flex items-center gap-1 mr-1">
+            <Filter className="w-3.5 h-3.5 text-primary" />
             <span>Category:</span>
           </span>
 
@@ -486,8 +486,8 @@ export const StudentActivitiesPage = () => {
             onClick={() => setSelectedCategory('ALL')}
             className={`py-1 px-3.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
               selectedCategory === 'ALL'
-                ? 'bg-[#193F30] text-white shadow-2xs'
-                : 'bg-[#F8F7F2] text-[#202923] hover:bg-[#EDF2EC] border border-black/20'
+                ? 'bg-primary text-white shadow-2xs'
+                : 'bg-[#FCF8FF] text-[#1b1831] hover:bg-[#EBE5FF] border border-[#E6DEFF]'
             }`}
           >
             All Categories ({activities.length})
@@ -503,8 +503,8 @@ export const StudentActivitiesPage = () => {
                 onClick={() => setSelectedCategory(cat)}
                 className={`py-1 px-3 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                   isSelected
-                    ? 'bg-[#193F30] text-white shadow-2xs'
-                    : 'bg-[#F8F7F2] text-[#202923] hover:bg-[#EDF2EC] border border-black/20'
+                    ? 'bg-primary text-white shadow-2xs'
+                    : 'bg-[#FCF8FF] text-[#1b1831] hover:bg-[#EBE5FF] border border-[#E6DEFF]'
                 }`}
               >
                 {cat} ({countForCat})
@@ -536,9 +536,9 @@ export const StudentActivitiesPage = () => {
       {/* Loading State */}
       {isLoading && (
         <div className="py-20 flex flex-col items-center justify-center space-y-3 text-center">
-          <Loader2 className="w-9 h-9 text-[#193F30] animate-spin" />
-          <h3 className="font-serif text-lg font-bold text-[#202923]">Loading Activities Catalog...</h3>
-          <p className="text-xs text-[#737A73]">Fetching self-discovery exercises and reflection quests from server.</p>
+          <Loader2 className="w-9 h-9 text-primary animate-spin" />
+          <h3 className=" text-lg font-bold text-[#1b1831]">Loading Activities Catalog...</h3>
+          <p className="text-xs text-[#6A6678]">Fetching self-discovery exercises and reflection quests from server.</p>
         </div>
       )}
 
@@ -546,7 +546,7 @@ export const StudentActivitiesPage = () => {
       {!isLoading && loadError && (
         <div className="p-8 rounded-3xl bg-rose-50 border-2 border-rose-300 text-rose-950 text-center space-y-3 max-w-lg mx-auto">
           <AlertCircle className="w-10 h-10 text-rose-700 mx-auto" />
-          <h3 className="font-serif text-lg font-bold text-rose-900">Communication Error</h3>
+          <h3 className=" text-lg font-bold text-rose-900">Communication Error</h3>
           <p className="text-xs sm:text-sm text-rose-800 leading-relaxed">{loadError}</p>
           <button
             type="button"
@@ -560,12 +560,12 @@ export const StudentActivitiesPage = () => {
 
       {/* Empty State */}
       {!isLoading && !loadError && filteredActivities.length === 0 && (
-        <div className="p-12 text-center rounded-3xl bg-white border border-black/30 shadow-xs space-y-3">
-          <div className="w-12 h-12 rounded-full bg-[#F1EDE2] text-[#193F30] flex items-center justify-center mx-auto border border-black/20">
+        <div className="p-12 text-center rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-3">
+          <div className="w-12 h-12 rounded-full bg-[#F3EFFF] text-primary flex items-center justify-center mx-auto border border-[#E6DEFF]">
             <Compass className="w-6 h-6" />
           </div>
-          <h3 className="font-serif text-lg font-bold text-[#202923]">No Activities Found</h3>
-          <p className="text-xs sm:text-sm text-[#737A73] max-w-md mx-auto">
+          <h3 className=" text-lg font-bold text-[#1b1831]">No Activities Found</h3>
+          <p className="text-xs sm:text-sm text-[#6A6678] max-w-md mx-auto">
             No personal growth activities match your selected category or search filter. Try clearing filters to see all available quests.
           </p>
           <button
@@ -575,7 +575,7 @@ export const StudentActivitiesPage = () => {
               setSelectedStatus('ALL');
               setSearchQuery('');
             }}
-            className="py-2 px-5 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] transition-colors cursor-pointer"
+            className="py-2 px-5 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container transition-colors cursor-pointer"
           >
             Clear Filters
           </button>
@@ -590,7 +590,7 @@ export const StudentActivitiesPage = () => {
             return (
               <div
                 key={act.id}
-                className={`p-6 rounded-3xl border border-black/30 hover:border-black/50 shadow-xs hover:shadow-md transition-all flex flex-col justify-between gap-5 min-h-[310px] ${
+                className={`p-6 rounded-3xl border border-[#E6DEFF] hover:border-primary/40 shadow-xs hover:shadow-md transition-all flex flex-col justify-between gap-5 min-h-[310px] ${
                   act.status === 'Completed'
                     ? 'bg-white'
                     : act.restricted
@@ -603,7 +603,7 @@ export const StudentActivitiesPage = () => {
                   
                   {/* Badges Row: Category, Duration, Difficulty, Status */}
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#193F30] bg-[#EDF2EC] px-3 py-1 rounded-full border border-black/20">
+                    <span className="text-xs font-bold uppercase tracking-wider text-primary bg-[#EBE5FF] px-3 py-1 rounded-full border border-[#E6DEFF]">
                       {act.category}
                     </span>
 
@@ -616,10 +616,10 @@ export const StudentActivitiesPage = () => {
 
                   {/* Title & Short Description */}
                   <div>
-                    <h3 className="font-serif text-lg sm:text-xl font-bold text-[#202923] tracking-tight leading-snug">
+                    <h3 className=" text-lg sm:text-xl font-bold text-[#1b1831] tracking-tight leading-snug">
                       {act.title}
                     </h3>
-                    <p className="text-xs text-[#737A73] mt-1.5 leading-relaxed">
+                    <p className="text-xs text-[#6A6678] mt-1.5 leading-relaxed">
                       {act.shortDescription}
                     </p>
                   </div>
@@ -627,8 +627,8 @@ export const StudentActivitiesPage = () => {
                   {/* Metadata Chips: Duration & Difficulty */}
                   <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
                     {act.duration && (
-                      <span className="text-[11px] font-semibold text-[#737A73] bg-[#F8F7F2] border border-black/20 px-2.5 py-0.5 rounded-md flex items-center gap-1">
-                        <Clock className="w-3 h-3 text-[#193F30]" />
+                      <span className="text-[11px] font-semibold text-[#6A6678] bg-[#FCF8FF] border border-[#E6DEFF] px-2.5 py-0.5 rounded-md flex items-center gap-1">
+                        <Clock className="w-3 h-3 text-primary" />
                         <span>Est: {act.duration}</span>
                       </span>
                     )}
@@ -640,7 +640,7 @@ export const StudentActivitiesPage = () => {
                     )}
 
                     {act.xp && (
-                      <span className="text-[11px] font-semibold text-[#193F30] bg-[#EDF2EC] border border-black/20 px-2 py-0.5 rounded-md">
+                      <span className="text-[11px] font-semibold text-primary bg-[#EBE5FF] border border-[#E6DEFF] px-2 py-0.5 rounded-md">
                         +{act.xp} XP
                       </span>
                     )}
@@ -649,13 +649,13 @@ export const StudentActivitiesPage = () => {
                   {/* Progress Indicator for In-Progress Activities */}
                   {act.status === 'In Progress' && (
                     <div className="space-y-1 pt-1">
-                      <div className="flex justify-between text-[11px] font-semibold text-[#202923]">
+                      <div className="flex justify-between text-[11px] font-semibold text-[#1b1831]">
                         <span>Exercise Progress</span>
                         <span>{(act.completedSteps || []).length} of {(act.steps || []).length} steps done</span>
                       </div>
-                      <div className="w-full h-1.5 bg-[#F1EDE2] border border-black/20 rounded-full overflow-hidden">
+                      <div className="w-full h-1.5 bg-[#F3EFFF] border border-[#E6DEFF] rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-[#193F30] rounded-full transition-all duration-300"
+                          className="h-full bg-primary rounded-full transition-all duration-300"
                           style={{
                             width: `${Math.round(
                               (((act.completedSteps || []).length) / ((act.steps || []).length || 1)) * 100
@@ -668,20 +668,20 @@ export const StudentActivitiesPage = () => {
 
                   {/* Completed Stamp */}
                   {act.status === 'Completed' && act.completedAt && (
-                    <div className="text-[11px] text-[#193F30] font-semibold flex items-center gap-1 pt-1">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#193F30]" />
+                    <div className="text-[11px] text-primary font-semibold flex items-center gap-1 pt-1">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
                       <span>Completed on {act.completedAt}</span>
                     </div>
                   )}
                 </div>
 
                 {/* Bottom Action Button */}
-                <div className="pt-4 border-t border-black/20">
+                <div className="pt-4 border-t border-[#E6DEFF]">
                   {act.restricted ? (
                     <button
                       type="button"
                       onClick={() => handleOpenActivity(act.id)}
-                      className="w-full py-2.5 px-4 rounded-full text-xs font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 border border-black/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full py-2.5 px-4 rounded-full text-xs font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 border border-[#E6DEFF] transition-all flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <Lock className="w-3.5 h-3.5 text-gray-600" />
                       <span>Prerequisite Required</span>
@@ -690,16 +690,16 @@ export const StudentActivitiesPage = () => {
                     <button
                       type="button"
                       onClick={() => handleOpenActivity(act.id)}
-                      className="w-full py-2.5 px-4 rounded-full text-xs font-bold text-[#193F30] bg-[#EDF2EC] hover:bg-[#E5E0D5] border border-black/30 hover:border-black/50 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                      className="w-full py-2.5 px-4 rounded-full text-xs font-bold text-primary bg-[#EBE5FF] hover:bg-[#E6DEFF] border border-[#E6DEFF] hover:border-primary/40 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
                     >
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#193F30]" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
                       <span>Review Completed Reflection</span>
                     </button>
                   ) : act.status === 'In Progress' ? (
                     <button
                       type="button"
                       onClick={() => handleOpenActivity(act.id)}
-                      className="w-full py-2.5 px-4 rounded-full text-xs font-bold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 hover:border-black/50 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs hover:scale-[1.01]"
+                      className="w-full py-2.5 px-4 rounded-full text-xs font-bold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] hover:border-primary/40 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs hover:scale-[1.01]"
                     >
                       <Play className="w-3.5 h-3.5 fill-white" />
                       <span>Continue Activity</span>
@@ -708,7 +708,7 @@ export const StudentActivitiesPage = () => {
                     <button
                       type="button"
                       onClick={() => handleOpenActivity(act.id)}
-                      className="w-full py-2.5 px-4 rounded-full text-xs font-bold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 hover:border-black/50 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs hover:scale-[1.01]"
+                      className="w-full py-2.5 px-4 rounded-full text-xs font-bold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] hover:border-primary/40 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs hover:scale-[1.01]"
                     >
                       <Play className="w-3.5 h-3.5 fill-white" />
                       <span>Start Activity</span>
@@ -727,18 +727,18 @@ export const StudentActivitiesPage = () => {
           ───────────────────────────────────────────────────────────── */}
       {activeModalActivity && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
-          <div className="w-full max-w-3xl bg-white rounded-3xl border border-black/30 shadow-2xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto no-scrollbar text-[#202923]">
+          <div className="w-full max-w-3xl bg-white rounded-3xl border border-[#E6DEFF] shadow-2xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto no-scrollbar text-[#1b1831]">
             
             {/* Modal Header */}
-            <div className="flex items-start justify-between gap-4 pb-4 border-b border-black/20">
+            <div className="flex items-start justify-between gap-4 pb-4 border-b border-[#E6DEFF]">
               <div className="space-y-1.5">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-bold text-[#193F30] bg-[#EDF2EC] px-3 py-0.5 rounded-full border border-black/20">
+                  <span className="text-xs font-bold text-primary bg-[#EBE5FF] px-3 py-0.5 rounded-full border border-[#E6DEFF]">
                     {activeModalActivity.category}
                   </span>
                   {activeModalActivity.duration && (
-                    <span className="text-[11px] font-semibold text-[#737A73] bg-[#F8F7F2] border border-black/20 px-2.5 py-0.5 rounded-md flex items-center gap-1">
-                      <Clock className="w-3 h-3 text-[#193F30]" />
+                    <span className="text-[11px] font-semibold text-[#6A6678] bg-[#FCF8FF] border border-[#E6DEFF] px-2.5 py-0.5 rounded-md flex items-center gap-1">
+                      <Clock className="w-3 h-3 text-primary" />
                       <span>{activeModalActivity.duration}</span>
                     </span>
                   )}
@@ -750,17 +750,17 @@ export const StudentActivitiesPage = () => {
                   <span
                     className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${
                       activeModalActivity.status === 'Completed'
-                        ? 'bg-[#9CCDB0] text-[#193F30] border border-[#78b390]'
+                        ? 'bg-[#8bcefe] text-primary border border-[#78b390]'
                         : activeModalActivity.status === 'In Progress'
                         ? 'bg-amber-100 text-amber-900 border border-amber-300'
-                        : 'bg-[#EDF2EC] text-[#193F30] border border-black/20'
+                        : 'bg-[#EBE5FF] text-primary border border-[#E6DEFF]'
                     }`}
                   >
                     {activeModalActivity.status}
                   </span>
                 </div>
 
-                <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#202923] tracking-tight">
+                <h2 className=" text-xl sm:text-2xl font-bold text-[#1b1831] tracking-tight">
                   {activeModalActivity.title}
                 </h2>
               </div>
@@ -768,7 +768,7 @@ export const StudentActivitiesPage = () => {
               <button
                 type="button"
                 onClick={() => setActiveModalActivity(null)}
-                className="p-1 rounded-full text-[#737A73] hover:text-black cursor-pointer"
+                className="p-1 rounded-full text-[#6A6678] hover:text-black cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -776,7 +776,7 @@ export const StudentActivitiesPage = () => {
 
             {/* Success / Error Banners */}
             {modalMessage && (
-              <div className="p-4 rounded-2xl bg-[#9CCDB0]/25 border border-[#193F30] text-[#193F30] text-xs font-semibold flex items-center gap-2 animate-fadeIn">
+              <div className="p-4 rounded-2xl bg-[#8bcefe]/25 border border-primary text-primary text-xs font-semibold flex items-center gap-2 animate-fadeIn">
                 <CheckCircle2 className="w-4 h-4 shrink-0" />
                 <span>{modalMessage}</span>
               </div>
@@ -790,8 +790,8 @@ export const StudentActivitiesPage = () => {
             )}
 
             {/* Description Card */}
-            <div className="p-4 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs text-xs sm:text-sm text-[#202923] leading-relaxed">
-              <strong className="block font-bold text-[#193F30] mb-1">Activity Objective & Context:</strong>
+            <div className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs text-xs sm:text-sm text-[#1b1831] leading-relaxed">
+              <strong className="block font-bold text-primary mb-1">Activity Objective & Context:</strong>
               {activeModalActivity.description}
             </div>
 
@@ -799,10 +799,10 @@ export const StudentActivitiesPage = () => {
             {activeModalActivity.steps && activeModalActivity.steps.length > 0 && (
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#202923]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#1b1831]">
                     Step-by-Step Guided Exercise:
                   </span>
-                  <span className="text-[11px] text-[#737A73]">
+                  <span className="text-[11px] text-[#6A6678]">
                     {modalSteps.size} of {activeModalActivity.steps.length} completed
                   </span>
                 </div>
@@ -816,15 +816,15 @@ export const StudentActivitiesPage = () => {
                         onClick={() => handleToggleStep(idx)}
                         className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex items-start gap-3 text-xs leading-relaxed shadow-2xs ${
                           isChecked
-                            ? 'bg-[#EDF2EC] border-[#193F30] text-[#193F30] font-medium'
-                            : 'bg-white border-black/30 text-[#202923] hover:border-black/50'
+                            ? 'bg-[#EBE5FF] border-primary text-primary font-medium'
+                            : 'bg-white border-[#E6DEFF] text-[#1b1831] hover:border-primary/40'
                         }`}
                       >
                         <div className="mt-0.5 shrink-0">
                           {isChecked ? (
-                            <CheckSquare className="w-4 h-4 text-[#193F30]" />
+                            <CheckSquare className="w-4 h-4 text-primary" />
                           ) : (
-                            <Square className="w-4 h-4 text-[#737A73]" />
+                            <Square className="w-4 h-4 text-[#6A6678]" />
                           )}
                         </div>
                         <div className="flex-1">
@@ -840,15 +840,15 @@ export const StudentActivitiesPage = () => {
 
             {/* Reflection Questions / Input Prompts */}
             {activeModalActivity.questions && activeModalActivity.questions.length > 0 && (
-              <div className="space-y-4 pt-2 border-t border-black/20">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#202923] block">
+              <div className="space-y-4 pt-2 border-t border-[#E6DEFF]">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#1b1831] block">
                   Reflection Answers & Written Prompts:
                 </span>
 
                 <div className="space-y-4">
                   {activeModalActivity.questions.map((q) => (
-                    <div key={q.id} className="p-4 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs space-y-2 text-xs">
-                      <label className="font-bold text-[#202923] block">
+                    <div key={q.id} className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs space-y-2 text-xs">
+                      <label className="font-bold text-[#1b1831] block">
                         {q.title} {q.required && <span className="text-rose-600">*</span>}
                       </label>
 
@@ -859,8 +859,8 @@ export const StudentActivitiesPage = () => {
                               key={opt}
                               className={`p-2.5 rounded-xl border text-xs cursor-pointer flex items-center gap-2 transition-all shadow-2xs ${
                                 modalAnswers[q.id] === opt
-                                  ? 'bg-[#193F30] text-white border-black/40 font-bold'
-                                  : 'bg-white text-[#202923] border-black/30 hover:border-black/50'
+                                  ? 'bg-primary text-white border-[#E6DEFF] font-bold'
+                                  : 'bg-white text-[#1b1831] border-[#E6DEFF] hover:border-primary/40'
                               }`}
                             >
                               <input
@@ -883,7 +883,7 @@ export const StudentActivitiesPage = () => {
                           onChange={(e) => handleAnswerChange(q.id, e.target.value)}
                           disabled={activeModalActivity.status === 'Completed'}
                           placeholder={q.placeholder || 'Enter your response...'}
-                          className="w-full p-2.5 rounded-xl bg-white border border-black/30 hover:border-black/50 text-xs text-[#202923] placeholder-[#737A73] focus:outline-hidden focus:border-black shadow-2xs"
+                          className="w-full p-2.5 rounded-xl bg-white border border-[#E6DEFF] hover:border-primary/40 text-xs text-[#1b1831] placeholder-[#737A73] focus:outline-hidden focus:border-black shadow-2xs"
                         />
                       ) : (
                         <textarea
@@ -892,7 +892,7 @@ export const StudentActivitiesPage = () => {
                           onChange={(e) => handleAnswerChange(q.id, e.target.value)}
                           disabled={activeModalActivity.status === 'Completed'}
                           placeholder={q.placeholder || 'Reflect and write your thoughts...'}
-                          className="w-full p-3 rounded-xl bg-white border border-black/30 hover:border-black/50 text-xs text-[#202923] placeholder-[#737A73] focus:outline-hidden focus:border-black shadow-2xs"
+                          className="w-full p-3 rounded-xl bg-white border border-[#E6DEFF] hover:border-primary/40 text-xs text-[#1b1831] placeholder-[#737A73] focus:outline-hidden focus:border-black shadow-2xs"
                         />
                       )}
                     </div>
@@ -902,11 +902,11 @@ export const StudentActivitiesPage = () => {
             )}
 
             {/* Modal Actions */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-black/20">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-[#E6DEFF]">
               <button
                 type="button"
                 onClick={() => setActiveModalActivity(null)}
-                className="w-full sm:w-auto py-2.5 px-5 rounded-full text-xs font-semibold text-[#737A73] hover:text-[#202923] bg-white border border-black/30 hover:border-black/50 transition-colors cursor-pointer shadow-xs"
+                className="w-full sm:w-auto py-2.5 px-5 rounded-full text-xs font-semibold text-[#6A6678] hover:text-[#1b1831] bg-white border border-[#E6DEFF] hover:border-primary/40 transition-colors cursor-pointer shadow-xs"
               >
                 Close View
               </button>
@@ -917,7 +917,7 @@ export const StudentActivitiesPage = () => {
                     type="button"
                     onClick={handleSaveProgress}
                     disabled={isSavingProgress || isCompleting}
-                    className="flex-1 sm:flex-none py-2.5 px-5 rounded-full text-xs font-semibold text-[#193F30] bg-[#EDF2EC] hover:bg-[#E5E0D5] border border-black/30 hover:border-black/50 transition-colors flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50 shadow-xs"
+                    className="flex-1 sm:flex-none py-2.5 px-5 rounded-full text-xs font-semibold text-primary bg-[#EBE5FF] hover:bg-[#E6DEFF] border border-[#E6DEFF] hover:border-primary/40 transition-colors flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50 shadow-xs"
                   >
                     {isSavingProgress ? (
                       <>
@@ -926,7 +926,7 @@ export const StudentActivitiesPage = () => {
                       </>
                     ) : (
                       <>
-                        <Save className="w-3.5 h-3.5 text-[#193F30]" />
+                        <Save className="w-3.5 h-3.5 text-primary" />
                         <span>Save Progress</span>
                       </>
                     )}
@@ -936,7 +936,7 @@ export const StudentActivitiesPage = () => {
                     type="button"
                     onClick={handleCompleteActivity}
                     disabled={isSavingProgress || isCompleting}
-                    className="flex-1 sm:flex-none py-2.5 px-6 rounded-full text-xs font-bold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 hover:border-black/50 transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-xs disabled:opacity-50"
+                    className="flex-1 sm:flex-none py-2.5 px-6 rounded-full text-xs font-bold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] hover:border-primary/40 transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-xs disabled:opacity-50"
                   >
                     {isCompleting ? (
                       <>
@@ -952,8 +952,8 @@ export const StudentActivitiesPage = () => {
                   </button>
                 </div>
               ) : (
-                <div className="text-xs font-bold text-[#193F30] flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#193F30]" />
+                <div className="text-xs font-bold text-primary flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-primary" />
                   <span>Activity Completed & Credited (+{activeModalActivity.xp} XP)</span>
                 </div>
               )}
@@ -968,27 +968,27 @@ export const StudentActivitiesPage = () => {
           ───────────────────────────────────────────────────────────── */}
       {restrictedNotice && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
-          <div className="w-full max-w-md bg-white rounded-3xl border-2 border-amber-300 shadow-2xl p-6 sm:p-7 space-y-4 text-[#202923]">
+          <div className="w-full max-w-md bg-white rounded-3xl border-2 border-amber-300 shadow-2xl p-6 sm:p-7 space-y-4 text-[#1b1831]">
             <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-800 flex items-center justify-center mx-auto border border-amber-200">
               <Lock className="w-6 h-6" />
             </div>
 
             <div className="text-center space-y-1.5">
-              <h3 className="font-serif text-lg font-bold text-[#202923]">
+              <h3 className=" text-lg font-bold text-[#1b1831]">
                 Activity Prerequisite Required
               </h3>
-              <p className="text-xs text-[#737A73] leading-relaxed">
+              <p className="text-xs text-[#6A6678] leading-relaxed">
                 {restrictedNotice}
               </p>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-[#F8F7F2] border border-black/20 text-xs space-y-1">
+            <div className="p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] text-xs space-y-1">
               <div className="flex justify-between">
-                <span className="text-[#737A73]">Requirement:</span>
-                <span className="font-bold text-[#202923]">Grade 12 Senior Fellow</span>
+                <span className="text-[#6A6678]">Requirement:</span>
+                <span className="font-bold text-[#1b1831]">Grade 12 Senior Fellow</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#737A73]">Current Profile:</span>
+                <span className="text-[#6A6678]">Current Profile:</span>
                 <span className="font-semibold">{activeChild?.grade || 'Grade 11'}</span>
               </div>
             </div>
@@ -997,7 +997,7 @@ export const StudentActivitiesPage = () => {
               <button
                 type="button"
                 onClick={() => setRestrictedNotice(null)}
-                className="py-2.5 px-6 rounded-full text-xs font-bold text-white bg-[#193F30] hover:bg-[#204936] transition-colors cursor-pointer"
+                className="py-2.5 px-6 rounded-full text-xs font-bold text-white bg-primary hover:bg-primary-container transition-colors cursor-pointer"
               >
                 Return to Activities
               </button>

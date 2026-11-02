@@ -96,9 +96,9 @@ export const StudentDashboardPage = () => {
   if (isLoading) {
     return (
       <div className="py-24 flex flex-col items-center justify-center space-y-4 text-center">
-        <Loader2 className="w-10 h-10 text-[#193F30] animate-spin" />
-        <h3 className="font-serif text-lg font-bold text-[#202923]">Loading Student Sanctuary...</h3>
-        <p className="text-xs text-[#737A73]">Fetching your personalized tasks and daily growth records.</p>
+        <Loader2 className="w-10 h-10 text-primary animate-spin" />
+        <h3 className=" text-lg font-bold text-[#1b1831]">Loading Student Sanctuary...</h3>
+        <p className="text-xs text-[#6A6678]">Fetching your personalized tasks and daily growth records.</p>
       </div>
     );
   }
@@ -109,17 +109,17 @@ export const StudentDashboardPage = () => {
   if (errorMessage || !activeChild) {
     return (
       <div className="max-w-xl mx-auto py-16 px-6 text-center space-y-5">
-        <div className="w-16 h-16 rounded-3xl bg-[#F1EDE2] text-[#193F30] flex items-center justify-center mx-auto border border-[#E5E0D5]">
+        <div className="w-16 h-16 rounded-3xl bg-[#F3EFFF] text-primary flex items-center justify-center mx-auto border border-[#E6DEFF]">
           <AlertCircle className="w-8 h-8" />
         </div>
-        <h2 className="font-serif text-2xl font-bold text-[#202923]">Student Profile Unavailable</h2>
-        <p className="text-sm text-[#737A73] leading-relaxed">
+        <h2 className=" text-2xl font-bold text-[#1b1831]">Student Profile Unavailable</h2>
+        <p className="text-sm text-[#6A6678] leading-relaxed">
           {errorMessage || 'Unable to access your authorized student profile records. Please verify your student credentials.'}
         </p>
         <div className="pt-2">
           <Link
             to="/login"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container transition-all shadow-sm"
           >
             <span>Return to Login</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -140,15 +140,19 @@ export const StudentDashboardPage = () => {
           - Student avatar
           - Notification shortcut
           ───────────────────────────────────────────────────────────── */}
-      <section className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#F1EDE2] via-[#EDF2EC] to-[#F1EDE2] border border-black/30 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
-        <div className="flex items-start sm:items-center gap-4 sm:gap-5">
+      <section className="p-6 sm:p-8 rounded-3xl bg-gradient-to-tr from-primary via-primary-container to-[#624bbc] text-white shadow-xl shadow-primary/25 border border-white/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
+        {/* Decorative background glow orb */}
+        <div className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-secondary-container/25 blur-3xl pointer-events-none" />
+        <div className="absolute right-1/3 -top-20 w-60 h-60 rounded-full bg-[#FFE28A]/20 blur-2xl pointer-events-none" />
+
+        <div className="flex items-start sm:items-center gap-4 sm:gap-5 relative z-10">
           {/* Student Avatar */}
           <div className="relative shrink-0">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#193F30] text-[#EDF2EC] flex items-center justify-center font-serif text-2xl sm:text-3xl font-bold border-4 border-white shadow-sm">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white text-primary flex items-center justify-center text-2xl sm:text-3xl font-extrabold border-4 border-white/40 shadow-lg">
               {activeChild?.nickname?.charAt(0) || activeChild?.name?.charAt(0) || 'A'}
             </div>
             <span
-              className="absolute bottom-0 right-0 w-5 h-5 rounded-full bg-[#9CCDB0] border-2 border-white flex items-center justify-center text-[10px] text-[#193F30]"
+              className="absolute bottom-0 right-0 w-5 h-5 rounded-full bg-[#FFE28A] border-2 border-white flex items-center justify-center text-[10px] text-primary font-bold shadow-xs"
               title="Active in Student Sanctuary"
             >
               ✓
@@ -157,36 +161,36 @@ export const StudentDashboardPage = () => {
 
           <div className="space-y-1.5">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[11px] font-semibold tracking-wider uppercase text-[#737A73] flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-[#193F30]" />
+              <span className="text-[11px] font-semibold tracking-wider uppercase text-[#FFE28A] flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5 text-[#FFE28A]" />
                 <span>{todayDateFormatted}</span>
               </span>
-              <span className="text-[10px] font-bold text-[#193F30] bg-white px-2.5 py-0.5 rounded-full border border-black/20">
+              <span className="text-[10px] font-bold text-white bg-white/20 px-2.5 py-0.5 rounded-full border border-white/30 backdrop-blur-md">
                 {activeChild?.grade || 'Grade 11'}
               </span>
             </div>
 
-            <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#202923] tracking-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
               Welcome back, {activeChild?.nickname || activeChild?.name || 'Alex'}.
             </h1>
 
-            <p className="text-xs sm:text-sm text-[#737A73] max-w-xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-white/85 max-w-xl leading-relaxed">
               "Every disciplined choice compounds over time. Focus on one intentional step today."
             </p>
           </div>
         </div>
 
         {/* Notification Shortcut & Action */}
-        <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto justify-between sm:justify-end">
+        <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto justify-between sm:justify-end relative z-10">
           <Link
             to="/child/notifications"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold text-[#202923] bg-white hover:bg-[#EDF2EC] border border-black/25 hover:border-black/40 transition-all shadow-2xs relative"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold text-white bg-white/15 hover:bg-white/25 border border-white/30 backdrop-blur-md transition-all shadow-xs relative"
             title="Open Notifications"
           >
-            <Bell className="w-4 h-4 text-[#193F30]" />
+            <Bell className="w-4 h-4 text-[#FFE28A]" />
             <span>Alerts</span>
             {unreadCount > 0 && (
-              <span className="px-1.5 py-0.2 rounded-full bg-[#193F30] text-white text-[10px] font-bold">
+              <span className="px-1.5 py-0.2 rounded-full bg-secondary-container text-white text-[10px] font-bold">
                 {unreadCount}
               </span>
             )}
@@ -194,10 +198,10 @@ export const StudentDashboardPage = () => {
 
           <Link
             to="/child/assignments"
-            className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] transition-all shadow-sm"
+            className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-bold text-primary bg-white hover:bg-white/95 transition-all shadow-md hover:shadow-lg hover:scale-[1.02]"
           >
             <span>Review Tasks</span>
-            <ArrowRight className="w-3.5 h-3.5 text-white/90" />
+            <ArrowRight className="w-3.5 h-3.5 text-primary" />
           </Link>
         </div>
       </section>
@@ -211,26 +215,26 @@ export const StudentDashboardPage = () => {
           ───────────────────────────────────────────────────────────── */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Card 1: Pending Assignments */}
-        <div className="p-5 rounded-2xl bg-white border border-black/30 shadow-xs flex flex-col justify-between gap-3 hover:border-black/50 transition-all">
+        <div className="p-5 rounded-2xl bg-white border border-[#E6DEFF] shadow-xs flex flex-col justify-between gap-3 hover:border-primary/40 transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#737A73]">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#6A6678]">
               Pending Assignments
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#EDF2EC] text-[#193F30] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-[#EBE5FF] text-primary flex items-center justify-center">
               <CheckSquareIcon className="w-4 h-4" />
             </div>
           </div>
           <div>
-            <div className="text-3xl font-serif font-bold text-[#202923]">
+            <div className="text-3xl  font-bold text-[#1b1831]">
               {pendingAssignments.length}
             </div>
-            <p className="text-xs text-[#737A73] mt-0.5">
+            <p className="text-xs text-[#6A6678] mt-0.5">
               {pendingAssignments.length === 0 ? 'All assignments completed!' : `${pendingAssignments.length} tasks requiring attention`}
             </p>
           </div>
           <Link
             to="/child/assignments"
-            className="text-xs font-semibold text-[#193F30] hover:underline inline-flex items-center gap-1 pt-1 border-t border-black/15"
+            className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1 pt-1 border-t border-[#E6DEFF]"
           >
             <span>View assignments</span>
             <ArrowRight className="w-3 h-3" />
@@ -238,75 +242,75 @@ export const StudentDashboardPage = () => {
         </div>
 
         {/* Card 2: Completed Activities */}
-        <div className="p-5 rounded-2xl bg-white border border-black/30 shadow-xs flex flex-col justify-between gap-3 hover:border-black/50 transition-all">
+        <div className="p-5 rounded-2xl bg-white border border-[#E6DEFF] shadow-xs flex flex-col justify-between gap-3 hover:border-primary/40 transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#737A73]">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#6A6678]">
               Completed Activities
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#F1EDE2] text-[#193F30] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-[#F3EFFF] text-primary flex items-center justify-center">
               <CheckCircle2 className="w-4 h-4" />
             </div>
           </div>
           <div>
-            <div className="text-3xl font-serif font-bold text-[#202923]">
+            <div className="text-3xl  font-bold text-[#1b1831]">
               {completedHabitsCount} / {habits.length}
             </div>
-            <p className="text-xs text-[#737A73] mt-0.5">
+            <p className="text-xs text-[#6A6678] mt-0.5">
               {Math.round((completedHabitsCount / (habits.length || 1)) * 100)}% of daily habits finished
             </p>
           </div>
-          <div className="w-full h-1.5 bg-[#EDF2EC] rounded-full overflow-hidden">
+          <div className="w-full h-1.5 bg-[#EBE5FF] rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#193F30] rounded-full transition-all duration-300"
+              className="h-full bg-primary rounded-full transition-all duration-300"
               style={{ width: `${(completedHabitsCount / (habits.length || 1)) * 100}%` }}
             />
           </div>
         </div>
 
         {/* Card 3: Weekly Activity Progress */}
-        <div className="p-5 rounded-2xl bg-white border border-black/30 shadow-xs flex flex-col justify-between gap-3 hover:border-black/50 transition-all">
+        <div className="p-5 rounded-2xl bg-white border border-[#E6DEFF] shadow-xs flex flex-col justify-between gap-3 hover:border-primary/40 transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#737A73]">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#6A6678]">
               Weekly Progress
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#EDF2EC] text-[#193F30] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-[#EBE5FF] text-primary flex items-center justify-center">
               <Flame className="w-4 h-4" />
             </div>
           </div>
           <div>
-            <div className="text-3xl font-serif font-bold text-[#202923]">
+            <div className="text-3xl  font-bold text-[#1b1831]">
               {weeklyProgressPercent}%
             </div>
-            <p className="text-xs text-[#737A73] mt-0.5">
+            <p className="text-xs text-[#6A6678] mt-0.5">
               Avg. habit streak: {averageStreak} days active
             </p>
           </div>
-          <span className="text-[11px] font-semibold text-[#193F30] bg-[#EDF2EC] px-2.5 py-0.5 rounded-full w-fit">
+          <span className="text-[11px] font-semibold text-primary bg-[#EBE5FF] px-2.5 py-0.5 rounded-full w-fit">
             Consistent Momentum
           </span>
         </div>
 
         {/* Card 4: Active Personal Goals */}
-        <div className="p-5 rounded-2xl bg-white border border-black/30 shadow-xs flex flex-col justify-between gap-3 hover:border-black/50 transition-all">
+        <div className="p-5 rounded-2xl bg-white border border-[#E6DEFF] shadow-xs flex flex-col justify-between gap-3 hover:border-primary/40 transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#737A73]">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#6A6678]">
               Active Personal Goals
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#F1EDE2] text-[#193F30] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-[#F3EFFF] text-primary flex items-center justify-center">
               <Target className="w-4 h-4" />
             </div>
           </div>
           <div>
-            <div className="text-3xl font-serif font-bold text-[#202923]">
+            <div className="text-3xl  font-bold text-[#1b1831]">
               {activeGoals.length}
             </div>
-            <p className="text-xs text-[#737A73] mt-0.5">
+            <p className="text-xs text-[#6A6678] mt-0.5">
               Personal developmental objectives
             </p>
           </div>
           <Link
             to="/child/growth"
-            className="text-xs font-semibold text-[#193F30] hover:underline inline-flex items-center gap-1 pt-1 border-t border-black/15"
+            className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1 pt-1 border-t border-[#E6DEFF]"
           >
             <span>View growth milestones</span>
             <ArrowRight className="w-3 h-3" />
@@ -323,19 +327,19 @@ export const StudentDashboardPage = () => {
           - Current status
           - Start or Continue button
           ───────────────────────────────────────────────────────────── */}
-      <section className="p-6 sm:p-7 rounded-3xl bg-white border border-black/30 shadow-xs space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-black/20">
+      <section className="p-6 sm:p-7 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#E6DEFF]">
           <div>
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#202923]">
+            <h2 className=" text-xl sm:text-2xl font-bold text-[#1b1831]">
               Today's Tasks & Growth Challenges
             </h2>
-            <p className="text-xs text-[#737A73]">
+            <p className="text-xs text-[#6A6678]">
               Curated assignments and milestones tailored for your personal leadership development.
             </p>
           </div>
           <Link
             to="/child/assignments"
-            className="text-xs font-semibold text-[#193F30] hover:underline flex items-center gap-1 self-start sm:self-auto"
+            className="text-xs font-semibold text-primary hover:underline flex items-center gap-1 self-start sm:self-auto"
           >
             <span>All Assignments ({assignments.length})</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -345,16 +349,16 @@ export const StudentDashboardPage = () => {
         {/* Task Cards List / Empty State */}
         <div className="space-y-3.5">
           {assignments.length === 0 ? (
-            <div className="py-12 text-center rounded-2xl bg-[#F8F7F2] border border-black/30 space-y-2">
-              <CheckCircle2 className="w-8 h-8 text-[#9CCDB0] mx-auto" />
-              <h3 className="font-serif text-base font-bold text-[#202923]">All Caught Up!</h3>
-              <p className="text-xs text-[#737A73] max-w-sm mx-auto">
+            <div className="py-12 text-center rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] space-y-2">
+              <CheckCircle2 className="w-8 h-8 text-[#8bcefe] mx-auto" />
+              <h3 className=" text-base font-bold text-[#1b1831]">All Caught Up!</h3>
+              <p className="text-xs text-[#6A6678] max-w-sm mx-auto">
                 You have completed all pending tasks for today. Continue building positive habits or explore self-assessment.
               </p>
               <div className="pt-2">
                 <Link
                   to="/child/activities"
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#193F30] hover:underline"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
                 >
                   <span>Go to My Activities</span>
                   <ArrowRight className="w-3 h-3" />
@@ -365,23 +369,23 @@ export const StudentDashboardPage = () => {
             assignments.map((task) => (
               <div
                 key={task.id}
-                className="p-5 rounded-2xl bg-[#F8F7F2] border border-black/30 hover:border-black/50 transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-2xs"
+                className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] hover:border-primary/40 transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-2xs"
               >
                 <div className="space-y-1.5 max-w-2xl">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-xs font-bold text-[#193F30] bg-[#EDF2EC] px-3 py-0.5 rounded-full">
+                    <span className="text-xs font-bold text-primary bg-[#EBE5FF] px-3 py-0.5 rounded-full">
                       {task.subject}
                     </span>
 
                     {task.duration && (
-                      <span className="text-[11px] font-medium text-[#737A73] flex items-center gap-1">
-                        <Clock className="w-3 h-3 text-[#193F30]" />
+                      <span className="text-[11px] font-medium text-[#6A6678] flex items-center gap-1">
+                        <Clock className="w-3 h-3 text-primary" />
                         <span>Est: {task.duration}</span>
                       </span>
                     )}
 
                     {task.dueDate && (
-                      <span className="text-[11px] font-medium text-[#737A73]">
+                      <span className="text-[11px] font-medium text-[#6A6678]">
                         • Due: {task.dueDate}
                       </span>
                     )}
@@ -389,33 +393,33 @@ export const StudentDashboardPage = () => {
                     <span
                       className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${
                         task.status === 'Completed'
-                          ? 'bg-[#9CCDB0] text-[#193F30]'
+                          ? 'bg-[#8bcefe] text-primary'
                           : task.status === 'In Progress'
                           ? 'bg-amber-100 text-amber-800'
-                          : 'bg-white text-[#737A73] border border-black/20'
+                          : 'bg-white text-[#6A6678] border border-[#E6DEFF]'
                       }`}
                     >
                       {task.status}
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-base sm:text-lg font-bold text-[#202923]">
-                    <Link to={`/child/assignments/${task.id}`} className="hover:text-[#193F30] hover:underline">
+                  <h3 className=" text-base sm:text-lg font-bold text-[#1b1831]">
+                    <Link to={`/child/assignments/${task.id}`} className="hover:text-primary hover:underline">
                       {task.title}
                     </Link>
                   </h3>
 
-                  <p className="text-xs text-[#737A73] leading-relaxed line-clamp-2">
+                  <p className="text-xs text-[#6A6678] leading-relaxed line-clamp-2">
                     {task.description}
                   </p>
                 </div>
 
                 {/* Working Start / Continue Buttons */}
-                <div className="flex items-center gap-2 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-black/15">
+                <div className="flex items-center gap-2 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-[#E6DEFF]">
                   {task.status === 'Pending' && (
                     <Link
                       to={`/child/assignments/${task.id}`}
-                      className="py-2 px-4 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                      className="py-2 px-4 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
                     >
                       <Play className="w-3 h-3 fill-white" />
                       <span>Start Task</span>
@@ -426,7 +430,7 @@ export const StudentDashboardPage = () => {
                     <div className="flex items-center gap-2">
                       <Link
                         to={`/child/assignments/${task.id}`}
-                        className="py-2 px-4 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                        className="py-2 px-4 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
                       >
                         <Play className="w-3 h-3 fill-white" />
                         <span>Continue</span>
@@ -434,7 +438,7 @@ export const StudentDashboardPage = () => {
                       <button
                         type="button"
                         onClick={() => updateAssignmentStatus(task.id, 'Completed')}
-                        className="py-2 px-3 rounded-full text-xs font-semibold text-[#193F30] bg-[#EDF2EC] hover:bg-[#E5E0D5] transition-colors flex items-center gap-1 cursor-pointer"
+                        className="py-2 px-3 rounded-full text-xs font-semibold text-primary bg-[#EBE5FF] hover:bg-[#E6DEFF] transition-colors flex items-center gap-1 cursor-pointer"
                         title="Mark Task Complete"
                       >
                         <Check className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -447,7 +451,7 @@ export const StudentDashboardPage = () => {
                     <button
                       type="button"
                       onClick={() => updateAssignmentStatus(task.id, 'In Progress')}
-                      className="py-2 px-4 rounded-full text-xs font-semibold text-[#737A73] hover:text-[#202923] bg-white border border-black/30 hover:border-black/50 transition-colors cursor-pointer"
+                      className="py-2 px-4 rounded-full text-xs font-semibold text-[#6A6678] hover:text-[#1b1831] bg-white border border-[#E6DEFF] hover:border-primary/40 transition-colors cursor-pointer"
                     >
                       Reopen
                     </button>
@@ -466,26 +470,26 @@ export const StudentDashboardPage = () => {
           ───────────────────────────────────────────────────────────── */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
         {/* Left (7 cols): Actual Activity Completion by Category */}
-        <div className="lg:col-span-7 p-6 sm:p-7 rounded-3xl bg-white border border-black/30 shadow-xs space-y-5">
-          <div className="flex items-center justify-between pb-3 border-b border-black/20">
+        <div className="lg:col-span-7 p-6 sm:p-7 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-5">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E6DEFF]">
             <div>
-              <h2 className="font-serif text-xl font-bold text-[#202923]">
+              <h2 className=" text-xl font-bold text-[#1b1831]">
                 Activity Completion by Domain
               </h2>
-              <p className="text-xs text-[#737A73]">
+              <p className="text-xs text-[#6A6678]">
                 Calculated directly from today's active habit check-ins.
               </p>
             </div>
             <Link
               to="/child/activities"
-              className="text-xs font-semibold text-[#193F30] hover:underline"
+              className="text-xs font-semibold text-primary hover:underline"
             >
               Habit Tracker →
             </Link>
           </div>
 
           {categoryStats.length === 0 ? (
-            <div className="py-8 text-center text-xs text-[#737A73]">
+            <div className="py-8 text-center text-xs text-[#6A6678]">
               No active habits tracked yet. Visit My Activities to create your daily routine!
             </div>
           ) : (
@@ -493,14 +497,14 @@ export const StudentDashboardPage = () => {
               {categoryStats.map((cat) => (
                 <div key={cat.category} className="space-y-1.5">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-semibold text-[#202923]">{cat.category}</span>
-                    <span className="font-medium text-[#737A73]">
+                    <span className="font-semibold text-[#1b1831]">{cat.category}</span>
+                    <span className="font-medium text-[#6A6678]">
                       {cat.completed} of {cat.total} completed ({cat.rate}%)
                     </span>
                   </div>
-                  <div className="w-full h-2 bg-[#F8F7F2] border border-black/20 rounded-full overflow-hidden">
+                  <div className="w-full h-2 bg-[#FCF8FF] border border-[#E6DEFF] rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-[#193F30] rounded-full transition-all duration-300"
+                      className="h-full bg-primary rounded-full transition-all duration-300"
                       style={{ width: `${cat.rate}%` }}
                     />
                   </div>
@@ -511,26 +515,26 @@ export const StudentDashboardPage = () => {
         </div>
 
         {/* Right (5 cols): Active Personal Goals Progress */}
-        <div className="lg:col-span-5 p-6 sm:p-7 rounded-3xl bg-white border border-black/30 shadow-xs space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-black/20">
+        <div className="lg:col-span-5 p-6 sm:p-7 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E6DEFF]">
             <div>
-              <h2 className="font-serif text-xl font-bold text-[#202923]">
+              <h2 className=" text-xl font-bold text-[#1b1831]">
                 Personal Goals Roadmap
               </h2>
-              <p className="text-xs text-[#737A73]">
+              <p className="text-xs text-[#6A6678]">
                 Active developmental priorities from your profile.
               </p>
             </div>
             <Link
               to="/child/growth"
-              className="text-xs font-semibold text-[#193F30] hover:underline"
+              className="text-xs font-semibold text-primary hover:underline"
             >
               Milestones →
             </Link>
           </div>
 
           {activeGoals.length === 0 ? (
-            <div className="py-8 text-center text-xs text-[#737A73]">
+            <div className="py-8 text-center text-xs text-[#6A6678]">
               No personal goals selected. Visit My Growth to set your leadership goals!
             </div>
           ) : (
@@ -538,15 +542,15 @@ export const StudentDashboardPage = () => {
               {activeGoals.map((goal, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-2xl bg-[#F8F7F2] border border-black/30 hover:border-black/50 transition-all flex items-center justify-between gap-3 shadow-2xs"
+                  className="p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] hover:border-primary/40 transition-all flex items-center justify-between gap-3 shadow-2xs"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 rounded-lg bg-[#EDF2EC] text-[#193F30] flex items-center justify-center font-bold text-xs shrink-0">
+                    <div className="w-7 h-7 rounded-lg bg-[#EBE5FF] text-primary flex items-center justify-center font-bold text-xs shrink-0">
                       0{idx + 1}
                     </div>
-                    <span className="text-xs font-bold text-[#202923]">{goal}</span>
+                    <span className="text-xs font-bold text-[#1b1831]">{goal}</span>
                   </div>
-                  <span className="text-[10px] font-semibold text-[#193F30] bg-white px-2.5 py-0.5 rounded-full border border-black/20 shrink-0">
+                  <span className="text-[10px] font-semibold text-primary bg-white px-2.5 py-0.5 rounded-full border border-[#E6DEFF] shrink-0">
                     In Focus
                   </span>
                 </div>
@@ -560,23 +564,23 @@ export const StudentDashboardPage = () => {
           SECTION 5: RECENT ACTIVITY
           - Real recent events: assignment updates, submissions, feedback
           ───────────────────────────────────────────────────────────── */}
-      <section className="p-6 sm:p-7 rounded-3xl bg-white border border-black/30 shadow-xs space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-black/20">
+      <section className="p-6 sm:p-7 rounded-3xl bg-white border border-[#E6DEFF] shadow-xs space-y-4">
+        <div className="flex items-center justify-between pb-3 border-b border-[#E6DEFF]">
           <div>
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#202923]">
+            <h2 className=" text-xl sm:text-2xl font-bold text-[#1b1831]">
               Recent Activity & Updates
             </h2>
-            <p className="text-xs text-[#737A73]">
+            <p className="text-xs text-[#6A6678]">
               Chronological log of assignment updates, reflection recordings, and mentor feedback.
             </p>
           </div>
-          <span className="text-xs font-medium text-[#737A73]">
+          <span className="text-xs font-medium text-[#6A6678]">
             Showing latest {events?.length || 0} events
           </span>
         </div>
 
         {(!events || events.length === 0) ? (
-          <div className="py-8 text-center text-xs text-[#737A73]">
+          <div className="py-8 text-center text-xs text-[#6A6678]">
             No recent activity recorded yet. Start an assignment or complete a habit to see live progress here.
           </div>
         ) : (
@@ -584,41 +588,41 @@ export const StudentDashboardPage = () => {
             {events.map((evt) => (
               <div
                 key={evt.id}
-                className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-[#F8F7F2]/60 px-2 rounded-xl transition-colors"
+                className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-[#FCF8FF]/60 px-2 rounded-xl transition-colors"
               >
                 <div className="flex items-start sm:items-center gap-3">
                   <span
                     className={`text-[10px] font-bold uppercase px-2.5 py-1 rounded-full shrink-0 ${
                       evt.category === 'Assignment'
-                        ? 'bg-[#EDF2EC] text-[#193F30]'
+                        ? 'bg-[#EBE5FF] text-primary'
                         : evt.category === 'Feedback'
                         ? 'bg-amber-100 text-amber-800'
                         : evt.category === 'Reflection'
-                        ? 'bg-[#F1EDE2] text-[#202923]'
+                        ? 'bg-[#F3EFFF] text-[#1b1831]'
                         : evt.category === 'Submission'
-                        ? 'bg-[#9CCDB0] text-[#193F30]'
-                        : 'bg-white text-[#737A73] border border-black/20'
+                        ? 'bg-[#8bcefe] text-primary'
+                        : 'bg-white text-[#6A6678] border border-[#E6DEFF]'
                     }`}
                   >
                     {evt.category}
                   </span>
 
                   <div className="flex flex-col">
-                    <span className="text-xs sm:text-sm font-bold text-[#202923]">
+                    <span className="text-xs sm:text-sm font-bold text-[#1b1831]">
                       {evt.title}
                     </span>
-                    <span className="text-xs text-[#737A73]">
+                    <span className="text-xs text-[#6A6678]">
                       {evt.detail}
                     </span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 shrink-0 self-end sm:self-auto text-xs text-[#737A73]">
+                <div className="flex items-center gap-3 shrink-0 self-end sm:self-auto text-xs text-[#6A6678]">
                   <span>{evt.timestamp}</span>
                   {evt.link && (
                     <Link
                       to={evt.link}
-                      className="font-semibold text-[#193F30] hover:underline inline-flex items-center gap-0.5"
+                      className="font-semibold text-primary hover:underline inline-flex items-center gap-0.5"
                     >
                       <span>Open</span>
                       <ArrowRight className="w-3 h-3" />
@@ -641,10 +645,10 @@ export const StudentDashboardPage = () => {
           ───────────────────────────────────────────────────────────── */}
       <section className="space-y-4">
         <div>
-          <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#202923]">
+          <h2 className=" text-xl sm:text-2xl font-bold text-[#1b1831]">
             Quick Actions
           </h2>
-          <p className="text-xs text-[#737A73]">
+          <p className="text-xs text-[#6A6678]">
             Direct pathways to your core personal leadership and self-discovery tools.
           </p>
         </div>
@@ -653,20 +657,20 @@ export const StudentDashboardPage = () => {
           {/* Action 1: My Assignments */}
           <Link
             to="/child/assignments"
-            className="p-5 rounded-2xl bg-white border border-black/30 hover:border-black/50 hover:shadow-xs transition-all flex flex-col justify-between gap-3 group"
+            className="p-5 rounded-2xl bg-white border border-[#E6DEFF] hover:border-primary/40 hover:shadow-xs transition-all flex flex-col justify-between gap-3 group"
           >
-            <div className="w-10 h-10 rounded-xl bg-[#EDF2EC] text-[#193F30] flex items-center justify-center group-hover:bg-[#193F30] group-hover:text-white transition-colors">
+            <div className="w-10 h-10 rounded-xl bg-[#EBE5FF] text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
               <CheckSquareIcon className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-[#202923] group-hover:text-[#193F30] transition-colors">
+              <h4 className="text-sm font-bold text-[#1b1831] group-hover:text-primary transition-colors">
                 My Assignments
               </h4>
-              <p className="text-[11px] text-[#737A73] mt-0.5">
+              <p className="text-[11px] text-[#6A6678] mt-0.5">
                 Tasks & growth challenges
               </p>
             </div>
-            <div className="flex items-center text-xs font-semibold text-[#193F30] gap-1">
+            <div className="flex items-center text-xs font-semibold text-primary gap-1">
               <span>Access</span>
               <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -675,20 +679,20 @@ export const StudentDashboardPage = () => {
           {/* Action 2: My Activities */}
           <Link
             to="/child/activities"
-            className="p-5 rounded-2xl bg-white border border-black/30 hover:border-black/50 hover:shadow-xs transition-all flex flex-col justify-between gap-3 group"
+            className="p-5 rounded-2xl bg-white border border-[#E6DEFF] hover:border-primary/40 hover:shadow-xs transition-all flex flex-col justify-between gap-3 group"
           >
-            <div className="w-10 h-10 rounded-xl bg-[#F1EDE2] text-[#193F30] flex items-center justify-center group-hover:bg-[#193F30] group-hover:text-white transition-colors">
+            <div className="w-10 h-10 rounded-xl bg-[#F3EFFF] text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
               <ListTodo className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-[#202923] group-hover:text-[#193F30] transition-colors">
+              <h4 className="text-sm font-bold text-[#1b1831] group-hover:text-primary transition-colors">
                 My Activities
               </h4>
-              <p className="text-[11px] text-[#737A73] mt-0.5">
+              <p className="text-[11px] text-[#6A6678] mt-0.5">
                 Daily habits & routines
               </p>
             </div>
-            <div className="flex items-center text-xs font-semibold text-[#193F30] gap-1">
+            <div className="flex items-center text-xs font-semibold text-primary gap-1">
               <span>Access</span>
               <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -697,20 +701,20 @@ export const StudentDashboardPage = () => {
           {/* Action 3: Self-Assessment */}
           <Link
             to="/child/self-assessment"
-            className="p-5 rounded-2xl bg-white border border-black/30 hover:border-black/50 hover:shadow-xs transition-all flex flex-col justify-between gap-3 group"
+            className="p-5 rounded-2xl bg-white border border-[#E6DEFF] hover:border-primary/40 hover:shadow-xs transition-all flex flex-col justify-between gap-3 group"
           >
-            <div className="w-10 h-10 rounded-xl bg-[#EDF2EC] text-[#193F30] flex items-center justify-center group-hover:bg-[#193F30] group-hover:text-white transition-colors">
+            <div className="w-10 h-10 rounded-xl bg-[#EBE5FF] text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
               <Target className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-[#202923] group-hover:text-[#193F30] transition-colors">
+              <h4 className="text-sm font-bold text-[#1b1831] group-hover:text-primary transition-colors">
                 Self-Assessment
               </h4>
-              <p className="text-[11px] text-[#737A73] mt-0.5">
+              <p className="text-[11px] text-[#6A6678] mt-0.5">
                 Mindset & strengths test
               </p>
             </div>
-            <div className="flex items-center text-xs font-semibold text-[#193F30] gap-1">
+            <div className="flex items-center text-xs font-semibold text-primary gap-1">
               <span>Access</span>
               <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -719,20 +723,20 @@ export const StudentDashboardPage = () => {
           {/* Action 4: Focus & Wellness */}
           <Link
             to="/child/wellness"
-            className="p-5 rounded-2xl bg-white border border-black/30 hover:border-black/50 hover:shadow-xs transition-all flex flex-col justify-between gap-3 group"
+            className="p-5 rounded-2xl bg-white border border-[#E6DEFF] hover:border-primary/40 hover:shadow-xs transition-all flex flex-col justify-between gap-3 group"
           >
-            <div className="w-10 h-10 rounded-xl bg-[#F1EDE2] text-[#193F30] flex items-center justify-center group-hover:bg-[#193F30] group-hover:text-white transition-colors">
+            <div className="w-10 h-10 rounded-xl bg-[#F3EFFF] text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
               <HeartPulse className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-[#202923] group-hover:text-[#193F30] transition-colors">
+              <h4 className="text-sm font-bold text-[#1b1831] group-hover:text-primary transition-colors">
                 Focus & Wellness
               </h4>
-              <p className="text-[11px] text-[#737A73] mt-0.5">
+              <p className="text-[11px] text-[#6A6678] mt-0.5">
                 Timer & breathing guide
               </p>
             </div>
-            <div className="flex items-center text-xs font-semibold text-[#193F30] gap-1">
+            <div className="flex items-center text-xs font-semibold text-primary gap-1">
               <span>Access</span>
               <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -741,20 +745,20 @@ export const StudentDashboardPage = () => {
           {/* Action 5: My Growth */}
           <Link
             to="/child/growth"
-            className="p-5 rounded-2xl bg-white border border-black/30 hover:border-black/50 hover:shadow-xs transition-all flex flex-col justify-between gap-3 group"
+            className="p-5 rounded-2xl bg-white border border-[#E6DEFF] hover:border-primary/40 hover:shadow-xs transition-all flex flex-col justify-between gap-3 group"
           >
-            <div className="w-10 h-10 rounded-xl bg-[#EDF2EC] text-[#193F30] flex items-center justify-center group-hover:bg-[#193F30] group-hover:text-white transition-colors">
+            <div className="w-10 h-10 rounded-xl bg-[#EBE5FF] text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
               <TrendingUp className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-[#202923] group-hover:text-[#193F30] transition-colors">
+              <h4 className="text-sm font-bold text-[#1b1831] group-hover:text-primary transition-colors">
                 My Growth
               </h4>
-              <p className="text-[11px] text-[#737A73] mt-0.5">
+              <p className="text-[11px] text-[#6A6678] mt-0.5">
                 Milestones & timeline
               </p>
             </div>
-            <div className="flex items-center text-xs font-semibold text-[#193F30] gap-1">
+            <div className="flex items-center text-xs font-semibold text-primary gap-1">
               <span>Access</span>
               <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
             </div>

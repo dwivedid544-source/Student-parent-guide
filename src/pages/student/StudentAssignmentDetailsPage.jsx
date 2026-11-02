@@ -327,13 +327,13 @@ export const StudentAssignmentDetailsPage = () => {
   const getStatusBadge = (status) => {
     switch (status) {
       case 'Pending':
-        return 'bg-[#F1EDE2] text-[#202923] border border-[#E5E0D5]';
+        return 'bg-[#F3EFFF] text-[#1b1831] border border-[#E6DEFF]';
       case 'In Progress':
         return 'bg-amber-100 text-amber-900 border border-amber-200';
       case 'Submitted':
         return 'bg-blue-100 text-blue-900 border border-blue-200';
       case 'Completed':
-        return 'bg-[#9CCDB0] text-[#193F30] border border-[#78b390]';
+        return 'bg-[#8bcefe] text-primary border border-[#78b390]';
       case 'Needs Revision':
         return 'bg-rose-100 text-rose-900 border border-rose-200';
       default:
@@ -352,14 +352,14 @@ export const StudentAssignmentDetailsPage = () => {
         <div className="w-16 h-16 rounded-3xl bg-rose-50 text-rose-800 flex items-center justify-center mx-auto border border-rose-200">
           <ShieldAlert className="w-8 h-8" />
         </div>
-        <h2 className="font-serif text-2xl font-bold text-[#202923]">Authorization Denied</h2>
-        <p className="text-sm text-[#737A73] leading-relaxed">
+        <h2 className=" text-2xl font-bold text-[#1b1831]">Authorization Denied</h2>
+        <p className="text-sm text-[#6A6678] leading-relaxed">
           You are not authorized to view or submit this assignment. Server access verification failed for this student sanctuary profile.
         </p>
         <div className="pt-2">
           <Link
             to="/child/assignments"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container transition-all shadow-sm"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Return to My Assignments</span>
@@ -373,17 +373,17 @@ export const StudentAssignmentDetailsPage = () => {
   if (!assignment) {
     return (
       <div className="max-w-xl mx-auto py-16 px-6 text-center space-y-4 animate-fadeIn">
-        <div className="w-16 h-16 rounded-3xl bg-[#F1EDE2] text-[#193F30] flex items-center justify-center mx-auto border border-[#E5E0D5]">
+        <div className="w-16 h-16 rounded-3xl bg-[#F3EFFF] text-primary flex items-center justify-center mx-auto border border-[#E6DEFF]">
           <AlertCircle className="w-8 h-8" />
         </div>
-        <h2 className="font-serif text-2xl font-bold text-[#202923]">Assignment Unavailable</h2>
-        <p className="text-sm text-[#737A73] leading-relaxed">
-          The requested assignment <span className="font-mono text-xs font-bold text-[#202923] bg-[#F1EDE2] px-2 py-0.5 rounded-md">ID: {assignmentId}</span> was not found in your curriculum catalog.
+        <h2 className=" text-2xl font-bold text-[#1b1831]">Assignment Unavailable</h2>
+        <p className="text-sm text-[#6A6678] leading-relaxed">
+          The requested assignment <span className="font-mono text-xs font-bold text-[#1b1831] bg-[#F3EFFF] px-2 py-0.5 rounded-md">ID: {assignmentId}</span> was not found in your curriculum catalog.
         </p>
         <div className="pt-2">
           <Link
             to="/child/assignments"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container transition-all shadow-sm"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Assignments Catalog</span>
@@ -401,18 +401,18 @@ export const StudentAssignmentDetailsPage = () => {
       {/* ─────────────────────────────────────────────────────────────
           2. NAVIGATION BREADCRUMBS & TOP STATUS BAR
           ───────────────────────────────────────────────────────────── */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E5E0D5]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E6DEFF]">
         <div className="flex items-center gap-2 text-xs">
           <button
             type="button"
             onClick={handleBackNavigation}
-            className="p-1.5 rounded-xl text-[#737A73] hover:text-[#193F30] hover:bg-[#EDF2EC] transition-colors flex items-center gap-1 font-semibold cursor-pointer"
+            className="p-1.5 rounded-xl text-[#6A6678] hover:text-primary hover:bg-[#EBE5FF] transition-colors flex items-center gap-1 font-semibold cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>All Assignments</span>
           </button>
           <span className="text-[#E5E0D5]">/</span>
-          <span className="text-[#737A73] truncate max-w-xs">{assignment.title}</span>
+          <span className="text-[#6A6678] truncate max-w-xs">{assignment.title}</span>
         </div>
 
         {/* Status Indicators */}
@@ -435,16 +435,16 @@ export const StudentAssignmentDetailsPage = () => {
 
       {/* Submission Success Toast Banner */}
       {submissionSuccessNotice && (
-        <div className="p-4 sm:p-5 rounded-3xl bg-[#9CCDB0]/25 border-2 border-[#193F30] text-[#193F30] flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm animate-fadeIn">
+        <div className="p-4 sm:p-5 rounded-3xl bg-[#8bcefe]/25 border-2 border-primary text-primary flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm animate-fadeIn">
           <div className="flex items-start sm:items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#193F30] text-white flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-2xl bg-primary text-white flex items-center justify-center shrink-0">
               <Check className="w-6 h-6 stroke-[3]" />
             </div>
             <div>
-              <h4 className="font-serif text-base font-bold text-[#193F30]">
+              <h4 className=" text-base font-bold text-primary">
                 {submissionSuccessNotice.isResubmission ? 'Revision Resubmitted Successfully!' : 'Assignment Submitted Successfully!'}
               </h4>
-              <p className="text-xs text-[#202923] mt-0.5">
+              <p className="text-xs text-[#1b1831] mt-0.5">
                 Timestamp: <strong>{submissionSuccessNotice.submittedAt}</strong> • Version: <strong>{submissionSuccessNotice.version}</strong>. Locked for mentor review.
               </p>
             </div>
@@ -452,7 +452,7 @@ export const StudentAssignmentDetailsPage = () => {
           <button
             type="button"
             onClick={() => setSubmissionSuccessNotice(null)}
-            className="p-1 rounded-lg text-[#193F30] hover:bg-[#193F30]/10 self-start sm:self-auto cursor-pointer"
+            className="p-1 rounded-lg text-primary hover:bg-primary/10 self-start sm:self-auto cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -461,15 +461,15 @@ export const StudentAssignmentDetailsPage = () => {
 
       {/* Save Draft Feedback Alert */}
       {saveStatusMessage && (
-        <div className="p-4 rounded-2xl bg-[#9CCDB0]/20 border border-[#9CCDB0] text-[#193F30] text-xs sm:text-sm flex items-center justify-between shadow-xs animate-fadeIn">
+        <div className="p-4 rounded-2xl bg-[#8bcefe]/20 border border-[#9CCDB0] text-primary text-xs sm:text-sm flex items-center justify-between shadow-xs animate-fadeIn">
           <div className="flex items-center gap-2.5">
-            <CheckCircle2 className="w-5 h-5 text-[#193F30] shrink-0" />
+            <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
             <span className="font-semibold">{saveStatusMessage}</span>
           </div>
           <button
             type="button"
             onClick={() => setSaveStatusMessage(null)}
-            className="text-[#193F30] hover:text-black p-1 cursor-pointer"
+            className="text-primary hover:text-black p-1 cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -564,17 +564,17 @@ export const StudentAssignmentDetailsPage = () => {
       {/* ─────────────────────────────────────────────────────────────
           3. HEADER HERO CARD
           ───────────────────────────────────────────────────────────── */}
-      <section className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 hover:border-black/50 transition-all shadow-xs space-y-6">
+      <section className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] hover:border-primary/40 transition-all shadow-xs space-y-6">
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
           <div className="space-y-3 max-w-3xl">
             {/* Badges Row */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-bold text-[#193F30] bg-[#EDF2EC] px-3 py-1 rounded-full border border-black/20">
+              <span className="text-xs font-bold text-primary bg-[#EBE5FF] px-3 py-1 rounded-full border border-[#E6DEFF]">
                 {assignment.subject}
               </span>
 
               {assignment.activityType && (
-                <span className="text-xs font-medium text-[#737A73] bg-[#F1EDE2] px-3 py-1 rounded-full border border-black/20">
+                <span className="text-xs font-medium text-[#6A6678] bg-[#F3EFFF] px-3 py-1 rounded-full border border-[#E6DEFF]">
                   {assignment.activityType}
                 </span>
               )}
@@ -595,7 +595,7 @@ export const StudentAssignmentDetailsPage = () => {
                 <button
                   type="button"
                   onClick={handleStartAssignment}
-                  className="py-1 px-3.5 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 hover:border-black/50 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                  className="py-1 px-3.5 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] hover:border-primary/40 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
                 >
                   <Play className="w-3 h-3 fill-white" />
                   <span>Start Assignment</span>
@@ -609,7 +609,7 @@ export const StudentAssignmentDetailsPage = () => {
                     setActiveTab('assignment');
                     document.getElementById('questions-section')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="py-1 px-3.5 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 hover:border-black/50 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                  className="py-1 px-3.5 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] hover:border-primary/40 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
                 >
                   <Play className="w-3 h-3 fill-white" />
                   <span>Continue Assignment</span>
@@ -618,48 +618,48 @@ export const StudentAssignmentDetailsPage = () => {
             </div>
 
             {/* Title */}
-            <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#202923] tracking-tight">
+            <h1 className=" text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1b1831] tracking-tight">
               {assignment.title}
             </h1>
 
             {/* Description */}
-            <p className="text-xs sm:text-base text-[#737A73] leading-relaxed">
+            <p className="text-xs sm:text-base text-[#6A6678] leading-relaxed">
               {assignment.description}
             </p>
           </div>
 
           {/* Quick Info Sidebar Block */}
-          <div className="p-5 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs space-y-3 min-w-[240px] shrink-0 text-xs">
+          <div className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs space-y-3 min-w-[240px] shrink-0 text-xs">
             <div className="space-y-1">
-              <span className="text-[10px] uppercase font-bold text-[#737A73] tracking-wider block">Assigned Date</span>
-              <div className="font-semibold text-[#202923] flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-[#193F30]" />
+              <span className="text-[10px] uppercase font-bold text-[#6A6678] tracking-wider block">Assigned Date</span>
+              <div className="font-semibold text-[#1b1831] flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5 text-primary" />
                 <span>{assignment.assignedDate || 'Oct 26, 2026'}</span>
               </div>
             </div>
 
-            <div className="space-y-1 pt-2 border-t border-black/20">
-              <span className="text-[10px] uppercase font-bold text-[#737A73] tracking-wider block">Due Date</span>
-              <div className={`font-semibold flex items-center gap-1.5 ${isOverdue ? 'text-rose-700 font-bold' : 'text-[#202923]'}`}>
+            <div className="space-y-1 pt-2 border-t border-[#E6DEFF]">
+              <span className="text-[10px] uppercase font-bold text-[#6A6678] tracking-wider block">Due Date</span>
+              <div className={`font-semibold flex items-center gap-1.5 ${isOverdue ? 'text-rose-700 font-bold' : 'text-[#1b1831]'}`}>
                 <Clock className="w-3.5 h-3.5" />
                 <span>{assignment.dueDate || 'Flexible Deadline'}</span>
               </div>
             </div>
 
             {assignment.duration && (
-              <div className="space-y-1 pt-2 border-t border-black/20">
-                <span className="text-[10px] uppercase font-bold text-[#737A73] tracking-wider block">Estimated Duration</span>
-                <div className="font-semibold text-[#202923] flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-[#193F30]" />
+              <div className="space-y-1 pt-2 border-t border-[#E6DEFF]">
+                <span className="text-[10px] uppercase font-bold text-[#6A6678] tracking-wider block">Estimated Duration</span>
+                <div className="font-semibold text-[#1b1831] flex items-center gap-1.5">
+                  <Clock className="w-3.5 h-3.5 text-primary" />
                   <span>{assignment.duration}</span>
                 </div>
               </div>
             )}
 
             {assignment.expectedSubmissionFormat && (
-              <div className="space-y-1 pt-2 border-t border-black/20">
-                <span className="text-[10px] uppercase font-bold text-[#737A73] tracking-wider block">Expected Format</span>
-                <div className="font-semibold text-[#202923] leading-snug">
+              <div className="space-y-1 pt-2 border-t border-[#E6DEFF]">
+                <span className="text-[10px] uppercase font-bold text-[#6A6678] tracking-wider block">Expected Format</span>
+                <div className="font-semibold text-[#1b1831] leading-snug">
                   {assignment.expectedSubmissionFormat}
                 </div>
               </div>
@@ -669,24 +669,24 @@ export const StudentAssignmentDetailsPage = () => {
 
         {/* Mentor Note Banner if configured */}
         {assignment.mentorNote && (
-          <div className="p-4 rounded-2xl bg-[#F1EDE2]/60 border border-black/30 shadow-2xs text-xs sm:text-sm text-[#202923] flex items-start gap-3">
-            <Sparkles className="w-4 h-4 text-[#193F30] shrink-0 mt-0.5" />
+          <div className="p-4 rounded-2xl bg-[#F3EFFF]/60 border border-[#E6DEFF] shadow-2xs text-xs sm:text-sm text-[#1b1831] flex items-start gap-3">
+            <Sparkles className="w-4 h-4 text-primary shrink-0 mt-0.5" />
             <div className="space-y-0.5">
-              <strong className="text-[#193F30] block font-bold">Advisory & Mentor Guidance:</strong>
-              <p className="text-[#737A73] italic">"{assignment.mentorNote}"</p>
+              <strong className="text-primary block font-bold">Advisory & Mentor Guidance:</strong>
+              <p className="text-[#6A6678] italic">"{assignment.mentorNote}"</p>
             </div>
           </div>
         )}
 
         {/* Navigation Tabs for Views */}
-        <div className="flex flex-wrap items-center gap-2.5 pt-3 border-t border-black/20">
+        <div className="flex flex-wrap items-center gap-2.5 pt-3 border-t border-[#E6DEFF]">
           <button
             type="button"
             onClick={() => setActiveTab('assignment')}
             className={`py-2 px-4 rounded-xl text-xs transition-all cursor-pointer ${
               activeTab === 'assignment'
-                ? 'bg-[#193F30] text-white border border-[#193F30] shadow-xs font-bold'
-                : 'bg-white text-[#202923] border border-black/30 hover:border-black/50 hover:bg-[#F8F7F2] shadow-2xs font-semibold'
+                ? 'bg-primary text-white border border-primary shadow-xs font-bold'
+                : 'bg-white text-[#1b1831] border border-[#E6DEFF] hover:border-primary/40 hover:bg-[#FCF8FF] shadow-2xs font-semibold'
             }`}
           >
             Assignment Tasks & Questions
@@ -698,8 +698,8 @@ export const StudentAssignmentDetailsPage = () => {
               onClick={() => setActiveTab('submission')}
               className={`py-2 px-4 rounded-xl text-xs transition-all cursor-pointer flex items-center gap-1.5 ${
                 activeTab === 'submission'
-                  ? 'bg-[#193F30] text-white border border-[#193F30] shadow-xs font-bold'
-                  : 'bg-white text-[#202923] border border-black/30 hover:border-black/50 hover:bg-[#F8F7F2] shadow-2xs font-semibold'
+                  ? 'bg-primary text-white border border-primary shadow-xs font-bold'
+                  : 'bg-white text-[#1b1831] border border-[#E6DEFF] hover:border-primary/40 hover:bg-[#FCF8FF] shadow-2xs font-semibold'
               }`}
             >
               <Eye className="w-3.5 h-3.5" />
@@ -713,8 +713,8 @@ export const StudentAssignmentDetailsPage = () => {
               onClick={() => setActiveTab('feedback')}
               className={`py-2 px-4 rounded-xl text-xs transition-all cursor-pointer flex items-center gap-1.5 ${
                 activeTab === 'feedback'
-                  ? 'bg-[#193F30] text-white border border-[#193F30] shadow-xs font-bold'
-                  : 'bg-white text-[#202923] border border-black/30 hover:border-black/50 hover:bg-[#F8F7F2] shadow-2xs font-semibold'
+                  ? 'bg-primary text-white border border-primary shadow-xs font-bold'
+                  : 'bg-white text-[#1b1831] border border-[#E6DEFF] hover:border-primary/40 hover:bg-[#FCF8FF] shadow-2xs font-semibold'
               }`}
             >
               <MessageSquare className="w-3.5 h-3.5" />
@@ -734,18 +734,18 @@ export const StudentAssignmentDetailsPage = () => {
           <div className="lg:col-span-5 space-y-6">
             
             {/* Instructions & Interactive Activity Steps */}
-            <div className="p-6 rounded-3xl bg-white border border-black/30 hover:border-black/50 transition-all shadow-xs space-y-4">
-              <div className="pb-3 border-b border-black/20">
-                <h3 className="font-serif text-lg font-bold text-[#202923]">
+            <div className="p-6 rounded-3xl bg-white border border-[#E6DEFF] hover:border-primary/40 transition-all shadow-xs space-y-4">
+              <div className="pb-3 border-b border-[#E6DEFF]">
+                <h3 className=" text-lg font-bold text-[#1b1831]">
                   Instructions & Guidelines
                 </h3>
-                <p className="text-xs text-[#737A73]">
+                <p className="text-xs text-[#6A6678]">
                   Follow these steps carefully and check them off as you progress.
                 </p>
               </div>
 
               {assignment.instructions && (
-                <div className="p-3.5 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs text-xs text-[#202923] leading-relaxed">
+                <div className="p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs text-xs text-[#1b1831] leading-relaxed">
                   {assignment.instructions}
                 </div>
               )}
@@ -753,7 +753,7 @@ export const StudentAssignmentDetailsPage = () => {
               {/* Activity Steps Checklist */}
               {assignment.activitySteps && assignment.activitySteps.length > 0 && (
                 <div className="space-y-2.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#737A73] block">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#6A6678] block">
                     Step-by-Step Activity Path
                   </span>
                   <div className="space-y-2">
@@ -765,20 +765,20 @@ export const StudentAssignmentDetailsPage = () => {
                           onClick={() => toggleStep(idx)}
                           className={`p-3 rounded-2xl border flex items-start gap-3 text-xs cursor-pointer transition-all shadow-2xs ${
                             isDone
-                              ? 'bg-[#EDF2EC] border-black/30 text-[#193F30] font-semibold'
-                              : 'bg-[#F8F7F2] border-black/30 hover:border-black/50 text-[#202923]'
+                              ? 'bg-[#EBE5FF] border-[#E6DEFF] text-primary font-semibold'
+                              : 'bg-[#FCF8FF] border-[#E6DEFF] hover:border-primary/40 text-[#1b1831]'
                           }`}
                         >
                           <div className="pt-0.5 shrink-0">
                             {isDone ? (
-                              <CheckSquare className="w-4 h-4 text-[#193F30]" />
+                              <CheckSquare className="w-4 h-4 text-primary" />
                             ) : (
-                              <Square className="w-4 h-4 text-[#737A73]" />
+                              <Square className="w-4 h-4 text-[#6A6678]" />
                             )}
                           </div>
                           <div className="flex-1">
                             <span className="font-bold mr-1.5">Step {idx + 1}:</span>
-                            <span className={`leading-relaxed ${isDone ? 'line-through text-[#737A73]' : ''}`}>
+                            <span className={`leading-relaxed ${isDone ? 'line-through text-[#6A6678]' : ''}`}>
                               {step}
                             </span>
                           </div>
@@ -790,7 +790,7 @@ export const StudentAssignmentDetailsPage = () => {
               )}
 
               {/* Activity Completion Confirmation Checkbox */}
-              <div className="p-4 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs space-y-2">
+              <div className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs space-y-2">
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input
                     type="checkbox"
@@ -801,13 +801,13 @@ export const StudentAssignmentDetailsPage = () => {
                       setIsDirty(true);
                       setValidationError(null);
                     }}
-                    className="mt-0.5 w-4 h-4 rounded text-[#193F30] border-black/30 focus:ring-[#193F30] cursor-pointer disabled:cursor-not-allowed"
+                    className="mt-0.5 w-4 h-4 rounded text-primary border-[#E6DEFF] focus:ring-primary cursor-pointer disabled:cursor-not-allowed"
                   />
                   <div className="text-xs">
-                    <span className="font-bold text-[#202923] block">
+                    <span className="font-bold text-[#1b1831] block">
                       Activity Completion Confirmation <span className="text-rose-600 font-bold">*</span>
                     </span>
-                    <span className="text-[#737A73] leading-snug block mt-0.5">
+                    <span className="text-[#6A6678] leading-snug block mt-0.5">
                       I confirm that I have reviewed the instructions and completed the required offline/online activity steps.
                     </span>
                   </div>
@@ -817,12 +817,12 @@ export const StudentAssignmentDetailsPage = () => {
 
             {/* Supporting Documents (if available) */}
             {assignment.supportingDocuments && assignment.supportingDocuments.length > 0 && (
-              <div className="p-6 rounded-3xl bg-white border border-black/30 hover:border-black/50 transition-all shadow-xs space-y-3">
-                <div className="pb-2 border-b border-black/20 flex items-center justify-between">
-                  <h3 className="font-serif text-base font-bold text-[#202923]">
+              <div className="p-6 rounded-3xl bg-white border border-[#E6DEFF] hover:border-primary/40 transition-all shadow-xs space-y-3">
+                <div className="pb-2 border-b border-[#E6DEFF] flex items-center justify-between">
+                  <h3 className=" text-base font-bold text-[#1b1831]">
                     Supporting Documents
                   </h3>
-                  <span className="text-xs text-[#737A73] font-medium">
+                  <span className="text-xs text-[#6A6678] font-medium">
                     {assignment.supportingDocuments.length} files
                   </span>
                 </div>
@@ -831,17 +831,17 @@ export const StudentAssignmentDetailsPage = () => {
                   {assignment.supportingDocuments.map((doc, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-2xl bg-[#F8F7F2] border border-black/30 hover:border-black/50 flex items-center justify-between gap-3 shadow-2xs transition-all"
+                      className="p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] hover:border-primary/40 flex items-center justify-between gap-3 shadow-2xs transition-all"
                     >
                       <div className="flex items-center gap-3 overflow-hidden">
-                        <div className="w-8 h-8 rounded-xl bg-[#EDF2EC] text-[#193F30] border border-black/20 flex items-center justify-center shrink-0">
+                        <div className="w-8 h-8 rounded-xl bg-[#EBE5FF] text-primary border border-[#E6DEFF] flex items-center justify-center shrink-0">
                           <FileText className="w-4 h-4" />
                         </div>
                         <div className="overflow-hidden">
-                          <span className="text-xs font-bold text-[#202923] block truncate">
+                          <span className="text-xs font-bold text-[#1b1831] block truncate">
                             {doc.name}
                           </span>
-                          <span className="text-[10px] text-[#737A73]">
+                          <span className="text-[10px] text-[#6A6678]">
                             {doc.size} • {doc.type}
                           </span>
                         </div>
@@ -850,7 +850,7 @@ export const StudentAssignmentDetailsPage = () => {
                       <button
                         type="button"
                         onClick={() => alert(`Simulating download for: ${doc.name}`)}
-                        className="p-2 rounded-xl text-[#193F30] hover:bg-[#EDF2EC] border border-black/20 transition-colors cursor-pointer shrink-0"
+                        className="p-2 rounded-xl text-primary hover:bg-[#EBE5FF] border border-[#E6DEFF] transition-colors cursor-pointer shrink-0"
                         title="Download Document"
                       >
                         <Download className="w-4 h-4" />
@@ -864,35 +864,35 @@ export const StudentAssignmentDetailsPage = () => {
 
           {/* Right Column (7 cols): Questions & Submission Response Form */}
           <div className="lg:col-span-7 space-y-6" id="questions-section">
-            <div className="p-6 sm:p-7 rounded-3xl bg-white border border-black/30 hover:border-black/50 transition-all shadow-xs space-y-6">
+            <div className="p-6 sm:p-7 rounded-3xl bg-white border border-[#E6DEFF] hover:border-primary/40 transition-all shadow-xs space-y-6">
               
-              <div className="pb-3 border-b border-black/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="pb-3 border-b border-[#E6DEFF] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
-                  <h3 className="font-serif text-xl font-bold text-[#202923]">
+                  <h3 className=" text-xl font-bold text-[#1b1831]">
                     Required Questions & Tasks
                   </h3>
-                  <p className="text-xs text-[#737A73]">
+                  <p className="text-xs text-[#6A6678]">
                     Enter your responses below. Progress is preserved securely on the server.
                   </p>
                 </div>
 
                 {assignment.status === 'Pending' && (
-                  <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-black/20">
+                  <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-[#E6DEFF]">
                     Not Started
                   </span>
                 )}
                 {assignment.status === 'In Progress' && (
-                  <span className="text-xs font-semibold text-[#193F30] bg-[#EDF2EC] px-3 py-1 rounded-full border border-black/30 shadow-2xs">
+                  <span className="text-xs font-semibold text-primary bg-[#EBE5FF] px-3 py-1 rounded-full border border-[#E6DEFF] shadow-2xs">
                     Drafting in Progress
                   </span>
                 )}
                 {assignment.status === 'Submitted' && (
-                  <span className="text-xs font-semibold text-blue-800 bg-blue-50 px-3 py-1 rounded-full border border-black/20">
+                  <span className="text-xs font-semibold text-blue-800 bg-blue-50 px-3 py-1 rounded-full border border-[#E6DEFF]">
                     Locked / Submitted
                   </span>
                 )}
                 {assignment.status === 'Needs Revision' && (
-                  <span className="text-xs font-semibold text-rose-800 bg-rose-50 px-3 py-1 rounded-full border border-black/20">
+                  <span className="text-xs font-semibold text-rose-800 bg-rose-50 px-3 py-1 rounded-full border border-[#E6DEFF]">
                     Revision Authorized
                   </span>
                 )}
@@ -900,15 +900,15 @@ export const StudentAssignmentDetailsPage = () => {
 
               {/* Status Warning if Pending */}
               {assignment.status === 'Pending' && (
-                <div className="p-4 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                <div className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                   <div className="space-y-0.5">
-                    <strong className="text-[#202923] block">Assignment has not been started yet.</strong>
-                    <p className="text-[#737A73]">Click "Start Assignment" to begin recording your answers.</p>
+                    <strong className="text-[#1b1831] block">Assignment has not been started yet.</strong>
+                    <p className="text-[#6A6678]">Click "Start Assignment" to begin recording your answers.</p>
                   </div>
                   <button
                     type="button"
                     onClick={handleStartAssignment}
-                    className="py-2 px-5 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 hover:border-black/50 transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs shrink-0"
+                    className="py-2 px-5 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] hover:border-primary/40 transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs shrink-0"
                   >
                     <Play className="w-3.5 h-3.5 fill-white" />
                     <span>Start Assignment</span>
@@ -932,15 +932,15 @@ export const StudentAssignmentDetailsPage = () => {
                 {(assignment.requiredQuestions || []).map((q, idx) => (
                   <div
                     key={q.id}
-                    className="p-5 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs space-y-3"
+                    className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs space-y-3"
                   >
                     <div className="flex items-start justify-between gap-2">
-                      <label className="text-xs sm:text-sm font-bold text-[#202923] flex items-center gap-1.5">
-                        <span className="text-[#193F30]">Q{idx + 1}.</span>
+                      <label className="text-xs sm:text-sm font-bold text-[#1b1831] flex items-center gap-1.5">
+                        <span className="text-primary">Q{idx + 1}.</span>
                         <span>{q.title}</span>
                         {q.required && <span className="text-rose-600 font-bold">*</span>}
                       </label>
-                      <span className="text-[10px] uppercase font-bold text-[#737A73] bg-white px-2 py-0.5 rounded-md border border-black/20">
+                      <span className="text-[10px] uppercase font-bold text-[#6A6678] bg-white px-2 py-0.5 rounded-md border border-[#E6DEFF]">
                         {q.type.replace('_', ' ')}
                       </span>
                     </div>
@@ -953,8 +953,8 @@ export const StudentAssignmentDetailsPage = () => {
                             key={oIdx}
                             className={`p-3 rounded-xl border flex items-center gap-3 text-xs transition-all shadow-2xs ${
                               answers[q.id] === opt
-                                ? 'bg-[#193F30] text-white border-[#193F30] font-semibold'
-                                : 'bg-white text-[#202923] border-black/30 hover:border-black/50'
+                                ? 'bg-primary text-white border-primary font-semibold'
+                                : 'bg-white text-[#1b1831] border-[#E6DEFF] hover:border-primary/40'
                             } ${isLocked ? 'pointer-events-none opacity-80 cursor-not-allowed' : 'cursor-pointer'}`}
                           >
                             <input
@@ -966,8 +966,8 @@ export const StudentAssignmentDetailsPage = () => {
                               onChange={() => handleAnswerChange(q.id, opt)}
                               className="hidden"
                             />
-                            <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${answers[q.id] === opt ? 'border-white bg-white text-[#193F30]' : 'border-[#737A73]'}`}>
-                              {answers[q.id] === opt && <div className="w-2 h-2 rounded-full bg-[#193F30]" />}
+                            <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${answers[q.id] === opt ? 'border-white bg-white text-primary' : 'border-[#737A73]'}`}>
+                              {answers[q.id] === opt && <div className="w-2 h-2 rounded-full bg-primary" />}
                             </div>
                             <span className="leading-snug">{opt}</span>
                           </label>
@@ -983,7 +983,7 @@ export const StudentAssignmentDetailsPage = () => {
                         disabled={isLocked}
                         onChange={(e) => handleAnswerChange(q.id, e.target.value)}
                         placeholder={q.placeholder || 'Enter your concise response...'}
-                        className="w-full p-3 rounded-xl bg-white border border-black/30 focus:border-black/60 shadow-2xs text-xs sm:text-sm text-[#202923] placeholder-[#737A73] focus:outline-hidden transition-all disabled:opacity-75 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                        className="w-full p-3 rounded-xl bg-white border border-[#E6DEFF] focus:border-black/60 shadow-2xs text-xs sm:text-sm text-[#1b1831] placeholder-[#737A73] focus:outline-hidden transition-all disabled:opacity-75 disabled:bg-gray-100 disabled:cursor-not-allowed"
                       />
                     )}
 
@@ -996,9 +996,9 @@ export const StudentAssignmentDetailsPage = () => {
                           disabled={isLocked}
                           onChange={(e) => handleAnswerChange(q.id, e.target.value)}
                           placeholder={q.placeholder || 'Write your thoughtful personal reflection here...'}
-                          className="w-full p-4 rounded-xl bg-white border border-black/30 focus:border-black/60 shadow-2xs text-xs sm:text-sm text-[#202923] placeholder-[#737A73] focus:outline-hidden transition-all leading-relaxed disabled:opacity-75 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                          className="w-full p-4 rounded-xl bg-white border border-[#E6DEFF] focus:border-black/60 shadow-2xs text-xs sm:text-sm text-[#1b1831] placeholder-[#737A73] focus:outline-hidden transition-all leading-relaxed disabled:opacity-75 disabled:bg-gray-100 disabled:cursor-not-allowed"
                         />
-                        <div className="flex justify-between text-[11px] text-[#737A73]">
+                        <div className="flex justify-between text-[11px] text-[#6A6678]">
                           <span>{q.minWords ? `Minimum required: ${q.minWords} words` : 'Reflection depth encouraged'}</span>
                           <span>
                             {(answers[q.id] || '').length} characters • {((answers[q.id] || '').trim().split(/\s+/).filter(Boolean)).length} words
@@ -1011,32 +1011,32 @@ export const StudentAssignmentDetailsPage = () => {
 
                 {/* File Upload Section (If configured for this assignment) */}
                 {assignment.supportsFileUpload && (
-                  <div className="p-5 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs space-y-3">
+                  <div className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs space-y-3">
                     <div className="flex items-start justify-between gap-2">
-                      <label className="text-xs sm:text-sm font-bold text-[#202923] flex items-center gap-1.5">
-                        <Paperclip className="w-4 h-4 text-[#193F30]" />
+                      <label className="text-xs sm:text-sm font-bold text-[#1b1831] flex items-center gap-1.5">
+                        <Paperclip className="w-4 h-4 text-primary" />
                         <span>Supporting Document Attachment (Optional)</span>
                       </label>
-                      <span className="text-[10px] uppercase font-bold text-[#737A73] bg-white px-2 py-0.5 rounded-md border border-black/20">
+                      <span className="text-[10px] uppercase font-bold text-[#6A6678] bg-white px-2 py-0.5 rounded-md border border-[#E6DEFF]">
                         Max 5MB
                       </span>
                     </div>
 
-                    <p className="text-xs text-[#737A73]">
+                    <p className="text-xs text-[#6A6678]">
                       Upload your supplementary worksheet, mind map, or written reflection (PDF, DOCX, PNG, JPG).
                     </p>
 
                     {attachedFile ? (
-                      <div className="p-3.5 rounded-xl bg-white border border-black/30 flex items-center justify-between gap-3 shadow-2xs">
+                      <div className="p-3.5 rounded-xl bg-white border border-[#E6DEFF] flex items-center justify-between gap-3 shadow-2xs">
                         <div className="flex items-center gap-2.5 overflow-hidden">
-                          <div className="w-8 h-8 rounded-lg bg-[#EDF2EC] text-[#193F30] border border-black/20 flex items-center justify-center shrink-0">
+                          <div className="w-8 h-8 rounded-lg bg-[#EBE5FF] text-primary border border-[#E6DEFF] flex items-center justify-center shrink-0">
                             <FileCheck className="w-4 h-4" />
                           </div>
                           <div className="overflow-hidden">
-                            <span className="text-xs font-bold text-[#202923] block truncate">
+                            <span className="text-xs font-bold text-[#1b1831] block truncate">
                               {attachedFile.name}
                             </span>
-                            <span className="text-[10px] text-[#737A73]">
+                            <span className="text-[10px] text-[#6A6678]">
                               {attachedFile.formattedSize || `${Math.round(attachedFile.size / 1024)} KB`}
                             </span>
                           </div>
@@ -1056,10 +1056,10 @@ export const StudentAssignmentDetailsPage = () => {
                     ) : (
                       !isLocked && (
                         <div>
-                          <label className="p-6 rounded-2xl border-2 border-dashed border-black/30 hover:border-black/50 bg-white transition-all flex flex-col items-center justify-center gap-2 cursor-pointer text-center shadow-2xs">
-                            <UploadCloud className="w-7 h-7 text-[#193F30]" />
-                            <span className="text-xs font-bold text-[#202923]">Click to select a file or drag & drop</span>
-                            <span className="text-[10px] text-[#737A73]">PDF, DOCX, PNG, JPG up to 5 MB</span>
+                          <label className="p-6 rounded-2xl border-2 border-dashed border-[#E6DEFF] hover:border-primary/40 bg-white transition-all flex flex-col items-center justify-center gap-2 cursor-pointer text-center shadow-2xs">
+                            <UploadCloud className="w-7 h-7 text-primary" />
+                            <span className="text-xs font-bold text-[#1b1831]">Click to select a file or drag & drop</span>
+                            <span className="text-[10px] text-[#6A6678]">PDF, DOCX, PNG, JPG up to 5 MB</span>
                             <input
                               type="file"
                               accept=".pdf,.docx,.doc,.png,.jpg,.jpeg"
@@ -1084,12 +1084,12 @@ export const StudentAssignmentDetailsPage = () => {
               {/* ─────────────────────────────────────────────────────────────
                   ACTIONS TOOLBAR (Permitted by Current Status)
                   ───────────────────────────────────────────────────────────── */}
-              <div className="pt-4 border-t border-black/20 flex flex-wrap items-center justify-between gap-3">
+              <div className="pt-4 border-t border-[#E6DEFF] flex flex-wrap items-center justify-between gap-3">
                 <div className="flex flex-wrap items-center gap-2">
                   <button
                     type="button"
                     onClick={handleBackNavigation}
-                    className="py-2 px-3.5 rounded-full text-xs font-semibold text-[#202923] hover:text-black bg-white border border-black/30 hover:border-black/50 hover:bg-[#F8F7F2] transition-all cursor-pointer shadow-xs whitespace-nowrap inline-flex items-center gap-1.5"
+                    className="py-2 px-3.5 rounded-full text-xs font-semibold text-[#1b1831] hover:text-black bg-white border border-[#E6DEFF] hover:border-primary/40 hover:bg-[#FCF8FF] transition-all cursor-pointer shadow-xs whitespace-nowrap inline-flex items-center gap-1.5"
                   >
                     <span>Cancel / Back</span>
                   </button>
@@ -1100,13 +1100,13 @@ export const StudentAssignmentDetailsPage = () => {
                       type="button"
                       onClick={handleSaveProgress}
                       disabled={isSavingDraft}
-                      className="py-2 px-3.5 rounded-full text-xs font-semibold text-[#202923] bg-[#F1EDE2] hover:bg-[#E5E0D5] border border-black/30 hover:border-black/50 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap disabled:opacity-50"
+                      className="py-2 px-3.5 rounded-full text-xs font-semibold text-[#1b1831] bg-[#F3EFFF] hover:bg-[#E6DEFF] border border-[#E6DEFF] hover:border-primary/40 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap disabled:opacity-50"
                       title="Save your work on the server without submitting"
                     >
                       {isSavingDraft ? (
-                        <Loader2 className="w-3.5 h-3.5 animate-spin text-[#193F30]" />
+                        <Loader2 className="w-3.5 h-3.5 animate-spin text-primary" />
                       ) : (
-                        <Save className="w-3.5 h-3.5 text-[#193F30]" />
+                        <Save className="w-3.5 h-3.5 text-primary" />
                       )}
                       <span>{isSavingDraft ? 'Saving Draft...' : 'Save Progress'}</span>
                     </button>
@@ -1119,7 +1119,7 @@ export const StudentAssignmentDetailsPage = () => {
                     <button
                       type="button"
                       onClick={handleStartAssignment}
-                      className="py-2 px-5 rounded-full text-xs font-bold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 hover:border-black/50 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap"
+                      className="py-2 px-5 rounded-full text-xs font-bold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] hover:border-primary/40 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap"
                     >
                       <Play className="w-3.5 h-3.5 fill-white" />
                       <span>Start Assignment</span>
@@ -1131,7 +1131,7 @@ export const StudentAssignmentDetailsPage = () => {
                     <button
                       type="button"
                       onClick={handleOpenReviewModal}
-                      className="py-2 px-5 rounded-full text-xs font-bold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 hover:border-black/50 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap"
+                      className="py-2 px-5 rounded-full text-xs font-bold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] hover:border-primary/40 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap"
                     >
                       <Send className="w-3.5 h-3.5" />
                       <span>{assignment.status === 'Needs Revision' ? 'Review & Resubmit' : 'Review & Submit'}</span>
@@ -1143,9 +1143,9 @@ export const StudentAssignmentDetailsPage = () => {
                     <button
                       type="button"
                       onClick={() => setActiveTab('submission')}
-                      className="py-2 px-3.5 rounded-full text-xs font-semibold text-[#202923] bg-white border border-black/30 hover:border-black/50 hover:bg-[#F8F7F2] transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap"
+                      className="py-2 px-3.5 rounded-full text-xs font-semibold text-[#1b1831] bg-white border border-[#E6DEFF] hover:border-primary/40 hover:bg-[#FCF8FF] transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap"
                     >
-                      <Eye className="w-3.5 h-3.5 text-[#193F30]" />
+                      <Eye className="w-3.5 h-3.5 text-primary" />
                       <span>View Submission</span>
                     </button>
                   )}
@@ -1155,9 +1155,9 @@ export const StudentAssignmentDetailsPage = () => {
                     <button
                       type="button"
                       onClick={() => setActiveTab('feedback')}
-                      className="py-2 px-3.5 rounded-full text-xs font-semibold text-[#193F30] bg-[#EDF2EC] hover:bg-[#E5E0D5] border border-black/30 hover:border-black/50 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap"
+                      className="py-2 px-3.5 rounded-full text-xs font-semibold text-primary bg-[#EBE5FF] hover:bg-[#E6DEFF] border border-[#E6DEFF] hover:border-primary/40 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap"
                     >
-                      <MessageSquare className="w-3.5 h-3.5 text-[#193F30]" />
+                      <MessageSquare className="w-3.5 h-3.5 text-primary" />
                       <span>View Feedback</span>
                     </button>
                   )}
@@ -1174,16 +1174,16 @@ export const StudentAssignmentDetailsPage = () => {
           5. TAB 2: VIEW PREVIOUS SUBMISSION
           ───────────────────────────────────────────────────────────── */}
       {activeTab === 'submission' && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 hover:border-black/50 transition-all shadow-xs space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-black/20">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] hover:border-primary/40 transition-all shadow-xs space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#E6DEFF]">
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-blue-800 bg-blue-100 px-2.5 py-0.5 rounded-full border border-black/20">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-blue-800 bg-blue-100 px-2.5 py-0.5 rounded-full border border-[#E6DEFF]">
                 Recorded Submission
               </span>
-              <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#202923] mt-1">
+              <h2 className=" text-xl sm:text-2xl font-bold text-[#1b1831] mt-1">
                 Student Submission Record
               </h2>
-              <p className="text-xs text-[#737A73]">
+              <p className="text-xs text-[#6A6678]">
                 Timestamped answers submitted to mentor Sarah Jenkins.
               </p>
             </div>
@@ -1193,7 +1193,7 @@ export const StudentAssignmentDetailsPage = () => {
                 <button
                   type="button"
                   onClick={() => setActiveTab('assignment')}
-                  className="py-2 px-4 rounded-full text-xs font-semibold text-[#193F30] bg-[#EDF2EC] hover:bg-[#E5E0D5] border border-black/30 hover:border-black/50 transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                  className="py-2 px-4 rounded-full text-xs font-semibold text-primary bg-[#EBE5FF] hover:bg-[#E6DEFF] border border-[#E6DEFF] hover:border-primary/40 transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>Continue Assignment</span>
@@ -1202,36 +1202,36 @@ export const StudentAssignmentDetailsPage = () => {
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-[#737A73] pb-3 border-b border-black/20">
+          <div className="p-5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-[#6A6678] pb-3 border-b border-[#E6DEFF]">
               <div>
-                <span className="block text-[10px] uppercase font-bold text-[#737A73]">Status</span>
-                <strong className="text-[#193F30] font-bold text-sm">{assignment.status}</strong>
+                <span className="block text-[10px] uppercase font-bold text-[#6A6678]">Status</span>
+                <strong className="text-primary font-bold text-sm">{assignment.status}</strong>
               </div>
               <div>
-                <span className="block text-[10px] uppercase font-bold text-[#737A73]">Submitted Date & Time</span>
-                <strong className="text-[#202923] font-semibold">{assignment.submission?.submittedAt || 'Recorded'}</strong>
+                <span className="block text-[10px] uppercase font-bold text-[#6A6678]">Submitted Date & Time</span>
+                <strong className="text-[#1b1831] font-semibold">{assignment.submission?.submittedAt || 'Recorded'}</strong>
               </div>
               <div>
-                <span className="block text-[10px] uppercase font-bold text-[#737A73]">Submission Version</span>
-                <strong className="text-[#202923] font-semibold">Version {assignment.submission?.version || 1}</strong>
+                <span className="block text-[10px] uppercase font-bold text-[#6A6678]">Submission Version</span>
+                <strong className="text-[#1b1831] font-semibold">Version {assignment.submission?.version || 1}</strong>
               </div>
             </div>
 
             {/* Activity Confirmation Status */}
-            <div className="p-3.5 rounded-xl bg-white border border-black/30 flex items-center gap-2.5 text-xs text-[#193F30] font-semibold shadow-2xs">
-              <CheckCircle2 className="w-4 h-4 text-[#193F30] shrink-0" />
+            <div className="p-3.5 rounded-xl bg-white border border-[#E6DEFF] flex items-center gap-2.5 text-xs text-primary font-semibold shadow-2xs">
+              <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
               <span>Activity Steps Confirmed Completed</span>
             </div>
 
             {/* Attached File if present */}
             {assignment.submission?.attachedFile && (
-              <div className="p-3.5 rounded-xl bg-white border border-black/30 flex items-center justify-between gap-3 text-xs shadow-2xs">
+              <div className="p-3.5 rounded-xl bg-white border border-[#E6DEFF] flex items-center justify-between gap-3 text-xs shadow-2xs">
                 <div className="flex items-center gap-2.5 overflow-hidden">
-                  <FileCheck className="w-4 h-4 text-[#193F30] shrink-0" />
+                  <FileCheck className="w-4 h-4 text-primary shrink-0" />
                   <div className="overflow-hidden">
-                    <span className="font-bold text-[#202923] block truncate">{assignment.submission.attachedFile.name}</span>
-                    <span className="text-[10px] text-[#737A73]">{assignment.submission.attachedFile.formattedSize || 'Attached Document'}</span>
+                    <span className="font-bold text-[#1b1831] block truncate">{assignment.submission.attachedFile.name}</span>
+                    <span className="text-[10px] text-[#6A6678]">{assignment.submission.attachedFile.formattedSize || 'Attached Document'}</span>
                   </div>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-300">
@@ -1242,8 +1242,8 @@ export const StudentAssignmentDetailsPage = () => {
 
             {/* Submitted Answers Display */}
             <div className="space-y-3 pt-2">
-              <span className="text-xs font-bold text-[#202923] block">Submitted Answers:</span>
-              <div className="p-4 rounded-xl bg-white border border-black/30 text-xs sm:text-sm text-[#202923] whitespace-pre-wrap leading-relaxed shadow-2xs">
+              <span className="text-xs font-bold text-[#1b1831] block">Submitted Answers:</span>
+              <div className="p-4 rounded-xl bg-white border border-[#E6DEFF] text-xs sm:text-sm text-[#1b1831] whitespace-pre-wrap leading-relaxed shadow-2xs">
                 {assignment.submission?.content || 'No text content submitted.'}
               </div>
             </div>
@@ -1255,16 +1255,16 @@ export const StudentAssignmentDetailsPage = () => {
           6. TAB 3: VIEW MENTOR FEEDBACK
           ───────────────────────────────────────────────────────────── */}
       {activeTab === 'feedback' && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/30 hover:border-black/50 transition-all shadow-xs space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-black/20">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DEFF] hover:border-primary/40 transition-all shadow-xs space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#E6DEFF]">
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full border border-black/20">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full border border-[#E6DEFF]">
                 Advisory Feedback
               </span>
-              <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#202923] mt-1">
+              <h2 className=" text-xl sm:text-2xl font-bold text-[#1b1831] mt-1">
                 Mentor Guidance & Review Notes
               </h2>
-              <p className="text-xs text-[#737A73]">
+              <p className="text-xs text-[#6A6678]">
                 Constructive feedback to guide your personal mastery.
               </p>
             </div>
@@ -1272,7 +1272,7 @@ export const StudentAssignmentDetailsPage = () => {
             <div className="flex items-center gap-2 self-start sm:self-auto">
               <Link
                 to={`/child/assignments/${assignment.id}/feedback`}
-                className="py-2 px-4 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 hover:border-black/50 transition-colors flex items-center gap-1.5 shadow-xs"
+                className="py-2 px-4 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] hover:border-primary/40 transition-colors flex items-center gap-1.5 shadow-xs"
               >
                 <span>Full Status & Feedback Page</span>
                 <ArrowLeft className="w-3.5 h-3.5 rotate-180" />
@@ -1280,7 +1280,7 @@ export const StudentAssignmentDetailsPage = () => {
               <button
                 type="button"
                 onClick={() => setActiveTab('assignment')}
-                className="py-2 px-4 rounded-full text-xs font-semibold text-[#193F30] bg-[#EDF2EC] hover:bg-[#E5E0D5] border border-black/30 hover:border-black/50 transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                className="py-2 px-4 rounded-full text-xs font-semibold text-primary bg-[#EBE5FF] hover:bg-[#E6DEFF] border border-[#E6DEFF] hover:border-primary/40 transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
               >
                 <span>Back to Editor</span>
                 <ArrowLeft className="w-3.5 h-3.5 rotate-180" />
@@ -1289,21 +1289,21 @@ export const StudentAssignmentDetailsPage = () => {
           </div>
 
           {assignment.feedback ? (
-            <div className="p-6 rounded-2xl bg-[#F1EDE2]/60 border border-black/30 shadow-2xs space-y-4">
+            <div className="p-6 rounded-2xl bg-[#F3EFFF]/60 border border-[#E6DEFF] shadow-2xs space-y-4">
               <div className="flex items-center justify-between text-xs">
                 <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-[#193F30] text-white flex items-center justify-center font-bold text-xs shadow-2xs">
+                  <div className="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs shadow-2xs">
                     SJ
                   </div>
                   <div>
-                    <strong className="text-[#202923] block">{assignment.feedback.author}</strong>
-                    <span className="text-[10px] text-[#737A73]">Verified Family & Leadership Mentor</span>
+                    <strong className="text-[#1b1831] block">{assignment.feedback.author}</strong>
+                    <span className="text-[10px] text-[#6A6678]">Verified Family & Leadership Mentor</span>
                   </div>
                 </div>
-                <span className="text-xs text-[#737A73]">{assignment.feedback.date}</span>
+                <span className="text-xs text-[#6A6678]">{assignment.feedback.date}</span>
               </div>
 
-              <div className="p-4 rounded-xl bg-white border border-black/30 text-xs sm:text-sm text-[#202923] leading-relaxed italic shadow-2xs">
+              <div className="p-4 rounded-xl bg-white border border-[#E6DEFF] text-xs sm:text-sm text-[#1b1831] leading-relaxed italic shadow-2xs">
                 "{assignment.feedback.comment}"
               </div>
 
@@ -1313,7 +1313,7 @@ export const StudentAssignmentDetailsPage = () => {
                   <button
                     type="button"
                     onClick={() => setActiveTab('assignment')}
-                    className="py-2 px-4 rounded-full bg-rose-800 text-white font-bold hover:bg-rose-900 border border-black/30 transition-colors shrink-0 cursor-pointer flex items-center gap-1.5 shadow-xs"
+                    className="py-2 px-4 rounded-full bg-rose-800 text-white font-bold hover:bg-rose-900 border border-[#E6DEFF] transition-colors shrink-0 cursor-pointer flex items-center gap-1.5 shadow-xs"
                   >
                     <Play className="w-3 h-3 fill-white" />
                     <span>Continue Assignment</span>
@@ -1322,7 +1322,7 @@ export const StudentAssignmentDetailsPage = () => {
               )}
             </div>
           ) : (
-            <div className="p-8 text-center text-xs text-[#737A73] rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs">
+            <div className="p-8 text-center text-xs text-[#6A6678] rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs">
               No feedback recorded yet. Your mentor will provide guidance after reviewing your submission.
             </div>
           )}
@@ -1334,44 +1334,44 @@ export const StudentAssignmentDetailsPage = () => {
           ───────────────────────────────────────────────────────────── */}
       {showReviewModal && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
-          <div className="w-full max-w-2xl bg-white rounded-3xl border border-black/30 shadow-2xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto no-scrollbar">
+          <div className="w-full max-w-2xl bg-white rounded-3xl border border-[#E6DEFF] shadow-2xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto no-scrollbar">
             
-            <div className="flex items-center justify-between pb-3 border-b border-black/20">
+            <div className="flex items-center justify-between pb-3 border-b border-[#E6DEFF]">
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#193F30] bg-[#EDF2EC] px-2.5 py-0.5 rounded-full border border-black/20">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-primary bg-[#EBE5FF] px-2.5 py-0.5 rounded-full border border-[#E6DEFF]">
                   Step 6 of 8: Review Responses
                 </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#202923] mt-1">
+                <h3 className=" text-xl sm:text-2xl font-bold text-[#1b1831] mt-1">
                   Review Your Submission
                 </h3>
-                <p className="text-xs text-[#737A73]">
+                <p className="text-xs text-[#6A6678]">
                   Verify your answers before final submission to mentor Sarah Jenkins.
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => setShowReviewModal(false)}
-                className="p-1 rounded-full text-[#737A73] hover:text-black cursor-pointer"
+                className="p-1 rounded-full text-[#6A6678] hover:text-black cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* Activity Confirmation Status */}
-            <div className="p-3.5 rounded-2xl bg-[#EDF2EC] border border-black/30 flex items-center gap-2.5 text-xs text-[#193F30] font-semibold shadow-2xs">
-              <CheckCircle2 className="w-4 h-4 text-[#193F30] shrink-0" />
+            <div className="p-3.5 rounded-2xl bg-[#EBE5FF] border border-[#E6DEFF] flex items-center gap-2.5 text-xs text-primary font-semibold shadow-2xs">
+              <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
               <span>Activity Steps Completed & Confirmed</span>
             </div>
 
             {/* Questions Review */}
             <div className="space-y-4">
               {(assignment.requiredQuestions || []).map((q, idx) => (
-                <div key={q.id} className="p-4 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs space-y-1.5 text-xs">
-                  <div className="font-bold text-[#202923] flex items-center justify-between">
+                <div key={q.id} className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs space-y-1.5 text-xs">
+                  <div className="font-bold text-[#1b1831] flex items-center justify-between">
                     <span>Q{idx + 1}. {q.title}</span>
-                    <span className="text-[10px] text-[#737A73] uppercase">{q.type.replace('_', ' ')}</span>
+                    <span className="text-[10px] text-[#6A6678] uppercase">{q.type.replace('_', ' ')}</span>
                   </div>
-                  <div className="p-3 rounded-xl bg-white border border-black/30 text-[#202923] whitespace-pre-wrap leading-relaxed shadow-2xs">
+                  <div className="p-3 rounded-xl bg-white border border-[#E6DEFF] text-[#1b1831] whitespace-pre-wrap leading-relaxed shadow-2xs">
                     {answers[q.id] || <span className="text-rose-600 italic">No answer provided</span>}
                   </div>
                 </div>
@@ -1379,23 +1379,23 @@ export const StudentAssignmentDetailsPage = () => {
 
               {/* Attached file review if present */}
               {attachedFile && (
-                <div className="p-4 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs space-y-1.5 text-xs">
-                  <span className="font-bold text-[#202923] block">Attached Supporting Document</span>
-                  <div className="p-3 rounded-xl bg-white border border-black/30 flex items-center gap-2.5 text-[#202923] shadow-2xs">
-                    <FileCheck className="w-4 h-4 text-[#193F30]" />
+                <div className="p-4 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs space-y-1.5 text-xs">
+                  <span className="font-bold text-[#1b1831] block">Attached Supporting Document</span>
+                  <div className="p-3 rounded-xl bg-white border border-[#E6DEFF] flex items-center gap-2.5 text-[#1b1831] shadow-2xs">
+                    <FileCheck className="w-4 h-4 text-primary" />
                     <span className="font-medium truncate">{attachedFile.name}</span>
-                    <span className="text-[10px] text-[#737A73]">({attachedFile.formattedSize})</span>
+                    <span className="text-[10px] text-[#6A6678]">({attachedFile.formattedSize})</span>
                   </div>
                 </div>
               )}
             </div>
 
             {/* Review Modal Actions */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-black/20">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-[#E6DEFF]">
               <button
                 type="button"
                 onClick={() => setShowReviewModal(false)}
-                className="w-full sm:w-auto py-2.5 px-5 rounded-full text-xs font-semibold text-[#202923] hover:text-black bg-white border border-black/30 hover:border-black/50 hover:bg-[#F8F7F2] transition-colors cursor-pointer shadow-xs"
+                className="w-full sm:w-auto py-2.5 px-5 rounded-full text-xs font-semibold text-[#1b1831] hover:text-black bg-white border border-[#E6DEFF] hover:border-primary/40 hover:bg-[#FCF8FF] transition-colors cursor-pointer shadow-xs"
               >
                 Back to Editing
               </button>
@@ -1406,7 +1406,7 @@ export const StudentAssignmentDetailsPage = () => {
                   setShowReviewModal(false);
                   setShowConfirmModal(true);
                 }}
-                className="w-full sm:w-auto py-2.5 px-6 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 hover:border-black/50 transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-xs"
+                className="w-full sm:w-auto py-2.5 px-6 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] hover:border-primary/40 transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-xs"
               >
                 <span>Proceed to Confirmation</span>
                 <ArrowLeft className="w-3.5 h-3.5 rotate-180" />
@@ -1422,42 +1422,42 @@ export const StudentAssignmentDetailsPage = () => {
           ───────────────────────────────────────────────────────────── */}
       {showConfirmModal && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
-          <div className="w-full max-w-md bg-white rounded-3xl border border-black/30 shadow-2xl p-6 sm:p-7 space-y-5">
-            <div className="w-12 h-12 rounded-full bg-[#EDF2EC] text-[#193F30] flex items-center justify-center mx-auto border border-black/20 shadow-2xs">
-              <Send className="w-6 h-6 ml-0.5 text-[#193F30]" />
+          <div className="w-full max-w-md bg-white rounded-3xl border border-[#E6DEFF] shadow-2xl p-6 sm:p-7 space-y-5">
+            <div className="w-12 h-12 rounded-full bg-[#EBE5FF] text-primary flex items-center justify-center mx-auto border border-[#E6DEFF] shadow-2xs">
+              <Send className="w-6 h-6 ml-0.5 text-primary" />
             </div>
 
             <div className="text-center space-y-2">
-              <h3 className="font-serif text-xl font-bold text-[#202923]">
+              <h3 className=" text-xl font-bold text-[#1b1831]">
                 {assignment.status === 'Needs Revision' ? 'Confirm Revision Resubmission' : 'Confirm Assignment Submission'}
               </h3>
-              <p className="text-xs text-[#737A73] leading-relaxed">
+              <p className="text-xs text-[#6A6678] leading-relaxed">
                 Once submitted, your answers will be securely transmitted to the server and locked for mentor review.
                 Resubmission will only be permitted if your mentor requests revisions.
               </p>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-[#F8F7F2] border border-black/30 shadow-2xs text-xs space-y-1 text-[#202923]">
+            <div className="p-3.5 rounded-2xl bg-[#FCF8FF] border border-[#E6DEFF] shadow-2xs text-xs space-y-1 text-[#1b1831]">
               <div className="flex justify-between">
-                <span className="text-[#737A73]">Student:</span>
+                <span className="text-[#6A6678]">Student:</span>
                 <span className="font-bold">{activeChild?.name || 'Alex Parker'}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#737A73]">Submission Target:</span>
+                <span className="text-[#6A6678]">Submission Target:</span>
                 <span className="font-semibold">Mentor Sarah Jenkins</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#737A73]">Security:</span>
+                <span className="text-[#6A6678]">Security:</span>
                 <span className="font-semibold text-emerald-800">Server Authorized</span>
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-2 pt-2 border-t border-black/20">
+            <div className="flex items-center justify-center gap-2 pt-2 border-t border-[#E6DEFF]">
               <button
                 type="button"
                 onClick={() => setShowConfirmModal(false)}
                 disabled={isSubmitting}
-                className="py-2.5 px-4 rounded-full text-xs font-semibold text-[#202923] hover:text-black bg-white border border-black/30 hover:border-black/50 hover:bg-[#F1EDE2] transition-colors cursor-pointer shadow-xs disabled:opacity-50"
+                className="py-2.5 px-4 rounded-full text-xs font-semibold text-[#1b1831] hover:text-black bg-white border border-[#E6DEFF] hover:border-primary/40 hover:bg-[#F3EFFF] transition-colors cursor-pointer shadow-xs disabled:opacity-50"
               >
                 Back to Review
               </button>
@@ -1465,7 +1465,7 @@ export const StudentAssignmentDetailsPage = () => {
                 type="button"
                 onClick={handleFinalSubmit}
                 disabled={isSubmitting}
-                className="py-2.5 px-6 rounded-full text-xs font-semibold text-white bg-[#193F30] hover:bg-[#204936] border border-black/30 hover:border-black/50 transition-colors flex items-center gap-2 cursor-pointer shadow-xs disabled:opacity-50"
+                className="py-2.5 px-6 rounded-full text-xs font-semibold text-white bg-primary hover:bg-primary-container border border-[#E6DEFF] hover:border-primary/40 transition-colors flex items-center gap-2 cursor-pointer shadow-xs disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>
@@ -1489,30 +1489,30 @@ export const StudentAssignmentDetailsPage = () => {
           ───────────────────────────────────────────────────────────── */}
       {showUnsavedModal && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
-          <div className="w-full max-w-md bg-white rounded-3xl border border-black/30 shadow-2xl p-6 sm:p-7 space-y-4">
+          <div className="w-full max-w-md bg-white rounded-3xl border border-[#E6DEFF] shadow-2xl p-6 sm:p-7 space-y-4">
             <div className="w-12 h-12 rounded-full bg-amber-50 text-amber-700 flex items-center justify-center mx-auto border border-amber-300 shadow-2xs">
               <AlertTriangle className="w-6 h-6" />
             </div>
 
             <div className="text-center space-y-1.5">
-              <h3 className="font-serif text-lg font-bold text-[#202923]">Discard Unsaved Changes?</h3>
-              <p className="text-xs text-[#737A73] leading-relaxed">
+              <h3 className=" text-lg font-bold text-[#1b1831]">Discard Unsaved Changes?</h3>
+              <p className="text-xs text-[#6A6678] leading-relaxed">
                 You have unsaved changes in your assignment draft. If you leave now without saving, your modifications will be lost.
               </p>
             </div>
 
-            <div className="flex items-center justify-center gap-2 pt-2 border-t border-black/20">
+            <div className="flex items-center justify-center gap-2 pt-2 border-t border-[#E6DEFF]">
               <button
                 type="button"
                 onClick={() => setShowUnsavedModal(false)}
-                className="py-2.5 px-4 rounded-full text-xs font-semibold text-[#202923] hover:text-black bg-white border border-black/30 hover:border-black/50 hover:bg-[#F1EDE2] transition-colors cursor-pointer shadow-xs"
+                className="py-2.5 px-4 rounded-full text-xs font-semibold text-[#1b1831] hover:text-black bg-white border border-[#E6DEFF] hover:border-primary/40 hover:bg-[#F3EFFF] transition-colors cursor-pointer shadow-xs"
               >
                 Keep Editing
               </button>
               <button
                 type="button"
                 onClick={confirmDiscardChanges}
-                className="py-2.5 px-5 rounded-full text-xs font-semibold text-white bg-rose-700 hover:bg-rose-800 border border-black/30 hover:border-black/50 transition-colors cursor-pointer shadow-xs"
+                className="py-2.5 px-5 rounded-full text-xs font-semibold text-white bg-rose-700 hover:bg-rose-800 border border-[#E6DEFF] hover:border-primary/40 transition-colors cursor-pointer shadow-xs"
               >
                 Discard & Leave
               </button>

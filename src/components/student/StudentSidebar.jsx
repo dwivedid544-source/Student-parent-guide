@@ -55,27 +55,27 @@ export const StudentSidebar = ({ isOpen, onClose, onOpenExitParent, collapsed = 
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed lg:sticky top-0 left-0 z-50 h-screen bg-[#F8F7F2] border-r border-black/40 flex flex-col justify-between transition-all duration-300 ease-in-out shrink-0
+        className={`fixed lg:sticky top-0 left-0 z-50 h-screen bg-white/85 backdrop-blur-xl border-r border-[#E6DEFF] flex flex-col justify-between transition-all duration-300 ease-in-out shrink-0
           ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
           ${collapsed ? 'w-20' : 'w-64 sm:w-72'}
         `}
       >
         {/* Top Header / Branding */}
-        <div className="h-16 px-4 sm:px-5 flex items-center justify-between bg-[#F8F7F2]">
+        <div className="h-16 px-4 sm:px-5 flex items-center justify-between bg-transparent">
           <Link
             to="/child/dashboard"
             onClick={onClose}
             className="flex items-center gap-2.5 group overflow-hidden"
           >
-            <div className="w-9 h-9 rounded-full bg-[#193F30] text-white flex items-center justify-center shrink-0 shadow-sm group-hover:bg-[#204936] transition-colors">
-              <Compass className="w-5 h-5 text-[#EDF2EC]" />
+            <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-primary to-primary-container text-white flex items-center justify-center shrink-0 shadow-md shadow-primary/25 group-hover:scale-105 transition-transform">
+              <Compass className="w-5 h-5 text-white" />
             </div>
             {!collapsed && (
               <div className="flex flex-col">
-                <span className="font-serif text-xl font-bold tracking-tight text-[#202923] leading-none">
+                <span className="text-xl font-extrabold tracking-tight text-[#1b1831] leading-none">
                   HighOrbit
                 </span>
-                <span className="text-[10px] uppercase tracking-wider font-semibold text-[#737A73] mt-1">
+                <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-1">
                   Student Sanctuary
                 </span>
               </div>
@@ -86,7 +86,7 @@ export const StudentSidebar = ({ isOpen, onClose, onOpenExitParent, collapsed = 
           <button
             type="button"
             onClick={onClose}
-            className="lg:hidden p-1.5 rounded-lg text-[#737A73] hover:text-[#202923] hover:bg-[#E5E0D5] transition-colors"
+            className="lg:hidden p-1.5 rounded-lg text-[#6A6678] hover:text-[#1b1831] hover:bg-[#F3EFFF] transition-colors"
             aria-label="Close navigation"
           >
             <X className="w-5 h-5" />
@@ -96,7 +96,7 @@ export const StudentSidebar = ({ isOpen, onClose, onOpenExitParent, collapsed = 
         {/* Navigation Items List */}
         <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1 no-scrollbar">
           {!collapsed && (
-            <div className="px-3 pb-2 text-[11px] font-semibold tracking-wider uppercase text-[#737A73]">
+            <div className="px-3 pb-2 text-[11px] font-semibold tracking-wider uppercase text-[#6A6678]">
               Workspace
             </div>
           )}
@@ -112,8 +112,8 @@ export const StudentSidebar = ({ isOpen, onClose, onOpenExitParent, collapsed = 
                 className={({ isActive }) => `
                   flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all group relative
                   ${isActive
-                    ? 'bg-[#193F30] text-white font-semibold shadow-xs'
-                    : 'text-[#202923] hover:bg-[#EDF2EC] hover:text-[#193F30]'
+                    ? 'bg-gradient-to-r from-primary to-primary-container text-white font-semibold shadow-md shadow-primary/25'
+                    : 'text-[#484552] hover:bg-[#F3EFFF] hover:text-primary'
                   }
                   ${collapsed ? 'justify-center' : ''}
                 `}
@@ -122,7 +122,7 @@ export const StudentSidebar = ({ isOpen, onClose, onOpenExitParent, collapsed = 
                   <>
                     <Icon
                       className={`w-4 h-4 shrink-0 transition-colors ${
-                        isActive ? 'text-white' : 'text-[#737A73] group-hover:text-[#193F30]'
+                        isActive ? 'text-white' : 'text-[#7c788a] group-hover:text-primary'
                       }`}
                     />
 
@@ -134,8 +134,8 @@ export const StudentSidebar = ({ isOpen, onClose, onOpenExitParent, collapsed = 
                       <span
                         className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
                           isActive
-                            ? 'bg-[#9CCDB0] text-[#193F30]'
-                            : 'bg-[#193F30] text-white'
+                            ? 'bg-white/25 text-white'
+                            : 'bg-primary/10 text-primary'
                         }`}
                       >
                         {item.badge}
@@ -143,7 +143,7 @@ export const StudentSidebar = ({ isOpen, onClose, onOpenExitParent, collapsed = 
                     )}
 
                     {collapsed && item.badge > 0 && (
-                      <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#193F30]" />
+                      <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary" />
                     )}
                   </>
                 )}
@@ -153,18 +153,18 @@ export const StudentSidebar = ({ isOpen, onClose, onOpenExitParent, collapsed = 
         </nav>
 
         {/* Bottom Section: Active Student Card & Parent Exit */}
-        <div className="p-3 border-t border-black/40 space-y-2 bg-[#F8F7F2]">
+        <div className="p-3 border-t border-[#E6DEFF] space-y-2 bg-transparent">
           {!collapsed ? (
-            <div className="p-2.5 rounded-2xl bg-white border border-black/30 hover:border-black/50 flex items-center justify-between gap-2 shadow-xs transition-all">
+            <div className="p-2.5 rounded-2xl bg-white border border-[#E6DEFF] hover:border-black/50 flex items-center justify-between gap-2 shadow-xs transition-all">
               <div className="flex items-center gap-2.5 overflow-hidden">
-                <div className="w-8 h-8 rounded-full bg-[#EDF2EC] text-[#193F30] border border-black/20 flex items-center justify-center font-bold text-xs shrink-0">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-primary-container text-white border border-[#E6DEFF] flex items-center justify-center font-bold text-xs shrink-0">
                   {activeChild?.nickname?.charAt(0) || activeChild?.name?.charAt(0) || 'S'}
                 </div>
                 <div className="flex flex-col overflow-hidden">
-                  <span className="text-xs font-bold text-[#202923] truncate">
+                  <span className="text-xs font-bold text-[#1b1831] truncate">
                     {activeChild?.nickname || activeChild?.name || 'Explorer'}
                   </span>
-                  <span className="text-[10px] text-[#737A73] truncate">
+                  <span className="text-[10px] text-[#6A6678] truncate">
                     Student Active
                   </span>
                 </div>
@@ -173,20 +173,20 @@ export const StudentSidebar = ({ isOpen, onClose, onOpenExitParent, collapsed = 
               <button
                 type="button"
                 onClick={onOpenExitParent}
-                className="p-1.5 rounded-lg text-[#737A73] hover:text-[#193F30] hover:bg-[#EDF2EC] transition-colors shrink-0"
+                className="p-1.5 rounded-lg text-[#6A6678] hover:text-primary hover:bg-[#F3EFFF] transition-colors shrink-0"
                 title="Exit to Parent Portal (PIN Protected)"
               >
-                <ShieldAlert className="w-4 h-4 text-[#193F30]" />
+                <ShieldAlert className="w-4 h-4 text-primary" />
               </button>
             </div>
           ) : (
             <button
               type="button"
               onClick={onOpenExitParent}
-              className="w-full py-2 flex justify-center text-[#737A73] hover:text-[#193F30]"
+              className="w-full py-2 flex justify-center text-[#6A6678] hover:text-primary"
               title="Parent Exit Gate"
             >
-              <ShieldAlert className="w-5 h-5 text-[#193F30]" />
+              <ShieldAlert className="w-5 h-5 text-primary" />
             </button>
           )}
 
@@ -194,9 +194,9 @@ export const StudentSidebar = ({ isOpen, onClose, onOpenExitParent, collapsed = 
             <button
               type="button"
               onClick={onOpenExitParent}
-              className="w-full py-2 px-3 rounded-xl text-[11px] font-semibold text-[#737A73] hover:text-[#193F30] hover:bg-[#EDF2EC] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+              className="w-full py-2 px-3 rounded-xl text-[11px] font-semibold text-[#6A6678] hover:text-primary hover:bg-[#F3EFFF] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
             >
-              <ShieldAlert className="w-3.5 h-3.5 text-[#193F30]" />
+              <ShieldAlert className="w-3.5 h-3.5 text-primary" />
               <span>Parent Control Gate</span>
             </button>
           )}

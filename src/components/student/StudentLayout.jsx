@@ -9,7 +9,14 @@ export const StudentLayout = ({ children }) => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   return (
-    <div className="h-screen w-full bg-[#F8F7F2] text-[#202923] font-sans flex overflow-hidden selection:bg-[#193F30] selection:text-white">
+    <div className="h-screen w-full bg-[#FCF8FF] text-[#1b1831] font-sans flex overflow-hidden selection:bg-primary selection:text-white relative">
+      
+      {/* Pastel Ambient Orbs */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+        <div className="absolute top-[-10%] right-[-5%] w-[550px] h-[550px] rounded-full bg-gradient-to-br from-primary-container/15 via-[#c9e6ff]/20 to-transparent blur-3xl" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-[550px] h-[550px] rounded-full bg-gradient-to-tr from-secondary-container/20 via-primary/10 to-transparent blur-3xl" />
+      </div>
+
       {/* 1. Left Sidebar - Permanently full height */}
       <StudentSidebar
         isOpen={mobileSidebarOpen}
@@ -33,7 +40,7 @@ export const StudentLayout = ({ children }) => {
           </main>
 
           {/* Calm HighOrbit Footer */}
-          <footer className="w-full py-4 text-center text-xs text-[#737A73] border-t border-black/40 bg-[#F8F7F2] shrink-0">
+          <footer className="w-full py-4 text-center text-xs text-[#6A6678] border-t border-[#E6DEFF] bg-white/60 backdrop-blur-md shrink-0">
             <span>HighOrbit Student Sanctuary • Mindful self-discovery & personal leadership</span>
           </footer>
         </div>
