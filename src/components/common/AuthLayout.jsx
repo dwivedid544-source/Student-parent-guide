@@ -12,7 +12,7 @@ export const AuthLayout = ({
   children,
 }) => {
   return (
-    <div className="relative min-h-screen lg:h-screen w-full flex flex-col justify-between bg-[#FCF8FF] text-on-surface font-sans selection:bg-primary selection:text-white overflow-x-hidden lg:overflow-hidden">
+    <div className="relative min-h-screen lg:h-screen w-full flex flex-col justify-between bg-[#FCF8FF] text-on-surface font-sans selection:bg-primary selection:text-white overflow-x-hidden overflow-y-auto lg:overflow-hidden">
       
       {/* Background Soft Gradients & Floating Pastel Depth Orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -42,7 +42,7 @@ export const AuthLayout = ({
       </header>
 
       {/* Main Two-Column Layout */}
-      <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-12 py-2 sm:py-3 flex items-center">
+      <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-10 py-2 sm:py-3 my-auto flex items-center justify-center">
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
           
           {/* Left Column: HighOrbit Welcome & Visual */}
@@ -81,7 +81,7 @@ export const AuthLayout = ({
             </div>
 
             {/* Editorial Highlight Card (Purple Gradient Quote Box) */}
-            <div className="p-4 sm:p-5 rounded-3xl bg-gradient-to-tr from-primary via-primary-container to-[#624bbc] text-white max-w-md shadow-xl shadow-primary/25 relative overflow-hidden border border-white/20">
+            <div className="p-3 sm:p-3.5 rounded-2xl bg-gradient-to-tr from-primary via-primary-container to-[#624bbc] text-white max-w-md shadow-lg shadow-primary/20 relative overflow-hidden border border-white/20">
               <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-white/10 blur-xl pointer-events-none" />
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFE28A] mb-1.5">
                 <ShieldCheck className="w-4 h-4 text-[#FFE28A]" />
@@ -110,7 +110,7 @@ export const AuthLayout = ({
             <div className="absolute -bottom-3 right-1/4 w-16 h-16 rounded-full bg-gradient-to-tr from-primary/25 to-white/70 blur-sm pointer-events-none z-0" />
 
             {/* The Main Frosted Glass Card */}
-            <div className="relative z-10 w-full max-w-md rounded-[36px] p-5 sm:p-7 highorbit-glass-card">
+            <div className="relative z-10 w-full max-w-[420px] rounded-[30px] p-5 sm:p-6 highorbit-glass-card shadow-xl">
               {cardTitle && (
                 <h2 className="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight mb-3">
                   {cardTitle}

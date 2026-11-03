@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ShieldCheck, Check, ArrowRight, Loader2 } from 'lucide-react';
+import { ShieldCheck, User, Check, ArrowRight, Loader2, Sparkles, KeyRound } from 'lucide-react';
 import { AuthLayout } from '../components/common/AuthLayout';
 import { FormInput } from '../components/common/FormInput';
 import { PrimaryButton } from '../components/common/PrimaryButton';
@@ -8,9 +8,13 @@ import { useOnboarding } from '../context/OnboardingContext';
 
 export const RegisterPage = () => {
   const navigate = useNavigate();
-  const { registerParent } = useOnboarding();
+  const { registerParent, registerStudent } = useOnboarding();
 
-  const [formData, setFormData] = useState({
+  // Active Role Tab: 'PARENT' | 'STUDENT'
+  const [activeTab, setActiveTab] = useState('PARENT');
+
+  // Parent Form State
+  const [parentFormData, setParentFormData] = useState({
     fullName: 'Sarah Jenkins',
     email: 'sarah.jenkins@gmail.com',
     password: '',
@@ -18,38 +22,25 @@ export const RegisterPage = () => {
     agreeTerms: true,
   });
 
+  // Student Form State
+  const [studentFormData, setStudentFormData] = useState({
+    fullName: 'Alex Parker',
+    email: 'alex.parker@college.edu',
+    grade: 'Grade 11 / College Prep',
+    password: '',
+    confirmPassword: '',
+    familyKey: '',
+    agreeTerms: true,
+  });
+
   const [errors, setErrors] = useState({});
+  const [studentErrors, setStudentErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
 
-  // Password strength (1 to 4)
-  const getPasswordStrength = (pass) => {
-    if (!pass) return { score: 0, label: '', color: 'bg-gray-200' };
-    let score = 0;
-    if (pass.length >= 6) score += 1;
-    if (pass.length >= 9) score += 1;
-    if (/[A-Z]/.test(pass) && /[0-9]/.test(pass)) score += 1;
-    if (/[^A-Za-z0-9]/.test(pass)) score += 1;
-
-    switch (score) {
-      case 1:
-        return { score: 1, label: 'Weak', color: 'bg-red-400', textColor: 'text-red-600' };
-      case 2:
-        return { score: 2, label: 'Fair', color: 'bg-amber-400', textColor: 'text-amber-600' };
-      case 3:
-        return { score: 3, label: 'Good', color: 'bg-secondary-container', textColor: 'text-secondary-container' };
-      case 4:
-        return { score: 4, label: 'Strong', color: 'bg-primary', textColor: 'text-primary' };
-      default:
-        return { score: 1, label: 'Weak', color: 'bg-red-400', textColor: 'text-red-600' };
-    }
-  };
-
-  const strength = getPasswordStrength(formData.password);
-
-  const handleChange = (e) => {
+  const handleParentChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
+    setParentFormData((prev) => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value,
     }));
@@ -58,55 +49,104 @@ export const RegisterPage = () => {
     }
   };
 
-  const validate = () => {
+  const handleStudentChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setStudentFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+    if (studentErrors[name]) {
+      setStudentErrors((prev) => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  // Demo auto-filler
+  const fillDemoCredentials = () => {
+    if (activeTab === 'PARENT') {
+      setParentFormData({
+        fullName: 'Sarah Jenkins',
+        email: 'sarah.jenkins@gmail.com',
+        password: 'Password123!',
+        confirmPassword: 'Password123!',
+        agreeTerms: true,
+      });
+      setErrors({});
+    } else {
+      setStudentFormData({
+        fullName: 'Alex Parker',
+        email: 'alex.parker@college.edu',
+        grade: 'Grade 11 / College Prep',
+        password: 'Password123!',
+        confirmPassword: 'Password123!',
+        familyKey: 'ORBIT-7489',
+        agreeTerms: true,
+      });
+      setStudentErrors({});
+    }
+  };
+
+  const validateParent = () => {
     const newErrors = {};
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Full name is required';
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email address is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please provide a valid email';
-    }
-
-    if (!formData.password) {
-      newErrors.password = 'Password is required';
-    } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
-    }
-
-    if (formData.password !== formData.confirmPassword) {
+    if (!parentFormData.fullName.trim()) newErrors.fullName = 'Full name is required';
+    if (!parentFormData.email.trim()) newErrors.email = 'Email is required';
+    if (!parentFormData.password) newErrors.password = 'Password required';
+    else if (parentFormData.password.length < 6) newErrors.password = 'Min 6 chars';
+    if (parentFormData.password !== parentFormData.confirmPassword) {
       newErrors.confirmPassword = 'Passwords do not match';
     }
-
-    if (!formData.agreeTerms) {
-      newErrors.agreeTerms = 'Please agree to privacy and family safety terms';
-    }
+    if (!parentFormData.agreeTerms) newErrors.agreeTerms = 'Please agree to terms';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!validate()) return;
+  const validateStudent = () => {
+    const newErrors = {};
+    if (!studentFormData.fullName.trim()) newErrors.fullName = 'Student name is required';
+    if (!studentFormData.email.trim()) newErrors.email = 'Email is required';
+    if (!studentFormData.password) newErrors.password = 'Password required';
+    else if (studentFormData.password.length < 6) newErrors.password = 'Min 6 chars';
+    if (studentFormData.password !== studentFormData.confirmPassword) {
+      newErrors.confirmPassword = 'Passwords do not match';
+    }
+    if (!studentFormData.agreeTerms) newErrors.agreeTerms = 'Please agree to terms';
 
+    setStudentErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleParentSubmit = (e) => {
+    e.preventDefault();
+    if (!validateParent()) return;
     setIsLoading(true);
 
     setTimeout(() => {
       setIsLoading(false);
       registerParent({
-        name: formData.fullName,
-        email: formData.email,
+        name: parentFormData.fullName,
+        email: parentFormData.email,
       });
-
       setSuccessMsg('Family Account Created! Launching Onboarding...');
+      setTimeout(() => navigate('/onboarding/welcome'), 600);
+    }, 500);
+  };
 
-      setTimeout(() => {
-        navigate('/onboarding/welcome');
-      }, 700);
-    }, 600);
+  const handleStudentSubmit = (e) => {
+    e.preventDefault();
+    if (!validateStudent()) return;
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      registerStudent({
+        name: studentFormData.fullName,
+        email: studentFormData.email,
+        grade: studentFormData.grade,
+        familyKey: studentFormData.familyKey,
+      });
+      setSuccessMsg('Student Account Created! Entering Sanctuary...');
+      setTimeout(() => navigate('/child/dashboard'), 600);
+    }, 500);
   };
 
   return (
@@ -117,147 +157,262 @@ export const RegisterPage = () => {
         </>
       }
       subheading="Create your account and take the first step towards meaningful growth."
-      description="Create a master parent account to guide your students, review permitted development insights, and assign growth challenges."
-      bottomNote="By signing up, you agree to our Student Privacy Standard and Terms of Service."
-      cardTitle="Create Account"
+      description={
+        activeTab === 'PARENT'
+          ? 'Guide your students, review permitted development insights, and share growth.'
+          : 'Track habits, reflect on feelings in privacy, and build emotional independence.'
+      }
+      cardTitle=""
     >
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2.5 sm:gap-3">
+      <div className="flex flex-col gap-2.5">
         
-        {/* Role Notice Pill - Frosted Glass Tile */}
-        <div className="flex items-center gap-2 p-2 rounded-2xl highorbit-glass-tile text-xs text-on-surface shadow-2xs">
-          <ShieldCheck className="w-3.5 h-3.5 text-primary shrink-0" />
-          <span>Creates master <strong>Parent/Family</strong> account</span>
+        {/* Header Title with 1-Click Demo Pill */}
+        <div className="flex items-center justify-between pb-1">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-extrabold text-on-surface tracking-tight">
+              Create Account
+            </h2>
+            <p className="text-[11px] text-on-surface-variant font-medium">
+              {activeTab === 'PARENT' ? 'Master Parent / Family Account' : 'Student Sanctuary Space'}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={fillDemoCredentials}
+            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold text-primary bg-primary/10 hover:bg-primary/20 border border-primary/20 transition-all cursor-pointer shadow-2xs hover:scale-105"
+            title="Auto-fill sample data"
+          >
+            <Sparkles className="w-3 h-3 text-primary" />
+            <span>Demo Data</span>
+          </button>
+        </div>
+
+        {/* Role Selection Tabs - Sleek Frosted Pill */}
+        <div className="p-1 rounded-2xl highorbit-glass-tile flex items-center gap-1">
+          <button
+            type="button"
+            onClick={() => {
+              setActiveTab('PARENT');
+              setErrors({});
+              setStudentErrors({});
+              setSuccessMsg('');
+            }}
+            className={`flex-1 py-1.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+              activeTab === 'PARENT'
+                ? 'bg-gradient-to-r from-primary to-primary-container text-white shadow-sm shadow-primary/25'
+                : 'text-on-surface-variant hover:text-on-surface hover:bg-white/40'
+            }`}
+          >
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>Parent Account</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              setActiveTab('STUDENT');
+              setErrors({});
+              setStudentErrors({});
+              setSuccessMsg('');
+            }}
+            className={`flex-1 py-1.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+              activeTab === 'STUDENT'
+                ? 'bg-gradient-to-r from-primary to-primary-container text-white shadow-sm shadow-primary/25'
+                : 'text-on-surface-variant hover:text-on-surface hover:bg-white/40'
+            }`}
+          >
+            <User className="w-3.5 h-3.5" />
+            <span>Student Account</span>
+          </button>
         </div>
 
         {/* Success message banner */}
         {successMsg && (
-          <div className="p-2.5 rounded-2xl bg-gradient-to-r from-primary-fixed/90 to-secondary-fixed/60 border border-white/80 text-primary text-xs sm:text-sm font-semibold flex items-center gap-2 backdrop-blur-md shadow-2xs animate-fadeIn">
-            <Check className="w-4 h-4 text-primary shrink-0" />
+          <div className="p-2 rounded-xl bg-gradient-to-r from-primary-fixed/90 to-secondary-fixed/60 border border-white/80 text-primary text-xs font-semibold flex items-center gap-2 backdrop-blur-md shadow-2xs animate-fadeIn">
+            <Check className="w-3.5 h-3.5 text-primary shrink-0" />
             <span>{successMsg}</span>
           </div>
         )}
 
-        {/* Full Name */}
-        <FormInput
-          label="Parent Full Name"
-          type="text"
-          name="fullName"
-          value={formData.fullName}
-          onChange={handleChange}
-          placeholder="e.g. Sarah Jenkins"
-          error={errors.fullName}
-          required
-          autoComplete="name"
-        />
-
-        {/* Email Address */}
-        <FormInput
-          label="Email Address"
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="e.g. sarah.jenkins@gmail.com"
-          error={errors.email}
-          required
-          autoComplete="email"
-        />
-
-        {/* Password */}
-        <div className="flex flex-col gap-1">
-          <FormInput
-            label="Create Password"
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="••••••••••••"
-            error={errors.password}
-            required
-            autoComplete="new-password"
-          />
-
-          {/* Password Strength Indicator */}
-          {formData.password && (
-            <div className="px-1 pt-0.5 flex flex-col gap-1 animate-fadeIn">
-              <div className="flex items-center justify-between text-[11px] font-semibold">
-                <span className="text-on-surface-variant">Password Strength:</span>
-                <span className={strength.textColor}>{strength.label}</span>
-              </div>
-              <div className="grid grid-cols-4 gap-1 h-1.5 w-full bg-white/60 backdrop-blur-xs rounded-full overflow-hidden p-0.5 border border-white/70">
-                <div className={`h-full rounded-full transition-all duration-300 ${strength.score >= 1 ? strength.color : 'bg-transparent'}`} />
-                <div className={`h-full rounded-full transition-all duration-300 ${strength.score >= 2 ? strength.color : 'bg-transparent'}`} />
-                <div className={`h-full rounded-full transition-all duration-300 ${strength.score >= 3 ? strength.color : 'bg-transparent'}`} />
-                <div className={`h-full rounded-full transition-all duration-300 ${strength.score >= 4 ? strength.color : 'bg-transparent'}`} />
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Confirm Password */}
-        <FormInput
-          label="Confirm Password"
-          type="password"
-          name="confirmPassword"
-          value={formData.confirmPassword}
-          onChange={handleChange}
-          placeholder="••••••••••••"
-          error={errors.confirmPassword}
-          required
-          autoComplete="new-password"
-        />
-
-        {/* Terms and Privacy Agreement */}
-        <div className="pt-0.5 flex flex-col gap-1">
-          <label className="flex items-start gap-2 cursor-pointer text-xs text-on-surface-variant select-none leading-relaxed">
-            <input
-              type="checkbox"
-              name="agreeTerms"
-              checked={formData.agreeTerms}
-              onChange={handleChange}
-              className="w-4 h-4 mt-0.5 rounded text-primary border-primary/30 focus:ring-0 cursor-pointer accent-primary shrink-0"
+        {/* ─── PARENT REGISTRATION FORM ─── */}
+        {activeTab === 'PARENT' && (
+          <form onSubmit={handleParentSubmit} className="flex flex-col gap-2">
+            <FormInput
+              label="Full Name"
+              type="text"
+              name="fullName"
+              value={parentFormData.fullName}
+              onChange={handleParentChange}
+              placeholder="e.g. Sarah Jenkins"
+              error={errors.fullName}
+              required
+              autoComplete="name"
             />
-            <span>
-              I agree to the HighOrbit <span className="underline font-semibold text-on-surface">Family Safety Terms</span> and <span className="underline font-semibold text-on-surface">Privacy Policy</span>.
-            </span>
-          </label>
-          {errors.agreeTerms && (
-            <span className="text-red-600 text-xs pl-6">{errors.agreeTerms}</span>
-          )}
-        </div>
 
-        {/* Submit Button */}
-        <div className="pt-1.5">
-          <PrimaryButton
-            type="submit"
-            disabled={isLoading}
-            className="w-full py-3"
-          >
-            {isLoading ? (
-              <span className="flex items-center gap-2">
-                <Loader2 className="w-4 h-4 animate-spin" />
-                <span>Creating Account...</span>
-              </span>
-            ) : (
-              <span>Create Parent Account</span>
+            <FormInput
+              label="Email Address"
+              type="email"
+              name="email"
+              value={parentFormData.email}
+              onChange={handleParentChange}
+              placeholder="e.g. sarah.jenkins@gmail.com"
+              error={errors.email}
+              required
+              autoComplete="email"
+            />
+
+            {/* Passwords in 2-Column Grid */}
+            <div className="grid grid-cols-2 gap-2">
+              <FormInput
+                label="Password"
+                type="password"
+                name="password"
+                value={parentFormData.password}
+                onChange={handleParentChange}
+                placeholder="••••••••"
+                error={errors.password}
+                required
+                autoComplete="new-password"
+              />
+              <FormInput
+                label="Confirm"
+                type="password"
+                name="confirmPassword"
+                value={parentFormData.confirmPassword}
+                onChange={handleParentChange}
+                placeholder="••••••••"
+                error={errors.confirmPassword}
+                required
+                autoComplete="new-password"
+              />
+            </div>
+
+            {/* Terms Agreement */}
+            <label className="flex items-center gap-2 cursor-pointer text-[11px] text-on-surface-variant select-none pt-0.5">
+              <input
+                type="checkbox"
+                name="agreeTerms"
+                checked={parentFormData.agreeTerms}
+                onChange={handleParentChange}
+                className="w-3.5 h-3.5 rounded text-primary border-primary/30 focus:ring-0 cursor-pointer accent-primary shrink-0"
+              />
+              <span>I agree to HighOrbit <span className="underline font-semibold text-on-surface">Family Terms</span> &amp; <span className="underline font-semibold text-on-surface">Privacy</span>.</span>
+            </label>
+            {errors.agreeTerms && (
+              <span className="text-red-600 text-[10px] pl-5">{errors.agreeTerms}</span>
             )}
-          </PrimaryButton>
-        </div>
+
+            {/* Submit Button */}
+            <div className="pt-1">
+              <PrimaryButton type="submit" disabled={isLoading} className="w-full py-2.5 text-xs sm:text-sm">
+                {isLoading ? (
+                  <span className="flex items-center gap-2">
+                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                    <span>Creating Account...</span>
+                  </span>
+                ) : (
+                  <span>Create Parent Account →</span>
+                )}
+              </PrimaryButton>
+            </div>
+          </form>
+        )}
+
+        {/* ─── STUDENT REGISTRATION FORM ─── */}
+        {activeTab === 'STUDENT' && (
+          <form onSubmit={handleStudentSubmit} className="flex flex-col gap-2">
+            <FormInput
+              label="Student Name"
+              type="text"
+              name="fullName"
+              value={studentFormData.fullName}
+              onChange={handleStudentChange}
+              placeholder="e.g. Alex Parker"
+              error={studentErrors.fullName}
+              required
+              autoComplete="name"
+            />
+
+            <FormInput
+              label="Student Email Address"
+              type="email"
+              name="email"
+              value={studentFormData.email}
+              onChange={handleStudentChange}
+              placeholder="e.g. alex.parker@college.edu"
+              error={studentErrors.email}
+              required
+              autoComplete="email"
+            />
+
+            {/* Password & Optional Pairing Key in 2-Column Grid */}
+            <div className="grid grid-cols-2 gap-2">
+              <FormInput
+                label="Password"
+                type="password"
+                name="password"
+                value={studentFormData.password}
+                onChange={handleStudentChange}
+                placeholder="••••••••"
+                error={studentErrors.password}
+                required
+                autoComplete="new-password"
+              />
+
+              <FormInput
+                label="Family Key (Optional)"
+                type="text"
+                name="familyKey"
+                value={studentFormData.familyKey}
+                onChange={handleStudentChange}
+                placeholder="e.g. ORBIT-7489"
+                icon={KeyRound}
+              />
+            </div>
+
+            {/* Terms Agreement */}
+            <label className="flex items-center gap-2 cursor-pointer text-[11px] text-on-surface-variant select-none pt-0.5">
+              <input
+                type="checkbox"
+                name="agreeTerms"
+                checked={studentFormData.agreeTerms}
+                onChange={handleStudentChange}
+                className="w-3.5 h-3.5 rounded text-primary border-primary/30 focus:ring-0 cursor-pointer accent-primary shrink-0"
+              />
+              <span>I agree to Student Sanctuary <span className="underline font-semibold text-on-surface">Privacy Standard</span>.</span>
+            </label>
+            {studentErrors.agreeTerms && (
+              <span className="text-red-600 text-[10px] pl-5">{studentErrors.agreeTerms}</span>
+            )}
+
+            {/* Submit Button */}
+            <div className="pt-1">
+              <PrimaryButton type="submit" disabled={isLoading} className="w-full py-2.5 text-xs sm:text-sm">
+                {isLoading ? (
+                  <span className="flex items-center gap-2">
+                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                    <span>Creating Sanctuary Account...</span>
+                  </span>
+                ) : (
+                  <span>Create Student Account →</span>
+                )}
+              </PrimaryButton>
+            </div>
+          </form>
+        )}
 
         {/* Already Registered Navigation */}
-        <div className="text-center pt-2 border-t border-white/60">
+        <div className="text-center pt-1.5 border-t border-white/60">
           <span className="text-xs text-on-surface-variant">
             Already Registered?{' '}
-            <Link
-              to="/login"
-              className="font-bold text-primary hover:underline transition-colors"
-            >
+            <Link to="/login" className="font-bold text-primary hover:underline transition-colors">
               Sign In
             </Link>
           </span>
         </div>
 
-      </form>
+      </div>
     </AuthLayout>
   );
 };

@@ -183,6 +183,40 @@ export const OnboardingProvider = ({ children: reactChildren }) => {
     setActiveChildId(firstChild.id);
   };
 
+
+  const registerStudent = ({ name, email, grade, familyKey }) => {
+    const studentId = `student_${Date.now()}`;
+    const newStudent = {
+      id: studentId,
+      parentId: familyKey ? (parentAccount?.id || 'p_101') : null,
+      name: name || 'Alex Parker',
+      nickname: (name || 'Alex').split(' ')[0],
+      email: email || 'student@highorbit.com',
+      ageGroup: '15–18 years',
+      grade: grade || 'Grade 11 / College Prep',
+      interests: ['Leadership & Growth', 'Mathematics & Logic', 'Creative Writing', 'Philosophy & Ethics'],
+      learningGoals: ['Improve Problem Solving', 'Develop Sustained Focus', 'Build Confidence'],
+      avatar: {
+        id: 'student_custom',
+        name: name || 'Alex Parker',
+        title: 'HighOrbit Student',
+        badge: '🎯 Mindful Scholar',
+        quote: '"Clarity precedes mastery."',
+        color: '#5f48b9',
+      },
+      pin: '1234',
+      role: 'CHILD',
+      familyKey: familyKey || null,
+      onboardingStatus: 'completed',
+    };
+
+    setChildrenList((prev) => [newStudent, ...prev.filter((c) => c.id !== studentId)]);
+    setActiveChildId(studentId);
+    setCurrentRole('CHILD');
+    setIsAuthenticated(true);
+    return newStudent;
+  };
+
   const loginParent = (email) => {
     setIsAuthenticated(true);
     setCurrentRole('PARENT');
@@ -380,6 +414,7 @@ export const OnboardingProvider = ({ children: reactChildren }) => {
         currentRole,
         isAuthenticated,
         registerParent,
+        registerStudent,
         loginParent,
         loginChild,
         logout,
